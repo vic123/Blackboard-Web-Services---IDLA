@@ -17,4 +17,33 @@
             30
         </session-timeout>
     </session-config>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/bbUI</taglib-uri>
+            <taglib-location>/WEB-INF/config/taglibs/bbUI.tld</taglib-location>
+        </taglib>
+  
+        <taglib>
+            <taglib-uri>/bbData</taglib-uri>
+            <taglib-location>/WEB-INF/config/taglibs/bbData.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+	<context-param> 
+	    <description>BB blackboard\config\service-config.properties blackboard.service.log.param.logdef settings do not 
+	    		allow configuration of higher verbosity level for particular namespace. 
+	    		With this parameter higher verbosity messages are dynamically converted to max level that goes into 
+	    		the log (blackboard.platform.log.log.getVerbosityLevel())
+	    		Possible values corresponding to LogService.Verbosity are integers that may differ for BB versions, in v.7.3 they are from 0 to 4
+				FATAL - 0
+				ERROR - 1
+	    		WARNING - 2
+	    		INFORMATION - 3
+	    		DEBUG - 4
+	    </description> 
+	    <param-name>logSeverityOverride</param-name> 
+	    <param-value>5</param-value> 
+	</context-param> 
+    
 </web-app>
+
+
