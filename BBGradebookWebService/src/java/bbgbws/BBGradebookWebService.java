@@ -49,6 +49,8 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceException;
 
+
+import blackboard.platform.gradebook2.*;
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
@@ -155,15 +157,20 @@ public class BBGradebookWebService
         //{
             try
             {
+                BbWsLog.logForward("getAllLineitemObjsForCourseId(String courseId): Class gradebookManagerFactoryClass = Class.forName(\"blackboard.platform.gradebook2.GradebookManagerFactory\");");
                 Class gradebookManagerFactoryClass = Class.forName("blackboard.platform.gradebook2.GradebookManagerFactory");
+                BbWsLog.logForward("getAllLineitemObjsForCourseId(String courseId): Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod(\"getInstanceWithoutSecurityCheck\").invoke(gradebookManagerFactoryClass.newInstance());");
                 Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod("getInstanceWithoutSecurityCheck").invoke(gradebookManagerFactoryClass.newInstance());
                 //blackboard.platform.gradebook2.GradebookManager gm = blackboard.platform.gradebook2.GradebookManagerFactory.getInstanceWithoutSecurityCheck();
 
+                BbWsLog.logForward("getAllLineitemObjsForCourseId(String courseId): Class gbmClass = gradebookManager.getClass();");
                 Class gbmClass = gradebookManager.getClass();
+                BbWsLog.logForward("getAllLineitemObjsForCourseId(String courseId): List l = (List)gbmClass.getDeclaredMethod(...");
                 List l = (List)gbmClass.getDeclaredMethod("getGradebookItems",new Class[]{blackboard.persist.Id.class}).invoke(gradebookManager,new Object[]{((CourseDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(CourseDbLoader.TYPE)).loadByCourseId(courseId).getId()});
                 //List<blackboard.platform.gradebook2.GradableItem> l = gm.getGradebookItems(((CourseDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(CourseDbLoader.TYPE)).loadByCourseId(courseId).getId());
-
+                BbWsLog.logForward("getAllLineitemObjsForCourseId(String courseId): i = l.iterator();"); 
                 i = l.iterator();
+                BbWsLog.logForward("getAllLineitemObjsForCourseId(String courseId): while (i.hasNext())"); 
                 while (i.hasNext())
                 {
                     rl.add(new LineitemDetails(i.next()));
@@ -174,6 +181,7 @@ public class BBGradebookWebService
             }
             catch(ClassNotFoundException cnfe)
             {
+                BbWsLog.logForward("getAllLineitemObjsForCourseId(String courseId): Catched, List<Lineitem> lil = ((LineitemDbLoader)BbServiceManager..."); 
                 List<Lineitem> lil = ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadByCourseId(CourseDbLoader.Default.getInstance().loadByCourseId(courseId).getId());
                 if(lil.size()<1)
                 {
@@ -201,20 +209,27 @@ public class BBGradebookWebService
         try
         {
             List<String[]> rl = new ArrayList<String[]>();
+            BbWsLog.logForward("getAllLineItemsForCourseId(@WebParam(name =: List<LineitemDetails> lil = getAllLineitemObjsForCourseId(courseId);");
             List<LineitemDetails> lil = getAllLineitemObjsForCourseId(courseId);
             if(headerDesc)
             {
+                BbWsLog.logForward("getAllLineItemsForCourseId(@WebParam(name =:    rl.add(new LineitemDetails().toStringArrayHeader());");
             rl.add(new LineitemDetails().toStringArrayHeader());
             }
+            BbWsLog.logForward("getAllLineItemsForCourseId(@WebParam(name =:    Iterator i = lil.iterator();");
             Iterator i = lil.iterator();
+            BbWsLog.logForward("getAllLineItemsForCourseId(@WebParam(name =:    while(i.hasNext())");
             while(i.hasNext())
             {
+                BbWsLog.logForward("getAllLineItemsForCourseId(@WebParam(name =:    rl.add(((LineitemDetails)i.next()).toStringArray());");
             rl.add(((LineitemDetails)i.next()).toStringArray());
             }
+            BbWsLog.logForward("getAllLineItemsForCourseId(@WebParam(name =:    return (String[][])rl.toArray(new String[rl.size()][]);");
             return (String[][])rl.toArray(new String[rl.size()][]);
         }
         catch(Exception e)
         {
+            BbWsLog.logForward(e, "getAllLineItemsForCourseId(@WebParam(name =:    throw new WebServiceException(...");
             throw new WebServiceException("Error: Could not retrieve line items for this course "+e.toString());
         }
     }
@@ -331,19 +346,92 @@ public class BBGradebookWebService
     
     private List<ScoreDetails> getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, Boolean extendedDetails) throws Exception
     {
-        List<Score> scores = ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE,lineItemBbId)).getScores();
-        if(scores.size()<1)
-        {
-            throw new Exception("No scores found");
-        }
         List<ScoreDetails> rl = new ArrayList<ScoreDetails>();
-        Iterator i = scores.iterator();
-        while(i.hasNext())
+        try 
         {
-            rl.add(getScoreDetailsObjForGivenScoreObj((Score)i.next(),extendedDetails));
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  BbConfig.LIBRARY_VERSION:" + blackboard.platform.config.BbConfig.LIBRARY_VERSION);
+            BbWsLog.logForward(BbServiceManager.getConfigurationService().getBbProperty(blackboard.platform.config.BbConfig.LIBRARY_VERSION));
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  BbConfig.VERSION_NUMBER:" + blackboard.platform.config.BbConfig.VERSION_NUMBER);
+            BbWsLog.logForward(BbServiceManager.getConfigurationService().getBbProperty(blackboard.platform.config.BbConfig.VERSION_NUMBER));
+            
+            
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Class gradebookManagerFactoryClass = Class.forName");
+            Class gradebookManagerFactoryClass = Class.forName("blackboard.platform.gradebook2.GradebookManagerFactory");
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod(");
+            Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod("getInstanceWithoutSecurityCheck").invoke(gradebookManagerFactoryClass.newInstance());
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Class gbmClass = gradebookManager.getClass();");
+            Class gbmClass = gradebookManager.getClass();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  blackboard.persist.Id courseId = ((LineitemDbLoader)");
+            blackboard.persist.Id courseId = ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE,lineItemBbId)).getCourseId();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Class gradableItemClass = Class.forName");
+            Class gradableItemClass = Class.forName("blackboard.platform.gradebook2.GradableItem");
+            //gradableItemClass.getDeclaredField("DATA_TYPE").
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  blackboard.persist.Id gradableItemId = BbServiceManager.getPersistenceService()");
+            blackboard.persist.Id gradableItemId = BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId((blackboard.persist.DataType)gradableItemClass.getField("DATA_TYPE").get(null),lineItemBbId);
+            
+            //Object gradableItem = gbmClass.getDeclaredMethod("getGradebookItem", parameterTypes)    public abstract GradableItem getGradebookItem(Id id)
+            //blackboard.persist.Id courseId = ((CourseDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(CourseDbLoader.TYPE)).loadByCourseId(courseId).getId();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Class bdrClass = Class.forName");    
+            Class bdrClass = Class.forName("blackboard.platform.gradebook2.BookDataRequest");
+            //Object bdr = bdrClass.getConstructor(new Class[]{blackboard.persist.Id.class}).
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Object bdr = bdrClass.getConstructor(blackboard.persist.Id.class).newInstance(courseId);");
+            Object bdr = bdrClass.getConstructor(blackboard.persist.Id.class).newInstance(courseId);
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Object bookData = gbmClass.getDeclaredMethod(");
+            Object bookData = gbmClass.getDeclaredMethod("getBookData", bdrClass).invoke(gradebookManager, bdr);
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  bookData.getClass().getDeclaredMethod(");
+            bookData.getClass().getDeclaredMethod("addParentReferences").invoke(bookData);
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  bookData.getClass().getDeclaredMethod(");
+            bookData.getClass().getDeclaredMethod("runCumulativeGrading").invoke(bookData);
+
+            //load the list of all student enrollments in the course
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  List<CourseMembership> cmlist = ");
+            List<CourseMembership> cmlist = CourseMembershipDbLoader.Default.getInstance().loadByCourseIdAndRole(courseId, CourseMembership.Role.STUDENT);
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Iterator<CourseMembership> cm_iter = cmlist.iterator();");
+            Iterator<CourseMembership> cm_iter = cmlist.iterator();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  while (cm_iter.hasNext())");
+            while (cm_iter.hasNext())
+            {
+                BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  CourseMembership cm = cm_iter.next();");
+                CourseMembership cm = cm_iter.next();
+                BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Object gradeWithAttemptScore = bookData.getClass().getDeclaredMethod(");
+                Object gradeWithAttemptScore = bookData.getClass().getDeclaredMethod("get", blackboard.persist.Id.class, blackboard.persist.Id.class).invoke(bookData, cm.getId(), gradableItemId);
+                BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  rl.add(new ScoreDetails(gradeWithAttemptScore, ");
+                rl.add(new ScoreDetails(gradeWithAttemptScore, extendedDetails?ScoreDetails.Verbosity.extended:ScoreDetails.Verbosity.standard, lineItemBbId));
+                //gradeWithAttemptScore gwas = bookData.get(cm.getId(), gradableItemId);
+            }
+            //or you will get an out of memory error...
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  cmlist.clear();");
+            cmlist.clear();
+            cmlist = null;
         }
+        catch (ClassNotFoundException cnfe) 
+        {
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Caught catch (ClassNotFoundException cnfe)");
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  rl.clear();");
+            rl.clear();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  List<Score> scores = ((");
+            List<Score> scores = ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE,lineItemBbId)).getScores();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    if(scores.size()<1)");
+            if(scores.size()<1)
+            {
+                BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    throw new WebServiceException(");
+                throw new WebServiceException("No scores found");
+            }
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    Iterator i = scores.iterator();");
+            Iterator i = scores.iterator();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    while(i.hasNext())");
+            while(i.hasNext())
+            {
+                BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    rl.add(getScoreDetailsObjForGivenScoreObj((Score)i.next(),extendedDetails));");
+                rl.add(getScoreDetailsObjForGivenScoreObj((Score)i.next(),extendedDetails));
+            }
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    scores.clear();");
+            scores.clear();
+            scores = null;
+        }
+        BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    return rl;");
         return rl;
-        }
+    }
 
         /**
          * Web service operation
@@ -375,21 +463,26 @@ public class BBGradebookWebService
 	extendedDetails = handleNullValue(extendedDetails);
 	try
 	{
+            BbWsLog.logForward("getAllScoresForGivenLineItemBbId(@WebParam(name = :    List<ScoreDetails> sdsl = getAllScoreObjsForGivenLineItemBbId(lineItemBbId, extendedDetails);");
 	    List<ScoreDetails> sdsl = getAllScoreObjsForGivenLineItemBbId(lineItemBbId, extendedDetails);
 	    List<String[]> rl = new ArrayList<String[]>();
+            BbWsLog.logForward("getAllScoresForGivenLineItemBbId(@WebParam(name = :    if(headerDesc)");
 	    if(headerDesc)
 	    {
 		rl.add(new ScoreDetails(extendedDetails?ScoreDetails.Verbosity.extended:ScoreDetails.Verbosity.standard).toStringArrayHeader());
 	    }
 	    Iterator i = sdsl.iterator();
+            BbWsLog.logForward("getAllScoresForGivenLineItemBbId(@WebParam(name = :    while(i.hasNext())");
 	    while(i.hasNext())
 	    {
+                BbWsLog.logForward("getAllScoresForGivenLineItemBbId(@WebParam(name = :    rl.add(((ScoreDetails)i.next()).toStringArray());");
 		rl.add(((ScoreDetails)i.next()).toStringArray());
 	    }
 	    return (String[][])rl.toArray(new String[rl.size()][]);
 	}
 	catch(Exception e)
 	{
+            BbWsLog.logForward(e, "getAllScoresForGivenLineItemBbId(@WebParam(name = :    throw new WebServiceException(...");
 	    throw new WebServiceException("Error: Could not retrieve scores for this line item "+e.toString());
 	}
     }
@@ -789,4 +882,4 @@ public class BBGradebookWebService
 	}
 	return true;
     }
-}
+} 

@@ -34,6 +34,7 @@ public class GradeBookSettingsDetails
     private Boolean studentIdDisplayed;
     private Boolean userIdDisplayed;
     private String weightType;
+    //??    gs.getPublicItemId();
 
     public GradeBookSettingsDetails(){}
     public GradeBookSettingsDetails(GradeBookSettings gbs)

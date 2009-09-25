@@ -22,6 +22,7 @@ package bbgbws;
 import blackboard.data.gradebook.Lineitem;
 import blackboard.data.gradebook.Lineitem.AssessmentLocation;
 import java.util.Calendar;
+import blackboard.platform.log.*;
 
 /**
  *
@@ -41,11 +42,52 @@ public class LineitemDetails
     private String pointsPossible;
     private String type;
     private String weight;
+    //?? gi.getDisplayColumnName()
+    //determine the calculation type - AVERAGE, MINMAX, NON_CALCULATED, TOTAL, WEIGHTED_TOTAL
+    //out.println(gi.getCalculatedInd());
+    //get the schema type - COMPLETE, PERCENT, SCORE, TABULAR, TEXT
+    //out.println(GradingSchemaDAO.get().loadById(gi.getGradingSchemaId()).getScaleType().name());
+    //determine if is is calculated or non calculated
+    //out.println(gi.isCalculated());
+    //determine if the instructor manually entered the grade
+    //out.println(gi.isManual());
 
+
+
+	static Log log = LogServiceFactory.getInstance().getDefaultLog();
+	void logForward(String message) {
+                logForward(LogService.Verbosity.WARNING, message);
+	}
+        
+	//log forwarding functions - intoroduced for easier production of log messages
+	//without necessity of modifying of server log settings
+	//assumes that active server log level is at least WARNING 
+	void logForward(LogService.Verbosity verbosity, String message) {
+		message = "BBGradebookWebService	" + verbosity.toExternalString() + "	" + message;
+		//using higher severity log level for easier development testing, log is overfilled when all messages are of debug level
+		//actual log.logWarning has to be commented out in production release, but may be uncommented for collecting of log messages  
+		if (verbosity.getLevelAsInt() > LogService.Verbosity.WARNING.getLevelAsInt()) {
+			log.logWarning(message);
+		}
+		log.log(message, verbosity);
+		//log.log("strLogMessages: " + strLogMessages, verbosity);    
+	}
+	void logForward(LogService.Verbosity verbosity, java.lang.Throwable error, String message) {
+		message = "BBGradebookWebService	" + message;
+		//using higher severity log level for easier development testing, log is overfilled when all messages are of debug level
+		//actual log.logWarning has to be commented out in production release, but may be uncommented for collecting of log messages  
+		if (verbosity.getLevelAsInt() > LogService.Verbosity.WARNING.getLevelAsInt()) {
+			log.logWarning(message, error);
+		}
+		log.log(message, error, verbosity);
+	}
+    
     public LineitemDetails(){}
     public LineitemDetails(Object gi)
     {
+        logForward("LineitemDetails:    Class gradableItem = gi.getClass();");
         Class gradableItem = gi.getClass();
+        logForward("LineitemDetails:    try{this.name = (String)...");
         try{this.name = (String)gradableItem.getDeclaredMethod("getTitle").invoke(gi);}catch(Exception e){}
         try{
             Object o = gradableItem.getDeclaredMethod("getAssessmentId").invoke(gi);
@@ -66,7 +108,8 @@ public class LineitemDetails
         //else if(gi.getAssessmentLocation().equals(AssessmentLocation.INTERNAL)){this.assessmentLocation = "INTERNAL";}
         //else if(gi.getAssessmentLocation().equals(AssessmentLocation.UNSET)){this.assessmentLocation = "UNSET";}
 
-        try{this.available = (Boolean)gradableItem.getDeclaredMethod("getIsVisibleInAllTerms").invoke(gi);}catch(Exception e){}
+        //!!try{this.available = (Boolean)gradableItem.getDeclaredMethod("getIsVisibleInAllTerms").invoke(gi);}catch(Exception e){}
+        try{this.available = (Boolean)gradableItem.getDeclaredMethod("isVisibleInAllTerms").invoke(gi);}catch(Exception e){}
         try{this.columnPosition = (Integer)gradableItem.getDeclaredMethod("getPosition").invoke(gi);}catch(Exception e){}
         try{this.dateAdded = extractDate((Calendar)gradableItem.getDeclaredMethod("getDateAdded").invoke(gi));}catch(Exception e){}
         try{this.dateChanged = extractDate((Calendar)gradableItem.getDeclaredMethod("getDateModified").invoke(gi));}catch(Exception e){}
@@ -241,14 +284,21 @@ public class LineitemDetails
 
     private String[] getLineitemDetails()
     {
+        logForward("getLineitemDetails():    String[] tst_str = new String[] {...");
+        String[] tst_str = new String[] {"sdfsf", null};
+        logForward("getLineitemDetails():    return new String[]");
+        logForward("getLineitemDetails():    this.columnPosition:" + this.columnPosition);
+        logForward("getLineitemDetails():    this.available:" + this.available);
         return new String[]
         {
             this.lineItemBbId,
             this.name,
             this.dateAdded,
             this.dateChanged,
-            Integer.toString(this.columnPosition),
-            Boolean.toString(this.available),
+            //!!Integer.toString(this.columnPosition),
+            String.valueOf(this.columnPosition), 
+            //!!Boolean.toString(this.available),
+            String.valueOf(this.available),
             this.pointsPossible,
             this.type,
             this.weight,
