@@ -21,6 +21,7 @@ package bbgbws;
 import blackboard.data.gradebook.Score;
 import blackboard.data.gradebook.Score.AttemptLocation;
 import java.util.Calendar;
+import blackboard.persist.Id;
 
 /**
  *
@@ -36,6 +37,7 @@ public class ScoreDetails
     private String dateChanged;
     private String dateModified;
     private String grade;
+    //private String gradeWithAttemptScore_textValue;
     private String outcomeDefBbId;
     private String scoreBbId;
     //extended details
@@ -45,10 +47,76 @@ public class ScoreDetails
     private String dataType;
     private String lineItemBbId;
 
-    public ScoreDetails(){}
+    public ScoreDetails()
+    {
+            super();
+            this.attemptBbId = "";
+            this.attemptLocation = "UNSET";
+            this.courseMembershipBbId = "";
+            this.lineItemBbId = "";
+            this.dateAdded = "Never";
+            this.dateChanged = "Never";
+            this.dateModified = "Never";
+            this.grade = "-";
+            this.outcomeDefBbId = "";
+            this.scoreBbId = "";
+    }
     public ScoreDetails(Verbosity verbosity)
     {
+        this();
 	this.verbosity = verbosity;
+    }
+    public ScoreDetails(Object _gwas, Verbosity _verbosity, String _lineItemBbId) throws Exception
+    {
+        this(_verbosity);
+        BbWsLog.logForward("ScoreDetails :    if (_gwas == null) return;");
+        if (_gwas == null) return;
+        boolean is_null = false;
+        Class gwas_class = _gwas.getClass(); 
+        BbWsLog.logForward("ScoreDetails :    if ((Boolean)gwas_class.getDeclaredMethod(");
+        if ((Boolean)gwas_class.getDeclaredMethod("isNullGrade").invoke(_gwas)) {
+            BbWsLog.logForward("ScoreDetails :    is_null = true;");
+            is_null = true;
+        }
+        BbWsLog.logForward("ScoreDetails :    switch(this.verbosity)	{");
+	switch(this.verbosity)	{
+	    case extended:
+                BbWsLog.logForward("ScoreDetails :    Id temp_id = (Id)gwas_class.getDeclaredMethod");
+                Id temp_id = (Id)gwas_class.getDeclaredMethod("getAttemptId").invoke(_gwas);
+                BbWsLog.logForward("ScoreDetails :    if ( temp_id != null) this.attemptBbId =  temp_id.getExternalString();");
+                if ( temp_id != null) this.attemptBbId =  temp_id.getExternalString();
+                //??this.attemptLocation - did not find anything of same kind in gradebook2 APIs
+                BbWsLog.logForward("ScoreDetails :    temp_id = (Id)gwas_class.getDeclaredMethod");
+                temp_id = (Id)gwas_class.getDeclaredMethod("getCourseUserId").invoke(_gwas); //??
+                BbWsLog.logForward("ScoreDetails :    if ( temp_id != null) this.courseMembershipBbId = temp_id.getExternalString()");
+                if ( temp_id != null) this.courseMembershipBbId = temp_id.getExternalString(); //??
+                BbWsLog.logForward("ScoreDetails :    this.dataType = ((blackboard.persist.DataType)gwas_class.getField");
+                this.dataType = ((blackboard.persist.DataType)gwas_class.getField("DATA_TYPE").get(null)).getName();
+                this.lineItemBbId = _lineItemBbId;
+                //??this.lineItemBbId ;
+	    case standard:
+                //??AttemptDetail.getCreationDate()
+                //??AttemptDetail.getAttemptDate()
+                //??GradeWithAttemptScore.getAttemptDate()
+                BbWsLog.logForward("ScoreDetails :    this.dateAdded = extractDate((Calendar)gwas_class.getDeclaredMethod(");
+		this.dateAdded = extractDate((Calendar)gwas_class.getDeclaredMethod("getAttemptDate").invoke(_gwas));
+		//??this.dateChanged 
+		//??this.dateModified 
+                if (!is_null) {
+                    BbWsLog.logForward("ScoreDetails :    this.grade = String.valueOf((Double)gwas_class.");
+                    //this.grade = String.valueOf((Double)gwas_class.getDeclaredMethod("getScoreValue").invoke(_gwas));
+                    this.grade = (String)gwas_class.getDeclaredMethod("getSchemaValue").invoke(_gwas);
+                }
+                
+                //??getSchemaValue()
+                //??getTextValue()
+		//??this.outcomeDefBbId = s.getOutcome().getOutcomeDefinitionId().getExternalString();
+                BbWsLog.logForward("ScoreDetails :    temp_id = (Id)gwas_class.getDeclaredMethod");
+		temp_id = (Id)gwas_class.getDeclaredMethod("getBookPk1").invoke(_gwas);
+                if ( temp_id != null) this.scoreBbId = temp_id.getExternalString();
+                BbWsLog.logForward("ScoreDetails :    return;");
+		return;
+        }     
     }
     public ScoreDetails(Score s,Verbosity verbosity)
     {
