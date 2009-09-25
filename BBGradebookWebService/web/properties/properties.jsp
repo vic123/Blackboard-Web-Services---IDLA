@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" import="java.util.*,bbgbws.BbWsProperty" %>
+<%@ page language="java" pageEncoding="UTF-8" import="java.util.*,bbgbws.BbWsProperty,bbgbws.BbWsLog" %>
 <%@ taglib uri="/bbUI" prefix="bbUI"%>
 <%@ taglib uri="/bbData" prefix="bbData"%>
 <%
@@ -24,14 +24,20 @@ under the License.
 <bbData:context>
     <bbUI:docTemplate title="Blackboard Administrator Tools">
 	<bbUI:titleBar>Gradebook webservice security properties</bbUI:titleBar>
+	<% Object obj;
+            //BbWsLog.logForward("11111111");
+		obj = null;
+		//String str =  obj.toString();
+	%> 
 	<jsp:useBean id="PersistWSProperties" scope="session" class="bbgbws.PropertiesBean.PropertiesBean"/>
 <%
+//BbWsLog.logForward("222222");
     String submit = request.getParameter("submit");
     if(submit==null) submit = "false";
-
+//BbWsLog.logForward("BbWsProperty usePwd = new BbWsProperty");
     BbWsProperty usePwd = new BbWsProperty(PersistWSProperties.getProperty("pwd.use"));
     BbWsProperty pwdSet = new BbWsProperty(PersistWSProperties.getProperty("pwd.set"));
-
+//BbWsLog.logForward("if(!submit.equalsIgnoreCase(");
     if(!submit.equalsIgnoreCase("true"))
     {
 %>
@@ -87,6 +93,7 @@ under the License.
 	{
 	    PersistWSProperties.setProperties(request);
 	}catch(Exception e){}
+//	BbWsLog.logForward("}catch(Exception e){}");
 %>
 	<form action="#" method="POST" name="aForm" />
 	<script type="text/javascript">
@@ -96,7 +103,7 @@ under the License.
 <%
     }
 %>
-    <a href="/webapps/amnl-BBGradebookWebService-bb_bb60/BBGradebookWebService">Click for endpoint</a><br/>
-    <a href="/webapps/amnl-BBGradebookWebService-bb_bb60/BBGradebookWebService?wsdl">Click for wsdl</a>
+    <a href="/webapps/IDLA-BBGradebookWebService-bb_bb60/BBGradebookWebService">Click for endpoint</a><br/>
+    <a href="/webapps/IDLA-BBGradebookWebService-bb_bb60/BBGradebookWebService?wsdl">Click for wsdl</a>
     </bbUI:docTemplate>
 </bbData:context>

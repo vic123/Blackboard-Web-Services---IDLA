@@ -54,7 +54,7 @@ public class WebServiceProperties
 	catch(KeyNotFoundException knfe){return "Error: Given parameter not found";}
 	catch(Exception e){return e.toString();}
 
-	if(sre.getDescription().contains("amnl"))
+	if(sre.getDescription().contains("IDLA"))
 	{
 	    return sre.getValue();
 	}
