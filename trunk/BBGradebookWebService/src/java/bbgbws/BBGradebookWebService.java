@@ -48,17 +48,25 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceException;
+import javax.annotation.Resource;
+import blackboard.platform.log.LogService;
 
 
-import blackboard.platform.gradebook2.*;
+//import blackboard.platform.gradebook2.*;
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-@WebService()
+@WebService
 public class BBGradebookWebService
 {
-    private WebServiceProperties wsp = new WebServiceProperties("amnl","BBGradebookWebService");
+@Resource
+public static javax.xml.ws.WebServiceContext wsContextStatic;
+
+@Resource
+private javax.xml.ws.WebServiceContext wsContext;
+
+    private WebServiceProperties wsp = new WebServiceProperties("IDLA","BBGradebookWebService");
     //private enum Verbosity{standard,extended}
 
     /**
@@ -238,19 +246,177 @@ public class BBGradebookWebService
      * Web service operation
      */
     @WebMethod(operationName = "getAllLineItemsForCourseIdWithNamedElements")
-    public List<LineitemDetails> getAllLineItemsForCourseIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId)
+    public List<LineitemDetails> getAllLineItemsForCourseIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId, @WebParam(name = "commonParams") CommonParams params)
     {
-        authoriseMethodUse(pwd,"getAllLineItemsForCourseIdWithNamedElements");
-        try
-        {
-            return getAllLineitemObjsForCourseId(courseId);
-        }
-        catch(Exception e)
-        {
-            throw new WebServiceException("Error: Could not retrieve line items for this course "+e.toString());
-        }
+        javax.servlet.ServletContext sc = (javax.servlet.ServletContext)BBGradebookWebService.wsContextStatic.getMessageContext().get(javax.xml.ws.handler.MessageContext.SERVLET_CONTEXT);
+        String value = sc.getInitParameter("logSeverityOverride");
+        BbWsLog.logForward("getAllLineItemsForCourseIdWithNamedElements - String value = sc.getInitParameter value: " + value);        
+        
+        sc = (javax.servlet.ServletContext)wsContext.getMessageContext().get(javax.xml.ws.handler.MessageContext.SERVLET_CONTEXT);
+        value = sc.getInitParameter("logSeverityOverride");
+        BbWsLog.logForward("getAllLineItemsForCourseIdWithNamedElements - String value = sc.getInitParameter value: " + value);        
+
+        LineitemParams lip = new LineitemParams(pwd, courseId, null, params);
+        return getAllLineItemsForCourseIdWithNamedElementsAndParams(lip);
     }
 
+    @WebMethod
+    public List<LineitemDetails> getAllLineItemsForCourseIdWithNamedElementsAndParams(@WebParam(name = "lineitemParams") LineitemParams params)
+    {
+        AllLineItemsForCourseIdGetter getter 
+                = new AllLineItemsForCourseIdGetter(params);
+        runGetter(getter);
+        //getter.run();
+        return getter.result;
+    }
+    
+   
+    @WebMethod
+    public LineitemDetails getLineitemDetailsForGivenLineitemBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineitemBbId") String lineitemBbId, CommonParams params) throws WebServiceException
+    {
+        LineitemParams lip = new LineitemParams(pwd, null, lineitemBbId, params);
+        return getLineitemDetailsForGivenLineitemBbIdWithNamedElementsAndParams(lip);
+    }
+    @WebMethod
+    public LineitemDetails getLineitemDetailsForGivenLineitemBbIdWithNamedElementsAndParams(@WebParam(name = "lineitemParams") LineitemParams params) throws WebServiceException {
+        //LineitemDetailsForGivenLineitemBbIdGetter getter 
+        LineitemDetailsForGivenLineitemBbIdGetter getter         
+                = new LineitemDetailsForGivenLineitemBbIdGetter(params);
+        runGetter(getter);
+        //getter.run();
+        return getter.result;
+    }
+    
+    public abstract class DataGetter<InternalResultType, ResultType, ParamsType extends CommonParams> {
+        protected String errorPrefix;
+        protected String methodName;
+        protected ParamsType params;
+        protected Class paramTypes[]; 
+        public InternalResultType internalResult;
+        public ResultType result;
+        String dataLoaderClassNamePrefix;
+        String dataLoaderStaticMethodName;
+        DataGetter () {
+            this.params = null;
+            this.paramTypes = null;
+        }
+        DataGetter (ParamsType params) {
+          this.params = params;   
+          this.paramTypes = null;          
+        }
+
+        public void run() throws Exception {
+                authoriseMethodUse(params.getPassword(), methodName);
+                BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered DataGetter.run(); ", this);
+                BbWsLog.logForward(LogService.Verbosity.DEBUG, "for (int i = 0; i < CommonParams.apiToUseTags.length; i++) { params.getLogVerbosity(): " + params.getLogVerbosity() , this);
+                for (int i = 0; i < CommonParams.apiToUseTags.length; i++) {
+                    if (params.apiToUse.indexOf(CommonParams.apiToUseTags[i]) != -1) {
+                        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Loading class for API " 
+                                + CommonParams.apiToUseTags[i] 
+                                + "; dataLoaderClassNamePrefix: " + dataLoaderClassNamePrefix 
+                                + " dataLoaderStaticMethodName: " + dataLoaderStaticMethodName, this);
+                        String c_name = dataLoaderClassNamePrefix + "_" + CommonParams.apiToUseTags[i];
+                        params.wsPrivate_setCurrentApiUsed (CommonParams.apiToUseTags[i]);
+                        BbWsLog.logForward(LogService.Verbosity.DEBUG, "Class data_loader_class = Class.forName(c_name); c_name: " + c_name, this);
+                        Class data_loader_class = Class.forName(c_name);
+                        BbWsLog.logForward(LogService.Verbosity.DEBUG, "java.lang.reflect.Method data_loader_method = data_loader_class.getDeclaredMethod(dataLoaderStaticMethodName); dataLoaderStaticMethodName: " + dataLoaderStaticMethodName, this);
+                        java.lang.reflect.Method data_loader_method = data_loader_class.getDeclaredMethod(dataLoaderStaticMethodName, paramTypes);
+                        //result = (ResultType) data_loader_method.invoke(null, params); 
+    //                    Class<ResultType> c_result = data_loader_method.getReturnType();
+    //                    return c_result.cast(data_loader_method.invoke(null, params));
+                        Object paramObjs[] = new Object[2];
+                        paramObjs[0] = params;
+                        paramObjs[1] = internalResult;
+                        BbWsLog.logForward(LogService.Verbosity.DEBUG, "data_loader_method.invoke(null, paramObjs);", this);
+                        data_loader_method.invoke(null, paramObjs);  
+                        params.incApiPassedCount();
+                        //BbWsLog.logForward(LogService.Verbosity.DEBUG, "data_loader_method.invoke(null, params, internalResult);", this);
+                        //data_loader_method.invoke(null, params, internalResult);  //- works too
+                    }
+                }
+                result = (ResultType)internalResult;
+        }
+    }
+    
+    private class AllLineItemsForCourseIdGetter
+            extends DataGetter<java.util.LinkedHashMap<String, LineitemDetails>, 
+                                java.util.List<LineitemDetails>, LineitemParams> {
+        AllLineItemsForCourseIdGetter (LineitemParams params) {
+            super(params);
+            internalResult = new java.util.LinkedHashMap<String, LineitemDetails>();
+            //result = new java.util.LinkedHashMap<String, LineitemDetails>();
+            errorPrefix = "Error: Could not retrieve line items, caused by: ";
+            methodName = "getAllLineItemsForCourseIdWithNamedElements";
+            dataLoaderClassNamePrefix = "bbgbws.LineitemDetails$RecordListLoader";
+            dataLoaderStaticMethodName = "loadByCourseIdStarter";
+            paramTypes = new Class[2];
+            paramTypes[0] = LineitemParams.class;
+            paramTypes[1] = java.util.LinkedHashMap.class;
+        }
+        
+        @Override
+        public void run() throws Exception {
+                BbWsLog.logForward(LogService.Verbosity.DEBUG, "getOverridenSeverity -  = LogService.Verbosity.DEBUG.getLevelAsInt(): " + LogService.Verbosity.DEBUG.getLevelAsInt());
+                BbWsLog.logForward(LogService.Verbosity.DEBUG, "getOverridenSeverity -  = LogService.Verbosity.INFORMATION.getLevelAsInt(): " + LogService.Verbosity.INFORMATION.getLevelAsInt());
+                BbWsLog.logForward(LogService.Verbosity.DEBUG, "getOverridenSeverity -  = LogService.Verbosity.WARNING.getLevelAsInt(): " + LogService.Verbosity.WARNING.getLevelAsInt());
+                BbWsLog.logForward(LogService.Verbosity.DEBUG, "getOverridenSeverity -  = LogService.Verbosity.ERROR.getLevelAsInt(): " + LogService.Verbosity.ERROR.getLevelAsInt());
+                BbWsLog.logForward(LogService.Verbosity.DEBUG, "getOverridenSeverity -  = LogService.Verbosity.FATAL.getLevelAsInt(): " + LogService.Verbosity.FATAL.getLevelAsInt());
+                //2009-09-21 06:56:07 - BBGradebookWebService	error	bbgbws.BBGradebookWebService@431f85 runGetter catch (Throwable t): ; obj.toString():  - java.lang.NoSuchFieldError: AUDIT
+                //BbWsLog.logForward(LogService.Verbosity.DEBUG, "getOverridenSeverity -  = LogService.Verbosity.AUDIT.getLevelAsInt(): " + LogService.Verbosity.AUDIT.getLevelAsInt());
+/*            
+            if (params.getCourseId() != null && params.getLineitemBbId() != null) {
+                throw new BbWsException("Invalid parameter values - only either courseId or lineitemBbId should has value set (non-null), but not both.");
+            }
+            if (params.getCourseId() == null && params.getLineitemBbId() == null) {
+                throw new BbWsException("Invalid parameter values - both courseId and lineitemBbId cannot be null.");
+            }
+ */ 
+            super.run();
+            result = ConvertLinkedHashMap2List(internalResult);
+        }
+    }
+    
+    private class LineitemDetailsForGivenLineitemBbIdGetter
+            extends DataGetter<LineitemDetails, 
+                               LineitemDetails, LineitemParams> {
+        LineitemDetailsForGivenLineitemBbIdGetter (LineitemParams params) {
+            super(params);
+            internalResult = new LineitemDetails();
+            //result = new java.util.LinkedHashMap<String, LineitemDetails>();
+            errorPrefix = "Error: Could not retrieve line item, caused by: ";
+            methodName = "getLineItemForGivenLineitemBbIdWithNamedElements";
+            dataLoaderClassNamePrefix = "bbgbws.LineitemDetails$RecordLoader";
+            dataLoaderStaticMethodName = "loadByGivenLineitemBbIdStarter";
+            paramTypes = new Class[2];
+            paramTypes[0] = LineitemParams.class;
+            paramTypes[1] = LineitemDetails.class;
+        }
+    }
+    
+    public static java.util.List ConvertLinkedHashMap2List(java.util.LinkedHashMap lhm) {
+        return Arrays.asList(lhm.values().toArray());
+    }
+        //List keyList = Arrays.asList(LinkedHashMap.keySet().toArray());        
+//        key to first element:
+//keyList.get(0);
+//key to last element:
+//keyList.get(keyList.size());
+
+
+    
+    private void runGetter (DataGetter getter) {
+        try {            
+            getter.run();
+        } catch (Throwable t) {
+            BbWsLog.logForward(LogService.Verbosity.ERROR, t, "runGetter catch (Throwable t): ", this);
+            throw new WebServiceException(getter.errorPrefix + "Throwable.getMessage():" + t.getMessage() + "Throwable.toString():" + t.toString() );
+        }
+    }
+            
+
+//=============================================================================    
+//------------------------------------------------------------ OUTCOME -----    
+//=============================================================================    
     private List<OutcomeDefinitionDetails> getAllOutcomeDefinitionsForGivenCourse(String courseId) throws Exception
     {
         List<OutcomeDefinition> ods = ((OutcomeDefinitionDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(OutcomeDefinitionDbLoader.TYPE)).loadByCourseId(CourseDbLoader.Default.getInstance().loadByCourseId(courseId).getId());
@@ -344,21 +510,63 @@ public class BBGradebookWebService
 	}
     }
     
+    static private class TestInternalClassForLoad {
+    //private class TestInternalClassForLoad {
+        static blackboard.platform.gradebook2.GradebookManager TestMethod () {
+        //blackboard.platform.gradebook2.GradebookManager TestMethod () {
+            blackboard.platform.gradebook2.GradebookManager gradebookManager = blackboard.platform.gradebook2.GradebookManagerFactory.getInstanceWithoutSecurityCheck();
+            return gradebookManager;
+        }
+    }    
+    
+//=============================================================================    
+//------------------------------------------------------------ SCORE -----    
+//=============================================================================    
+    
     private List<ScoreDetails> getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, Boolean extendedDetails) throws Exception
     {
+    try{
         List<ScoreDetails> rl = new ArrayList<ScoreDetails>();
         try 
         {
             BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  BbConfig.LIBRARY_VERSION:" + blackboard.platform.config.BbConfig.LIBRARY_VERSION);
             BbWsLog.logForward(BbServiceManager.getConfigurationService().getBbProperty(blackboard.platform.config.BbConfig.LIBRARY_VERSION));
-            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  BbConfig.VERSION_NUMBER:" + blackboard.platform.config.BbConfig.VERSION_NUMBER);
-            BbWsLog.logForward(BbServiceManager.getConfigurationService().getBbProperty(blackboard.platform.config.BbConfig.VERSION_NUMBER));
+            //??BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  BbConfig.VERSION_NUMBER:" + blackboard.platform.config.BbConfig.VERSION_NUMBER);
+            //??BbWsLog.logForward(BbServiceManager.getConfigurationService().getBbProperty(blackboard.platform.config.BbConfig.VERSION_NUMBER));
             
             
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod(");
+            //??Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod("getInstanceWithoutSecurityCheck").invoke(gradebookManagerFactoryClass.newInstance());
+            //Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod("getInstanceWithoutSecurityCheck");
+            //Object gradebookManager = blackboard.platform.gradebook2.GradebookManagerFactory.getInstanceWithoutSecurityCheck();
+            //Object gradebookManager = (Class.forName("bbgbws.TestClassForLoad")).getDeclaredMethod("TestMethod").invoke(null);
+
+            //BbWsLog.logForward("Class gradebookManagerClass = Class.forName(\"bbgbws.BBGradebookWebService.TestInternalClassForLoad\");");
+            //Class gradebookManagerClass = Class.forName("bbgbws.BBGradebookWebService.TestInternalClassForLoad");
+
+            //BbWsLog.logForward("Class gradebookManagerClass = Class.forName(\"TestInternalClassForLoad\");");
+            //Class gradebookManagerClass = Class.forName("TestInternalClassForLoad");
+            
+            //BbWsLog.logForward("Class gradebookManagerClass = Class.forName(\"bbgbws.BBGradebookWebService$TestInternalClassForLoad\");");
+            //Class gradebookManagerClass = Class.forName("bbgbws.BBGradebookWebService$TestInternalClassForLoad");
+
+            //TestInternalClassForLoad tstcls = new bbgbws.BBGradebookWebService.TestInternalClassForLoad();
+            //Object gradebookManager1 = tstcls.TestMethod();
+
+            /*
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Class gradebookManagerClass = Class.forName(");
+            Class gradebookManagerClass = Class.forName("bbgbws.TestClassForLoad");
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  gradebookManagerClass = " + String.valueOf(gradebookManagerClass));
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Object gradebookManager = gradebookManagerClass.getDeclaredMethod(");
+            java.lang.reflect.Method gradebookManagerMethod = gradebookManagerClass.getDeclaredMethod("TestMethod");
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Method = " + gradebookManagerMethod);
+            Object gradebookManager = gradebookManagerMethod.invoke(null);
+            */
+
             BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Class gradebookManagerFactoryClass = Class.forName");
             Class gradebookManagerFactoryClass = Class.forName("blackboard.platform.gradebook2.GradebookManagerFactory");
-            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod(");
             Object gradebookManager = gradebookManagerFactoryClass.getDeclaredMethod("getInstanceWithoutSecurityCheck").invoke(gradebookManagerFactoryClass.newInstance());
+            
             BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Class gbmClass = gradebookManager.getClass();");
             Class gbmClass = gradebookManager.getClass();
             BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  blackboard.persist.Id courseId = ((LineitemDbLoader)");
@@ -404,9 +612,35 @@ public class BBGradebookWebService
             cmlist.clear();
             cmlist = null;
         }
+        //catch (ClassNotFoundException cnfe) 
+        catch (NoClassDefFoundError cnfe) 
+        {
+            BbWsLog.logForward(cnfe, "getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Caught catch (ClassNotFoundException cnfe)");
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  rl.clear();");
+            rl.clear();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  List<Score> scores = ((");
+            List<Score> scores = ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE,lineItemBbId)).getScores();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    if(scores.size()<1)");
+            if(scores.size()<1)
+            {
+                BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    throw new WebServiceException(");
+                throw new WebServiceException("No scores found");
+            }
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    Iterator i = scores.iterator();");
+            Iterator i = scores.iterator();
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    while(i.hasNext())");
+            while(i.hasNext())
+            {
+                BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    rl.add(getScoreDetailsObjForGivenScoreObj((Score)i.next(),extendedDetails));");
+                rl.add(getScoreDetailsObjForGivenScoreObj((Score)i.next(),extendedDetails));
+            }
+            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    scores.clear();");
+            scores.clear();
+            scores = null;
+        }
         catch (ClassNotFoundException cnfe) 
         {
-            BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Caught catch (ClassNotFoundException cnfe)");
+            BbWsLog.logForward(cnfe, "getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Caught catch (ClassNotFoundException cnfe)");
             BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  rl.clear();");
             rl.clear();
             BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  List<Score> scores = ((");
@@ -431,6 +665,11 @@ public class BBGradebookWebService
         }
         BbWsLog.logForward("getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :    return rl;");
         return rl;
+    }
+    catch (Throwable t) {
+        BbWsLog.logForward(t, "getAllScoreObjsForGivenLineItemBbId(String lineItemBbId, :  Caught throwable");
+        throw new WebServiceException("Error: Could not retrieve scores for this line item "+t.toString(), t);
+    }
     }
 
         /**
@@ -487,6 +726,10 @@ public class BBGradebookWebService
 	}
     }
 
+//=============================================================================    
+//------------------------------------------------------------ ATTEMPT -----    
+//=============================================================================    
+    
     private List<AttemptDetails> getAttemptDetailsObjsForGivenOutcomeDefBbId(String outcomeDefBbId, Boolean extendedDetails) throws Exception
     {
 	List<Attempt> al = AttemptDbLoader.Default.getInstance().loadByOutcomeDefinitionId(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(OutcomeDefinition.DATA_TYPE,outcomeDefBbId));
@@ -552,6 +795,11 @@ public class BBGradebookWebService
     {
 	return new GradeBookSettingsDetails(GradeBookSettingsDbLoader.Default.getInstance().loadByCourseId(CourseDbLoader.Default.getInstance().loadByCourseId(courseId).getId()));
     }
+
+    
+//=============================================================================    
+//------------------------------------------------------------ SETTINGS -----    
+//=============================================================================    
     
     /**
      * Web service operation
@@ -595,24 +843,10 @@ public class BBGradebookWebService
 	}
     }
 
-    private LineitemDetails getLineitemDetailsForGivenLineitemBbId(String lineitemBbId) throws Exception
-    {
-	return new LineitemDetails(((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE, lineitemBbId)));
-    }
-
-    @WebMethod
-    public LineitemDetails getLineitemDetailsForGivenLineitemBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineitemBbId") String lineitemBbId) throws WebServiceException
-    {
-	authoriseMethodUse(pwd,"getLineitemDetailsForGivenLineitemBbIdWithNamedElements");
-	try
-	{
-	    return getLineitemDetailsForGivenLineitemBbId(lineitemBbId);
-	}
-	catch(Exception e)
-	{
-	    throw new WebServiceException("Error: Could not retrieve lineitem details "+e.toString());
-	}
-    }
+    
+//=============================================================================    
+//------------------------------------------------------------ Single value return methods -----    
+//=============================================================================    
     
     private OutcomeDefinitionDetails getOutcomeDefinitionDetailsFromOutcomeDefinitionBbId(String outcomeDefBbId) throws Exception
     {

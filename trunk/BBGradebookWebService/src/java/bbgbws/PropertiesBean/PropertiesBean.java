@@ -35,7 +35,7 @@ import blackboard.platform.*;
 public class PropertiesBean implements java.io.Serializable
 {	
 	private static PropertiesBean propertiesBean;
-	private static String vendorId = "amnl";
+	private static String vendorId = "IDLA";
 	private static String applicationHandle = "BBGradebookWebService";
 	private Properties p;
 	

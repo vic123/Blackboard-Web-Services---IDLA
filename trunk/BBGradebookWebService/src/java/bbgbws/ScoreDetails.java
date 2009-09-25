@@ -139,6 +139,7 @@ public class ScoreDetails
 			scr[5] = ((Id)o).getExternalString();
 		    }*/
 		}
+                this.attemptBbId = null;//!!
 		AttemptLocation al = s.getAttemptLocation();
 		if(al.equals(AttemptLocation.EXTERNAL))	{this.attemptLocation = "EXTERNAL";}
 		else if(al.equals(AttemptLocation.INTERNAL)){this.attemptLocation = "INTERNAL";}
