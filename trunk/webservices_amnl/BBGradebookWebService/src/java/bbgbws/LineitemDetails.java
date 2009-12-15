@@ -19,15 +19,18 @@ under the License.
 
 package bbgbws;
 
+//blackboard
 import blackboard.data.gradebook.Lineitem;
 import blackboard.data.gradebook.Lineitem.AssessmentLocation;
+
+//java
 import java.util.Calendar;
 
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class LineitemDetails
+public class LineitemDetails implements ReturnTypeInterface
 {
     private String assessmentBbId;
     private String assessmentLocation;
@@ -229,45 +232,37 @@ public class LineitemDetails
 
     protected String extractDate(Calendar cal)
     {
-	try
-	{
-	    return cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1)+"-"+cal.get(Calendar.DAY_OF_MONTH)+" "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
-	}
-	catch(Exception e)
-	{
-	    return "Never";
-	}
-    }
-
-    private String[] getLineitemDetails()
-    {
-        return new String[]
+        try
         {
-            this.lineItemBbId,
-            this.name,
-            this.dateAdded,
-            this.dateChanged,
-            Integer.toString(this.columnPosition),
-            Boolean.toString(this.available),
-            this.pointsPossible,
-            this.type,
-            this.weight,
-            this.assessmentBbId,
-            this.assessmentLocation
-        };
+            return cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1)+"-"+cal.get(Calendar.DAY_OF_MONTH)+" "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
+        }
+        catch(Exception e)
+        {
+            return "Never";
+        }
     }
 
     public String[] toStringArray()
     {
-    	return getLineitemDetails();
+        return new String[]{this.lineItemBbId,
+                            this.name,
+                            this.dateAdded,
+                            this.dateChanged,
+                            Integer.toString(this.columnPosition),
+                            Boolean.toString(this.available),
+                            this.pointsPossible,
+                            this.type,
+                            this.weight,
+                            this.assessmentBbId,
+                            this.assessmentLocation};
     }
 
     public String[] toStringArrayHeader()
     {
-	return new String[]{"LineItemBbId","Name","Date Added",
-		"Date Changed","Column position",
-		"Available","Points Possible","Type",
-		"Weight","to do:AssessmentBbId",
-		"Assessment Location"};
+        return new String[]{"LineItemBbId","Name","Date Added",
+                            "Date Changed","Column position",
+                            "Available","Points Possible","Type",
+                            "Weight","to do:AssessmentBbId",
+                            "Assessment Location"};
     }
 }

@@ -31,30 +31,48 @@ under the License.
 
     ArrayList methods = new ArrayList();
     methods.add("addLineitemToGivenCourseId");
+    methods.add("addLineitemToGivenCourseIdXML");
     methods.add("deleteGivenAttemptByAttemptBbId");
+    methods.add("deleteGivenAttemptByAttemptBbIdXML");
     methods.add("deleteLineItemByLineItemBbId");
+    methods.add("deleteLineItemByLineItemBbIdXML");
     methods.add("deleteOutcomeDefinitionByOutcomeDefBbId");
+    methods.add("deleteOutcomeDefinitionByOutcomeDefBbIdXML");
     methods.add("getAllLineItemsForCourseId");
     methods.add("getAllLineItemsForCourseIdWithNamedElements");
+    methods.add("getAllLineItemsForCourseIdXML");
     methods.add("getAllOutcomeDefinitionsForGivenCourse");
     methods.add("getAllOutcomeDefinitionsForGivenCourseWithNamedElements");
+    methods.add("getAllOutcomeDefinitionsForGivenCourseXML");
     methods.add("getAllOutcomesForGivenOutcomeDefBbIdWithNamedElements");
+    methods.add("getAllOutcomesForGivenOutcomeDefBbIdXML");
     methods.add("getAllScoreDetailsForGivenLineItemBbIdWithNamedElements");
+    methods.add("getAllScoreDetailsForGivenLineItemBbIdXML");
     methods.add("getAllScoresForGivenLineItemBbId");
     methods.add("getAttemptsByGivenOutcomeDefBbId");
     methods.add("getAttemptDetailsByGivenOutcomeDefBbIdWithNamedElements");
+    methods.add("getAttemptDetailsByGivenOutcomeDefBbIdXML");
     methods.add("getGradebookSettingsForGivenCourseID");
     methods.add("getGradebookSettingsForGivenCourseIDWithNamedElements");
+    methods.add("getGradebookSettingsForGivenCourseIDXML");
     methods.add("getLineitemDetailsForGivenLineitemBbIdWithNamedElements");
+    methods.add("getLineitemDetailsForGivenLineitemBbIdXML");
     methods.add("getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdWithNamedElements");
+    methods.add("getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdXML");
     methods.add("getScoreDetailsForGivenScoreBbIdWithNamedElements");
+    methods.add("getScoreDetailsForGivenScoreBbIdWithXML");
     methods.add("getScoreDetailsForGivenUserIdAndLineItemBbIdWithNamedElements");
+    methods.add("getScoreDetailsForGivenUserIdAndLineItemBbIdXML");
     methods.add("getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdWithNamedElements");
+    methods.add("getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdXML");
     methods.add("getScoreForGivenCourseMembershipBbIdAndLineItemBbId");
     methods.add("getScoreForGivenUserIdAndLineItemBbId");
     methods.add("getOutcomeDetailsFromOutcomeBbIdWithNamedElements");
+    methods.add("getOutcomeDetailsFromOutcomeBbIdWithNamedElementsXML");
     methods.add("setLineItemWeightByLineItemBbId");
+    methods.add("setLineItemWeightByLineItemBbIdXML");
     methods.add("setWeightByItemOrCategoryForGradebookInGivenCourseId");
+    methods.add("setWeightByItemOrCategoryForGradebookInGivenCourseIdXML");
 
     if(!submit.equalsIgnoreCase("true"))
     {
