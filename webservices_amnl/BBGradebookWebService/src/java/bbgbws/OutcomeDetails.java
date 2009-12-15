@@ -19,13 +19,14 @@ under the License.
 
 package bbgbws;
 
+//blackboard
 import blackboard.data.gradebook.impl.Outcome;
 
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class OutcomeDetails
+public class OutcomeDetails implements ReturnTypeInterface
 {
     private String averageGrade;
     private Float averageScore;
@@ -48,23 +49,23 @@ public class OutcomeDetails
     public OutcomeDetails(){}
     public OutcomeDetails(Outcome o)
     {
-	this.averageGrade = o.getAverageGrade(false);
-	try{this.averageScore = o.getAverageScore();}catch(Exception e){this.averageScore = new Float(0);}
-	this.courseMembershipBbId = o.getCourseMembershipId().toExternalString();
-	this.firstAttemptBbId = o.getFirstAttemptId().toExternalString();
-	this.grade = o.getGrade();
-	this.gradebookStatus = o.getGradebookStatus().getDisplayName();
-	try{this.highestAttemptBbId = o.getHighestAttemptId().toExternalString();}catch(Exception e){this.highestAttemptBbId = "";}
-	this.instructorComments = o.getInstructorComments();
-	this.lastAttemptBbId = o.getLastAttemptId().toExternalString();
-	try{this.lowestAttemptBbId = o.getLowestAttemptId().toExternalString();}catch(Exception e){this.lowestAttemptBbId = "";}
-	this.manualGrade = o.getManualGrade();
-	try{this.manualScore = o.getManualScore();}catch(Exception e){this.manualScore = new Float(0);}
-	this.outcomeBbId = o.getId().toExternalString();
-	this.outcomeDefinitionBbId = o.getOutcomeDefinitionId().toExternalString();
-	try{this.score = o.getScore();}catch(Exception e){this.score = new Float(0);}
-	this.studentComments = o.getStudentComments();
-	try{this.totalScore = o.totalScore();}catch(Exception e){this.totalScore = new Float(0);}
+        this.averageGrade = o.getAverageGrade(false);
+        try{this.averageScore = o.getAverageScore();}catch(Exception e){this.averageScore = new Float(0);}
+        this.courseMembershipBbId = o.getCourseMembershipId().toExternalString();
+        this.firstAttemptBbId = o.getFirstAttemptId().toExternalString();
+        this.grade = o.getGrade();
+        this.gradebookStatus = o.getGradebookStatus().getDisplayName();
+        try{this.highestAttemptBbId = o.getHighestAttemptId().toExternalString();}catch(Exception e){this.highestAttemptBbId = "";}
+        this.instructorComments = o.getInstructorComments();
+        this.lastAttemptBbId = o.getLastAttemptId().toExternalString();
+        try{this.lowestAttemptBbId = o.getLowestAttemptId().toExternalString();}catch(Exception e){this.lowestAttemptBbId = "";}
+        this.manualGrade = o.getManualGrade();
+        try{this.manualScore = o.getManualScore();}catch(Exception e){this.manualScore = new Float(0);}
+        this.outcomeBbId = o.getId().toExternalString();
+        this.outcomeDefinitionBbId = o.getOutcomeDefinitionId().toExternalString();
+        try{this.score = o.getScore();}catch(Exception e){this.score = new Float(0);}
+        this.studentComments = o.getStudentComments();
+        try{this.totalScore = o.totalScore();}catch(Exception e){this.totalScore = new Float(0);}
     }
     
     public String getAverageGrade()
@@ -239,45 +240,45 @@ public class OutcomeDetails
 
     public String[] toStringArray()
     {
-	return new String[]{this.averageGrade,
-			    Float.toString(this.averageScore),
-			    this.courseMembershipBbId,
-			    this.firstAttemptBbId,
-			    this.grade,
-			    this.gradebookStatus,
-			    this.highestAttemptBbId,
-			    this.instructorComments,
-			    this.lastAttemptBbId,
-			    this.lowestAttemptBbId,
-			    this.manualGrade,
-			    Float.toString(this.manualScore),
-			    this.outcomeBbId,
-			    this.outcomeDefinitionBbId,
-			    Float.toString(this.score),
-			    this.studentComments,
-			    Float.toString(this.totalScore)
-	};
+        return new String[]{this.averageGrade,
+                    Float.toString(this.averageScore),
+                    this.courseMembershipBbId,
+                    this.firstAttemptBbId,
+                    this.grade,
+                    this.gradebookStatus,
+                    this.highestAttemptBbId,
+                    this.instructorComments,
+                    this.lastAttemptBbId,
+                    this.lowestAttemptBbId,
+                    this.manualGrade,
+                    Float.toString(this.manualScore),
+                    this.outcomeBbId,
+                    this.outcomeDefinitionBbId,
+                    Float.toString(this.score),
+                    this.studentComments,
+                    Float.toString(this.totalScore)
+        };
     }
 
     public String[] toStringArrayHeader()
     {
-	return new String[]{"Average Grade",
-			    "Average Score",
-			    "Course Membership BbId",
-			    "First Attempt BbId",
-			    "Grade",
-			    "Gradebook Status",
-			    "Highest Attempt BbId",
-			    "Instructor Comments",
-			    "Last Attempt BbId",
-			    "Lowest Attempt BbId",
-			    "Manual Grade",
-			    "Manual Score",
-			    "Outcome BbId",
-			    "Outcome Definition BbId",
-			    "Score",
-			    "Student Comments",
-			    "totalScore"
-	};
+        return new String[]{"Average Grade",
+                    "Average Score",
+                    "Course Membership BbId",
+                    "First Attempt BbId",
+                    "Grade",
+                    "Gradebook Status",
+                    "Highest Attempt BbId",
+                    "Instructor Comments",
+                    "Last Attempt BbId",
+                    "Lowest Attempt BbId",
+                    "Manual Grade",
+                    "Manual Score",
+                    "Outcome BbId",
+                    "Outcome Definition BbId",
+                    "Score",
+                    "Student Comments",
+                    "totalScore"
+        };
     }
 }
