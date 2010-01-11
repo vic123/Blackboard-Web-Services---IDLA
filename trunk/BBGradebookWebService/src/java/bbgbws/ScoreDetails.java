@@ -18,8 +18,11 @@ under the License.
  */
 package bbgbws;
 
+//blackboard
 import blackboard.data.gradebook.Score;
 import blackboard.data.gradebook.Score.AttemptLocation;
+
+//java
 import java.util.Calendar;
 import blackboard.persist.Id;
 
@@ -27,7 +30,7 @@ import blackboard.persist.Id;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class ScoreDetails
+public class ScoreDetails implements ReturnTypeInterface
 {
     public enum Verbosity{standard,extended}
 
@@ -120,8 +123,7 @@ public class ScoreDetails
     }
     public ScoreDetails(Score s,Verbosity verbosity)
     {
-	this.verbosity = verbosity;
-
+        this.verbosity = verbosity;
 	switch(this.verbosity)
 	{
 	    case extended:
@@ -139,7 +141,7 @@ public class ScoreDetails
 			scr[5] = ((Id)o).getExternalString();
 		    }*/
 		}
-                this.attemptBbId = null;//!!
+                //this.attemptBbId = null;//!! - test error 
 		AttemptLocation al = s.getAttemptLocation();
 		if(al.equals(AttemptLocation.EXTERNAL))	{this.attemptLocation = "EXTERNAL";}
 		else if(al.equals(AttemptLocation.INTERNAL)){this.attemptLocation = "INTERNAL";}
@@ -268,58 +270,58 @@ public class ScoreDetails
 
     private String extractDate(Calendar cal)
     {
-	try {
-	    return cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH) + " " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND);
-	} catch (Exception e) {
-	    return "Never";
-	}
+        try {
+            return cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1) + "-" + cal.get(Calendar.DAY_OF_MONTH) + " " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND);
+        } catch (Exception e) {
+            return "Never";
+        }
     }
 
     public String[] toStringArray()
     {
-	switch(this.verbosity)
-	{
-	    case standard:
-		return new String[]{this.scoreBbId,
-				    this.grade,
-				    this.outcomeDefBbId,
-				    this.dateAdded,
-				    this.dateChanged,
-				    this.dateModified};
-	    case extended:
-		return new String[]{this.scoreBbId,
-				    this.grade,
-				    this.outcomeDefBbId,
-				    this.dateAdded,
-				    this.dateChanged,
-				    this.dateModified,
-				    this.courseMembershipBbId,
-				    this.lineItemBbId,
-				    this.attemptBbId,
-				    this.attemptLocation,
-				    this.dataType};
-	    default:
-		return new String[]{};
-	}
+        switch(this.verbosity)
+        {
+            case standard:
+            return new String[]{this.scoreBbId,
+                        this.grade,
+                        this.outcomeDefBbId,
+                        this.dateAdded,
+                        this.dateChanged,
+                        this.dateModified};
+            case extended:
+            return new String[]{this.scoreBbId,
+                        this.grade,
+                        this.outcomeDefBbId,
+                        this.dateAdded,
+                        this.dateChanged,
+                        this.dateModified,
+                        this.courseMembershipBbId,
+                        this.lineItemBbId,
+                        this.attemptBbId,
+                        this.attemptLocation,
+                        this.dataType};
+            default:
+            return new String[]{};
+        }
     }
 
     public String[] toStringArrayHeader()
     {
-	switch(this.verbosity)
-	{
-	    case standard:
-		return new String[]{"ScoreBbId","Grade",
-				    "OutcomeDefBbId","Date Added",
-				    "Date Changed","Date Modified"};
-	    case extended:
-		return new String[]{"ScoreBbId","Grade",
-				    "OutcomeDefBbId","Date Added",
-				    "Date Changed","Date Modified",
-				    "Course Membership BbId","lineItemBbId",
-				    "Attempt BbId","Attempt Location",
-				    "Data Type"};
-	    default:
-		return new String[]{};
-	}
+        switch(this.verbosity)
+        {
+            case standard:
+            return new String[]{"ScoreBbId","Grade",
+                        "OutcomeDefBbId","Date Added",
+                        "Date Changed","Date Modified"};
+            case extended:
+            return new String[]{"ScoreBbId","Grade",
+                        "OutcomeDefBbId","Date Added",
+                        "Date Changed","Date Modified",
+                        "Course Membership BbId","lineItemBbId",
+                        "Attempt BbId","Attempt Location",
+                        "Data Type"};
+            default:
+            return new String[]{};
+        }
     }
 }

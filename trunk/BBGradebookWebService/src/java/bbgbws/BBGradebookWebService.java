@@ -18,6 +18,7 @@ under the License.
  */
 package bbgbws;
 
+//blackboard
 import blackboard.persist.gradebook.impl.OutcomeDefinitionDbLoader;
 import blackboard.persist.gradebook.impl.OutcomeDefinitionDbPersister;
 import blackboard.data.gradebook.Lineitem;
@@ -40,10 +41,14 @@ import blackboard.persist.gradebook.impl.GradeBookSettingsDbPersister;
 import blackboard.persist.gradebook.impl.OutcomeDbLoader;
 import blackboard.persist.user.UserDbLoader;
 import blackboard.platform.BbServiceManager;
+
+//java
 import java.util.Iterator;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
+
+//javax
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -67,17 +72,11 @@ public static javax.xml.ws.WebServiceContext wsContextStatic;
 private javax.xml.ws.WebServiceContext wsContext;
 
     private WebServiceProperties wsp = new WebServiceProperties("IDLA","BBGradebookWebService");
-    //private enum Verbosity{standard,extended}
 
-    /**
-     * Web service operation
-     */
-    @WebMethod
-    public Boolean addLineitemToGivenCourseId(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId, @WebParam(name = "Name") String name,
-						@WebParam(name = "type") String type, @WebParam(name = "pointsPossible") Float pointsPossible,
-						@WebParam(name = "weight") Float weight, @WebParam(name = "available") Boolean available) throws WebServiceException
+    private Boolean addLineitemToGivenCourseId(String courseId, String name,
+                                                String type, Float pointsPossible, Float weight,
+                                                Boolean available) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"addLineitemToGivenCourseId");
 	try
 	{
 	    Lineitem li = new Lineitem();
@@ -97,6 +96,30 @@ private javax.xml.ws.WebServiceContext wsContext;
 	return true;
     }
 
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public Boolean addLineitemToGivenCourseId(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId, @WebParam(name = "Name") String name,
+						@WebParam(name = "type") String type, @WebParam(name = "pointsPossible") Float pointsPossible,
+						@WebParam(name = "weight") Float weight, @WebParam(name = "available") Boolean available) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"addLineitemToGivenCourseId");
+        return addLineitemToGivenCourseId(courseId, name, type, pointsPossible, weight, available);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String addLineitemToGivenCourseIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId, @WebParam(name = "Name") String name,
+						@WebParam(name = "type") String type, @WebParam(name = "pointsPossible") Float pointsPossible,
+						@WebParam(name = "weight") Float weight, @WebParam(name = "available") Boolean available) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"addLineitemToGivenCourseIdXML");
+        return toXML(null,addLineitemToGivenCourseId(courseId, name, type, pointsPossible, weight, available));
+    }
+
     private void authoriseMethodUse(String methodPwd, String methodName) throws WebServiceException
     {
 	if(!wsp.isMethodAccessible(methodName) || (wsp.usingPassword() && !wsp.passwordMatches(methodPwd)))
@@ -105,13 +128,8 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
-    /**
-     * Web service operation
-     */
-    @WebMethod
-    public Boolean deleteGivenAttemptByAttemptBbId(@WebParam(name = "pwd") String pwd, @WebParam(name = "attemptBbId") String attemptBbId) throws WebServiceException
+    private Boolean deleteGivenAttemptByAttemptBbId(String attemptBbId) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"deleteGivenAttemptByAttemptBbId");
 	try
 	{
 	    AttemptDbPersister.Default.getInstance().deleteById(AttemptDbLoader.Default.getInstance().loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Attempt.DATA_TYPE,attemptBbId)).getId());
@@ -121,6 +139,25 @@ private javax.xml.ws.WebServiceContext wsContext;
 	    throw new WebServiceException( "Error: Could not delete attempt - "+e.getMessage());
 	}
 	return true;
+    }
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public Boolean deleteGivenAttemptByAttemptBbId(@WebParam(name = "pwd") String pwd, @WebParam(name = "attemptBbId") String attemptBbId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"deleteGivenAttemptByAttemptBbId");
+        return deleteGivenAttemptByAttemptBbId(attemptBbId);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String deleteGivenAttemptByAttemptBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "attemptBbId") String attemptBbId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"deleteGivenAttemptByAttemptBbIdXML");
+        return toXML(null,deleteGivenAttemptByAttemptBbId(attemptBbId));
     }
 
     private Boolean deleteOutcomeDefinitionByOutcomeDefBbId(String outcomeDefBbId) throws WebServiceException
@@ -150,10 +187,30 @@ private javax.xml.ws.WebServiceContext wsContext;
      * Web service operation
      */
     @WebMethod
+    public String deleteLineItemByLineItemBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineitemBbId") String lineItemBbId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"deleteLineItemByLineItemBbIdXML");
+        return toXML(null,deleteOutcomeDefinitionByOutcomeDefBbId(lineItemBbId));
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
     public Boolean deleteOutcomeDefinitionByOutcomeDefBbId(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeDefBbId") String outcomeDefBbId) throws WebServiceException
     {
 	authoriseMethodUse(pwd,"deleteOutcomeDefinitionByOutcomeDefBbId");
 	return deleteOutcomeDefinitionByOutcomeDefBbId(outcomeDefBbId);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String deleteOutcomeDefinitionByOutcomeDefBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeDefBbId") String outcomeDefBbId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"deleteOutcomeDefinitionByOutcomeDefBbIdXML");
+        return toXML(null,deleteOutcomeDefinitionByOutcomeDefBbId(outcomeDefBbId));
     }
 
     private List<LineitemDetails> getAllLineitemObjsForCourseId(String courseId) throws Exception
@@ -417,6 +474,23 @@ private javax.xml.ws.WebServiceContext wsContext;
 //=============================================================================    
 //------------------------------------------------------------ OUTCOME -----    
 //=============================================================================    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getAllLineItemsForCourseIdXML")
+    public String getAllLineItemsForCourseIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId)
+    {
+        authoriseMethodUse(pwd,"getAllLineItemsForCourseIdXML");
+        try
+        {
+            return toXML("LineItems",getAllLineitemObjsForCourseId(courseId));
+        }
+        catch(Exception e)
+        {
+            throw new WebServiceException("Error: Could not retrieve line items for this course "+e.toString());
+        }
+    }
+
     private List<OutcomeDefinitionDetails> getAllOutcomeDefinitionsForGivenCourse(String courseId) throws Exception
     {
         List<OutcomeDefinition> ods = ((OutcomeDefinitionDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(OutcomeDefinitionDbLoader.TYPE)).loadByCourseId(CourseDbLoader.Default.getInstance().loadByCourseId(courseId).getId());
@@ -480,6 +554,23 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String getAllOutcomeDefinitionsForGivenCourseXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getAllOutcomeDefinitionsForGivenCourseXML");
+        try
+        {
+            return toXML("OutcomeDefinitions",getAllOutcomeDefinitionsForGivenCourse(courseId));
+        }
+        catch(Exception e)
+        {
+            throw new WebServiceException("Error while getting outcome definitions for course '"+courseId+"': "+e.toString());
+        }
+    }
+
     private List<OutcomeDetails> getAllOutcomesForGivenOutcomeDefBbId(String outcomeDefBbId) throws Exception
     {
 	List<OutcomeDetails> rl = new ArrayList<OutcomeDetails>();
@@ -509,7 +600,21 @@ private javax.xml.ws.WebServiceContext wsContext;
 	    throw new WebServiceException("Error while getting outcomes: "+e.toString());
 	}
     }
-    
+
+    @WebMethod
+    public String getAllOutcomesForGivenOutcomeDefBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeDefBbId") String outcomeDefBbId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getAllOutcomesForGivenOutcomeDefBbIdXML");
+        try
+        {
+            return toXML("Outcomes",getAllOutcomesForGivenOutcomeDefBbId(outcomeDefBbId));
+        }
+        catch(Exception e)
+        {
+            throw new WebServiceException("Error while getting outcomes: "+e.toString());
+        }
+    }
+
     static private class TestInternalClassForLoad {
     //private class TestInternalClassForLoad {
         static blackboard.platform.gradebook2.GradebookManager TestMethod () {
@@ -693,6 +798,24 @@ private javax.xml.ws.WebServiceContext wsContext;
     /**
      * Web service operation
      */
+    @WebMethod
+    public String getAllScoreDetailsForGivenLineItemBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name="extendedDetails") Boolean extendedDetails) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getAllScoreDetailsForGivenLineItemBbIdXML");
+        extendedDetails = handleNullValue(extendedDetails);
+        try
+        {
+            return toXML("Scores",getAllScoreObjsForGivenLineItemBbId(lineItemBbId, extendedDetails));
+        }
+        catch(Exception e)
+        {
+            throw new WebServiceException("Error: Could not retrieve scores for this line item "+e.toString());
+        }
+    }
+
+    /**
+     * Web service operation
+     */
     @Deprecated
     @WebMethod
     public String[][] getAllScoresForGivenLineItemBbId(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name="extendedDetails") Boolean extendedDetails, @WebParam(name = "headerDesc") Boolean headerDesc) throws WebServiceException
@@ -791,6 +914,24 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String getAttemptDetailsByGivenOutcomeDefBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeDefBbId") String outcomeDefBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getAttemptDetailsByGivenOutcomeDefBbIdXML");
+        extendedDetails = handleNullValue(extendedDetails);
+        try
+        {
+            return toXML("Attempts",getAttemptDetailsObjsForGivenOutcomeDefBbId(outcomeDefBbId, extendedDetails));
+        }
+        catch(Exception e)
+        {
+            throw new WebServiceException("Error: "+e.toString());
+        }
+    }
+
     private GradeBookSettingsDetails getGradeBookSettingDetailsObjForGivenCourseId(String courseId) throws Exception
     {
 	return new GradeBookSettingsDetails(GradeBookSettingsDbLoader.Default.getInstance().loadByCourseId(CourseDbLoader.Default.getInstance().loadByCourseId(courseId).getId()));
@@ -843,46 +984,78 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String getGradebookSettingsForGivenCourseIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getGradebookSettingsForGivenCourseIDXML");
+        try
+        {
+            return toXML("GradeBookSetting",getGradeBookSettingDetailsObjForGivenCourseId(courseId));
+        }
+        catch(Exception e)
+        {
+            throw new WebServiceException("Error: Could not retrieve gradebook settings for this course"+e.toString());
+        }
+    }
+
+    private LineitemDetails getLineitemDetailsForGivenLineitemBbId(String lineitemBbId) throws WebServiceException
+    {
+        try
+        {
+            return new LineitemDetails(((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE, lineitemBbId)));
+        }
+        catch(Exception e)
+        {
+            throw new WebServiceException("Error: Could not retrieve lineitem details "+e.toString());
+        }
+    }
     
 //=============================================================================    
 //------------------------------------------------------------ Single value return methods -----    
 //=============================================================================    
     
-    private OutcomeDefinitionDetails getOutcomeDefinitionDetailsFromOutcomeDefinitionBbId(String outcomeDefBbId) throws Exception
+    @WebMethod
+    public String getLineitemDetailsForGivenLineitemBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineitemBbId") String lineitemBbId) throws WebServiceException
     {
-	return new OutcomeDefinitionDetails(OutcomeDefinitionDbLoader.Default.getInstance().loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(OutcomeDefinition.DATA_TYPE,outcomeDefBbId)));
+        authoriseMethodUse(pwd,"getLineitemDetailsForGivenLineitemBbIdXML");
+        return toXML("LineItems",getLineitemDetailsForGivenLineitemBbId(lineitemBbId));
     }
 
-    @WebMethod
-    public OutcomeDefinitionDetails getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeDefBbId") String outcomeDefBbId) throws WebServiceException
+    private OutcomeDefinitionDetails getOutcomeDefinitionDetailsFromOutcomeDefinitionBbId(String outcomeDefBbId) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdWithNamedElements");
 	try
 	{
-	    return getOutcomeDefinitionDetailsFromOutcomeDefinitionBbId(outcomeDefBbId);
+            return new OutcomeDefinitionDetails(OutcomeDefinitionDbLoader.Default.getInstance().loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(OutcomeDefinition.DATA_TYPE,outcomeDefBbId)));
 	}
 	catch(Exception e)
 	{
 	    throw new WebServiceException("Error: Could not retrieve outcomeDefinition details "+e.toString());
 	}
     }
-    
-    private ScoreDetails getScoreDetailsForGivenScoreBbId(String scoreBbId, Boolean extendedDetails) throws Exception
+
+    @WebMethod
+    public OutcomeDefinitionDetails getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeDefBbId") String outcomeDefBbId) throws WebServiceException
     {
-	return new ScoreDetails(((ScoreDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(ScoreDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Score.SCORE_DATA_TYPE,scoreBbId)),extendedDetails?ScoreDetails.Verbosity.extended:ScoreDetails.Verbosity.standard);
+        authoriseMethodUse(pwd,"getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdWithNamedElements");
+        return getOutcomeDefinitionDetailsFromOutcomeDefinitionBbId(outcomeDefBbId);
     }
 
-    /**
-     * Web service operation
-     */
     @WebMethod
-    public ScoreDetails getScoreDetailsForGivenScoreBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "scoreBbId") String scoreBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    public String getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeDefBbId") String outcomeDefBbId) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"getScoreForGivenCourseMembershipBbIdAndLineItemBbIdWithNamedElements");
+        authoriseMethodUse(pwd,"getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdWithNamedElements");
+        return toXML("OutcomeDefinitions",getOutcomeDefinitionDetailsFromOutcomeDefinitionBbId(outcomeDefBbId));
+    }
+
+    private ScoreDetails getScoreDetailsForGivenScoreBbId(String scoreBbId, Boolean extendedDetails) throws WebServiceException
+    {
 	extendedDetails = handleNullValue(extendedDetails);
 	try
 	{
-	    return getScoreDetailsForGivenScoreBbId(scoreBbId, extendedDetails);
+            return new ScoreDetails(((ScoreDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(ScoreDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Score.SCORE_DATA_TYPE,scoreBbId)),extendedDetails?ScoreDetails.Verbosity.extended:ScoreDetails.Verbosity.standard);
 	}
 	catch(KeyNotFoundException e)
 	{
@@ -894,24 +1067,28 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
-    private ScoreDetails getScoreDetailsObjForGivenScoreObj(Score s, Boolean extendedDetails) throws Exception
-    {
-	return new ScoreDetails(s,extendedDetails?ScoreDetails.Verbosity.extended:ScoreDetails.Verbosity.standard);
-    }
-
-    private Score getScoreObjForGivenCourseMembershipBbIdAndLineItemBbId(String courseMembershipBbId, String lineItemBbId) throws Exception
-    {
-	    return ((ScoreDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(ScoreDbLoader.TYPE)).loadByCourseMembershipIdAndLineitemId
-		(
-		    CourseMembershipDbLoader.Default.getInstance().loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(CourseMembership.DATA_TYPE,courseMembershipBbId)).getId(),
-		    ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE,lineItemBbId)).getId()
-		);
-    }
-
+    /**
+     * Web service operation
+     */
     @WebMethod
-    public ScoreDetails getScoreDetailsForGivenUserIdAndLineItemBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "userId") String userId, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    public ScoreDetails getScoreDetailsForGivenScoreBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "scoreBbId") String scoreBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"getScoreDetailsForGivenUserIdAndLineItemBbIdWithNamedElements");
+        authoriseMethodUse(pwd,"getScoreForGivenCourseMembershipBbIdAndLineItemBbIdWithNamedElements");
+        return getScoreDetailsForGivenScoreBbId(scoreBbId, extendedDetails);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String getScoreDetailsForGivenScoreBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "scoreBbId") String scoreBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getScoreForGivenCourseMembershipBbIdAndLineItemBbIdXML");
+        return toXML("ScoreDetails",getScoreDetailsForGivenScoreBbId(scoreBbId, extendedDetails));
+    }
+
+    private ScoreDetails getScoreDetailsForGivenUserIdAndLineItemBbId(String userId, String lineItemBbId, Boolean extendedDetails) throws WebServiceException
+    {
 	extendedDetails = handleNullValue(extendedDetails);
 	try
 	{
@@ -939,13 +1116,22 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
-    /**
-     * Web service operation
-     */
     @WebMethod
-    public ScoreDetails getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseMembershipBbId") String courseMembershipBbId, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    public ScoreDetails getScoreDetailsForGivenUserIdAndLineItemBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "userId") String userId, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdWithNamedElements");
+        authoriseMethodUse(pwd,"getScoreDetailsForGivenUserIdAndLineItemBbIdWithNamedElements");
+        return getScoreDetailsForGivenUserIdAndLineItemBbId(userId, lineItemBbId, extendedDetails);
+    }
+
+    @WebMethod
+    public String getScoreDetailsForGivenUserIdAndLineItemBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "userId") String userId, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getScoreDetailsForGivenUserIdAndLineItemBbIdXML");
+        return toXML("Scores",getScoreDetailsForGivenUserIdAndLineItemBbId(userId, lineItemBbId, extendedDetails));
+    }
+
+    private ScoreDetails getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbId(String courseMembershipBbId, String lineItemBbId, Boolean extendedDetails) throws WebServiceException
+    {
 	extendedDetails = handleNullValue(extendedDetails);
 	try
 	{
@@ -959,6 +1145,40 @@ private javax.xml.ws.WebServiceContext wsContext;
 	{
 	    throw new WebServiceException("Error: While retrieving score... "+e.toString());
 	}
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public ScoreDetails getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseMembershipBbId") String courseMembershipBbId, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdWithNamedElements");
+        return getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbId(courseMembershipBbId, lineItemBbId, extendedDetails);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseMembershipBbId") String courseMembershipBbId, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "extendedDetails") Boolean extendedDetails) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbIdXML");
+        return toXML("Scores",getScoreDetailsForGivenCourseMembershipBbIdAndLineItemBbId(courseMembershipBbId, lineItemBbId, extendedDetails));
+    }
+
+    private ScoreDetails getScoreDetailsObjForGivenScoreObj(Score s, Boolean extendedDetails) throws Exception
+    {
+        return new ScoreDetails(s,extendedDetails?ScoreDetails.Verbosity.extended:ScoreDetails.Verbosity.standard);
+    }
+
+    private Score getScoreObjForGivenCourseMembershipBbIdAndLineItemBbId(String courseMembershipBbId, String lineItemBbId) throws Exception
+    {
+	    return ((ScoreDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(ScoreDbLoader.TYPE)).loadByCourseMembershipIdAndLineitemId
+		(
+		    CourseMembershipDbLoader.Default.getInstance().loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(CourseMembership.DATA_TYPE,courseMembershipBbId)).getId(),
+		    ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE,lineItemBbId)).getId()
+		);
     }
 
     /**
@@ -1032,18 +1252,11 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
-    private OutcomeDetails getOutcomeDetailsFromOutcomeBbId(String outcomeBbId) throws Exception
+    private OutcomeDetails getOutcomeDetailsFromOutcomeBbId(String outcomeBbId) throws WebServiceException
     {
-	return new OutcomeDetails(OutcomeDbLoader.Default.getInstance().loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Outcome.DATA_TYPE, outcomeBbId)));
-    }
-
-    @WebMethod
-    public OutcomeDetails getOutcomeDetailsFromOutcomeBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeBbId") String outcomeBbId) throws WebServiceException
-    {
-	authoriseMethodUse(pwd,"getOutcomeDetailsFromOutcomeBbIdWithNamedElements");
 	try
 	{
-	    return getOutcomeDetailsFromOutcomeBbId(outcomeBbId);
+            return new OutcomeDetails(OutcomeDbLoader.Default.getInstance().loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Outcome.DATA_TYPE, outcomeBbId)));
 	}
 	catch(KeyNotFoundException e)
 	{
@@ -1055,6 +1268,20 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
     }
 
+    @WebMethod
+    public OutcomeDetails getOutcomeDetailsFromOutcomeBbIdWithNamedElements(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeBbId") String outcomeBbId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getOutcomeDetailsFromOutcomeBbIdWithNamedElements");
+        return getOutcomeDetailsFromOutcomeBbId(outcomeBbId);
+    }
+
+    @WebMethod
+    public String getOutcomeDetailsFromOutcomeBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "outcomeBbId") String outcomeBbId) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"getOutcomeDetailsFromOutcomeBbIdXML");
+        return toXML("Outcomes",getOutcomeDetailsFromOutcomeBbId(outcomeBbId));
+    }
+
     private Boolean handleNullValue(Boolean value)
     {
 	if (value == null)
@@ -1064,13 +1291,8 @@ private javax.xml.ws.WebServiceContext wsContext;
 	return value;
     }
 
-    /**
-     * Web service operation
-     */
-    @WebMethod
-    public Boolean setLineItemWeightByLineItemBbId(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "weight") String weight) throws WebServiceException
+    private Boolean setLineItemWeightByLineItemBbId(String lineItemBbId, String weight) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"setLineItemWeightByLineItemBbId");
 	try
 	{
 	    Lineitem li = ((LineitemDbLoader)BbServiceManager.getPersistenceService().getDbPersistenceManager().getLoader(LineitemDbLoader.TYPE)).loadById(BbServiceManager.getPersistenceService().getDbPersistenceManager().generateId(Lineitem.LINEITEM_DATA_TYPE,lineItemBbId));
@@ -1086,14 +1308,26 @@ private javax.xml.ws.WebServiceContext wsContext;
 
     /**
      * Web service operation
-     *
-     * itemOrCategory = ITEM / CATEGORY
-     *
      */
     @WebMethod
-    public Boolean setWeightByItemOrCategoryForGradebookInGivenCourseId(@WebParam(name = "password") String pwd, @WebParam(name = "courseId") String courseId, @WebParam(name = "itemOrCategory") String itemOrCategory) throws WebServiceException
+    public Boolean setLineItemWeightByLineItemBbId(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "weight") String weight) throws WebServiceException
     {
-	authoriseMethodUse(pwd,"setWeightByItemOrCategoryForGradebookInGivenCourseId");
+        authoriseMethodUse(pwd,"setLineItemWeightByLineItemBbId");
+        return setLineItemWeightByLineItemBbId(lineItemBbId, weight);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod
+    public String setLineItemWeightByLineItemBbIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "lineItemBbId") String lineItemBbId, @WebParam(name = "weight") String weight) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"setLineItemWeightByLineItemBbId");
+        return toXML(null,setLineItemWeightByLineItemBbId(lineItemBbId, weight));
+    }
+
+    private Boolean setWeightByItemOrCategoryForGradebookInGivenCourseId(String courseId, String itemOrCategory) throws WebServiceException
+    {
 	try
 	{
 	    if(itemOrCategory!=null && itemOrCategory.length()>0)
@@ -1116,4 +1350,82 @@ private javax.xml.ws.WebServiceContext wsContext;
 	}
 	return true;
     }
-} 
+
+    /**
+     * Web service operation
+     *
+     * itemOrCategory = ITEM / CATEGORY
+     *
+     */
+    @WebMethod
+    public Boolean setWeightByItemOrCategoryForGradebookInGivenCourseId(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId, @WebParam(name = "itemOrCategory") String itemOrCategory) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"setWeightByItemOrCategoryForGradebookInGivenCourseId");
+        return setWeightByItemOrCategoryForGradebookInGivenCourseId(courseId, itemOrCategory);
+    }
+
+    /**
+     * Web service operation
+     *
+     * itemOrCategory = ITEM / CATEGORY
+     *
+     */
+    @WebMethod
+    public String setWeightByItemOrCategoryForGradebookInGivenCourseIdXML(@WebParam(name = "pwd") String pwd, @WebParam(name = "courseId") String courseId, @WebParam(name = "itemOrCategory") String itemOrCategory) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"setWeightByItemOrCategoryForGradebookInGivenCourseId");
+        return toXML(null,setWeightByItemOrCategoryForGradebookInGivenCourseId(courseId, itemOrCategory));
+    }
+
+    private String toXML(String xmlTopLevelType, Object data) throws WebServiceException
+    {
+        StringBuffer for_return = new StringBuffer("");
+        if(data==null)
+        {
+            throw new WebServiceException("Error parsing to xml: Passed data is null/blank");
+        }
+
+        if(data instanceof List)
+        {
+            if(xmlTopLevelType==null || xmlTopLevelType.equalsIgnoreCase(""))
+            {
+                throw new WebServiceException("Error parsing to xml: xmlTopLevelType is null/blank");
+            }
+
+            List list = (List)data;
+            Iterator itrtr = list.iterator();
+            for_return.append("<" + xmlTopLevelType + ">");
+            while(itrtr.hasNext())
+            {
+                for_return.append(toXMLAnObject((ReturnTypeInterface)itrtr.next(),xmlTopLevelType.substring(0,xmlTopLevelType.length()-1)));
+            }
+            for_return.append("</"+xmlTopLevelType+">");
+        }
+        else if(data instanceof ReturnTypeInterface)
+        {
+            if(xmlTopLevelType==null || xmlTopLevelType.equalsIgnoreCase(""))
+            {
+                throw new WebServiceException("Error parsing to xml: xmlTopLevelType is null/blank");
+            }
+
+            for_return.append("<"+xmlTopLevelType+">");
+            for_return.append(toXMLAnObject((ReturnTypeInterface)data,xmlTopLevelType.substring(0,xmlTopLevelType.length()-1)));
+            for_return.append("</"+xmlTopLevelType+">");
+        }
+        else
+        {
+            for_return = new StringBuffer("<![CData[" + data + "]]>");
+        }
+        return for_return.toString();
+    }
+
+    private StringBuffer toXMLAnObject(ReturnTypeInterface rti, String subElementName)
+    {
+        StringBuffer for_return = new StringBuffer("<"+subElementName+">");
+        for(int i=0;i<rti.toStringArrayHeader().length;i++)
+        {
+            for_return.append("<"+rti.toStringArrayHeader()[i]+">"+rti.toStringArray()[i]+"</"+rti.toStringArrayHeader()[i]+">");
+        }
+        return for_return.append("<"+subElementName+">");
+    }
+}

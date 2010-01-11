@@ -19,13 +19,17 @@ under the License.
 
 package bbgbws;
 
+//blackboard
 import blackboard.data.gradebook.impl.Attempt;
+
+//java
 import java.util.Calendar;
+
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class AttemptDetails
+public class AttemptDetails implements ReturnTypeInterface
 {
     public enum Verbosity{standard,extended}
 
@@ -51,34 +55,34 @@ public class AttemptDetails
     public AttemptDetails(){}
     public AttemptDetails(Verbosity verbosity)
     {
-	this.verbosity = verbosity;
+        this.verbosity = verbosity;
     }
     public AttemptDetails(Attempt a,Verbosity verbosity) throws Exception
     {
-	this.verbosity = verbosity;
+        this.verbosity = verbosity;
 
-	switch(this.verbosity)
-	{
-	    case extended:
-		this.dataType = a.getDataType().getName();
-		this.dateCreated = extractDate(a.getDateCreated());
-		this.dateModified = extractDate(a.getDateModified());
-		this.instructorComments = a.getInstructorComments();
-		this.instructorNotes = a.getInstructorNotes();
-		this.linkRefBbId = a.getLinkRefId();
-		this.outcomeBbId = a.getOutcomeId().getExternalString();
-		this.publicComments = a.getCommentIsPublic();
-		try{this.resultObjectBbId = a.getResultObjectId().getExternalString();}catch(Exception e){this.resultObjectBbId = "";}
-		this.studentComments = a.getStudentComments();
-	    case standard:
-		this.attemptBbId = a.getId().getExternalString();
-		this.attemptedDate = extractDate(a.getAttemptedDate());
-		this.grade = a.getGrade();
-		this.score = a.getScore();
-		this.status = a.getStatus().getDisplayName();
-		return;
-	}
-	throw new Exception("Undefined verbosity of attempt");
+        switch(this.verbosity)
+        {
+            case extended:
+            this.dataType = a.getDataType().getName();
+            this.dateCreated = extractDate(a.getDateCreated());
+            this.dateModified = extractDate(a.getDateModified());
+            this.instructorComments = a.getInstructorComments();
+            this.instructorNotes = a.getInstructorNotes();
+            this.linkRefBbId = a.getLinkRefId();
+            this.outcomeBbId = a.getOutcomeId().getExternalString();
+            this.publicComments = a.getCommentIsPublic();
+            try{this.resultObjectBbId = a.getResultObjectId().getExternalString();}catch(Exception e){this.resultObjectBbId = "";}
+            this.studentComments = a.getStudentComments();
+            case standard:
+            this.attemptBbId = a.getId().getExternalString();
+            this.attemptedDate = extractDate(a.getAttemptedDate());
+            this.grade = a.getGrade();
+            this.score = a.getScore();
+            this.status = a.getStatus().getDisplayName();
+            return;
+        }
+        throw new Exception("Undefined verbosity of attempt");
     }
 
     public String getAttemptBbId()
@@ -245,52 +249,52 @@ public class AttemptDetails
 
     public String[] toStringArray()
     {
-	switch(this.verbosity)
-	{
-	    case standard:
-		    return new String[]{this.attemptBbId,
-					this.grade,
-					Float.toString(this.score),
-					this.status,
-					this.attemptedDate};
-	    case extended:
-		    return new String[]{this.attemptBbId,
-					this.grade,
-					Float.toString(this.score),
-					this.status,
-					this.attemptedDate,
-					this.outcomeBbId,
-					this.resultObjectBbId,
-					this.dataType,
-					Boolean.toString(this.publicComments),
-					this.instructorComments,
-					this.studentComments,
-					this.instructorNotes,
-					this.linkRefBbId,
-					this.dateCreated,
-					this.dateModified};
-	    default:
-		    return new String[]{};
-	}
+        switch(this.verbosity)
+        {
+            case standard:
+                return new String[]{this.attemptBbId,
+                        this.grade,
+                        Float.toString(this.score),
+                        this.status,
+                        this.attemptedDate};
+            case extended:
+                return new String[]{this.attemptBbId,
+                        this.grade,
+                        Float.toString(this.score),
+                        this.status,
+                        this.attemptedDate,
+                        this.outcomeBbId,
+                        this.resultObjectBbId,
+                        this.dataType,
+                        Boolean.toString(this.publicComments),
+                        this.instructorComments,
+                        this.studentComments,
+                        this.instructorNotes,
+                        this.linkRefBbId,
+                        this.dateCreated,
+                        this.dateModified};
+            default:
+                return new String[]{};
+        }
     }
 
     public String[] toStringArrayHeader()
     {
-	switch(this.verbosity)
-	{
-	    case standard:
-		    return new String[]{"AttemptBbId","Grade","Score",
-					"Status","Attempted Date"};
-	    case extended:
-		    return new String[]{"AttemptBbId","Grade","Score",
-					"Status","Attempted Date",
-					"Outcome BbId","Result Object BbId",
-					"Data Type","Public Comments",
-					"Instructor Comments","Student Comments",
-					"Instructor Notes","Link Ref BbId",
-					"Date Created","Date Modified"};
-	    default:
-		    return new String[]{};
-	}
+        switch(this.verbosity)
+        {
+            case standard:
+                return new String[]{"AttemptBbId","Grade","Score",
+                        "Status","Attempted Date"};
+            case extended:
+                return new String[]{"AttemptBbId","Grade","Score",
+                        "Status","Attempted Date",
+                        "Outcome BbId","Result Object BbId",
+                        "Data Type","Public Comments",
+                        "Instructor Comments","Student Comments",
+                        "Instructor Notes","Link Ref BbId",
+                        "Date Created","Date Modified"};
+            default:
+                return new String[]{};
+        }
     }
 }

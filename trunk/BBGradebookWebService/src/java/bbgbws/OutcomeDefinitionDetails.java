@@ -19,12 +19,15 @@ under the License.
 
 package bbgbws;
 
+//blackboard
 import blackboard.data.gradebook.impl.OutcomeDefinition;
+
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class OutcomeDefinitionDetails
+public class OutcomeDefinitionDetails implements ReturnTypeInterface
+        
 {
     private String asiDataBbId;
     private String category;
@@ -38,14 +41,14 @@ public class OutcomeDefinitionDetails
     public OutcomeDefinitionDetails(){}
     public OutcomeDefinitionDetails(OutcomeDefinition od)
     {
-	this.asiDataBbId = od.getAsiDataId().toExternalString();
-	this.category = od.getCategory().getDescription();
-	this.description = od.getDescription();
-	this.numOfOutcomes = od.getOutcomeCount();
-	this.outcomeDefinitionBbId = od.getId().getExternalString();
-	this.position = od.getPosition();
-	this.title = od.getTitle();
-	this.weight = od.getWeight();
+        this.asiDataBbId = od.getAsiDataId().toExternalString();
+        this.category = od.getCategory().getDescription();
+        this.description = od.getDescription();
+        this.numOfOutcomes = od.getOutcomeCount();
+        this.outcomeDefinitionBbId = od.getId().getExternalString();
+        this.position = od.getPosition();
+        this.title = od.getTitle();
+        this.weight = od.getWeight();
     }
     
     public String getAsiDataBbId()
@@ -127,29 +130,24 @@ public class OutcomeDefinitionDetails
     {
 	this.weight = weight;
     }
-
-    private String[] getOutcomeDefinitionDetails()
-    {
-	return new String[]{
-	this.outcomeDefinitionBbId,
-	this.title,
-	Float.toString(this.weight),
-	this.category,
-	this.description,
-	Integer.toString(this.numOfOutcomes),
-	Integer.toString(this.position)
-	};
-    }
     
     public String[] toStringArray()
     {
-	return getOutcomeDefinitionDetails();
+        return new String[]{
+            this.outcomeDefinitionBbId,
+            this.title,
+            Float.toString(this.weight),
+            this.category,
+            this.description,
+            Integer.toString(this.numOfOutcomes),
+            Integer.toString(this.position)
+        };
     }
     
     public String[] toStringArrayHeader()
     {
-	return new String[]{"OutcomeDefinitionBbId","Title",
-				"Weight","Category","Description",
-				"Num of outcomes","Position"};
+        return new String[]{"OutcomeDefinitionBbId","Title",
+                    "Weight","Category","Description",
+                    "Num of outcomes","Position"};
     }
 }
