@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.web.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/web-project/3">
+            <web-module-libraries>
+                <library files="17">
+                    <file>${libs.jaxws21.classpath}</file>
+                </library>
+                <library>
+                    <file>${file.reference.bb-platform.jar}</file>
+                </library>
+                <library>
+                    <file>${file.reference.bb-taglibs.jar}</file>
+                </library>
+            </web-module-libraries>
+            <web-module-additional-libraries/>
+        </data>
+    </configuration>
+</project>
