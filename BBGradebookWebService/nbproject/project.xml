@@ -2,19 +2,36 @@
 <project xmlns="http://www.netbeans.org/ns/project/1">
     <type>org.netbeans.modules.web.project</type>
     <configuration>
+        <buildExtensions xmlns="http://www.netbeans.org/ns/ant-build-extender/1">
+            <extension file="jaxws-build.xml" id="jaxws">
+                <dependency dependsOn="wsgen-service-compile" target="-post-compile"/>
+            </extension>
+        </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/web-project/3">
+            <name>BBGradebookWebService</name>
+            <minimum-ant-version>1.6</minimum-ant-version>
             <web-module-libraries>
                 <library files="17">
                     <file>${libs.jaxws21.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library>
+                <library files="1">
                     <file>${file.reference.bb-platform.jar}</file>
                 </library>
-                <library>
+                <library files="1">
                     <file>${file.reference.bb-taglibs.jar}</file>
+                </library>
+                <library dirs="1">
+                    <file>${file.reference.java-bbwscommon}</file>
+                    <path-in-war>WEB-INF/classes</path-in-war>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
+            <explicit-platform explicit-source-supported="true"/>
+            <source-roots>
+                <root id="src.dir"/>
+            </source-roots>
+            <test-roots/>
         </data>
     </configuration>
 </project>
