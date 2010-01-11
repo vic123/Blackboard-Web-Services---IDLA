@@ -19,9 +19,12 @@ under the License.
 
 package bbgbws;
 
+//blackboard
 import blackboard.data.gradebook.Lineitem;
 import blackboard.data.gradebook.Lineitem.AssessmentLocation;
 import blackboard.platform.log.*;
+
+//java
 import java.util.Calendar;
 import java.util.List;
 import blackboard.platform.gradebook2.*;
@@ -34,7 +37,7 @@ import blackboard.persist.BbPersistenceManager;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class LineitemDetails extends DataDetails
+public class LineitemDetails extends DataDetails implements ReturnTypeInterface
 {
     private String assessmentBbId;
     private String assessmentLocation;
@@ -589,7 +592,7 @@ public class LineitemDetails extends DataDetails
         this.weight = weight;
     }
 
-    private String[] getLineitemDetails()
+    public String[] toStringArray()
     {
         BbWsLog.logForward("getLineitemDetails():    String[] tst_str = new String[] {...");
         String[] tst_str = new String[] {"sdfsf", null};
@@ -610,13 +613,7 @@ public class LineitemDetails extends DataDetails
             this.type,
             this.weight,
             this.assessmentBbId,
-            this.assessmentLocation
-        };
-    }
-
-    public String[] toStringArray()
-    {
-    	return getLineitemDetails();
+                            this.assessmentLocation};
     }
 
     public String[] toStringArrayHeader()

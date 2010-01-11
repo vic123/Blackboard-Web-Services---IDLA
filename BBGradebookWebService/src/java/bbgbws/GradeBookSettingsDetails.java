@@ -19,12 +19,14 @@ under the License.
 
 package bbgbws;
 
+//blackboard
 import blackboard.data.gradebook.impl.GradeBookSettings;
+
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class GradeBookSettingsDetails
+public class GradeBookSettingsDetails implements ReturnTypeInterface
 {
     private Boolean averageDisplayed;
     private Boolean commentsDisplayed;
@@ -39,14 +41,14 @@ public class GradeBookSettingsDetails
     public GradeBookSettingsDetails(){}
     public GradeBookSettingsDetails(GradeBookSettings gbs)
     {
-	this.averageDisplayed = gbs.isAverageDisplayed();
-	this.commentsDisplayed = gbs.areCommentsDisplayed();
-	this.firstLastDisplayed = gbs.isFirstLastDisplayed();
-	this.gradeBookSettingBbId = gbs.getId().toExternalString();
-	this.lastFirstDisplayed = gbs.isLastFirstDisplayed();
-	this.studentIdDisplayed = gbs.isStudentIdDisplayed();
-	this.userIdDisplayed = gbs.isUserIdDisplayed();
-	this.weightType = gbs.getWeightType().toFieldName();
+        this.averageDisplayed = gbs.isAverageDisplayed();
+        this.commentsDisplayed = gbs.areCommentsDisplayed();
+        this.firstLastDisplayed = gbs.isFirstLastDisplayed();
+        this.gradeBookSettingBbId = gbs.getId().toExternalString();
+        this.lastFirstDisplayed = gbs.isLastFirstDisplayed();
+        this.studentIdDisplayed = gbs.isStudentIdDisplayed();
+        this.userIdDisplayed = gbs.isUserIdDisplayed();
+        this.weightType = gbs.getWeightType().toFieldName();
     }
     
     public Boolean getAverageDisplayed()
@@ -128,31 +130,26 @@ public class GradeBookSettingsDetails
     {
 	this.weightType = weightType;
     }
-    
-    public String[] getGradeBookSettingsDetails()
-    {
-	return new String[]{
-	    this.gradeBookSettingBbId,
-	    Boolean.toString(this.commentsDisplayed),
-	    this.weightType,
-	    Boolean.toString(this.averageDisplayed),
-	    Boolean.toString(this.firstLastDisplayed),
-	    Boolean.toString(this.lastFirstDisplayed),
-	    Boolean.toString(this.studentIdDisplayed),
-	    Boolean.toString(this.userIdDisplayed)
-	};
-    }
-    
+
     public String[] toStringArray()
     {
-	return getGradeBookSettingsDetails();
+        return new String[]{
+            this.gradeBookSettingBbId,
+            Boolean.toString(this.commentsDisplayed),
+            this.weightType,
+            Boolean.toString(this.averageDisplayed),
+            Boolean.toString(this.firstLastDisplayed),
+            Boolean.toString(this.lastFirstDisplayed),
+            Boolean.toString(this.studentIdDisplayed),
+            Boolean.toString(this.userIdDisplayed)
+        };
     }
-    
+
     public String[] toStringArrayHeader()
     {
-	return new String[]{"GradeBookSettingBbId","Comments Displayed",
-				"Weight Type","Average Displayed",
-				"First/Last Displayed","Last/First Displayed",
-				"Student Id Displayed","User Id Displayed"};
+        return new String[]{"GradeBookSettingBbId","Comments Displayed",
+                    "Weight Type","Average Displayed",
+                    "First/Last Displayed","Last/First Displayed",
+                    "Student Id Displayed","User Id Displayed"};
     }
 }
