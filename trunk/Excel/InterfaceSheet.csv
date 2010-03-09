@@ -1,0 +1,116 @@
+Legend:,,Existing interface,,,,,,
+,,Question,,,,,,
+,,New interface to be implemented,,,,,,
+,,Duplicated reference to web method (multifunctional interfaces mentioned second or more time),,,,,,
+,,Answers are in blue,,,,,,
+,,"Bright yellow - additional interfaces, some Ryan comments are converted directly to them",,,,,,
+,,Violet - currently defined interfaces,,,,,,
+Item,Operation ,,,,,,,
+,Read,,Create,,Update,,Delete,
+,Module,Existing Web Interface / Supposed to be used API for new interface,Module,Existing Web Interface / Supposed to be used API ,Module,Interface,Module,Existing Web Interface / Supposed to be used API 
+,,,,,,,,
+Users,bbuws,Boolean doesUserExist(),bbuws,Boolean addDefaultStudent(),,"void UserDbPersister.persist() 
+- Inserts or updates the supplied User - may be single implementation for both create and update operations
+saveUser()",bbuws,Boolean deleteUserByUserBbId()
+,bbuws,UserDetails getUserDetailsWithNamedElements(),bbuws,"Boolean addUser() (!! Sets sec.portal roles)
+?? Current addUser() utilizes PersonDbPersister.Default.getInstance().insert(p), but
+decompiled v.7.3 class does not have insert method
+(was from package blackboard.caliper.person.service;)
+
+        AdminInsertProcedureQuery query = new AdminInsertProcedureQuery(PersonInsertDbMap.MAP, objToSave);
+        try
+        {
+            super.runQuery(query, null);
+        }
+",,,bbuws,Boolean deleteUserByUserId()
+,,,,Will this allow us to create a user?,,,,
+,,"UserDetails loadRecordByBatchUid (BbWsParams, UserDetails);
+UserDetails loadRecordById (BbWsParams, UserDetails);
+UserDetails loadRecordByName (BbWsParams, UserDetails);
+",BbUserWs,"public BbWsBoolResult insertRecordByBatchUid (BbWsParams, UserDetails);
+public BbWsBoolResult persistRecordByBatchUid(BbWsParams, UserDetails);
+",BbUserWs,"BbWsBoolResult updateRecordByBatchUid (BbWsParams, UserDetails);
+BbWsBoolResult persistRecordByBatchUid (BbWsParams, UserDetails);
+(2remove??) public BbWsBoolResult saveRecordByBatchUid;
+(2remove or 2override??) BbWsBoolResult persistRecordById (BbWsParams, UserDetails);",,"BbWsBoolResult deleteRecordByBatchUid (BbWsParams, UserDetails);
+BbWsBoolResult deleteRecordById (BbWsParams, UserDetails);"
+List of Users,bbuws,List<UserDetails> getAllUserIDsNoDetailsWithNamedElements(),,"Should batch create/update/delete operations 
+for user lists be implemented??",,,,
+,,,,"Ryan: 
+It would be nice to process lists of students at a time.  Thus sending a list of 200 users to be added could be processed instead of sending them one at a time.  This allows us to send a list of students and student demographics to blackboard and for those users to be created
+Vic: saveUsers()",,"Ryan: 
+The batch update command would allow a list of users to be sent for checking to see if anything had changed.  Really what we would need here is the ability to help with a sync process.
+Vic: Will be same as insert, saveUsers()",,Ryan: This is not as important as Create or Update.  Deletes can be done one at a time.
+,,"public List<UserDetails> loadListByTemplate(BbWsParams, UserDetails);
+(2remove??, deprecated by loadListByTemplate??) loadListByEmailAddressFamilyNameGivenName
+(deprecated by loadListByTemplate or not??)loadListBySearchByUserName
+List<UserDetails> loadListByCourseId (BbWsParams, bbcrsws.CourseDetails); (any need for loadListByCourseName??)
+List<UserDetails> loadListByGroupId (BbWsParams, bbgrpws.GroupDetails); (loadListByGroupName??)
+List<UserDetails> loadListByRoleId (BbWsParams, bbgrpws.GroupDetails); (loadListByRoleName??)
+",,"List<BbWsBoolResult> persistListByBatchUid (BbWsParams, List<UserDetails>);
+(insertListByBatchUid??)",,"List<BbWsBoolResult> persistListByBatchUid (BbWsParams, List<UserDetails>);
+(updateListByBatchUid??)",,"List<BbWsBoolResult> deleteListByBatchUid (BbWsParams, List<UserDetails>);
+List<BbWsBoolResult> deleteListById (BbWsParams, List<UserDetails>);"
+Courses,bbcrsws,Boolean doesCourseExist(),bbcrsws,"Boolean addCourse()
+uses blackboard.persist.course.CourseDbPersister.Default.getInstance().persist()",,"void   persist(Course course) 
+          Inserts or updates the supplied Course
+saveCourse()",bbcrsws,Boolean deleteCourseByCourseBbId()
+,bbcrsws,String[] getAllCourseIDsNoDetails(),,,,,bbcrsws,Boolean deleteCourseByCourseId()
+,bbcrsws,List<CourseDetails> getAllCourseIDsNoDetailsWithNamedElements(),,"Ryan: Really we would like to see the ability to create a copy of a course from another existing course.  Not create a course from scratch.  The type of copy would be an exact copy.
+Vic: copyCourse()",,,,
+,bbcrsws,String[] getAllCourseIDsWhereCourseIdContainsGivenSearchString(),,,,,,
+,bbcrsws,List<CourseDetails> getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements(),,,,,,
+,bbcrsws,List<CourseDetails> getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements(),,,,,,
+,bbcrsws,CourseDetails getCourseDetailsWithNamedElements(),,,,,,
+,,,,,,,,
+Course Enrollments,bbuws,String[][] getEnrollmentsByBatchUIDandCourseIDPattern(),bbcrsws,"Boolean enrollGivenUserOnGivenCourse()
+Uses CourseMembershipDbPersister.Default.getInstance().persist()",,"void   {persist}({CourseMembership} courseMembership) 
+          Inserts or updates the supplied CourseMembership 
+saveCourseMembership()",bbcrsws,Boolean unEnrollGivenUserFromGivenCourse()
+,bbuws,List<UserDetails> getEnrolledUserDetailsForGivenCourseWithNamedElements(),,,,,,
+,bbuws,List<UserDetails> getEnrolledStudentsForGivenCourseIDWithNamedElements(),,,,"Generally we do not un-enroll a student, we disable them.  ",,
+,bbuws,boolean isUserInCourse(),,,,Does CourseDetails or CourseMembership allow for disabling?,,
+,bbuws,Role getUserRoleInCourseWithNamedElements(),,Ryan: the ability to do a list of users would be benificial here as well.,,,,
+,bbcrsws,String getCourseMembershipBbIdForGivenUserIdAndCourseId(),,Boolean enrollUsersOnGivenCourse(),,Boolean enrollUsersOnGivenCourse(),,
+,bbcrsws,CourseMembershipDetails getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements(),,,,,,
+,bbcrsws,CourseMembershipDetails getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements(),,,,,,
+,bbcrsws,String[][] getEnrolledCoursesForGivenUser(),,,,,,
+,bbcrsws,List<EnrollmentDetails> getEnrolledCoursesForGivenUserWithNamedElements(),,,,,,
+,,,,,,,,
+Institutional Roles,,"PortalRoleDbLoader.loadAll() - loadAllPortalRoles
+?? loadAvailableRolesAll() - from source seem to do same thing, but avoid checking/filling of cache",,"PortalRoleDbPersister.persist()
+Inserts or updates the supplied PortalRole
+savePortalRole()",,"PortalRoleDbPersister.persist()
+Inserts or updates the supplied PortalRole",,"PortalRoleDbPersister.deleteById()
+deletePortalRoleById()"
+,,PortalRoleDbLoader.loadById()  ??loadByRoleId() - implementation is different,,,,,,
+,,PortalRoleDbLoader.loadByRoleName(),,,,,,
+,,PortalRoleDbLoader.loadRemovable() - Load the list of PortalRole objects that have a removable attribute of true,,,,,,
+,,,,,,,,
+Users assignments to institutional roles,bbuws,List<bbuws.Role> getSecondaryPortalRolesForGivenUserIdWithNamedElements,bbuws,Boolean setOrModifySecondaryPortalRolesForGivenUserId(),bbuws,Boolean setOrModifySecondaryPortalRolesForGivenUserId(),bbuws,Boolean setOrModifySecondaryPortalRolesForGivenUserId()
+,bbuws, ## primary institution role is part of UserDetails - List<UserDetails> getAllUserIDsNoDetailsWithNamedElements(),,Boolean setOrModifyPrimaryPortalRoleForGivenUserId(),,Boolean setOrModifyPrimaryPortalRoleForGivenUserId(),,
+,,PortalRoleDbLoader.loadPrimaryRoleByUserId() - getPrimaryRoleByUserId(),,,,,,
+,,PortalRoleDbLoader.loadAllByUserId() //loads all secondary and appends primary - getSecondaryRolesByUserId(),,,,,,
+,,"Ryan: In blackboard there is the concept of a primary role and a secondary role for institutions.  There can be only one primary role.  We would like to be able to CRUD primary and secondary institutional roles for users.
+Vic:PortalRoleDbLoader.loadAllByUserId() can be cleaned from appended primary role - so only secondary ones remain.",,,,,,
+"Observer role assignments
+Does it mean assigning of observer to user?? Otherwise actual role assignment seem to be a subject of primary institutional and system roles.
+From Blackboard_Academic_Suite_Administrator_Manual_for_Release_8.pdf : Users must have their System Role set to Observer to appear in the list of available Observers.",,"blackboard\persist\user\impl\UserDbLoaderImpl.class
+BbList loadObservedByObserverId(Id observerId) - getObservedByObserverId()",,"blackboard\persist\user\impl\UserDbPersisterImpl.class 
+void assignObserver(Id observerId, Id userId)
+will optionally set Observer role and assign to userId",,"Is it ok to omit Observer role update operation (if it really means observer to user assignment) ??
+Only create/delete operations for simple link relation seem reasonable.
+ObserverAssociationDbPersister has method update(ObserverAssociation objToSave), but it is not very clear how update logic is implemented because no old User/Observer ids are passed as arguments",,"?? Cannot find delete implementation way in bb-platform.jar (at least in v.7.3)… 
+may be public void remove(ObserverAssociation objToRemove) from bb-cms-admin.jar, ObserverAssociationDbPersister can be used.
+deleteObserver()"
+,,"List loadAvailableObserversByCourseId(Id courseId, FilteredDbObjectMap filteredMap, Connection con, boolean bHeavy) - getAvailableObserversByCourseId()
+?? bHeavy, FilteredDbObjectMap - needs more research
+?? public interface ObserverAssociationDef",,,,
+,,,,,,Omiting the update operation is acceptable.
+,,,,,,
+,,List<UserDetails> loadListObservedByObserverId (BbWsParams UserDetails);,,,,
+,,,,,,
+There are two parts to this question.  ,,,,,,
+"First, the observer is actually a system role (like system administrator) and the user needs to be associated to this role.  ",,,,,,
+"Second, the observer is the associated to different users that they are going to observe.  This allows that observer to see the observed courses and grades and what not.",,,,,,
+"An example of an observer would be a parent of a student.  This parent would be given the observer system role, and then would observe the student login.",,,,,,
