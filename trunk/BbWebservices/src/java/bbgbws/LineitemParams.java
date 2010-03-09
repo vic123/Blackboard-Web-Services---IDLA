@@ -25,6 +25,14 @@ public class LineitemParams extends CommonParams {
 //        this.requestedDetails = null;
         if (libraryVersion.compareTo ("8.0") < 0)  apiToUse = "DATA_GB";        
     }
+    public LineitemParams (LineitemParams params) {
+        super();
+        this.courseId = null;
+        this.lineitemBbId = null;
+//        this.requestedDetails = null;
+        if (libraryVersion.compareTo ("8.0") < 0)  apiToUse = "DATA_GB";
+    }
+    
     public LineitemParams (String password, String courseId, String lineitemBbId) {
         this();
         this.password = password;

@@ -282,6 +282,7 @@ public class LineitemDetails extends DataDetails implements ReturnTypeInterface
                 new ValueLoader<Lineitem>() {
                     public String loadImp() {
                         return Float.toString(bbObject.getWeight());
+                        //!!return null;
                     }
             }); // Don't forget the parenthesis and semicolon that end the method call!
             record.incApiPassedCount(); //!! - move to base
@@ -342,7 +343,7 @@ public class LineitemDetails extends DataDetails implements ReturnTypeInterface
 
         public static void loadByGivenLineitemBbIdStarter(LineitemParams params, LineitemDetails resultObj) throws Exception {
             BbWsLog.logForward(LogService.Verbosity.DEBUG, "RecordLoader_DATA_GB loader = new RecordLoader_DATA_GB(params, ...");
-            RecordLoader_DATA_GB loader = new RecordLoader_DATA_GB(params, "PLATFORM_GB2");
+            RecordLoader_DATA_GB loader = new RecordLoader_DATA_GB(params, "DATA_GB");
             loader.record = resultObj;
             BbWsLog.logForward(LogService.Verbosity.DEBUG, "loader.bbObject = loader.loadObj()");
             loader.bbObject = loader.loadObj();
@@ -415,9 +416,10 @@ public class LineitemDetails extends DataDetails implements ReturnTypeInterface
                 new ValueLoader<GradableItem>() {
                     public String loadImp() {
                         return Double.toString(bbObject.getWeight());
+                        //!!return null;
                     }
             }); // Don't forget the parenthesis and semicolon that end the method call!
-            record.incApiPassedCount(); //!! - move to base
+            record.incApiPassedCount(); //!! - move to base (moved to )
         }    
     }
             

@@ -54,6 +54,8 @@ public class WebServiceProperties
 	catch(KeyNotFoundException knfe){return "Error: Given parameter not found";}
 	catch(Exception e){return e.toString();}
 
+        return sre.getValue();
+        /*
 	if(sre.getDescription().contains("amnl"))
 	{
 	    return sre.getValue();
@@ -61,7 +63,7 @@ public class WebServiceProperties
 	else
 	{
 	    return "Error: Access denied on property";
-	}
+	}*/
     }
 
     public boolean isMethodAccessible(String method)

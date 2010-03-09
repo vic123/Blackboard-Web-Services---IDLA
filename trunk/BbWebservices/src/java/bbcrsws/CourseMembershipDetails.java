@@ -25,15 +25,56 @@ import java.util.Calendar;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class CourseMembershipDetails implements ReturnTypeInterface
+public class CourseMembershipDetails extends bbwscommon.BbWsDataDetails implements ReturnTypeInterface
 {
+
+    public String getChildCourseId() {
+        return childCourseId;
+    }
+
+    /**
+     * @param childCourseId the childCourseId to set
+     */
+    public void setChildCourseId(String childCourseId) {
+        this.childCourseId = childCourseId;
+    }
+
+    /**
+     * @return the courseBatchUid
+     */
+    public String getCourseBatchUid() {
+        return courseBatchUid;
+    }
+
+    /**
+     * @param courseBatchUid the courseBatchUid to set
+     */
+    public void setCourseBatchUid(String courseBatchUid) {
+        this.courseBatchUid = courseBatchUid;
+    }
+
+    /**
+     * @return the userBatchUid
+     */
+    public String getUserBatchUid() {
+        return userBatchUid;
+    }
+
+    /**
+     * @param userBatchUid the userBatchUid to set
+     */
+    public void setUserBatchUid(String userBatchUid) {
+        this.userBatchUid = userBatchUid;
+    }
+
     public enum Verbosity{minimal,standard}
 
     private Verbosity verbosity;
-    private Boolean available;
-    private Boolean cartridgeAccess;
+    private String available;
+    private String cartridgeAccess;
     private String courseBbId;
-    private String courseMembershipBbId;
+    private String courseBatchUid;
+    private String bbId;
     private String dataSourceBbId;
     private String enrollmentDate;
     private String introduction;
@@ -43,6 +84,11 @@ public class CourseMembershipDetails implements ReturnTypeInterface
     private String personalInfo;
     private String role;
     private String userBbId;
+    //slow to obtain, CourseMembership.User object is not always available
+    //may be it is availavle only with loadByCourseIdWithUserInfo
+    private String userBatchUid;
+    //private String receiveEmail;
+    private String childCourseId;
     
     public CourseMembershipDetails(){}
     public CourseMembershipDetails(CourseMembership cm, Verbosity verbosity) throws Exception
@@ -51,8 +97,8 @@ public class CourseMembershipDetails implements ReturnTypeInterface
         switch(verbosity)
         {
             case standard:
-                this.available = cm.getIsAvailable();
-                this.cartridgeAccess = cm.getHasCartridgeAccess();
+                this.available = Boolean.toString(cm.getIsAvailable());
+                this.cartridgeAccess = Boolean.toString(cm.getHasCartridgeAccess());
                 this.courseBbId = cm.getCourseId().toExternalString();
                 this.dataSourceBbId = cm.getDataSourceId().toExternalString();
                 this.enrollmentDate = extractDate(cm.getEnrollmentDate());
@@ -63,29 +109,31 @@ public class CourseMembershipDetails implements ReturnTypeInterface
                 this.personalInfo = cm.getPersonalInfo();
                 this.role = cm.getRole().toFieldName();
                 this.userBbId = cm.getUserId().toExternalString();
+                //cm.getUser() is usually null
+                //this.userBatchUid = cm.getUser().getBatchUid();
             case minimal:
-                this.courseMembershipBbId = cm.getId().toExternalString();
+                this.bbId = cm.getId().toExternalString();
             return;
             default: throw new Exception("Undefined verbosity of course membership");
         }
     }
 
-    public Boolean getAvailable()
+    public String getAvailable()
     {
 	return this.available;
     }
 
-    public void setAvailable(Boolean available)
+    public void setAvailable(String available)
     {
 	this.available = available;
     }
 
-    public Boolean getCartridgeAccess()
+    public String getCartridgeAccess()
     {
 	return this.cartridgeAccess;
     }
 
-    public void setCartridgeAccess(Boolean cartridgeAccess)
+    public void setCartridgeAccess(String cartridgeAccess)
     {
 	this.cartridgeAccess = cartridgeAccess;
     }
@@ -100,14 +148,16 @@ public class CourseMembershipDetails implements ReturnTypeInterface
 	this.courseBbId = courseBbId;
     }
 
-    public String getCourseMembershipBbId()
+    @Override
+    public String getBbId()
     {
-        return this.courseMembershipBbId;
+        return this.bbId;
     }
 
-    public void setCourseMembershipBbId(String courseMembershipBbId)
+    @Override
+    public void setBbId(String courseMembershipBbId)
     {
-        this.courseMembershipBbId = courseMembershipBbId;
+        this.bbId = courseMembershipBbId;
     }
 
     public String getDataSourceBbId()
@@ -215,15 +265,15 @@ public class CourseMembershipDetails implements ReturnTypeInterface
     public String[] toStringArray()
     {
         String avlbl = null, cAccss = null;
-        try{avlbl = Boolean.toString(this.available);}catch(Exception e){}
-        try{cAccss = Boolean.toString(this.cartridgeAccess);}catch(Exception e){}
+        try{avlbl = available;}catch(Exception e){}
+        try{cAccss = cartridgeAccess;}catch(Exception e){}
         switch(verbosity)
         {
             case standard:
                 return new String[]{avlbl,
                                     cAccss,
                                     this.courseBbId,
-                                    this.courseMembershipBbId,
+                                    this.bbId,
                                     this.dataSourceBbId,
                                     this.enrollmentDate,
                                     this.introduction,
@@ -234,7 +284,7 @@ public class CourseMembershipDetails implements ReturnTypeInterface
                                     this.role,
                                     this.userBbId};
             case minimal:
-                return new String[]{this.courseMembershipBbId};
+                return new String[]{this.bbId};
             default:
                 return new String[]{};
         }
@@ -264,4 +314,13 @@ public class CourseMembershipDetails implements ReturnTypeInterface
                 return new String[]{};
         }
     }
+
+/**
+ *
+ * @author vic
+ */
+
+    /*
+    }*/
+
 }

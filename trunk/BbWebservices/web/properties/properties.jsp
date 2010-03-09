@@ -23,7 +23,7 @@ under the License.
 %>
 <bbData:context>
     <bbUI:docTemplate title="Blackboard Administrator Tools">
-	<bbUI:titleBar>Gradebook webservice security properties</bbUI:titleBar>
+	<bbUI:titleBar>Blackboard webservices security properties</bbUI:titleBar>
 	<% Object obj;
             //BbWsLog.logForward("11111111");
 		obj = null;
@@ -103,7 +103,7 @@ under the License.
 <%
     }
 %>
-    <a href="/webapps/IDLA-BBGradebookWebService-bb_bb60/BBGradebookWebService">Click for endpoint</a><br/>
-    <a href="/webapps/IDLA-BBGradebookWebService-bb_bb60/BBGradebookWebService?wsdl">Click for wsdl</a>
+    
+    
     </bbUI:docTemplate>
 </bbData:context>

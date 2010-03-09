@@ -53,7 +53,7 @@ import javax.xml.ws.WebServiceException;
 @WebService()
 public class BBGroupWebService
 {
-    private WebServiceProperties wsp = new WebServiceProperties("amnl","BBGroupWebService");
+    private WebServiceProperties wsp = new WebServiceProperties("IDLA","BbWebservices");
 
     private Boolean addGivenUserToGivenGroup(String userId, String groupId) throws WebServiceException
     {

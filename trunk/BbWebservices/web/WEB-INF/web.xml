@@ -3,6 +3,56 @@
     <listener>
         <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
     </listener>
+
+    <servlet>    
+        <servlet-name>BBAnnouncementsWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BBAnnouncementsWebService</servlet-name>
+        <url-pattern>/BBAnnouncementsWebService</url-pattern>
+    </servlet-mapping>
+    <servlet>    
+        <servlet-name>BBCalendarWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BBCalendarWebService</servlet-name>
+        <url-pattern>/BBCalendarWebService</url-pattern>
+    </servlet-mapping>
+
+    <servlet>    
+        <servlet-name>BBContentWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BBContentWebService</servlet-name>
+        <url-pattern>/BBContentWebService</url-pattern>
+    </servlet-mapping>
+
+    <servlet>    
+        <servlet-name>BBCourseWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BBCourseWebService</servlet-name>
+        <url-pattern>/BBCourseWebService</url-pattern>
+    </servlet-mapping>
+
+    <servlet>    
+        <servlet-name>BBDiscussionBoardWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BBDiscussionBoardWebService</servlet-name>
+        <url-pattern>/BBDiscussionBoardWebService</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>BBGradebookWebService</servlet-name>
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
@@ -12,6 +62,35 @@
         <servlet-name>BBGradebookWebService</servlet-name>
         <url-pattern>/BBGradebookWebService</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>BBGroupWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BBGroupWebService</servlet-name>
+        <url-pattern>/BBGroupWebService</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BBUserWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BBUserWebService</servlet-name>
+        <url-pattern>/BBUserWebService</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BbWebservices</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>BbWebservices</servlet-name>
+        <url-pattern>/BbWebservices</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

@@ -34,6 +34,7 @@ import blackboard.data.user.User.EducationLevel;
 import blackboard.data.user.User.Gender;
 import blackboard.data.user.UserRole;
 import blackboard.db.ConstraintViolationException;
+import blackboard.persist.Id;
 import blackboard.persist.course.CourseDbLoader;
 import blackboard.persist.course.CourseMembershipDbLoader;
 import blackboard.persist.KeyNotFoundException;
@@ -61,6 +62,9 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.xml.ws.WebServiceException;
 
+
+
+
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
@@ -70,7 +74,7 @@ import javax.xml.ws.WebServiceException;
 @WebService(name="BBUserWebService", serviceName="BBUserWebService", targetNamespace="http://www.ncl.ac.uk/BBUserWebService")
 public class BBUserWebService
 {
-	private WebServiceProperties wsp = new WebServiceProperties("amnl","BBUserWebService");
+	private WebServiceProperties wsp = new WebServiceProperties("IDLA","BbWebservices");
 	//private enum Verbosity{minimal,standard,extended}
 
 	private Boolean addAUser(String pwd, String userId, String batchUId, String firstName, String middleName, String lastName,
@@ -139,6 +143,7 @@ public class BBUserWebService
                 p.setEducationLevel(EducationLevel.UNKNOWN);
             }
             debug = "setting company";
+
             try{p.setCompany(checkUserDetail(company));}catch(Exception e){}//Company - Catch Exception as it's not a mandatory field
             debug = "setting job title";
             try{p.setJobTitle(checkUserDetail(jobTitle));}catch(Exception e){}//Job Title - Catch Exception as it's not a mandatory field
@@ -1302,4 +1307,6 @@ public class BBUserWebService
         }
         return for_return.append("<"+subElementName+">");
     }
+    
 }
+

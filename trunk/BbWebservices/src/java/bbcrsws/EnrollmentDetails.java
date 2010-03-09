@@ -36,6 +36,7 @@ public class EnrollmentDetails extends AbstractCourseDetails implements ReturnTy
         this.creationDate = extractDate(enr.getEnrollmentDate());
         this.courseId = enr.getCourseSiteBatchUid();
         this.userRole = enr.getRole().toFieldName();
+        this.bbId = enr.getId().toExternalString(); //vic
     }
 
     public String getUserRole()
@@ -65,4 +66,22 @@ public class EnrollmentDetails extends AbstractCourseDetails implements ReturnTy
 			    "User Role"
 	};
     }
+/**
+ *
+ * @author vic
+ */
+    private String bbId;
+    @Override public String getBbId() {
+        return this.bbId;
+    }
+    @Override public void setBbId(String id) {
+        this.bbId = id;
+    }
+    /*
+    @Override public String getBatchUid() {
+        return this.bbId;
+    }
+    @Override public void setBatchUid(String batchUid) {
+        this.bbId = batchUid;
+    }*/
 }

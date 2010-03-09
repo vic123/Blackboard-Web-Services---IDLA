@@ -1,4 +1,4 @@
-package bbcws.PropertiesBean;
+package bbcntws.PropertiesBean;
 
 /**
  *
