@@ -72,7 +72,8 @@ public class BBDiscussionBoardWebService
 	{
 	    ConferenceOwnerDbLoader col = (ConferenceOwnerDbLoader)bbPm.getLoader(ConferenceOwnerDbLoader.TYPE);
 	    ConferenceOwner co = col.loadById(conf.getConferenceOwnerId());
-	    conferenceType = co.getOwnerName();
+	    //!!vic conferenceType = co.getOwnerName();
+            conferenceType = co.getOwnerName().toFieldName(); //vic
 	}catch(Exception e){}
 
 	return new String[]{conf.getId().toExternalString(),conferenceType,""+conf.getIsAvailable(),""+conf.getPosition(),conf.getTitle(),conf.getDescription().getText()};
@@ -1003,7 +1004,7 @@ public class BBDiscussionBoardWebService
 		if(confOwners.contains(conferenceType))
 		{
 		    co = new ConferenceOwner();
-		    co.setOwnerName(conferenceType);
+		    //!!vic co.setOwnerName(conferenceType);
 		}
 	    }
 	    c.setConferenceOwnerId(co.getId());

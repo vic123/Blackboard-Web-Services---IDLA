@@ -30,6 +30,100 @@ under the License.
     if(submit==null) submit = "false";
 
     ArrayList methods = new ArrayList();
+
+    methods.add("deleteAnnouncement");
+    methods.add("deleteAnnouncementXML");
+    methods.add("getAllAnnouncementsForGivenCourseId");
+    methods.add("getAllAnnouncementsForGivenCourseIdWithNamedElements");
+    methods.add("getAllAnnouncementsForGivenCourseIdXML");
+    methods.add("getAllAvailableAnnouncementsForGivenUserId");
+    methods.add("getAllAvailableAnnouncementsForGivenUserIdWithNamedElements");
+    methods.add("getAllAvailableAnnouncementsForGivenUserIdXML");
+    methods.add("getAllSystemAnnouncements");
+    methods.add("getAllSystemAnnouncementsWithNamedElements");
+    methods.add("getAllSystemAnnouncementsXML");
+    methods.add("modifyAnnouncement");
+    methods.add("modifyAnnouncementXML");
+    methods.add("postCourseAnnouncement");
+    methods.add("postCourseAnnouncementXML");
+    methods.add("postSystemAnnouncement");
+    methods.add("postSystemAnnouncementXML");
+	
+    
+    methods.add("addCalendarEntry");
+    methods.add("deleteCalendarEntryByCalendarEntryBbId");
+    methods.add("getAllCourseCalendarEntriesForGivenCourseId");
+    methods.add("getAllCourseCalendarEntriesForGivenUserId");
+    methods.add("getCourseCalendarEntriesWithinDatesForGivenUserId");
+    methods.add("getCourseCalendarEntriesWithinDatesForGivenCourseId");
+    methods.add("getPersonalCalendarEntriesWithinDatesForGivenUserId");
+
+
+    methods.add("deleteContentByContentBbId");
+    methods.add("getContentTocDetailsForGivenCourse");
+    methods.add("getChildContentFromParentContentBbId");
+    methods.add("getContentDetailsFromContentBbId");
+    methods.add("getFileDetailsFromContentBbId");
+    
+    
+    methods.add("addCourse");
+    methods.add("addCourseXML");
+    methods.add("deleteCourseByCourseBbId");
+    methods.add("deleteCourseByCourseBbIdXML");
+    methods.add("deleteCourseByCourseId");
+    methods.add("deleteCourseByCourseIdXML");
+    methods.add("doesCourseExist");
+    methods.add("doesCourseExistXML");
+    methods.add("enrollGivenUserOnGivenCourse");
+    methods.add("enrollGivenUserOnGivenCourseXML");
+    methods.add("getAllCourseIDsNoDetails");
+    methods.add("getAllCourseIDsNoDetailsWithNamedElements");
+    methods.add("getAllCourseIDsNoDetailsXML");
+    methods.add("getAllCourseIDsWhereCourseIdContainsGivenSearchString");
+    methods.add("getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements");
+    methods.add("getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML");
+    methods.add("getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements");
+    methods.add("getAllCourseIDsWhereGivenUserIdIsAnInstructorXML");
+    methods.add("getCourseDetails");
+    methods.add("getCourseDetailsWithNamedElements");
+    methods.add("getCourseDetailsXML");
+    methods.add("getCourseMembershipBbIdForGivenUserIdAndCourseId");
+    methods.add("getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements");
+    methods.add("getCourseMembershipBbIdForGivenUserIdAndCourseIdXML");
+    methods.add("getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements");
+    methods.add("getCourseMembershipDetailsForGivenCourseMembershipBbIdXML");
+    methods.add("getCourseQuotaDetails");
+    methods.add("getCourseQuotaDetailsWithNamedElements");
+    methods.add("getCourseQuotaDetailsXML");
+    methods.add("getEnrolledCoursesForGivenUser");
+    methods.add("getEnrolledCoursesForGivenUserWithNamedElements");
+    methods.add("getEnrolledCoursesForGivenUserXML");
+    methods.add("modifyCourseQuotaDetails");
+    methods.add("modifyCourseQuotaDetailsXML");
+    methods.add("unEnrollGivenUserFromGivenCourse");
+    methods.add("unEnrollGivenUserFromGivenCourseXML");
+    methods.add("copyCourseExact");
+
+
+    methods.add("addConference");
+    methods.add("addForumToGivenConferenceBbId");
+    methods.add("addMessageToGivenForumBbIdOrMessageBbId");
+    methods.add("deleteAllConferencesInGivenCourseBbId");
+    methods.add("deleteAllForumsInGivenConferenceBbId");
+    methods.add("deleteAllThreadsInGivenForumBbId");
+    methods.add("deleteGivenConferenceAndSubForums");
+    methods.add("deleteGivenForumAndSubThreads");
+    methods.add("deleteMessageAndAllSubMessages");
+    methods.add("getAllGroupConferenceDetailsForGivenCourseId");
+    methods.add("getAllMessagesForGivenThreadInGivenForumBbId");
+    methods.add("getAllTypesOfConferencesForGivenCourseId");
+    methods.add("getConferenceDetailsForGivenConferenceBbId");
+    methods.add("getCourseConferenceDetailsForGivenCourseId");
+    methods.add("getForumDetailsForGivenConferenceBbId");
+    methods.add("getGroupConferenceDetailsForGivenGroupBbId");
+    methods.add("getImmediateChildMessagesForGivenMessageBbId");
+    methods.add("getTopLevelMessageForGivenForumBbId");
+
     methods.add("addLineitemToGivenCourseId");
     methods.add("addLineitemToGivenCourseIdXML");
     methods.add("deleteGivenAttemptByAttemptBbId");
@@ -73,6 +167,67 @@ under the License.
     methods.add("setLineItemWeightByLineItemBbIdXML");
     methods.add("setWeightByItemOrCategoryForGradebookInGivenCourseId");
     methods.add("setWeightByItemOrCategoryForGradebookInGivenCourseIdXML");
+
+
+    methods.add("addGivenUserToGivenGroup");
+    methods.add("addGivenUserToGivenGroupXML");
+    methods.add("addGroupToGivenCourse");
+    methods.add("addGroupToGivenCourseXML");
+    methods.add("deleteGivenUserFromGivenGroup");
+    methods.add("deleteGivenUserFromGivenGroupXML");
+    methods.add("deleteGroup");
+    methods.add("deleteGroupXML");
+    methods.add("getGroupDetailsForGivenCourseId");
+    methods.add("getGroupDetailsForGivenCourseIdWithNamedElements");
+    methods.add("getGroupDetailsForGivenCourseIdXML");
+    methods.add("getGroupDetailsForGivenGroupBbId");
+    methods.add("getGroupDetailsForGivenGroupBbIdWithNamedElements");
+    methods.add("getGroupDetailsForGivenGroupBbIdXML");
+    methods.add("getGroupMembersForGivenGroupBbId");
+    methods.add("getGroupMemberDetailsForGivenGroupBbIdWithNamedElements");
+    methods.add("getGroupMemberDetailsForGivenGroupBbIdXML");
+    methods.add("modifyGroup");
+    methods.add("modifyGroupXML");
+
+
+    methods.add("addDefaultStudent");
+    methods.add("addDefaultStudentXML");
+    methods.add("addUser");
+    methods.add("addUserXML");
+    methods.add("deleteUserByUserBbId");
+    methods.add("deleteUserByUserBbIdXML");
+    methods.add("deleteUserByUserId");
+    methods.add("deleteUserByUserIdXML");
+    methods.add("doesUserExist");
+    methods.add("doesUserExistXML");
+    methods.add("getAllUserIDsNoDetails");
+    methods.add("getAllUserIDsNoDetailsWithNamedElements");
+    methods.add("getAllUserIDsNoDetailsXML");
+    methods.add("getEnrolledStudentsForGivenCourseIDWithNamedElements");
+    methods.add("getEnrolledStudentsForGivenCourseIDXML");
+    methods.add("getEnrolledUserDetailsForGivenCourseWithNamedElements");
+    methods.add("getEnrolledUserDetailsForGivenCourseXML");
+    methods.add("getEnrolledUsersForGivenCourse");
+    methods.add("getEnrollmentsByBatchUIDandCourseIDPattern");
+    methods.add("getSecondaryPortalRolesForGivenUserId");
+    methods.add("getSecondaryPortalRolesForGivenUserIdWithNamedElements");
+    methods.add("getSecondaryPortalRolesForGivenUserIdXML");
+    methods.add("getSecondarySystemRolesForGivenUserId");
+    methods.add("getSecondarySystemRolesForGivenUserIdWithNamedElements");
+    methods.add("getSecondarySystemRolesForGivenUserIdXML");
+    methods.add("getUserDetails");
+    methods.add("getUserDetailsWithNamedElements");
+    methods.add("getUserDetailsXML");
+    methods.add("getUserRoleInCourse");
+    methods.add("getUserRoleInCourseWithNamedElements");
+    methods.add("getUserRoleInCourseXML");
+    methods.add("isUserInCourse");
+    methods.add("isUserInCourseXML");
+    methods.add("setOrModifySecondarySystemRolesForGivenUserId");
+    methods.add("setOrModifySecondarySystemRolesForGivenUserIdXML");
+    
+    
+
 
     if(!submit.equalsIgnoreCase("true"))
     {

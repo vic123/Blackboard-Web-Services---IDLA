@@ -11,7 +11,7 @@ package bbgbws;
  */
 public class BbWsException extends RuntimeException {
     
-    private static final String ERROR_PREFIX = "BB webservices-idla custom error: ";    
+    private static final String ERROR_PREFIX = "BbWebservices custom error: ";
     
     BbWsException(String message, Throwable cause) {
         super (ERROR_PREFIX + message, cause);

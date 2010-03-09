@@ -25,14 +25,14 @@ import java.util.Calendar;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class GroupDetails implements ReturnTypeInterface
+public class GroupDetails extends bbwscommon.BbWsDataDetails implements ReturnTypeInterface
 {
     private Boolean available;
     private Boolean chatRoomsAvailable;
     private String description;
     private Boolean discussionBoardsAvailable;
     private Boolean emailAvailable;
-    private String groupBbId;
+    private String bbId;
     private String modifiedDate;
     private String title;
     private Boolean transferAreaAvailable;
@@ -45,7 +45,7 @@ public class GroupDetails implements ReturnTypeInterface
 	this.description = g.getDescription().getText();
 	this.discussionBoardsAvailable = g.getIsDiscussionBoardAvailable();
 	this.emailAvailable = g.getIsEmailAvailable();
-	this.groupBbId = g.getId().toExternalString();
+	this.bbId = g.getId().toExternalString();
 	this.modifiedDate = extractDate(g.getModifiedDate());
 	this.title = g.getTitle();
 	this.transferAreaAvailable = g.getIsTransferAreaAvailable();
@@ -100,15 +100,15 @@ public class GroupDetails implements ReturnTypeInterface
     {
 	this.emailAvailable = emailAvailable;
     }
-    
-    public String getGroupBbId()
+    @Override
+    public String getBbId()
     {
-	return this.groupBbId;
+	return this.bbId;
     }
-    
-    public void setGroupBbId(String groupBbId)
+    @Override
+    public void setBbId(String groupBbId)
     {
-	this.groupBbId = groupBbId;
+	this.bbId = groupBbId;
     }
     
     public String getModifiedDate()
@@ -156,7 +156,7 @@ public class GroupDetails implements ReturnTypeInterface
     public String[] toStringArray()
     {
         return new String[]{
-            this.groupBbId,
+            this.bbId,
             this.title,
             this.description,
             Boolean.toString(this.available),
@@ -175,4 +175,24 @@ public class GroupDetails implements ReturnTypeInterface
                             "Discussion Boards Available","Email Available",
                             "Transfer Area Available","Modified Date"};
     }
+
+/**
+ *
+ * @author vic
+ */
+    /*
+    @Override public String getId() {
+        return getBbId();
+    }
+    @Override public void setId(String id) {
+        setBbId(id);
+    }
+
+    @Override public String getBatchUid() {
+        return getGroupBbId();
+    }
+    @Override public void setBatchUid(String batchUid) {
+        setGroupBbId(batchUid);
+    }*/
+
 }

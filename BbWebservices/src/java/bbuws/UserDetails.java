@@ -19,6 +19,7 @@ under the License.
 
 package bbuws;
 
+import bbwscommon.BbWsArguments.DataVerbosity;
 import blackboard.data.role.PortalRole;
 import blackboard.data.user.User;
 import blackboard.persist.BbPersistenceManager;
@@ -32,9 +33,12 @@ import java.util.Calendar;
  * @author Andrew.Martin@ncl.ac.uk
  * @author G.G.Bowie@ljmu.ac.uk
  */
-public class UserDetails implements ReturnTypeInterface
+//public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsParams<UserDetails>>  implements ReturnTypeInterface
+public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsArguments>  implements ReturnTypeInterface
+
 {
     public enum Verbosity{minimal,standard,extended}
+    
 
     private Verbosity verbosity;
     //standard details
@@ -45,10 +49,10 @@ public class UserDetails implements ReturnTypeInterface
     private String familyName;
     private String emailAddress;
     private String lastLogin;
-    private String roleName;
+    private String portalRoleName;
     private String systemRole;
     //extended details
-    private String batchUserBbId;
+    private String batchUid;
     private String dataSourceBbId;
     private String studentId;
     private String title;
@@ -75,23 +79,25 @@ public class UserDetails implements ReturnTypeInterface
     private String homeFax;
     private String webPage;
     private String cardNumber;
-    private String cdROMDriveMac;
-    private String cdROMDrivePC;
-    private Boolean showAddContactInfo;
-    private Boolean showAddressInfo;
-    private Boolean showEmailInfo;
-    private Boolean showWorkInfo;
-    private Boolean isAvailable;
-    private Boolean isInfoPublic;
+    private String cdRomDriveMac;
+    private String cdRomDrivePC;
+    private String showAddContactInfo;
+    private String showAddressInfo;
+    private String showEmailInfo;
+    private String showWorkInfo;
+    private String isAvailable;
+    private String isInfoPublic;
     private String modifiedDate;
     private String locale;
 
     //standard details
-    
+
+    @Override
     public String getBbId() {
         return bbId;
     }
-    
+
+    @Override
     public void setBbId(String newId) {
         bbId = newId;
     }
@@ -144,12 +150,12 @@ public class UserDetails implements ReturnTypeInterface
         lastLogin = newLastLogin;
     }
     
-    public String getRoleName() {
-        return roleName;
+    public String getPortalRoleName() {
+        return portalRoleName;
     }
     
-    public void setRoleName(String newRoleName) {
-        roleName = newRoleName;
+    public void setPortalRoleName(String newRoleName) {
+        portalRoleName = newRoleName;
     }
     
     public String getSystemRole() {
@@ -160,14 +166,14 @@ public class UserDetails implements ReturnTypeInterface
         systemRole = newSystemRole;
     }
 
-    public String getBatchUserBbId() {
-        return batchUserBbId;
+    public String getBatchUid() {
+        return batchUid;
     }
 
     //extended details
 
-    public void setBatchUserBbId(String batchUserBbId) {
-        this.batchUserBbId = batchUserBbId;
+    public void setBatchUid(String batchUserBbId) {
+        this.batchUid = batchUserBbId;
     }
 
     public String getDataSourceBbId() {
@@ -378,67 +384,67 @@ public class UserDetails implements ReturnTypeInterface
         this.cardNumber = cardNumber;
     }
 
-    public String getCdROMDriveMac() {
-        return cdROMDriveMac;
+    public String getCdRomDriveMac() {
+        return cdRomDriveMac;
     }
 
-    public void setCdROMDriveMac(String cdROMDriveMac) {
-        this.cdROMDriveMac = cdROMDriveMac;
+    public void setCdRomDriveMac(String cdROMDriveMac) {
+        this.cdRomDriveMac = cdROMDriveMac;
     }
 
-    public String getCdROMDrivePC() {
-        return cdROMDrivePC;
+    public String getCdRomDrivePC() {
+        return cdRomDrivePC;
     }
 
-    public void setCdROMDrivePC(String cdROMDrivePC) {
-        this.cdROMDrivePC = cdROMDrivePC;
+    public void setCdRomDrivePC(String cdROMDrivePC) {
+        this.cdRomDrivePC = cdROMDrivePC;
     }
 
-    public Boolean getShowAddContactInfo() {
+    public String getShowAddContactInfo() {
         return showAddContactInfo;
     }
 
-    public void setShowAddContactInfo(Boolean showAddContactInfo) {
+    public void setShowAddContactInfo(String showAddContactInfo) {
         this.showAddContactInfo = showAddContactInfo;
     }
 
-    public Boolean getShowAddressInfo() {
+    public String getShowAddressInfo() {
         return showAddressInfo;
     }
 
-    public void setShowAddressInfo(Boolean showAddressInfo) {
+    public void setShowAddressInfo(String showAddressInfo) {
         this.showAddressInfo = showAddressInfo;
     }
 
-    public Boolean getShowEmailInfo() {
+    public String getShowEmailInfo() {
         return showEmailInfo;
     }
 
-    public void setShowEmailInfo(Boolean showEmailInfo) {
+    public void setShowEmailInfo(String showEmailInfo) {
         this.showEmailInfo = showEmailInfo;
     }
 
-    public Boolean getShowWorkInfo() {
+    public String getShowWorkInfo() {
         return showWorkInfo;
     }
 
-    public void setShowWorkInfo(Boolean showWorkInfo) {
+    public void setShowWorkInfo(String showWorkInfo) {
         this.showWorkInfo = showWorkInfo;
     }
 
-    public Boolean getIsAvailable() {
+    public String getIsAvailable() {
         return isAvailable;
     }
 
-    public void setIsAvailable(Boolean isAvailable) {
+    public void setIsAvailable(String isAvailable) {
         this.isAvailable = isAvailable;
     }
 
-    public Boolean getIsInfoPublic() {
+    public String getIsInfoPublic() {
         return isInfoPublic;
     }
 
-    public void setIsInfoPublic(Boolean isInfoPublic) {
+    public void setIsInfoPublic(String isInfoPublic) {
         this.isInfoPublic = isInfoPublic;
     }
 
@@ -459,6 +465,7 @@ public class UserDetails implements ReturnTypeInterface
     }
     
     public UserDetails(){}
+
     public UserDetails(Verbosity verbosity)
     {
 	this.verbosity = verbosity;	
@@ -472,7 +479,7 @@ public class UserDetails implements ReturnTypeInterface
 		this.userName = bbUser.getUserName();
 		return;
 	    case extended:
-		batchUserBbId = bbUser.getBatchUid();
+		batchUid = bbUser.getBatchUid();
 		dataSourceBbId = bbUser.getDataSourceId().toExternalString();
 		userName = bbUser.getUserName();
 		studentId = bbUser.getStudentId();
@@ -500,16 +507,16 @@ public class UserDetails implements ReturnTypeInterface
 		homeFax = bbUser.getHomeFax();
 		webPage = bbUser.getWebPage();
 		cardNumber = bbUser.getCardNumber();
-		cdROMDriveMac = bbUser.getCDRomDriveMac();
-		cdROMDrivePC = bbUser.getCDRomDrivePC();
+		cdRomDriveMac = bbUser.getCDRomDriveMac();
+		cdRomDrivePC = bbUser.getCDRomDrivePC();
 		//user.getCreatedDate()
 
-		showAddContactInfo = bbUser.getShowAddContactInfo();
-		showAddressInfo = bbUser.getShowAddressInfo();
-		showEmailInfo = bbUser.getShowEmailInfo();
-		showWorkInfo = bbUser.getShowWorkInfo();
-		isAvailable = bbUser.getIsAvailable();
-		isInfoPublic = bbUser.getIsInfoPublic();
+		showAddContactInfo = Boolean.toString(bbUser.getShowAddContactInfo());
+		showAddressInfo = Boolean.toString(bbUser.getShowAddressInfo());
+		showEmailInfo = Boolean.toString(bbUser.getShowEmailInfo());
+		showWorkInfo = Boolean.toString(bbUser.getShowWorkInfo());
+		isAvailable = Boolean.toString(bbUser.getIsAvailable());
+		isInfoPublic = Boolean.toString(bbUser.getIsInfoPublic());
 
 		modifiedDate = extractModifiedDate(bbUser);
 		locale = bbUser.getLocale();
@@ -520,7 +527,7 @@ public class UserDetails implements ReturnTypeInterface
 		familyName = bbUser.getFamilyName();
 		emailAddress = bbUser.getEmailAddress();
 		lastLogin = retrieveLastLogin((Calendar) bbUser.getLastLoginDate());
-		roleName = retrieveRoleName(bbUser.getId());
+		portalRoleName = retrieveRoleName(bbUser.getId());
 		systemRole = retrieveSystemRole(bbUser);
 		return;
 	}
@@ -557,7 +564,7 @@ public class UserDetails implements ReturnTypeInterface
     private String retrieveSystemRole(User bbUser) {
         try
         {
-            return bbUser.getSystemRole().toFieldName();
+            return bbUser.getSystemRole().toExternalString();
         }
         catch(Exception e)
         {
@@ -638,7 +645,7 @@ public class UserDetails implements ReturnTypeInterface
 		    this.familyName,
 		    this.emailAddress,
 		    this.lastLogin,
-		    this.roleName,
+		    this.portalRoleName,
 		    this.systemRole
 		};
 	    case extended:
@@ -649,9 +656,9 @@ public class UserDetails implements ReturnTypeInterface
 		    this.familyName,
 		    this.emailAddress,
 		    this.lastLogin,
-		    this.roleName,
+		    this.portalRoleName,
 		    this.systemRole,
-		    this.batchUserBbId,
+		    this.batchUid,
 		    this.dataSourceBbId,
 		    this.userName,
 		    this.studentId,
@@ -679,18 +686,107 @@ public class UserDetails implements ReturnTypeInterface
 		    this.homeFax,
 		    this.webPage,
 		    this.cardNumber,
-		    this.cdROMDriveMac,
-		    this.cdROMDrivePC,
-		    Boolean.toString(this.showAddContactInfo),
-		    Boolean.toString(this.showAddressInfo),
-		    Boolean.toString(this.showEmailInfo),
-		    Boolean.toString(this.showWorkInfo),
-		    Boolean.toString(this.isAvailable),
-		    Boolean.toString(this.isInfoPublic),
+		    this.cdRomDriveMac,
+		    this.cdRomDrivePC,
+		    this.showAddContactInfo,
+		    this.showAddressInfo,
+		    this.showEmailInfo,
+		    this.showWorkInfo,
+		    this.isAvailable,
+		    this.isInfoPublic,
 		    this.modifiedDate,
 		    this.locale,
 		};
 	    default: return new String[]{};
 	}
     }
+
+/**
+    @Override public String getId() {
+        return this.bbId;
+    }
+    @Override public void setId(String id) {
+        this.bbId = id;
+    }
+
+
+ *
+ * @author vic123, IDLA
+ */
+
+
+    //public void initialize(bbwscommon.BbWsCommonParams params) {
+//works(1)    public void initialize(bbwscommon.BbWsCommonParams<UserDetails> params) {
+//    public void initialize(bbwscommon.BbWsCommonParams<? super UserDetails> params) {
+//    public void initialize(bbwscommon.BbWsDataDetails<? super bbwscommon.BbWsCommonParams<UserDetails>> params) {
+
+    //@Override public void initialize(bbwscommon.BbWsDataDetails params) {}
+
+//    public void initialize(UserDetails params) {
+//    @Override public void initialize(bbwscommon.BbWsDataDetails<? super bbwscommon.BbWsCommonParams<UserDetails>> params) {
+//    @Override public void initialize(bbwscommon.BbWsArguments args) {
+    public void initializeFields(bbwscommon.BbWsArguments args) {
+        //super.initialize(args);
+        //!! does not checks for verbosity of paarams
+        //not used by the moment
+        bbId = "";
+        userName = "";
+
+        //if ("STANDARD, EXTENDED".indexOf(args.getDataVerbosity()) != -1) {
+        if (args.getDataVerbosity().compareTo(DataVerbosity.STANDARD) == 0
+                && args.getDataVerbosity().compareTo(DataVerbosity.EXTENDED) == 0) {
+            verbosity = Verbosity.standard;
+            //standard details
+            givenName = "";
+            middleName = "";
+            familyName = "";
+            emailAddress = "";
+            lastLogin = "";
+            portalRoleName = "";
+            systemRole = "";
+        } else {
+
+
+        }
+            //extended details
+            String miss_field_tag = args.getMissFieldTag();
+            batchUid = miss_field_tag;
+            dataSourceBbId = miss_field_tag;
+            studentId = miss_field_tag;
+            title = miss_field_tag;
+            systemRoleId = miss_field_tag;
+            portalRoleId = miss_field_tag;
+            gender = miss_field_tag;
+            birthDate = miss_field_tag;
+            educationLevel = miss_field_tag;
+            jobTitle = miss_field_tag;
+            company = miss_field_tag;
+            department = miss_field_tag;
+            street1 = miss_field_tag;
+            street2 = miss_field_tag;
+            city = miss_field_tag;
+            county = miss_field_tag;
+            country = miss_field_tag;
+            postCode = miss_field_tag;
+            businessPhone1 = miss_field_tag;
+            businessPhone2 = miss_field_tag;
+            mobilePhone = miss_field_tag;
+            homePhone1 = miss_field_tag;
+            homePhone2 = miss_field_tag;
+            businessFax = miss_field_tag;
+            homeFax = miss_field_tag;
+            webPage = miss_field_tag;
+            cardNumber = miss_field_tag;
+            cdRomDriveMac = miss_field_tag;
+            cdRomDrivePC = miss_field_tag;
+            showAddContactInfo = miss_field_tag;
+            showAddressInfo = miss_field_tag;
+            showEmailInfo = miss_field_tag;
+            showWorkInfo = miss_field_tag;
+            isAvailable = miss_field_tag;
+            isInfoPublic = miss_field_tag;
+            modifiedDate = miss_field_tag;
+            locale = miss_field_tag;
+    }
+
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <plugin>
-      <name value="Blackboard Soap Web Services (Gradebook) - IDLA"/>
+      <name value="Blackboard Soap Web Services - IDLA"/>
       <description value="Expose blackboard data/api via webservices and xml"/>
-      <handle value="BBGradebookWebService"/>
+      <handle value="BbWebservices"/>
       <!--handle value="BBGbWs"/-->      
 	  <!-- Release.Major.Minor.Subversion-->
 	  <version value="1.2.0.0"/>
@@ -45,6 +45,7 @@
 	    <permission type="persist" name="OutcomeDefinitionCategory" actions="create,modify,delete"/>
 	    <permission type="persist" name="user" actions="create,modify,delete"/>
 	    <permission type="persist" name="userrole" actions="create,modify,delete"/>
+	    <permission type="persist" name="portalrole" actions="create,modify,delete"/>
 	</permissions>
   </plugin>
 </manifest>

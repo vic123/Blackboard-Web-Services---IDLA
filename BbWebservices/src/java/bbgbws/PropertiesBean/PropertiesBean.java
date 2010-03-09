@@ -36,7 +36,7 @@ public class PropertiesBean implements java.io.Serializable
 {	
 	private static PropertiesBean propertiesBean;
 	private static String vendorId = "IDLA";
-	private static String applicationHandle = "BBGradebookWebService";
+	private static String applicationHandle = "BbWebservices";
 	private Properties p;
 	
 	public PropertiesBean()

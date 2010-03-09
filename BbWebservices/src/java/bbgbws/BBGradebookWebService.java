@@ -71,7 +71,7 @@ public static javax.xml.ws.WebServiceContext wsContextStatic;
 @Resource
 private javax.xml.ws.WebServiceContext wsContext;
 
-    private WebServiceProperties wsp = new WebServiceProperties("IDLA","BBGradebookWebService");
+    private WebServiceProperties wsp = new WebServiceProperties("IDLA","BbWebservices");
 
     private Boolean addLineitemToGivenCourseId(String courseId, String name,
                                                 String type, Float pointsPossible, Float weight,

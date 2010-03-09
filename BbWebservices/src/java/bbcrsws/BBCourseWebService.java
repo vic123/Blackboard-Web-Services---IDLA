@@ -39,6 +39,10 @@ import blackboard.persist.registry.CourseRegistryEntryDbPersister;
 import blackboard.persist.user.UserDbLoader;
 import blackboard.platform.BbServiceManager;
 
+import blackboard.admin.persist.course.CloneConfig;
+import blackboard.admin.persist.course.CourseSitePersister;
+import blackboard.admin.persist.course.impl.CourseSiteDbPersister;
+
 //java
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +63,7 @@ import javax.xml.ws.WebServiceException;
 @WebService(name="BBCourseWebService", serviceName="BBCourseWebService", targetNamespace="http://www.ncl.ac.uk/BBCourseWebService")
 public class BBCourseWebService
 {
-    private WebServiceProperties wsp = new WebServiceProperties("amnl","BBCourseWebService");
+    private WebServiceProperties wsp = new WebServiceProperties("IDLA","BbWebservices");
     //private enum Verbosity{minimal,quota,standard,extended}
 
     private boolean addCourse(String courseId, String batchUID, String title, String courseDescription,
@@ -642,7 +646,7 @@ public class BBCourseWebService
     public String getCourseMembershipBbIdForGivenUserIdAndCourseId(@WebParam(name = "pwd") String pwd, @WebParam(name = "userId") String userId, @WebParam(name = "courseId") String courseId) throws WebServiceException
     {
         authoriseMethodUse(pwd,"getCourseMembershipBbIdForGivenUserIdAndCourseId");
-        return getCourseMembershipBbIdForGivenUserIdAndCourseId(userId,courseId).getCourseMembershipBbId();
+        return getCourseMembershipBbIdForGivenUserIdAndCourseId(userId,courseId).getBbId();
     }
 
     /**
@@ -1075,4 +1079,179 @@ public class BBCourseWebService
         authoriseMethodUse(pwd,"unenrollGivenUserFromGivenCourseXML");
         return toXML(null,unEnrollGivenUserFromGivenCourse(userId,courseId));
     }
+
+/**
+ *
+ * @author vic123, IDLA
+ */
+
+    @WebMethod
+    public Boolean copyCourseExact(@WebParam(name = "pwd") String pwd, @WebParam(name = "sourceBatchUid") String sourceBatchUid,
+                @WebParam(name = "targetBatchUid") String targetBatchUid) throws WebServiceException
+    {
+        authoriseMethodUse(pwd,"copyCourseExact");//!!
+        try {
+            bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.INFORMATION, "copyCourseExact() - enter. "
+                        + "sourceBatchUid: " + sourceBatchUid + "; targetBatchUid: " + targetBatchUid, this);
+            //Course tgt_course, src_course;
+            blackboard.admin.data.course.CourseSite tgt_course, src_course;
+            try {
+                //tgt_course = CourseDbLoader.Default.getInstance().loadByBatchUid(targetBatchUid);
+                tgt_course = blackboard.admin.persist.course.impl.CourseSiteDbLoader.Default.getInstance().load(targetBatchUid);
+                throw new WebServiceException("ID for the destination already exists (targetBatchUid: " + targetBatchUid
+                        + "; tgt_course.courseId: " + tgt_course.getCourseId() + ")");
+            }
+            catch(KeyNotFoundException knf)
+            {
+                //src_course = CourseDbLoader.Default.getInstance().loadByBatchUid(sourceBatchUid);
+                src_course = blackboard.admin.persist.course.impl.CourseSiteDbLoader.Default.getInstance().load(sourceBatchUid);
+                String src_course_id = src_course.getCourseId();
+                Id src_id = src_course.getId();
+/*
+ *
+ *  //Code below causes blackboard.persist.PersistenceException: Can not perform clone where target and source are identical.
+    //	at blackboard.admin.persist.course.impl.clone.AdminCourseCloneOperator.clone(AdminCourseCloneOperator.java:146)
+    //after changing of Ids and persisting new class appears in Db, but reloading with old id returns newly inserted class, probably due to caching
+ * //??!! then, don't understand what have changed, started causing (upon persist call):
+ * blackboard.persist.KeyNotFoundException: The specified object was not found.
+	at blackboard.persist.impl.NewBaseDbLoader.loadObject(NewBaseDbLoader.java:140)
+	at blackboard.persist.course.impl.CourseDbLoaderImpl.loadByCourseId(CourseDbLoaderImpl.java:155)
+	at blackboard.persist.course.impl.CourseDbLoaderImpl.loadByCourseId(CourseDbLoaderImpl.java:126)
+	at blackboard.persist.course.impl.CourseDbLoaderImpl.loadByCourseId(CourseDbLoaderImpl.java:118)
+	at blackboard.persist.course.impl.CourseDbPersisterImpl.persist(CourseDbPersisterImpl.java:114)
+	at blackboard.persist.course.impl.CourseDbPersisterImpl.persist(CourseDbPersisterImpl.java:64)
+*/
+  
+                src_course.setId(Id.UNSET_ID);
+                src_course.setCourseId(targetBatchUid);
+                src_course.setBatchUid(targetBatchUid);
+                //CourseDbPersister persister = blackboard.persist.course.CourseDbPersister.Default.getInstance();
+                //persister.persist(src_course);
+
+                //with CourseSiteDbPersister seem to work fine
+                CourseSiteDbPersister.Default.getInstance().insert(src_course);
+ 
+                //I:\blackboard\content\locale\en_SM\messages\resource.csv
+                //System.Web.Services.Protocols.SoapException: Error: Course copy failed: blackboard.persist.PersistenceException: Can not perform clone where target and source are identical. at System.Web.Services.Protocols
+                bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG, "copyCourseExact() - insert(src_course). "
+                        + " sourceBatchUid: " + sourceBatchUid + "; targetBatchUid: " + targetBatchUid
+                        + "; src_course_id: " + src_course_id
+                        + "; src_id: " + src_id.toExternalString(), this);
+
+                Course src_course1 = CourseDbLoader.Default.getInstance().loadByBatchUid(sourceBatchUid);
+                Course tgt_course1 = CourseDbLoader.Default.getInstance().loadByBatchUid(targetBatchUid);
+                bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG,
+                        "copyCourseExact(), loadByBatchUid(). src_course.getBatchUid(): " + src_course1.getBatchUid()
+                        + "src_course.getCourseId(): " + src_course1.getCourseId()
+                        + "; tgt_course.getBatchUid(): " + tgt_course1.getBatchUid()
+                        + "; tgt_course.getCourseId(): " + tgt_course1.getCourseId() , this);
+
+
+                src_course1 = CourseDbLoader.Default.getInstance().loadByCourseId(src_course_id);
+                bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG,
+                        "copyCourseExact(), loadByCourseId(), src_course.getBatchUid(): " + src_course1.getBatchUid()
+                        + "src_course.getCourseId(): " + src_course1.getCourseId()
+                        , this);
+
+                src_course1 = CourseDbLoader.Default.getInstance().loadById(src_id);
+                bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG,
+                        "copyCourseExact(), loadById(), src_course.getBatchUid(): " + src_course1.getBatchUid()
+                        + "src_course.getCourseId(): " + src_course1.getCourseId()
+                        , this);
+
+                src_course1 = CourseDbLoader.Default.getInstance().loadById(src_id, null, true);
+                bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG,
+                        "copyCourseExact(), loadById(Heavy), src_course.getBatchUid(): " + src_course1.getBatchUid()
+                        + "src_course.getCourseId(): " + src_course1.getCourseId()
+                        , this);
+
+//                src_course1 = CourseDbLoader.Default.getInstance().loadb  loadByIdIgnoreRowStatus(src_id);
+
+                src_course1 = CourseDbLoader.Default.getInstance().loadByBatchUid(sourceBatchUid);
+                bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG,
+                        "copyCourseExact(), loadByBatchUid(). src_course.getBatchUid(): " + src_course1.getBatchUid()
+                        + "src_course.getCourseId(): " + src_course1.getCourseId(), this);
+
+
+/* Alternative approach is manual copy of course attributes/settings
+ * //blackboard.webapps.blackboard.struts.CopyAction.duplicateSettings();
+//blackboard.admin.persist.course.impl.clone.operator.SettingCloneOperator.duplicateSettings();
+
+                tgt_course.setBatchUid(targetBatchUid);
+                tgt_course.setBatchUid(targetBatchUid);
+                tgt_course.setAbsoluteLimit(src_course.getAbsoluteLimit());
+                tgt_course.setAllowGuests(src_course.getAllowGuests());
+                tgt_course.setAllowObservers(src_course.getAllowObservers());
+                tgt_course.setClassificationId(src_course.getClassificationId());
+                tgt_course.setDescription(src_course.getDescription());
+                tgt_course.setDurationType(src_course.getDurationType());
+                tgt_course.setEndDate(src_course.getEndDate());
+                tgt_course.setEnrollmentAccessCode(src_course.getEnrollmentAccessCode());
+                tgt_course.setEnrollmentEndDate(src_course.getEnrollmentEndDate());
+                tgt_course.setEnrollmentStartDate(src_course.getEnrollmentStartDate());
+                tgt_course.setEnrollmentType(src_course.getEnrollmentType());
+                tgt_course.setFee(src_course.getFee());
+                tgt_course.setHasDescriptionPage(src_course.getHasDescriptionPage());
+                tgt_course.setInstitutionName(src_course.getInstitutionName());
+                tgt_course.setIsAvailable(src_course.getIsAvailable());
+                tgt_course.setIsLockedOut(src_course.getIsLockedOut());
+                tgt_course.setNumDaysOfUse(src_course.getNumDaysOfUse());
+                tgt_course.setPaceType(src_course.getPaceType());
+                tgt_course.setServiceLevelType(src_course.getServiceLevelType());
+                tgt_course.setSoftLimit(src_course.getSoftLimit());
+                tgt_course.setStartDate(src_course.getStartDate());
+                tgt_course.setTitle(src_course.getTitle());
+                tgt_course.setUploadLimit(src_course.getUploadLimit());
+
+                tgt_course.setButtonStyleId(src_course.getButtonStyleId());
+                tgt_course.setNavStyle(src_course.getNavStyle());
+                tgt_course.setNavColorFg(src_course.getNavColorFg());
+                tgt_course.setNavColorBg(src_course.getNavColorBg());
+                tgt_course.setIsNavCollapsible(src_course.getIsNavCollapsible());
+                tgt_course.setBannerImageFile(src_course.getBannerImageFile());
+                tgt_course.setIsLocaleEnforced(src_course.getIsLocaleEnforced());
+                tgt_course.setLocale(src_course.getLocale());
+                    */
+
+                CloneConfig cfg = new CloneConfig();
+                cfg.includeArea(CloneConfig.Area.ALL);
+                CourseSitePersister site_persister = CourseSiteDbPersister.Default.getInstance();
+                site_persister.clone(sourceBatchUid, targetBatchUid, cfg);
+                return true;
+            }   
+        }
+        catch(Exception e)
+        {
+            bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.ERROR, e, "copyCourseExact(). ", this);
+            throw new WebServiceException("Error: Course copy failed: " + e.getMessage());
+        }
+    }
+
+    @WebMethod
+    public boolean updateCourse(String courseId, String batchUID, String title, String courseDescription,
+                              Boolean available, Boolean allowGuests, Boolean allowObservers) throws WebServiceException
+    {
+        available = handleNullValue(available);
+        allowGuests = handleNullValue(allowGuests);
+        allowObservers = handleNullValue(allowObservers);
+        try {
+            Course c = CourseDbLoader.Default.getInstance().loadByCourseId(courseId);
+            c.setBatchUid(checkCourseDetail(batchUID));
+            c.setCourseId(checkCourseDetail(courseId));
+            c.setDescription(checkCourseDetail(courseDescription));
+            c.setTitle(checkCourseDetail(title));
+            c.setAllowGuests(allowGuests);
+            c.setAllowObservers(allowObservers);
+            c.setIsAvailable(available);
+            blackboard.persist.course.CourseDbPersister.Default.getInstance().persist(c);
+        }
+        catch(Exception e)
+        {
+            //return "Error while trying to add course: "+e.toString();
+            bbwscommon.BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.ERROR, e, "updateCourse(). ", this);
+            throw new WebServiceException("Error while trying to update course: "+e.toString());
+        }
+        return true;
+    }
+
 }

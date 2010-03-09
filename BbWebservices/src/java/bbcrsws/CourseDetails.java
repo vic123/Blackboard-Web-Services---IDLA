@@ -30,7 +30,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
 
     private Verbosity verbosity;
     //standard details
-    private String courseBbId;
+    private String bbId;
     private String title;
     private String description;
     private String modifiedDate;
@@ -39,7 +39,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     private Boolean allowGuests;
     private Boolean allowObservers;
     private String bannerImageFile;
-    private String batchUId;
+    private String batchUid;
     private String buttonStyle;
     private String cartridgeDescription;
     private String classification;
@@ -77,7 +77,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                 this.allowGuests = course.getAllowGuests();
                 this.allowObservers = course.getAllowObservers();
                 try{this.bannerImageFile = course.getBannerImageFile().getPath();}catch(Exception e){this.bannerImageFile = "";}
-                this.batchUId = course.getBatchUid();
+                this.batchUid = course.getBatchUid();
                 try{this.buttonStyle = course.getButtonStyle().getDescription();}catch(Exception e){this.buttonStyle = "";}
                 try{this.cartridgeDescription = course.getCartridge().getDescription();}catch(Exception e){this.cartridgeDescription = "";}
                 try{this.classification = course.getClassification().getTitle();}catch(Exception e){this.classification = "";}
@@ -99,7 +99,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                 this.startDate = extractDate(course.getStartDate());
                 this.uploadLimit = Long.toString(course.getUploadLimit());
             case standard:
-                this.courseBbId = course.getId().toExternalString();
+                this.bbId = course.getId().toExternalString();
                 this.title = course.getTitle();
                 this.description = course.getDescription();
                 this.creationDate = extractDate(course.getCreatedDate());
@@ -112,14 +112,16 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
         }
     }
 
-    public String getCourseBbId()
+    @Override
+    public String getBbId()
     {
-	return this.courseBbId;
+	return this.bbId;
     }
 
-    public void setCourseBbId(String courseBbId)
+    @Override
+    public void setBbId(String courseBbId)
     {
-	this.courseBbId = courseBbId;
+	this.bbId = courseBbId;
     }
 
     public String getTitle()
@@ -191,14 +193,14 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     {
 	this.bannerImageFile = bannerImageFile;
     }
-    public String getBatchUId()
+    public String getBatchUid()
     {
-	return this.batchUId;
+	return this.batchUid;
     }
 
-    public void setBatchUId(String batchUId)
+    public void setBatchUid(String batchUId)
     {
-	this.batchUId = batchUId;
+	this.batchUid = batchUId;
     }
     public String getButtonStyle()
     {
@@ -393,7 +395,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
             case minimal:
                 return new String[]{this.courseId};
             case standard:
-                return new String[]{this.courseBbId,
+                return new String[]{this.bbId,
                         this.courseId,
                         this.title,
                         this.description,
@@ -401,7 +403,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                         this.modifiedDate,
                         Boolean.toString(this.available)};
             case extended:
-                return new String[]{this.courseBbId,
+                return new String[]{this.bbId,
                         this.courseId,
                         this.title,
                         this.description,
@@ -412,7 +414,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                         Boolean.toString(this.allowGuests),
                         Boolean.toString(this.allowObservers),
                         this.bannerImageFile,
-                        this.batchUId,
+                        this.batchUid,
                         this.buttonStyle,
                         this.cartridgeDescription,
                         this.classification,
@@ -464,4 +466,15 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                 return new String[]{};
         }
     }
+/**
+ *
+ * @author vic
+
+    public String getId() {
+        return this.bbId;
+    }
+    public void setId(String id) {
+        this.bbId = id;
+    }
+ */
 }

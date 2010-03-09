@@ -22,12 +22,13 @@ public abstract class DataDetails {
     }
     
     private int apiPassedCount;
-    private java.util.List<DataLogRecord> dataLog;    
+    private java.util.List<DataLogRecord> dataLog;
 
     protected DataDetails() {
         dataLog = new java.util.ArrayList<DataLogRecord>();
         apiPassedCount = 0;
     }
+
     public int getApiPassedCount() {
         return apiPassedCount;
     }
@@ -40,7 +41,8 @@ public abstract class DataDetails {
         return dataLog;
     }
     public void setDataLog(java.util.List<DataLogRecord> dataLog) throws Exception {
-        throw new Exception("DataDetails.setDataLog() is not allowed, method is added just for automated web interface generation.");
+        this.dataLog = dataLog;
+        //throw new Exception("DataDetails.setDataLog() is not allowed, method is added just for automated web interface generation.");
     }
     
     static public abstract class DataLoader<ParamsType extends CommonParams> {
@@ -130,6 +132,9 @@ public abstract class DataDetails {
                 String value = "";
                 try {
                     curValue = loadImp();
+                    addDataLog(record, blackboard.platform.log.LogService.Verbosity.DEBUG,
+                    fieldName, curValue, apiUsed,
+                    "curValue: " + curValue);
                     value = curValue;
                     if (oldValue != null) {
                         if (oldValue.compareTo(value) != 0) {
