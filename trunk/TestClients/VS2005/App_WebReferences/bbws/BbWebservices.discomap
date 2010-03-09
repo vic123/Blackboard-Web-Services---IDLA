@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://174.129.97.205/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices?xsd=1" filename="BbWebservices.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://174.129.97.205/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices?xsd=2" filename="BbWebservices0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://174.129.97.205/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices?wsdl" filename="BbWebservices.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>
