@@ -17,11 +17,11 @@ public partial class BbWsTest : System.Web.UI.Page
         try {
 
             testArgs = new TestArgsStruct();
-            /*RunUserTest();
+            RunUserTest();
             RunCourseMembershipTest();
             RunPortalRoleTest();
-            RunObserverAssociationTest();*/
-            RunCourseTest();
+            RunObserverAssociationTest();
+            RunCourseTest(); 
 
         } catch (Exception e1) {
             Response.Output.Write(e1.ToString());
