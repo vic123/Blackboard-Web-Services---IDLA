@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <plugin>
+      <name value="Blackboard Soap Web Services (Courses)"/>
+      <description value="Expose blackboard data/api via webservices and xml"/>
+      <handle value="BBCourseWebService"/>
+	  <!-- Release.Major.Minor.Subversion-->
+	  <version value="1.2.0.0"/>
+	  <requires>
+ 	    <bbversion value="6.2.3"/>
+	  </requires>
+	  <vendor>
+	    <id value="amnl"/>
+	    <name value="Andrew Martin, Newcastle University"/>
+	    <url value="http://ncl.ac.uk/"/>
+	    <description value="Expose blackboard data/api via webservices and xml"/>
+	  </vendor>
+	  <http-actions>
+		<config value="properties/properties.jsp"/>
+		<remove value=""/>
+	  </http-actions>
+	<permissions>
+	    <permission type="socket" name="*" actions="resolve,connect"/>
+	    <permission type="java.io.FilePermission" actions="read,write" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
+	    <permission type="java.lang.RuntimePermission" name="createClassLoader" actions="createClassLoader"/>
+	    <permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks" actions="suppressAccessChecks"/>
+	    <permission type="java.lang.RuntimePermission" name="getClassLoader" actions="getClassLoader"/>
+            <permission type="java.lang.RuntimePermission" name="setContextClassLoader" actions="setContextClassLoader"/>
+	    <permission type="java.lang.RuntimePermission" name="accessDeclaredMembers" actions="accessDeclaredMembers"/>
+	    <permission type="java.util.PropertyPermission" name="user.language" actions="write"/>
+        <permission type="javax.management.MBeanPermission" name="com.sun.xml.ws.util.RuntimeVersion#-[com.sun.xml.ws.util:type=RuntimeVersion]" actions="registerMBean"/>
+        <permission type="javax.management.MBeanPermission" name="com.sun.xml.ws.transport.http.HttpDump#-[com.sun.xml.ws.transport.http:type=HttpDump]" actions="registerMBean"/>
+        <permission type="javax.management.MBeanServerPermission" name="createMBeanServer" actions=""/>
+        <permission type="javax.management.MBeanTrustPermission" name="register" actions=""/>
+	    <permission type="attribute" name="user.authinfo" actions="get,set"/>
+	    <permission type="attribute" name="user.cardnumber" actions="get"/>
+	    <permission type="attribute" name="user.personalinfo" actions="get,set"/>
+	    <permission type="persist" name="course" actions="create,modify,delete"/>
+	    <permission type="persist" name="coursemembership" actions="create,modify,delete"/>
+	    <permission type="persist" name="user" actions="create,modify,delete"/>
+	    <permission type="persist" name="userrole" actions="create,modify,delete"/>
+	</permissions>
+  </plugin>
+</manifest>
