@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://www.ncl.ac.uk/BBCourseWebService" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://www.ncl.ac.uk/BBCourseWebService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://174.129.97.205:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
   <xs:element name="addCourse" type="tns:addCourse" />
   <xs:element name="addCourseResponse" type="tns:addCourseResponse" />
   <xs:element name="addCourseXML" type="tns:addCourseXML" />
