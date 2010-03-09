@@ -1,0 +1,1781 @@
+Record Method Name,Data Access Class,Operation,BySuffix,Result Record/List,Input Record/List,Logged method name,result Type,inputParam,inputParam declaration,InnerDataAccessPackClassName,API Pack,Arguments class name,API processor,API proc start,Arguments create ,Supplementary paramerer1,Call parameters,Webservice interface methods,,,,Output,InputParam,PreAction,Action Class declarations,,,Test calls,,"class _courseMembershipTestAction : TestAction<_courseMembershipTestArgs, bbws.courseMembershipDetails>, ITestAction { }        class _courseMembershipTestArgs : TestArgs<bbws.courseMembershipDetails> {
+        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+            return wsResultRecord.bbWsDataLog;
+        }
+",,,
+"LOWER(LEFT(C3; 1)) & MID(C3; 2; 100) &B3 & E3 & D3
+LOWER(A3) & B3 & ""Record"" & C3
+LOWER(A3) & B3 & ""List"" & C3",,,,,,A3,,,,,,,,,,,,,,,,,,,,,,,,"class _courseMembershipTestCase : TestCase<bbws.courseMembershipDetails>, ITestAction { }        class _courseMembershipTestArgs : TestArgs<bbws.courseMembershipDetails> {
+        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+            return wsResultRecord.bbWsDataLog;
+        }
+",,,"        public void init(TestArgsStruct testArgs) {
+            base.init(testArgs);
+"
+courseMembershipLoadRecordById,CourseMembership,Load,ById,Record,Record,loadRecordById,CourseMembershipDetails,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadRecordById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public CourseMembershipDetails courseMembershipLoadRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipLoadRecordById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipLoadRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadRecordById courseMembershipLoadRecordById;,,,"courseMembershipLoadRecordById = new _courseMembershipLoadRecordById();
+courseMembershipLoadRecordById.init(this.testArgs.courseMembership);",,
+courseMembershipLoadListById,CourseMembership,Load,ById,List,List,loadListById,List<CourseMembershipDetails>,inputList,"@WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList",LoadListById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipLoadListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _courseMembershipLoadListById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipLoadListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipLoadListById courseMembershipLoadListById;,,,"courseMembershipLoadListById = new _courseMembershipLoadListById();
+courseMembershipLoadListById.init(this.testArgs.courseMembership);",,
+courseMembershipLoadRecordByCourseAndUserId,CourseMembership,Load,ByCourseAndUserId,Record,Record,loadRecordByCourseAndUserId,CourseMembershipDetails,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadRecordByCourseAndUserId,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadRecordByCourseAndUserId"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public CourseMembershipDetails courseMembershipLoadRecordByCourseAndUserId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordByCourseAndUserId()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadRecordByCourseAndUserId"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipLoadRecordByCourseAndUserId : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipLoadRecordByCourseAndUserId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadRecordByCourseAndUserId courseMembershipLoadRecordByCourseAndUserId;,,,"courseMembershipLoadRecordByCourseAndUserId = new _courseMembershipLoadRecordByCourseAndUserId();
+courseMembershipLoadRecordByCourseAndUserId.init(this.testArgs.courseMembership);",,
+courseMembershipLoadListByUserId,CourseMembership,Load,ByUserId,List,Record,loadListByUserId,List<CourseMembershipDetails>,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadListByUserId,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByUserId"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipLoadListByUserId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByUserId()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByUserId"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _courseMembershipLoadListByUserId : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipLoadListByUserId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByUserId courseMembershipLoadListByUserId;,,,"courseMembershipLoadListByUserId = new _courseMembershipLoadListByUserId();
+courseMembershipLoadListByUserId.init(this.testArgs.courseMembership);",,
+courseMembershipLoadListByCourseId,CourseMembership,Load,ByCourseId,List,Record,loadListByCourseId,List<CourseMembershipDetails>,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadListByCourseId,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByCourseId"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipLoadListByCourseId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByCourseId()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByCourseId"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _courseMembershipLoadListByCourseId : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipLoadListByCourseId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByCourseId courseMembershipLoadListByCourseId;,,,"courseMembershipLoadListByCourseId = new _courseMembershipLoadListByCourseId();
+courseMembershipLoadListByCourseId.init(this.testArgs.courseMembership);",,
+courseMembershipLoadListByCourseIdWithUserInfo,CourseMembership,Load,ByCourseIdWithUserInfo,List,Record,loadListByCourseIdWithUserInfo,List<CourseMembershipDetails>,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadListByCourseIdWithUserInfo,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByCourseIdWithUserInfo"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipLoadListByCourseIdWithUserInfo
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByCourseIdWithUserInfo()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByCourseIdWithUserInfo"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _courseMembershipLoadListByCourseIdWithUserInfo : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipLoadListByCourseIdWithUserInfo(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByCourseIdWithUserInfo courseMembershipLoadListByCourseIdWithUserInfo;,,,"courseMembershipLoadListByCourseIdWithUserInfo = new _courseMembershipLoadListByCourseIdWithUserInfo();
+courseMembershipLoadListByCourseIdWithUserInfo.init(this.testArgs.courseMembership);",,
+courseMembershipLoadListByCourseIdAndRole,CourseMembership,Load,ByCourseIdAndRole,List,Record,loadListByCourseIdAndRole,List<CourseMembershipDetails>,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadListByCourseIdAndRole,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByCourseIdAndRole"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipLoadListByCourseIdAndRole
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByCourseIdAndRole()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByCourseIdAndRole"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,"// ****************************** Full Read/Update/Delete"" on Id and List<Id> methods ***************************",,args.wsResultArray,args.wsInputRecord,,"    class _courseMembershipLoadListByCourseIdAndRole : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipLoadListByCourseIdAndRole(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByCourseIdAndRole courseMembershipLoadListByCourseIdAndRole;,,,"courseMembershipLoadListByCourseIdAndRole = new _courseMembershipLoadListByCourseIdAndRole();
+courseMembershipLoadListByCourseIdAndRole.init(this.testArgs.courseMembership);",,
+courseMembershipInsertRecordById,CourseMembership,Insert,ById,Record,Record,insertRecordById,CourseMembershipDetails,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",InsertRecordById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""InsertRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public CourseMembershipDetails courseMembershipInsertRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertRecordById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""InsertRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipInsertRecordById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipInsertRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipInsertRecordById courseMembershipInsertRecordById;,,,"courseMembershipInsertRecordById = new _courseMembershipInsertRecordById();
+courseMembershipInsertRecordById.init(this.testArgs.courseMembership);",,
+courseMembershipUpdateRecordById,CourseMembership,Update,ById,Record,Record,updateRecordById,CourseMembershipDetails,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",UpdateRecordById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""UpdateRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public CourseMembershipDetails courseMembershipUpdateRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateRecordById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""UpdateRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipUpdateRecordById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipUpdateRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipUpdateRecordById courseMembershipUpdateRecordById;,,,"courseMembershipUpdateRecordById = new _courseMembershipUpdateRecordById();
+courseMembershipUpdateRecordById.init(this.testArgs.courseMembership);",,
+courseMembershipPersistRecordById,CourseMembership,Persist,ById,Record,Record,persistRecordById,CourseMembershipDetails,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",PersistRecordById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""PersistRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public CourseMembershipDetails courseMembershipPersistRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistRecordById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""PersistRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipPersistRecordById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipPersistRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipPersistRecordById courseMembershipPersistRecordById;,,,"courseMembershipPersistRecordById = new _courseMembershipPersistRecordById();
+courseMembershipPersistRecordById.init(this.testArgs.courseMembership);",,
+courseMembershipDeleteRecordById,CourseMembership,Delete,ById,Record,Record,deleteRecordById,CourseMembershipDetails,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",DeleteRecordById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""DeleteRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public CourseMembershipDetails courseMembershipDeleteRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteRecordById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""DeleteRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipDeleteRecordById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipDeleteRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipDeleteRecordById courseMembershipDeleteRecordById;,,,"courseMembershipDeleteRecordById = new _courseMembershipDeleteRecordById();
+courseMembershipDeleteRecordById.init(this.testArgs.courseMembership);",,
+courseMembershipInsertListById,CourseMembership,Insert,ById,List,List,insertListById,List<CourseMembershipDetails>,inputList,"@WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList",InsertListById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""InsertListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipInsertListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertListById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""InsertListById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _courseMembershipInsertListById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipInsertListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipInsertListById courseMembershipInsertListById;,,,"courseMembershipInsertListById = new _courseMembershipInsertListById();
+courseMembershipInsertListById.init(this.testArgs.courseMembership);",,
+courseMembershipUpdateListById,CourseMembership,Update,ById,List,List,updateListById,List<CourseMembershipDetails>,inputList,"@WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList",UpdateListById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""UpdateListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipUpdateListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateListById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""UpdateListById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _courseMembershipUpdateListById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipUpdateListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipUpdateListById courseMembershipUpdateListById;,,,"courseMembershipUpdateListById = new _courseMembershipUpdateListById();
+courseMembershipUpdateListById.init(this.testArgs.courseMembership);",,
+courseMembershipPersistListById,CourseMembership,Persist,ById,List,List,persistListById,List<CourseMembershipDetails>,inputList,"@WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList",PersistListById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""PersistListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipPersistListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistListById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""PersistListById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _courseMembershipPersistListById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipPersistListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipPersistListById courseMembershipPersistListById;,,,"courseMembershipPersistListById = new _courseMembershipPersistListById();
+courseMembershipPersistListById.init(this.testArgs.courseMembership);",,
+courseMembershipDeleteListById,CourseMembership,Delete,ById,List,List,deleteListById,List<CourseMembershipDetails>,inputList,"@WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList",DeleteListById,_DATA,CourseMembershipAccessPack.CourseMembershipArguments_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""DeleteListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipDeleteListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteListById()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputList,
+                    CourseMembershipAccessPack.class.getName(), ""DeleteListById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _courseMembershipDeleteListById : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipDeleteListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipDeleteListById courseMembershipDeleteListById;,,,"courseMembershipDeleteListById = new _courseMembershipDeleteListById();
+courseMembershipDeleteListById.init(this.testArgs.courseMembership);",,
+courseMembershipLoadRecordByCourseAndUserBatchId,CourseMembership,Load,ByCourseAndUserBatchId,Record,Record,loadRecordByCourseAndUserBatchId,CourseMembershipDetails,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadRecordByCourseAndUserBatchId,_ADMIN_DATA,CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadRecordByCourseAndUserBatchId"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public CourseMembershipDetails courseMembershipLoadRecordByCourseAndUserBatchId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordByCourseAndUserBatchId()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadRecordByCourseAndUserBatchId"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipLoadRecordByCourseAndUserBatchId : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipLoadRecordByCourseAndUserBatchId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadRecordByCourseAndUserBatchId courseMembershipLoadRecordByCourseAndUserBatchId;,,,"courseMembershipLoadRecordByCourseAndUserBatchId = new _courseMembershipLoadRecordByCourseAndUserBatchId();
+courseMembershipLoadRecordByCourseAndUserBatchId.init(this.testArgs.courseMembership);",,
+courseMembershipLoadListByTemplate,CourseMembership,Load,ByTemplate,List,Record,loadListByTemplate,List<CourseMembershipDetails>,inputRecord,"@WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord",LoadListByTemplate,_ADMIN_DATA,CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByTemplate"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<CourseMembershipDetails> courseMembershipLoadListByTemplate
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByTemplate()"", this);
+        CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA args
+                = new CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA();
+        args.initialize(CourseMembershipDetails.class, params, inputRecord,
+                    CourseMembershipAccessPack.class.getName(), ""LoadListByTemplate"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _courseMembershipLoadListByTemplate : _courseMembershipTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.courseMembershipLoadListByTemplate(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByTemplate courseMembershipLoadListByTemplate;,,},"courseMembershipLoadListByTemplate = new _courseMembershipLoadListByTemplate();
+courseMembershipLoadListByTemplate.init(this.testArgs.courseMembership);",,"
+}
+        public void init(TestArgsStruct testArgs) {
+            base.init(testArgs);
+"
+userLoadRecordByBatchUid,User,Load,ByBatchUid,Record,Record,loadRecordByBatchUid,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadRecordByBatchUid,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadRecordByBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userLoadRecordByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordByBatchUid()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadRecordByBatchUid"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String batch_uid = args.wsResultRecord.batchUid;
+            ClearInputs();
+            args.wsInputRecord.batchUid = batch_uid;
+        }
+","    class _userLoadRecordByBatchUid : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String batch_uid = args.wsResultRecord.batchUid;
+            ClearInputs();
+            args.wsInputRecord.batchUid = batch_uid;
+        }
+    }
+",,,public _userLoadRecordByBatchUid userLoadRecordByBatchUid;,,"class _userTestCase : TestCase<bbws.userDetails>, ITestAction { }        class _userTestArgs : TestArgs<bbws.userDetails> {
+        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+            return wsResultRecord.bbWsDataLog;
+        }
+","userLoadRecordByBatchUid = new _userLoadRecordByBatchUid();
+userLoadRecordByBatchUid.init(this.testArgs.user);",,
+userLoadListByTemplate,User,Load,ByTemplate,List,Record,loadListByTemplate,List<UserDetails>,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadListByTemplate,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByTemplate"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListByTemplate
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByTemplate()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByTemplate"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+        }
+","    class _userLoadListByTemplate : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListByTemplate(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+        }
+    }
+",,,public _userLoadListByTemplate userLoadListByTemplate;,,,"userLoadListByTemplate = new _userLoadListByTemplate();
+userLoadListByTemplate.init(this.testArgs.user);",,
+userInsertRecordByBatchUid,User,Insert,ByBatchUid,Record,Record,insertRecordByBatchUid,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",InsertRecordByBatchUid,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""InsertRecordByBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userInsertRecordByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertRecordByBatchUid()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""InsertRecordByBatchUid"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            args.wsInputRecord = args.wsResultRecord;
+            args.wsInputRecord.batchUid += args.testKeySuffix_01;
+            args.wsInputRecord.userName += args.testKeySuffix_01;
+            args.wsInputRecord.familyName += args.testKeySuffix_01;
+            args.wsInputRecord.emailAddress += args.testKeySuffix_01;
+        }
+","    class _userInsertRecordByBatchUid : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userInsertRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            args.wsInputRecord = args.wsResultRecord;
+            args.wsInputRecord.batchUid += args.testKeySuffix_01;
+            args.wsInputRecord.userName += args.testKeySuffix_01;
+            args.wsInputRecord.familyName += args.testKeySuffix_01;
+            args.wsInputRecord.emailAddress += args.testKeySuffix_01;
+        }
+    }
+",,,public _userInsertRecordByBatchUid userInsertRecordByBatchUid;,,,"userInsertRecordByBatchUid = new _userInsertRecordByBatchUid();
+userInsertRecordByBatchUid.init(this.testArgs.user);",,
+userUpdateRecordByBatchUid,User,Update,ByBatchUid,Record,Record,updateRecordByBatchUid,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",UpdateRecordByBatchUid,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""UpdateRecordByBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userUpdateRecordByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateRecordByBatchUid()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""UpdateRecordByBatchUid"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _userUpdateRecordByBatchUid : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userUpdateRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userUpdateRecordByBatchUid userUpdateRecordByBatchUid;,,,"userUpdateRecordByBatchUid = new _userUpdateRecordByBatchUid();
+userUpdateRecordByBatchUid.init(this.testArgs.user);",,
+userPersistRecordByBatchUid,User,Persist,ByBatchUid,Record,Record,persistRecordByBatchUid,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",PersistRecordByBatchUid,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""PersistRecordByBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userPersistRecordByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistRecordByBatchUid()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""PersistRecordByBatchUid"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,"
+ /*@WebMethod
+ public UserDetails saveUserRecordByBatchUid
+                    (@WebParam(name = ""params"") BbWsParams params,
+                        @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+ {
+            BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered saveRecordByBatchUid()"", this);
+            //UserAccessPack.UserArguments_RecInp_BooRes args = new UserAccessPack.UserArguments_RecInp_BooRes();
+            //UserAccessPack.UserArguments args = new UserAccessPack.UserArguments();
+            //args.initialize(UserDetails.class, params, ""persistUserByUserIdWithParams"", ""PersistRecInp"", ""start"");
+            UserAccessPack.UserArguments_ADMIN_DATA args
+                    = new UserAccessPack.UserArguments_ADMIN_DATA();
+            args.initialize(UserDetails.class, params, inputRecord, UserAccessPack.class.getName(), ""SaveRecordByBatchUid"");
+            UserApiProcessor.start(args);
+            return args.getResultRecord();
+ }*/
+",,args.wsResultRecord,args.wsInputRecord,,"    class _userPersistRecordByBatchUid : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userPersistRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userPersistRecordByBatchUid userPersistRecordByBatchUid;,,,"userPersistRecordByBatchUid = new _userPersistRecordByBatchUid();
+userPersistRecordByBatchUid.init(this.testArgs.user);",,
+userDeleteRecordByBatchUid,User,Delete,ByBatchUid,Record,Record,deleteRecordByBatchUid,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",DeleteRecordByBatchUid,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""DeleteRecordByBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userDeleteRecordByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteRecordByBatchUid()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""DeleteRecordByBatchUid"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _userDeleteRecordByBatchUid : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userDeleteRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userDeleteRecordByBatchUid userDeleteRecordByBatchUid;,,,"userDeleteRecordByBatchUid = new _userDeleteRecordByBatchUid();
+userDeleteRecordByBatchUid.init(this.testArgs.user);",,
+userPersistListByBatchUid,User,Persist,ByBatchUid,List,List,persistListByBatchUid,List<UserDetails>,inputList,"@WebParam(name = ""inputList"") List<UserDetails> inputList",PersistListByBatchUid,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""PersistListByBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userPersistListByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistListByBatchUid()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""PersistListByBatchUid"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _userPersistListByBatchUid : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userPersistListByBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userPersistListByBatchUid userPersistListByBatchUid;,,,"userPersistListByBatchUid = new _userPersistListByBatchUid();
+userPersistListByBatchUid.init(this.testArgs.user);",,
+userDeleteListByBatchUid,User,Delete,ByBatchUid,List,List,deleteListByBatchUid,List<UserDetails>,inputList,"@WebParam(name = ""inputList"") List<UserDetails> inputList",DeleteListByBatchUid,_ADMIN_DATA,UserAccessPack.UserArguments_ADMIN_DATA,UserApiProcessor,        UserApiProcessor.start(args);,"                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""DeleteListByBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userDeleteListByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteListByBatchUid()"", this);
+        UserAccessPack.UserArguments_ADMIN_DATA args
+                = new UserAccessPack.UserArguments_ADMIN_DATA();
+        args.initialize(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""DeleteListByBatchUid"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,"
+// *************************** UserAccessPack_DATA Id and various load methods ************************************",,args.wsResultArray,args.wsInputList.ToArray(),,"    class _userDeleteListByBatchUid : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userDeleteListByBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userDeleteListByBatchUid userDeleteListByBatchUid;,,,"userDeleteListByBatchUid = new _userDeleteListByBatchUid();
+userDeleteListByBatchUid.init(this.testArgs.user);",,
+userLoadRecordById,User,Load,ById,Record,Record,loadRecordById,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadRecordById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userLoadRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadRecordById"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String id = args.wsResultRecord.id;
+            ClearInputs();
+            args.wsInputRecord.id = id;
+        }
+","    class _userLoadRecordById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userLoadRecordById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String id = args.wsResultRecord.id;
+            ClearInputs();
+            args.wsInputRecord.id = id;
+        }
+    }
+",,,public _userLoadRecordById userLoadRecordById;,,,"userLoadRecordById = new _userLoadRecordById();
+userLoadRecordById.init(this.testArgs.user);",,
+userLoadRecordByName,User,Load,ByName,Record,Record,loadRecordByName,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadRecordByName,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadRecordByName"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userLoadRecordByName
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordByName()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadRecordByName"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _userLoadRecordByName : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userLoadRecordByName(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _userLoadRecordByName userLoadRecordByName;,,,"userLoadRecordByName = new _userLoadRecordByName();
+userLoadRecordByName.init(this.testArgs.user);",,
+userInsertRecordById,User,Insert,ById,Record,Record,insertRecordById,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",InsertRecordById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""InsertRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userInsertRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertRecordById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""InsertRecordById"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _userInsertRecordById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userInsertRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userInsertRecordById userInsertRecordById;,,,"userInsertRecordById = new _userInsertRecordById();
+userInsertRecordById.init(this.testArgs.user);",,
+userUpdateRecordById,User,Update,ById,Record,Record,updateRecordById,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",UpdateRecordById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""UpdateRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userUpdateRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateRecordById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""UpdateRecordById"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _userUpdateRecordById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userUpdateRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userUpdateRecordById userUpdateRecordById;,,,"userUpdateRecordById = new _userUpdateRecordById();
+userUpdateRecordById.init(this.testArgs.user);",,
+userPersistRecordById,User,Persist,ById,Record,Record,persistRecordById,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",PersistRecordById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""PersistRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userPersistRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistRecordById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""PersistRecordById"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _userPersistRecordById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userPersistRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userPersistRecordById userPersistRecordById;,,,"userPersistRecordById = new _userPersistRecordById();
+userPersistRecordById.init(this.testArgs.user);",,
+userDeleteRecordById,User,Delete,ById,Record,Record,deleteRecordById,UserDetails,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",DeleteRecordById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""DeleteRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public UserDetails userDeleteRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteRecordById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""DeleteRecordById"");
+        UserApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,,"    class _userDeleteRecordById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userDeleteRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userDeleteRecordById userDeleteRecordById;,,,"userDeleteRecordById = new _userDeleteRecordById();
+userDeleteRecordById.init(this.testArgs.user);",,
+userLoadListById,User,Load,ById,List,List,loadListById,List<UserDetails>,inputList,"@WebParam(name = ""inputList"") List<UserDetails> inputList",LoadListById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""LoadListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""LoadListById"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _userLoadListById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userLoadListById userLoadListById;,,,"userLoadListById = new _userLoadListById();
+userLoadListById.init(this.testArgs.user);",,
+userInsertListById,User,Insert,ById,List,List,insertListById,List<UserDetails>,inputList,"@WebParam(name = ""inputList"") List<UserDetails> inputList",InsertListById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""InsertListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userInsertListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertListById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""InsertListById"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _userInsertListById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userInsertListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userInsertListById userInsertListById;,,,"userInsertListById = new _userInsertListById();
+userInsertListById.init(this.testArgs.user);",,
+userUpdateListById,User,Update,ById,List,List,updateListById,List<UserDetails>,inputList,"@WebParam(name = ""inputList"") List<UserDetails> inputList",UpdateListById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""UpdateListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userUpdateListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateListById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""UpdateListById"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _userUpdateListById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userUpdateListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userUpdateListById userUpdateListById;,,,"userUpdateListById = new _userUpdateListById();
+userUpdateListById.init(this.testArgs.user);",,
+userPersistListById,User,Persist,ById,List,List,persistListById,List<UserDetails>,inputList,"@WebParam(name = ""inputList"") List<UserDetails> inputList",PersistListById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""PersistListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userPersistListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistListById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""PersistListById"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _userPersistListById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userPersistListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userPersistListById userPersistListById;,,,"userPersistListById = new _userPersistListById();
+userPersistListById.init(this.testArgs.user);",,
+userDeleteListById,User,Delete,ById,List,List,deleteListById,List<UserDetails>,inputList,"@WebParam(name = ""inputList"") List<UserDetails> inputList",DeleteListById,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""DeleteListById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userDeleteListById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<UserDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteListById()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
+                    UserAccessPack.class.getName(), ""DeleteListById"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputList.ToArray(),,"    class _userDeleteListById : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userDeleteListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userDeleteListById userDeleteListById;,,,"userDeleteListById = new _userDeleteListById();
+userDeleteListById.init(this.testArgs.user);",,
+userLoadListByEmailAddressFamilyNameGivenName,User,Load,ByEmailAddressFamilyNameGivenName,List,Record,loadListByEmailAddressFamilyNameGivenName,List<UserDetails>,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadListByEmailAddressFamilyNameGivenName,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByEmailAddressFamilyNameGivenName"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListByEmailAddressFamilyNameGivenName
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByEmailAddressFamilyNameGivenName()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByEmailAddressFamilyNameGivenName"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _userLoadListByEmailAddressFamilyNameGivenName : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListByEmailAddressFamilyNameGivenName(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByEmailAddressFamilyNameGivenName userLoadListByEmailAddressFamilyNameGivenName;,,,"userLoadListByEmailAddressFamilyNameGivenName = new _userLoadListByEmailAddressFamilyNameGivenName();
+userLoadListByEmailAddressFamilyNameGivenName.init(this.testArgs.user);",,
+userLoadListBySearchByUserName,User,Load,BySearchByUserName,List,Record,loadListBySearchByUserName,List<UserDetails>,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadListBySearchByUserName,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListBySearchByUserName"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListBySearchByUserName
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListBySearchByUserName()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListBySearchByUserName"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _userLoadListBySearchByUserName : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListBySearchByUserName(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListBySearchByUserName userLoadListBySearchByUserName;,,,"userLoadListBySearchByUserName = new _userLoadListBySearchByUserName();
+userLoadListBySearchByUserName.init(this.testArgs.user);",,
+userLoadListObservedByObserverId,User,Load,ObservedByObserverId,List,Record,loadListObservedByObserverId,List<UserDetails>,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadListObservedByObserverId,WithUserInput,UserAccessPack.UserArgumentsWithUserInput,UserApiProcessor,        UserApiProcessor.start(args);,"                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListObservedByObserverId"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListObservedByObserverId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListObservedByObserverId()"", this);
+        UserAccessPack.UserArgumentsWithUserInput args
+                = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListObservedByObserverId"");
+        UserApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _userLoadListObservedByObserverId : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListObservedByObserverId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListObservedByObserverId userLoadListObservedByObserverId;,,,"userLoadListObservedByObserverId = new _userLoadListObservedByObserverId();
+userLoadListObservedByObserverId.init(this.testArgs.user);",,
+userLoadListByCourseId,User,Load,ByCourseId,List,Record,loadListByCourseId,List<UserDetails>,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadListByCourseId,WithUserAndCourseInput,UserAccessPack.UserArgumentsWithUserAndCourseInput,UserApiProcessor,"            BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndCourseInput> api_proc
+                = new BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndCourseInput>();
+            api_proc.initialize(args);
+            api_proc.run();
+","                = new UserAccessPack.UserArgumentsWithUserAndCourseInput();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByCourseId"");
+        args.setInputCourseRecord(inputCourseRecord);",Course,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord,
+                    @WebParam(name = ""inputCourseRecord"") bbcrsws.CourseDetails inputCourseRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListByCourseId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord,
+                    @WebParam(name = ""inputCourseRecord"") bbcrsws.CourseDetails inputCourseRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByCourseId()"", this);
+        UserAccessPack.UserArgumentsWithUserAndCourseInput args
+                = new UserAccessPack.UserArgumentsWithUserAndCourseInput();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByCourseId"");
+        args.setInputCourseRecord(inputCourseRecord);
+            BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndCourseInput> api_proc
+                = new BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndCourseInput>();
+            api_proc.initialize(args);
+            api_proc.run();
+
+        return args.getResultList();
+    }",,,,args.wsResultArray,"args.wsInputRecord, args.testArgs.course.wsInputRecord",,"    class _userLoadListByCourseId : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListByCourseId(args.param, args.wsInputRecord, args.testArgs.course.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByCourseId userLoadListByCourseId;,,,"userLoadListByCourseId = new _userLoadListByCourseId();
+userLoadListByCourseId.init(this.testArgs.user);",,
+userLoadListByGroupId,User,Load,ByGroupId,List,Record,loadListByGroupId,List<UserDetails>,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadListByGroupId,WithUserAndGroupInput,UserAccessPack.UserArgumentsWithUserAndGroupInput,UserApiProcessor,"            BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndGroupInput> api_proc
+                = new BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndGroupInput>();
+            api_proc.initialize(args);
+            api_proc.run();
+","                = new UserAccessPack.UserArgumentsWithUserAndGroupInput();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByGroupId"");
+        args.setInputGroupRecord(inputGroupRecord);",Group,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord,
+                    @WebParam(name = ""inputGroupRecord"") bbgrpws.GroupDetails inputGroupRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListByGroupId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord,
+                    @WebParam(name = ""inputGroupRecord"") bbgrpws.GroupDetails inputGroupRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByGroupId()"", this);
+        UserAccessPack.UserArgumentsWithUserAndGroupInput args
+                = new UserAccessPack.UserArgumentsWithUserAndGroupInput();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByGroupId"");
+        args.setInputGroupRecord(inputGroupRecord);
+            BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndGroupInput> api_proc
+                = new BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndGroupInput>();
+            api_proc.initialize(args);
+            api_proc.run();
+
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _userLoadListByGroupId : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListByGroupId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByGroupId userLoadListByGroupId;,,,"userLoadListByGroupId = new _userLoadListByGroupId();
+userLoadListByGroupId.init(this.testArgs.user);",,
+userLoadListByPrimaryPortalRoleId,User,Load,ByPrimaryPortalRoleId,List,Record,loadListByPrimaryPortalRoleId,List<UserDetails>,inputRecord,"@WebParam(name = ""inputRecord"") UserDetails inputRecord",LoadListByPrimaryPortalRoleId,WithUserAndRoleInput,UserAccessPack.UserArgumentsWithUserAndRoleInput,UserApiProcessor,"            BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndRoleInput> api_proc
+                = new BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndRoleInput>();
+            api_proc.initialize(args);
+            api_proc.run();
+","                = new UserAccessPack.UserArgumentsWithUserAndRoleInput();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByPrimaryPortalRoleId"");
+        args.setInputRoleRecord(inputRoleRecord);",Role,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord,
+                    @WebParam(name = ""inputRoleRecord"") bbuws.RoleDetails inputRoleRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<UserDetails> userLoadListByPrimaryPortalRoleId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") UserDetails inputRecord,
+                    @WebParam(name = ""inputRoleRecord"") bbuws.RoleDetails inputRoleRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByPrimaryPortalRoleId()"", this);
+        UserAccessPack.UserArgumentsWithUserAndRoleInput args
+                = new UserAccessPack.UserArgumentsWithUserAndRoleInput();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), ""LoadListByPrimaryPortalRoleId"");
+        args.setInputRoleRecord(inputRoleRecord);
+            BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndRoleInput> api_proc
+                = new BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndRoleInput>();
+            api_proc.initialize(args);
+            api_proc.run();
+
+        return args.getResultList();
+    }",,,,args.wsResultArray,args.wsInputRecord,,"    class _userLoadListByPrimaryPortalRoleId : _userTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultArray = args.bbWs.userLoadListByPrimaryPortalRoleId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByPrimaryPortalRoleId userLoadListByPrimaryPortalRoleId;,,},"userLoadListByPrimaryPortalRoleId = new _userLoadListByPrimaryPortalRoleId();
+userLoadListByPrimaryPortalRoleId.init(this.testArgs.user);",,}
+portalRoleLoadRecordById,PortalRole,Load,ById,Record,Record,loadRecordById,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadRecordById,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleLoadRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordById()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String id = args.wsResultRecord.id;
+            ClearInputs();
+            args.wsInputRecord.id = id;
+        }
+","    class _portalRoleLoadRecordById : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String id = args.wsResultRecord.id;
+            ClearInputs();
+            args.wsInputRecord.id = id;
+        }
+    }
+",,,public _portalRoleLoadRecordById portalRoleLoadRecordById;,,,"portalRoleLoadRecordById = new _portalRoleLoadRecordById();
+portalRoleLoadRecordById.init(this.testArgs.portalRole);",,
+portalRoleLoadRecordByRoleId,PortalRole,Load,ByRoleId,Record,Record,loadRecordByRoleId,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadRecordByRoleId,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordByRoleId"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleLoadRecordByRoleId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordByRoleId()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordByRoleId"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadRecordByRoleId : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordByRoleId(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadRecordByRoleId portalRoleLoadRecordByRoleId;,,,"portalRoleLoadRecordByRoleId = new _portalRoleLoadRecordByRoleId();
+portalRoleLoadRecordByRoleId.init(this.testArgs.portalRole);",,
+portalRoleLoadRecordByRoleName,PortalRole,Load,ByRoleName,Record,Record,loadRecordByRoleName,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadRecordByRoleName,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordByRoleName"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleLoadRecordByRoleName
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordByRoleName()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordByRoleName"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadRecordByRoleName : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordByRoleName(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadRecordByRoleName portalRoleLoadRecordByRoleName;,,,"portalRoleLoadRecordByRoleName = new _portalRoleLoadRecordByRoleName();
+portalRoleLoadRecordByRoleName.init(this.testArgs.portalRole);",,
+portalRoleLoadRecordDefault,PortalRole,Load,Default,Record,Record,loadRecordDefault,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadRecordDefault,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordDefault"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleLoadRecordDefault
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordDefault()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordDefault"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadRecordDefault : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordDefault(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadRecordDefault portalRoleLoadRecordDefault;,,,"portalRoleLoadRecordDefault = new _portalRoleLoadRecordDefault();
+portalRoleLoadRecordDefault.init(this.testArgs.portalRole);",,
+portalRoleLoadListRemovable,PortalRole,Load,Removable,List,Record,loadListRemovable,List<PortalRoleDetails>,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadListRemovable,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListRemovable"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<PortalRoleDetails> portalRoleLoadListRemovable
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListRemovable()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListRemovable"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadListRemovable : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListRemovable(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadListRemovable portalRoleLoadListRemovable;,,,"portalRoleLoadListRemovable = new _portalRoleLoadListRemovable();
+portalRoleLoadListRemovable.init(this.testArgs.portalRole);"
+portalRoleLoadListAll,PortalRole,Load,All,List,Record,loadListAll,List<PortalRoleDetails>,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadListAll,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListAll"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<PortalRoleDetails> portalRoleLoadListAll
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListAll()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListAll"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadListAll : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListAll(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadListAll portalRoleLoadListAll;,,,"portalRoleLoadListAll = new _portalRoleLoadListAll();
+portalRoleLoadListAll.init(this.testArgs.portalRole);"
+portalRoleLoadListAvailable,PortalRole,Load,Available,List,Record,loadListAvailable,List<PortalRoleDetails>,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadListAvailable,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListAvailable"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<PortalRoleDetails> portalRoleLoadListAvailable
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListAvailable()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListAvailable"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadListAvailable : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListAvailable(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadListAvailable portalRoleLoadListAvailable;,,,"portalRoleLoadListAvailable = new _portalRoleLoadListAvailable();
+portalRoleLoadListAvailable.init(this.testArgs.portalRole);"
+portalRoleLoadRecordPrimaryRoleByUserId,PortalRole,Load,PrimaryRoleByUserId,Record,Record,loadRecordPrimaryRoleByUserId,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadRecordPrimaryRoleByUserId,WithUserInput,PortalRoleAccessPack.PortalRoleArgumentsWithUserInput,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordPrimaryRoleByUserId"");
+        args.setInputUserRecord(inputUserRecord);",User,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord,
+                    @WebParam(name = ""inputUserRecord"") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleLoadRecordPrimaryRoleByUserId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord,
+                    @WebParam(name = ""inputUserRecord"") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordPrimaryRoleByUserId()"", this);
+        PortalRoleAccessPack.PortalRoleArgumentsWithUserInput args
+                = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadRecordPrimaryRoleByUserId"");
+        args.setInputUserRecord(inputUserRecord);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadRecordPrimaryRoleByUserId : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordPrimaryRoleByUserId(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadRecordPrimaryRoleByUserId portalRoleLoadRecordPrimaryRoleByUserId;,,,"portalRoleLoadRecordPrimaryRoleByUserId = new _portalRoleLoadRecordPrimaryRoleByUserId();
+portalRoleLoadRecordPrimaryRoleByUserId.init(this.testArgs.portalRole);"
+portalRoleLoadListAllByUserId,PortalRole,Load,AllByUserId,List,Record,loadListAllByUserId,List<PortalRoleDetails>,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadListAllByUserId,WithUserInput,PortalRoleAccessPack.PortalRoleArgumentsWithUserInput,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListAllByUserId"");
+        args.setInputUserRecord(inputUserRecord);",User,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord,
+                    @WebParam(name = ""inputUserRecord"") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<PortalRoleDetails> portalRoleLoadListAllByUserId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord,
+                    @WebParam(name = ""inputUserRecord"") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListAllByUserId()"", this);
+        PortalRoleAccessPack.PortalRoleArgumentsWithUserInput args
+                = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListAllByUserId"");
+        args.setInputUserRecord(inputUserRecord);
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadListAllByUserId : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListAllByUserId(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadListAllByUserId portalRoleLoadListAllByUserId;,,,"portalRoleLoadListAllByUserId = new _portalRoleLoadListAllByUserId();
+portalRoleLoadListAllByUserId.init(this.testArgs.portalRole);"
+portalRoleLoadListSecondaryRolesByUserId,PortalRole,Load,SecondaryRolesByUserId,List,Record,loadListSecondaryRolesByUserId,List<PortalRoleDetails>,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",LoadListSecondaryRolesByUserId,WithUserInput,PortalRoleAccessPack.PortalRoleArgumentsWithUserInput,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListSecondaryRolesByUserId"");
+        args.setInputUserRecord(inputUserRecord);",User,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord,
+                    @WebParam(name = ""inputUserRecord"") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<PortalRoleDetails> portalRoleLoadListSecondaryRolesByUserId
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord,
+                    @WebParam(name = ""inputUserRecord"") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListSecondaryRolesByUserId()"", this);
+        PortalRoleAccessPack.PortalRoleArgumentsWithUserInput args
+                = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""LoadListSecondaryRolesByUserId"");
+        args.setInputUserRecord(inputUserRecord);
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleLoadListSecondaryRolesByUserId : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListSecondaryRolesByUserId(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleLoadListSecondaryRolesByUserId portalRoleLoadListSecondaryRolesByUserId;,,,"portalRoleLoadListSecondaryRolesByUserId = new _portalRoleLoadListSecondaryRolesByUserId();
+portalRoleLoadListSecondaryRolesByUserId.init(this.testArgs.portalRole);"
+portalRoleInsertRecordById,PortalRole,Insert,ById,Record,Record,insertRecordById,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",InsertRecordById,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""InsertRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleInsertRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertRecordById()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""InsertRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleInsertRecordById : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleInsertRecordById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleInsertRecordById portalRoleInsertRecordById;,,,"portalRoleInsertRecordById = new _portalRoleInsertRecordById();
+portalRoleInsertRecordById.init(this.testArgs.portalRole);"
+portalRoleUpdateRecordById,PortalRole,Update,ById,Record,Record,updateRecordById,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",UpdateRecordById,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""UpdateRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleUpdateRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateRecordById()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""UpdateRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleUpdateRecordById : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleUpdateRecordById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleUpdateRecordById portalRoleUpdateRecordById;,,,"portalRoleUpdateRecordById = new _portalRoleUpdateRecordById();
+portalRoleUpdateRecordById.init(this.testArgs.portalRole);"
+portalRolePersistRecordById,PortalRole,Persist,ById,Record,Record,persistRecordById,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",PersistRecordById,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""PersistRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRolePersistRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistRecordById()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""PersistRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRolePersistRecordById : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRolePersistRecordById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRolePersistRecordById portalRolePersistRecordById;,,,"portalRolePersistRecordById = new _portalRolePersistRecordById();
+portalRolePersistRecordById.init(this.testArgs.portalRole);"
+portalRoleDeleteRecordById,PortalRole,Delete,ById,Record,Record,deleteRecordById,PortalRoleDetails,inputRecord,"@WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord",DeleteRecordById,,PortalRoleAccessPack.PortalRoleArguments,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""DeleteRecordById"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public PortalRoleDetails portalRoleDeleteRecordById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteRecordById()"", this);
+        PortalRoleAccessPack.PortalRoleArguments args
+                = new PortalRoleAccessPack.PortalRoleArguments();
+        args.initialize(PortalRoleDetails.class, params, inputRecord,
+                    PortalRoleAccessPack.class.getName(), ""DeleteRecordById"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _portalRoleDeleteRecordById : _portalRoleTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleDeleteRecordById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _portalRoleDeleteRecordById portalRoleDeleteRecordById;,,,"portalRoleDeleteRecordById = new _portalRoleDeleteRecordById();
+portalRoleDeleteRecordById.init(this.testArgs.portalRole);"
+observerAssociationLoadListByTemplate,ObserverAssociation,Load,ByTemplate,List,Record,loadListByTemplate,List<ObserverAssociationDetails>,inputRecord,"@WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord",LoadListByTemplate,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""LoadListByTemplate"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<ObserverAssociationDetails> observerAssociationLoadListByTemplate
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByTemplate()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""LoadListByTemplate"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationLoadListByTemplate : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationLoadListByTemplate(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationLoadListByTemplate observerAssociationLoadListByTemplate;,,,"observerAssociationLoadListByTemplate = new _observerAssociationLoadListByTemplate();
+observerAssociationLoadListByTemplate.init(this.testArgs.observerAssociation);"
+observerAssociationLoadRecordByObserverAndUsersBatchUid,ObserverAssociation,Load,ByObserverAndUsersBatchUid,Record,Record,loadRecordByObserverAndUsersBatchUid,ObserverAssociationDetails,inputRecord,"@WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord",LoadRecordByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""LoadRecordByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public ObserverAssociationDetails observerAssociationLoadRecordByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadRecordByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""LoadRecordByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationLoadRecordByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationLoadRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationLoadRecordByObserverAndUsersBatchUid observerAssociationLoadRecordByObserverAndUsersBatchUid;,,,"observerAssociationLoadRecordByObserverAndUsersBatchUid = new _observerAssociationLoadRecordByObserverAndUsersBatchUid();
+observerAssociationLoadRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationInsertRecordByObserverAndUsersBatchUid,ObserverAssociation,Insert,ByObserverAndUsersBatchUid,Record,Record,insertRecordByObserverAndUsersBatchUid,ObserverAssociationDetails,inputRecord,"@WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord",InsertRecordByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""InsertRecordByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public ObserverAssociationDetails observerAssociationInsertRecordByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertRecordByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""InsertRecordByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationInsertRecordByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationInsertRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationInsertRecordByObserverAndUsersBatchUid observerAssociationInsertRecordByObserverAndUsersBatchUid;,,,"observerAssociationInsertRecordByObserverAndUsersBatchUid = new _observerAssociationInsertRecordByObserverAndUsersBatchUid();
+observerAssociationInsertRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationDeleteRecordByObserverAndUsersBatchUid,ObserverAssociation,Delete,ByObserverAndUsersBatchUid,Record,Record,deleteRecordByObserverAndUsersBatchUid,ObserverAssociationDetails,inputRecord,"@WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord",DeleteRecordByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""DeleteRecordByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public ObserverAssociationDetails observerAssociationDeleteRecordByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteRecordByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""DeleteRecordByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationDeleteRecordByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationDeleteRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationDeleteRecordByObserverAndUsersBatchUid observerAssociationDeleteRecordByObserverAndUsersBatchUid;,,,"observerAssociationDeleteRecordByObserverAndUsersBatchUid = new _observerAssociationDeleteRecordByObserverAndUsersBatchUid();
+observerAssociationDeleteRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationLoadListByObserverAndUsersBatchUid,ObserverAssociation,Load,ByObserverAndUsersBatchUid,List,List,loadListByObserverAndUsersBatchUid,List<ObserverAssociationDetails>,inputList,"@WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList",LoadListByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""LoadListByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<ObserverAssociationDetails> observerAssociationLoadListByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered loadListByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""LoadListByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputList,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationLoadListByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationLoadListByObserverAndUsersBatchUid(args.param, args.wsInputList);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationLoadListByObserverAndUsersBatchUid observerAssociationLoadListByObserverAndUsersBatchUid;,,,"observerAssociationLoadListByObserverAndUsersBatchUid = new _observerAssociationLoadListByObserverAndUsersBatchUid();
+observerAssociationLoadListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationInsertListByObserverAndUsersBatchUid,ObserverAssociation,Insert,ByObserverAndUsersBatchUid,List,List,insertListByObserverAndUsersBatchUid,List<ObserverAssociationDetails>,inputList,"@WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList",InsertListByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""InsertListByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<ObserverAssociationDetails> observerAssociationInsertListByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered insertListByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""InsertListByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputList,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationInsertListByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationInsertListByObserverAndUsersBatchUid(args.param, args.wsInputList);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationInsertListByObserverAndUsersBatchUid observerAssociationInsertListByObserverAndUsersBatchUid;,,,"observerAssociationInsertListByObserverAndUsersBatchUid = new _observerAssociationInsertListByObserverAndUsersBatchUid();
+observerAssociationInsertListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationDeleteListByObserverAndUsersBatchUid,ObserverAssociation,Delete,ByObserverAndUsersBatchUid,List,List,deleteListByObserverAndUsersBatchUid,List<ObserverAssociationDetails>,inputList,"@WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList",DeleteListByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""DeleteListByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<ObserverAssociationDetails> observerAssociationDeleteListByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered deleteListByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""DeleteListByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputList,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationDeleteListByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationDeleteListByObserverAndUsersBatchUid(args.param, args.wsInputList);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationDeleteListByObserverAndUsersBatchUid observerAssociationDeleteListByObserverAndUsersBatchUid;,,,"observerAssociationDeleteListByObserverAndUsersBatchUid = new _observerAssociationDeleteListByObserverAndUsersBatchUid();
+observerAssociationDeleteListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+observerAssociationUpdateRecordByObserverAndUsersBatchUid,ObserverAssociation,Update,ByObserverAndUsersBatchUid,Record,Record,updateRecordByObserverAndUsersBatchUid,ObserverAssociationDetails,inputRecord,"@WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord",UpdateRecordByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""UpdateRecordByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public ObserverAssociationDetails observerAssociationUpdateRecordByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateRecordByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""UpdateRecordByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationUpdateRecordByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationUpdateRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationUpdateRecordByObserverAndUsersBatchUid observerAssociationUpdateRecordByObserverAndUsersBatchUid;,,,"observerAssociationUpdateRecordByObserverAndUsersBatchUid = new _observerAssociationUpdateRecordByObserverAndUsersBatchUid();
+observerAssociationUpdateRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationPersistRecordByObserverAndUsersBatchUid,ObserverAssociation,Persist,ByObserverAndUsersBatchUid,Record,Record,persistRecordByObserverAndUsersBatchUid,ObserverAssociationDetails,inputRecord,"@WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord",PersistRecordByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""PersistRecordByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault","    @WebMethod
+    public ObserverAssociationDetails observerAssociationPersistRecordByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistRecordByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), ""PersistRecordByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationPersistRecordByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationPersistRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationPersistRecordByObserverAndUsersBatchUid observerAssociationPersistRecordByObserverAndUsersBatchUid;,,,"observerAssociationPersistRecordByObserverAndUsersBatchUid = new _observerAssociationPersistRecordByObserverAndUsersBatchUid();
+observerAssociationPersistRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationUpdateListByObserverAndUsersBatchUid,ObserverAssociation,Update,ByObserverAndUsersBatchUid,List,List,updateListByObserverAndUsersBatchUid,List<ObserverAssociationDetails>,inputList,"@WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList",UpdateListByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""UpdateListByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<ObserverAssociationDetails> observerAssociationUpdateListByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered updateListByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""UpdateListByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputList,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationUpdateListByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationUpdateListByObserverAndUsersBatchUid(args.param, args.wsInputList);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationUpdateListByObserverAndUsersBatchUid observerAssociationUpdateListByObserverAndUsersBatchUid;,,,"observerAssociationUpdateListByObserverAndUsersBatchUid = new _observerAssociationUpdateListByObserverAndUsersBatchUid();
+observerAssociationUpdateListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"
+observerAssociationPersistListByObserverAndUsersBatchUid,ObserverAssociation,Persist,ByObserverAndUsersBatchUid,List,List,persistListByObserverAndUsersBatchUid,List<ObserverAssociationDetails>,inputList,"@WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList",PersistListByObserverAndUsersBatchUid,_ADMIN_DATA,ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""PersistListByObserverAndUsersBatchUid"");",,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault","    @WebMethod
+    public List<ObserverAssociationDetails> observerAssociationPersistListByObserverAndUsersBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputList"") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered persistListByObserverAndUsersBatchUid()"", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), ""PersistListByObserverAndUsersBatchUid"");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }",,,,args.wsResultList,args.wsInputList,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _observerAssociationPersistListByObserverAndUsersBatchUid : _observerAssociationTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationPersistListByObserverAndUsersBatchUid(args.param, args.wsInputList);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,,public _observerAssociationPersistListByObserverAndUsersBatchUid observerAssociationPersistListByObserverAndUsersBatchUid;,,,"observerAssociationPersistListByObserverAndUsersBatchUid = new _observerAssociationPersistListByObserverAndUsersBatchUid();
+observerAssociationPersistListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);"

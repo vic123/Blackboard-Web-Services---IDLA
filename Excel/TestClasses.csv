@@ -1,0 +1,548 @@
+Record Method Name,Data Access Class,Lowered data access class,Test case specifics,Operation,BySuffix,Result Record/List,Input Record/List,Supplementary paramerer1,Output,InputParam,PreAction,Action Class declarations,,,Declarations,,"class _courseMembershipTestAction : TestAction<_courseMembershipTestArgs, bbws.courseMembershipDetails>, ITestAction { }        class _courseMembershipTestArgs : TestArgs<bbws.courseMembershipDetails> {
+        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+            return wsResultRecord.bbWsDataLog;
+        }
+",Init,,,,Execution
+"LOWER(LEFT(C3; 1)) & MID(C3; 2; 100) &B3 & E3 & D3
+LOWER(A3) & B3 & ""Record"" & C3
+LOWER(A3) & B3 & ""List"" & C3",,,,,,,,,,,,,,,,,"class _courseMembershipTestCase : TestCase<bbws.courseMembershipDetails>, ITestAction { }        class _courseMembershipTestArgs : TestArgs<bbws.courseMembershipDetails> {
+        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+            return wsResultRecord.bbWsDataLog;
+        }
+",,,"        public void init(TestArgsStruct testArgs) {
+            base.init(testArgs);
+",,
+courseMembershipLoadRecordById,CourseMembership,courseMembership,,Load,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipLoadRecordById : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipLoadRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadRecordById courseMembershipLoadRecordById;,,,"courseMembershipLoadRecordById = new _courseMembershipLoadRecordById();
+courseMembershipLoadRecordById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadRecordById.execute();
+courseMembershipLoadListById,CourseMembership,courseMembership,,Load,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _courseMembershipLoadListById : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipLoadListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipLoadListById courseMembershipLoadListById;,,,"courseMembershipLoadListById = new _courseMembershipLoadListById();
+courseMembershipLoadListById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadListById.execute();
+courseMembershipLoadRecordByCourseAndUserId,CourseMembership,courseMembership,,Load,ByCourseAndUserId,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipLoadRecordByCourseAndUserId : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipLoadRecordByCourseAndUserId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadRecordByCourseAndUserId courseMembershipLoadRecordByCourseAndUserId;,,,"courseMembershipLoadRecordByCourseAndUserId = new _courseMembershipLoadRecordByCourseAndUserId();
+courseMembershipLoadRecordByCourseAndUserId.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadRecordByCourseAndUserId.execute();
+courseMembershipLoadListByUserId,CourseMembership,courseMembership,,Load,ByUserId,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _courseMembershipLoadListByUserId : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipLoadListByUserId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByUserId courseMembershipLoadListByUserId;,,,"courseMembershipLoadListByUserId = new _courseMembershipLoadListByUserId();
+courseMembershipLoadListByUserId.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadListByUserId.execute();
+courseMembershipLoadListByCourseId,CourseMembership,courseMembership,,Load,ByCourseId,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _courseMembershipLoadListByCourseId : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipLoadListByCourseId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByCourseId courseMembershipLoadListByCourseId;,,,"courseMembershipLoadListByCourseId = new _courseMembershipLoadListByCourseId();
+courseMembershipLoadListByCourseId.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadListByCourseId.execute();
+courseMembershipLoadListByCourseIdWithUserInfo,CourseMembership,courseMembership,,Load,ByCourseIdWithUserInfo,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _courseMembershipLoadListByCourseIdWithUserInfo : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipLoadListByCourseIdWithUserInfo(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByCourseIdWithUserInfo courseMembershipLoadListByCourseIdWithUserInfo;,,,"courseMembershipLoadListByCourseIdWithUserInfo = new _courseMembershipLoadListByCourseIdWithUserInfo();
+courseMembershipLoadListByCourseIdWithUserInfo.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadListByCourseIdWithUserInfo.execute();
+courseMembershipLoadListByCourseIdAndRole,CourseMembership,courseMembership,,Load,ByCourseIdAndRole,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _courseMembershipLoadListByCourseIdAndRole : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipLoadListByCourseIdAndRole(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByCourseIdAndRole courseMembershipLoadListByCourseIdAndRole;,,,"courseMembershipLoadListByCourseIdAndRole = new _courseMembershipLoadListByCourseIdAndRole();
+courseMembershipLoadListByCourseIdAndRole.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadListByCourseIdAndRole.execute();
+courseMembershipInsertRecordById_minimal,CourseMembership,courseMembership,_minimal,Insert,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipInsertRecordById_minimal : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipInsertRecordById_minimal(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipInsertRecordById_minimal courseMembershipInsertRecordById_minimal;,,,"courseMembershipInsertRecordById_minimal = new _courseMembershipInsertRecordById_minimal();
+courseMembershipInsertRecordById_minimal.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipInsertRecordById_minimal.execute();
+courseMembershipUpdateRecordById,CourseMembership,courseMembership,,Update,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipUpdateRecordById : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipUpdateRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipUpdateRecordById courseMembershipUpdateRecordById;,,,"courseMembershipUpdateRecordById = new _courseMembershipUpdateRecordById();
+courseMembershipUpdateRecordById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipUpdateRecordById.execute();
+courseMembershipPersistRecordById_insert,CourseMembership,courseMembership,_insert,Persist,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipPersistRecordById_insert : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipPersistRecordById_insert(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipPersistRecordById_insert courseMembershipPersistRecordById_insert;,,,"courseMembershipPersistRecordById_insert = new _courseMembershipPersistRecordById_insert();
+courseMembershipPersistRecordById_insert.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipPersistRecordById_insert.execute();
+courseMembershipPersistRecordById_update,CourseMembership,courseMembership,_update,Persist,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipPersistRecordById_update : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipPersistRecordById_update(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipPersistRecordById_update courseMembershipPersistRecordById_update;,,,"courseMembershipPersistRecordById_update = new _courseMembershipPersistRecordById_update();
+courseMembershipPersistRecordById_update.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipPersistRecordById_update.execute();
+courseMembershipDeleteRecordById,CourseMembership,courseMembership,,Delete,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipDeleteRecordById : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipDeleteRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipDeleteRecordById courseMembershipDeleteRecordById;,,,"courseMembershipDeleteRecordById = new _courseMembershipDeleteRecordById();
+courseMembershipDeleteRecordById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipDeleteRecordById.execute();
+courseMembershipInsertListById,CourseMembership,courseMembership,,Insert,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _courseMembershipInsertListById : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipInsertListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipInsertListById courseMembershipInsertListById;,,,"courseMembershipInsertListById = new _courseMembershipInsertListById();
+courseMembershipInsertListById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipInsertListById.execute();
+courseMembershipUpdateListById,CourseMembership,courseMembership,,Update,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _courseMembershipUpdateListById : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipUpdateListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipUpdateListById courseMembershipUpdateListById;,,,"courseMembershipUpdateListById = new _courseMembershipUpdateListById();
+courseMembershipUpdateListById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipUpdateListById.execute();
+courseMembershipPersistListById,CourseMembership,courseMembership,,Persist,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _courseMembershipPersistListById : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipPersistListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipPersistListById courseMembershipPersistListById;,,,"courseMembershipPersistListById = new _courseMembershipPersistListById();
+courseMembershipPersistListById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipPersistListById.execute();
+courseMembershipDeleteListById,CourseMembership,courseMembership,,Delete,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _courseMembershipDeleteListById : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipDeleteListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _courseMembershipDeleteListById courseMembershipDeleteListById;,,,"courseMembershipDeleteListById = new _courseMembershipDeleteListById();
+courseMembershipDeleteListById.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipDeleteListById.execute();
+courseMembershipLoadRecordByCourseAndUserBatchId,CourseMembership,courseMembership,,Load,ByCourseAndUserBatchId,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _courseMembershipLoadRecordByCourseAndUserBatchId : _courseMembershipTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMembershipLoadRecordByCourseAndUserBatchId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadRecordByCourseAndUserBatchId courseMembershipLoadRecordByCourseAndUserBatchId;,,,"courseMembershipLoadRecordByCourseAndUserBatchId = new _courseMembershipLoadRecordByCourseAndUserBatchId();
+courseMembershipLoadRecordByCourseAndUserBatchId.init(this.testArgs.courseMembership);",,,,testArgs.courseMembership.courseMembershipLoadRecordByCourseAndUserBatchId.execute();
+courseMembershipLoadListByTemplate,CourseMembership,courseMembership,,Load,ByTemplate,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _courseMembershipLoadListByTemplate : _courseMembershipTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.courseMembershipLoadListByTemplate(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _courseMembershipLoadListByTemplate courseMembershipLoadListByTemplate;,,},"courseMembershipLoadListByTemplate = new _courseMembershipLoadListByTemplate();
+courseMembershipLoadListByTemplate.init(this.testArgs.courseMembership);",,"
+}
+        public void init(TestArgsStruct testArgs) {
+            base.init(testArgs);
+",,testArgs.courseMembership.courseMembershipLoadListByTemplate.execute();
+userLoadRecordByBatchUid,User,user,,Load,ByBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String batch_uid = args.wsResultRecord.batchUid;
+            ClearInputs();
+            args.wsIn","    class _userLoadRecordByBatchUid : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadRecordByBatchUid userLoadRecordByBatchUid;,,"class _userTestCase : TestCase<bbws.userDetails>, ITestAction { }        class _userTestArgs : TestArgs<bbws.userDetails> {
+        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+            return wsResultRecord.bbWsDataLog;
+        }
+","userLoadRecordByBatchUid = new _userLoadRecordByBatchUid();
+userLoadRecordByBatchUid.init(this.testArgs.user);",,,,testArgs.user.userLoadRecordByBatchUid.execute();
+userLoadListByTemplate,User,user,,Load,ByTemplate,List,Record,,args.wsResultList,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+        }
+","    class _userLoadListByTemplate : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListByTemplate(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByTemplate userLoadListByTemplate;,,,"userLoadListByTemplate = new _userLoadListByTemplate();
+userLoadListByTemplate.init(this.testArgs.user);",,,,testArgs.user.userLoadListByTemplate.execute();
+userInsertRecordByBatchUid_duplicate,User,user,_duplicate,Insert,ByBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            args.wsInputRecord = args.wsResultRecord;
+            args.wsInputRecord.batchUid += args.testKey","    class _userInsertRecordByBatchUid_duplicate : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userInsertRecordByBatchUid_duplicate(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userInsertRecordByBatchUid_duplicate userInsertRecordByBatchUid_duplicate;,,,"userInsertRecordByBatchUid_duplicate = new _userInsertRecordByBatchUid_duplicate();
+userInsertRecordByBatchUid_duplicate.init(this.testArgs.user);",,,,testArgs.user.userInsertRecordByBatchUid_duplicate.execute();
+userInsertRecordByBatchUid_2_minimal,User,user,_2_minimal,Insert,ByBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            args.wsInputRecord = args.wsResultRecord;
+            args.wsInputRecord.batchUid += args.testKey","    class _userInsertRecordByBatchUid_2_minimal : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userInsertRecordByBatchUid_2_minimal(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userInsertRecordByBatchUid_2_minimal userInsertRecordByBatchUid_2_minimal;,,,"userInsertRecordByBatchUid_2_minimal = new _userInsertRecordByBatchUid_2_minimal();
+userInsertRecordByBatchUid_2_minimal.init(this.testArgs.user);",,,,testArgs.user.userInsertRecordByBatchUid_2_minimal.execute();
+userUpdateRecordByBatchUid,User,user,,Update,ByBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userUpdateRecordByBatchUid : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userUpdateRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userUpdateRecordByBatchUid userUpdateRecordByBatchUid;,,,"userUpdateRecordByBatchUid = new _userUpdateRecordByBatchUid();
+userUpdateRecordByBatchUid.init(this.testArgs.user);",,,,testArgs.user.userUpdateRecordByBatchUid.execute();
+userPersistRecordByBatchUid_insert,User,user,_insert,Persist,ByBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userPersistRecordByBatchUid_insert : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userPersistRecordByBatchUid_insert(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userPersistRecordByBatchUid_insert userPersistRecordByBatchUid_insert;,,,"userPersistRecordByBatchUid_insert = new _userPersistRecordByBatchUid_insert();
+userPersistRecordByBatchUid_insert.init(this.testArgs.user);",,,,testArgs.user.userPersistRecordByBatchUid_insert.execute();
+userPersistRecordByBatchUid_update,User,user,_update,Persist,ByBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userPersistRecordByBatchUid_update : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userPersistRecordByBatchUid_update(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userPersistRecordByBatchUid_update userPersistRecordByBatchUid_update;,,,"userPersistRecordByBatchUid_update = new _userPersistRecordByBatchUid_update();
+userPersistRecordByBatchUid_update.init(this.testArgs.user);",,,,testArgs.user.userPersistRecordByBatchUid_update.execute();
+userDeleteRecordByBatchUid,User,user,,Delete,ByBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userDeleteRecordByBatchUid : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userDeleteRecordByBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userDeleteRecordByBatchUid userDeleteRecordByBatchUid;,,,"userDeleteRecordByBatchUid = new _userDeleteRecordByBatchUid();
+userDeleteRecordByBatchUid.init(this.testArgs.user);",,,,testArgs.user.userDeleteRecordByBatchUid.execute();
+userPersistListByBatchUid,User,user,,Persist,ByBatchUid,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _userPersistListByBatchUid : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userPersistListByBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userPersistListByBatchUid userPersistListByBatchUid;,,,"userPersistListByBatchUid = new _userPersistListByBatchUid();
+userPersistListByBatchUid.init(this.testArgs.user);",,,,testArgs.user.userPersistListByBatchUid.execute();
+userDeleteListByBatchUid,User,user,,Delete,ByBatchUid,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _userDeleteListByBatchUid : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userDeleteListByBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userDeleteListByBatchUid userDeleteListByBatchUid;,,,"userDeleteListByBatchUid = new _userDeleteListByBatchUid();
+userDeleteListByBatchUid.init(this.testArgs.user);",,,,testArgs.user.userDeleteListByBatchUid.execute();
+userLoadRecordById,User,user,,Load,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.userLoadRecordByName.preAction();
+            args.userLoadRecordByName.executeImp();
+            String id = args.wsResultRecord.id;
+            ClearInputs();
+            args.wsInputRecord.id ","    class _userLoadRecordById : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userLoadRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadRecordById userLoadRecordById;,,,"userLoadRecordById = new _userLoadRecordById();
+userLoadRecordById.init(this.testArgs.user);",,,,testArgs.user.userLoadRecordById.execute();
+userLoadRecordByName,User,user,,Load,ByName,Record,Record,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _userLoadRecordByName : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userLoadRecordByName(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadRecordByName userLoadRecordByName;,,,"userLoadRecordByName = new _userLoadRecordByName();
+userLoadRecordByName.init(this.testArgs.user);",,,,testArgs.user.userLoadRecordByName.execute();
+userInsertRecordById_minimal,User,user,_minimal,Insert,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userInsertRecordById_minimal : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userInsertRecordById_minimal(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userInsertRecordById_minimal userInsertRecordById_minimal;,,,"userInsertRecordById_minimal = new _userInsertRecordById_minimal();
+userInsertRecordById_minimal.init(this.testArgs.user);",,,,testArgs.user.userInsertRecordById_minimal.execute();
+userUpdateRecordById_extended,User,user,_extended,Update,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userUpdateRecordById_extended : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userUpdateRecordById_extended(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userUpdateRecordById_extended userUpdateRecordById_extended;,,,"userUpdateRecordById_extended = new _userUpdateRecordById_extended();
+userUpdateRecordById_extended.init(this.testArgs.user);",,,,testArgs.user.userUpdateRecordById_extended.execute();
+userPersistRecordById_insert,User,user,_insert,Persist,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userPersistRecordById_insert : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userPersistRecordById_insert(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userPersistRecordById_insert userPersistRecordById_insert;,,,"userPersistRecordById_insert = new _userPersistRecordById_insert();
+userPersistRecordById_insert.init(this.testArgs.user);",,,,testArgs.user.userPersistRecordById_insert.execute();
+userPersistRecordById_update,User,user,_update,Persist,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userPersistRecordById_update : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userPersistRecordById_update(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userPersistRecordById_update userPersistRecordById_update;,,,"userPersistRecordById_update = new _userPersistRecordById_update();
+userPersistRecordById_update.init(this.testArgs.user);",,,,testArgs.user.userPersistRecordById_update.execute();
+userDeleteRecordById,User,user,,Delete,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _userDeleteRecordById : _userTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.userDeleteRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userDeleteRecordById userDeleteRecordById;,,,"userDeleteRecordById = new _userDeleteRecordById();
+userDeleteRecordById.init(this.testArgs.user);",,,,testArgs.user.userDeleteRecordById.execute();
+userLoadListById,User,user,,Load,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _userLoadListById : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userLoadListById userLoadListById;,,,"userLoadListById = new _userLoadListById();
+userLoadListById.init(this.testArgs.user);",,,,testArgs.user.userLoadListById.execute();
+userInsertListById,User,user,,Insert,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _userInsertListById : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userInsertListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userInsertListById userInsertListById;,,,"userInsertListById = new _userInsertListById();
+userInsertListById.init(this.testArgs.user);",,,,testArgs.user.userInsertListById.execute();
+userUpdateListById,User,user,,Update,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _userUpdateListById : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userUpdateListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userUpdateListById userUpdateListById;,,,"userUpdateListById = new _userUpdateListById();
+userUpdateListById.init(this.testArgs.user);",,,,testArgs.user.userUpdateListById.execute();
+userPersistListById,User,user,,Persist,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _userPersistListById : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userPersistListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userPersistListById userPersistListById;,,,"userPersistListById = new _userPersistListById();
+userPersistListById.init(this.testArgs.user);",,,,testArgs.user.userPersistListById.execute();
+userDeleteListById,User,user,,Delete,ById,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _userDeleteListById : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userDeleteListById(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _userDeleteListById userDeleteListById;,,,"userDeleteListById = new _userDeleteListById();
+userDeleteListById.init(this.testArgs.user);",,,,testArgs.user.userDeleteListById.execute();
+userLoadListByEmailAddressFamilyNameGivenName_email,User,user,_email,Load,ByEmailAddressFamilyNameGivenName,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _userLoadListByEmailAddressFamilyNameGivenName_email : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListByEmailAddressFamilyNameGivenName_email(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByEmailAddressFamilyNameGivenName_email userLoadListByEmailAddressFamilyNameGivenName_email;,,,"userLoadListByEmailAddressFamilyNameGivenName_email = new _userLoadListByEmailAddressFamilyNameGivenName_email();
+userLoadListByEmailAddressFamilyNameGivenName_email.init(this.testArgs.user);",,,,testArgs.user.userLoadListByEmailAddressFamilyNameGivenName_email.execute();
+userLoadListBySearchByUserName,User,user,,Load,BySearchByUserName,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _userLoadListBySearchByUserName : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListBySearchByUserName(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListBySearchByUserName userLoadListBySearchByUserName;,,,"userLoadListBySearchByUserName = new _userLoadListBySearchByUserName();
+userLoadListBySearchByUserName.init(this.testArgs.user);",,,,testArgs.user.userLoadListBySearchByUserName.execute();
+userLoadListObservedByObserverId,User,user,,Load,ObservedByObserverId,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _userLoadListObservedByObserverId : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListObservedByObserverId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListObservedByObserverId userLoadListObservedByObserverId;,,,"userLoadListObservedByObserverId = new _userLoadListObservedByObserverId();
+userLoadListObservedByObserverId.init(this.testArgs.user);",,,,testArgs.user.userLoadListObservedByObserverId.execute();
+userLoadListByCourseId,User,user,,Load,ByCourseId,List,Record,Course,args.wsResultList,"args.wsInputRecord, args.testArgs.course.wsInputRecord",,"    class _userLoadListByCourseId : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListByCourseId(args.param, args.wsInputRecord, args.testArgs.course.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByCourseId userLoadListByCourseId;,,,"userLoadListByCourseId = new _userLoadListByCourseId();
+userLoadListByCourseId.init(this.testArgs.user);",,,,testArgs.user.userLoadListByCourseId.execute();
+userLoadListByGroupId,User,user,,Load,ByGroupId,List,Record,Group,args.wsResultList,"args.wsInputRecord, args.testArgs.group.wsInputRecord",,"    class _userLoadListByGroupId : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListByGroupId(args.param, args.wsInputRecord, args.testArgs.group.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByGroupId userLoadListByGroupId;,,,"userLoadListByGroupId = new _userLoadListByGroupId();
+userLoadListByGroupId.init(this.testArgs.user);",,,,testArgs.user.userLoadListByGroupId.execute();
+userLoadListByPrimaryRoleId,User,user,,Load,ByPrimaryRoleId,List,Record,Role,args.wsResultList,args.wsInputRecord,,"    class _userLoadListByPrimaryRoleId : _userTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListByPrimaryRoleId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _userLoadListByPrimaryRoleId userLoadListByPrimaryRoleId;,,},"userLoadListByPrimaryRoleId = new _userLoadListByPrimaryRoleId();
+userLoadListByPrimaryRoleId.init(this.testArgs.user);",,},,testArgs.user.userLoadListByPrimaryRoleId.execute();
+portalRoleLoadRecordById,PortalRole,portalRole,,Load,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRoleLoadRecordById : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadRecordById portalRoleLoadRecordById;,,,"portalRoleLoadRecordById = new _portalRoleLoadRecordById();
+portalRoleLoadRecordById.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadRecordById.execute();
+portalRoleLoadRecordByRoleId,PortalRole,portalRole,,Load,ByRoleId,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRoleLoadRecordByRoleId : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordByRoleId(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadRecordByRoleId portalRoleLoadRecordByRoleId;,,,"portalRoleLoadRecordByRoleId = new _portalRoleLoadRecordByRoleId();
+portalRoleLoadRecordByRoleId.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadRecordByRoleId.execute();
+portalRoleLoadRecordByRoleName,PortalRole,portalRole,,Load,ByRoleName,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRoleLoadRecordByRoleName : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordByRoleName(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadRecordByRoleName portalRoleLoadRecordByRoleName;,,,"portalRoleLoadRecordByRoleName = new _portalRoleLoadRecordByRoleName();
+portalRoleLoadRecordByRoleName.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadRecordByRoleName.execute();
+portalRoleLoadRecordDefault,PortalRole,portalRole,,Load,Default,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRoleLoadRecordDefault : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordDefault(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadRecordDefault portalRoleLoadRecordDefault;,,,"portalRoleLoadRecordDefault = new _portalRoleLoadRecordDefault();
+portalRoleLoadRecordDefault.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadRecordDefault.execute();
+portalRoleLoadListRemovable,PortalRole,portalRole,,Load,Removable,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _portalRoleLoadListRemovable : _portalRoleTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListRemovable(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadListRemovable portalRoleLoadListRemovable;,,,"portalRoleLoadListRemovable = new _portalRoleLoadListRemovable();
+portalRoleLoadListRemovable.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadListRemovable.execute();
+portalRoleLoadListAll,PortalRole,portalRole,,Load,All,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _portalRoleLoadListAll : _portalRoleTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListAll(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadListAll portalRoleLoadListAll;,,,"portalRoleLoadListAll = new _portalRoleLoadListAll();
+portalRoleLoadListAll.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadListAll.execute();
+portalRoleLoadListAvailable,PortalRole,portalRole,,Load,Available,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _portalRoleLoadListAvailable : _portalRoleTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListAvailable(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadListAvailable portalRoleLoadListAvailable;,,,"portalRoleLoadListAvailable = new _portalRoleLoadListAvailable();
+portalRoleLoadListAvailable.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadListAvailable.execute();
+portalRoleLoadRecordPrimaryRoleByUserId,PortalRole,portalRole,,Load,PrimaryRoleByUserId,Record,Record,,args.wsResultRecord,"args.wsInputRecord, args.testArgs.user.wsInputRecord",,"    class _portalRoleLoadRecordPrimaryRoleByUserId : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleLoadRecordPrimaryRoleByUserId(args.param, args.wsInputRecord, args.testArgs.user.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadRecordPrimaryRoleByUserId portalRoleLoadRecordPrimaryRoleByUserId;,,,"portalRoleLoadRecordPrimaryRoleByUserId = new _portalRoleLoadRecordPrimaryRoleByUserId();
+portalRoleLoadRecordPrimaryRoleByUserId.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadRecordPrimaryRoleByUserId.execute();
+portalRoleLoadListAllByUserId,PortalRole,portalRole,,Load,AllByUserId,List,Record,,args.wsResultList,"args.wsInputRecord, args.testArgs.user.wsInputRecord",,"    class _portalRoleLoadListAllByUserId : _portalRoleTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListAllByUserId(args.param, args.wsInputRecord, args.testArgs.user.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadListAllByUserId portalRoleLoadListAllByUserId;,,,"portalRoleLoadListAllByUserId = new _portalRoleLoadListAllByUserId();
+portalRoleLoadListAllByUserId.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadListAllByUserId.execute();
+portalRoleLoadListSecondaryRolesByUserId,PortalRole,portalRole,,Load,SecondaryRolesByUserId,List,Record,,args.wsResultList,"args.wsInputRecord, args.testArgs.user.wsInputRecord",,"    class _portalRoleLoadListSecondaryRolesByUserId : _portalRoleTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.portalRoleLoadListSecondaryRolesByUserId(args.param, args.wsInputRecord, args.testArgs.user.wsInputRecord);
+        }
+    }
+",,,public _portalRoleLoadListSecondaryRolesByUserId portalRoleLoadListSecondaryRolesByUserId;,,,"portalRoleLoadListSecondaryRolesByUserId = new _portalRoleLoadListSecondaryRolesByUserId();
+portalRoleLoadListSecondaryRolesByUserId.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleLoadListSecondaryRolesByUserId.execute();
+portalRoleInsertRecordById,PortalRole,portalRole,,Insert,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRoleInsertRecordById : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleInsertRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleInsertRecordById portalRoleInsertRecordById;,,,"portalRoleInsertRecordById = new _portalRoleInsertRecordById();
+portalRoleInsertRecordById.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleInsertRecordById.execute();
+portalRoleUpdateRecordById,PortalRole,portalRole,,Update,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRoleUpdateRecordById : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleUpdateRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleUpdateRecordById portalRoleUpdateRecordById;,,,"portalRoleUpdateRecordById = new _portalRoleUpdateRecordById();
+portalRoleUpdateRecordById.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleUpdateRecordById.execute();
+portalRolePersistRecordById,PortalRole,portalRole,,Persist,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRolePersistRecordById : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRolePersistRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRolePersistRecordById portalRolePersistRecordById;,,,"portalRolePersistRecordById = new _portalRolePersistRecordById();
+portalRolePersistRecordById.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRolePersistRecordById.execute();
+portalRoleDeleteRecordById,PortalRole,portalRole,,Delete,ById,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _portalRoleDeleteRecordById : _portalRoleTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.portalRoleDeleteRecordById(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _portalRoleDeleteRecordById portalRoleDeleteRecordById;,,,"portalRoleDeleteRecordById = new _portalRoleDeleteRecordById();
+portalRoleDeleteRecordById.init(this.testArgs.portalRole);",,,,testArgs.portalRole.portalRoleDeleteRecordById.execute();
+observerAssociationLoadListByTemplate,ObserverAssociation,observerAssociation,,Load,ByTemplate,List,Record,,args.wsResultList,args.wsInputRecord,,"    class _observerAssociationLoadListByTemplate : _observerAssociationTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationLoadListByTemplate(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _observerAssociationLoadListByTemplate observerAssociationLoadListByTemplate;,,,"observerAssociationLoadListByTemplate = new _observerAssociationLoadListByTemplate();
+observerAssociationLoadListByTemplate.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationLoadListByTemplate.execute();
+observerAssociationLoadRecordByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Load,ByObserverAndUsersBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _observerAssociationLoadRecordByObserverAndUsersBatchUid : _observerAssociationTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationLoadRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _observerAssociationLoadRecordByObserverAndUsersBatchUid observerAssociationLoadRecordByObserverAndUsersBatchUid;,,,"observerAssociationLoadRecordByObserverAndUsersBatchUid = new _observerAssociationLoadRecordByObserverAndUsersBatchUid();
+observerAssociationLoadRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationLoadRecordByObserverAndUsersBatchUid.execute();
+observerAssociationInsertRecordByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Insert,ByObserverAndUsersBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _observerAssociationInsertRecordByObserverAndUsersBatchUid : _observerAssociationTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationInsertRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _observerAssociationInsertRecordByObserverAndUsersBatchUid observerAssociationInsertRecordByObserverAndUsersBatchUid;,,,"observerAssociationInsertRecordByObserverAndUsersBatchUid = new _observerAssociationInsertRecordByObserverAndUsersBatchUid();
+observerAssociationInsertRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationInsertRecordByObserverAndUsersBatchUid.execute();
+
+
+observerAssociationDeleteRecordByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Delete,ByObserverAndUsersBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _observerAssociationDeleteRecordByObserverAndUsersBatchUid : _observerAssociationTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationDeleteRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _observerAssociationDeleteRecordByObserverAndUsersBatchUid observerAssociationDeleteRecordByObserverAndUsersBatchUid;,,,"observerAssociationDeleteRecordByObserverAndUsersBatchUid = new _observerAssociationDeleteRecordByObserverAndUsersBatchUid();
+observerAssociationDeleteRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationDeleteRecordByObserverAndUsersBatchUid.execute();
+observerAssociationLoadListByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Load,ByObserverAndUsersBatchUid,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _observerAssociationLoadListByObserverAndUsersBatchUid : _observerAssociationTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationLoadListByObserverAndUsersBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _observerAssociationLoadListByObserverAndUsersBatchUid observerAssociationLoadListByObserverAndUsersBatchUid;,,,"observerAssociationLoadListByObserverAndUsersBatchUid = new _observerAssociationLoadListByObserverAndUsersBatchUid();
+observerAssociationLoadListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationLoadListByObserverAndUsersBatchUid.execute();
+observerAssociationInsertListByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Insert,ByObserverAndUsersBatchUid,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _observerAssociationInsertListByObserverAndUsersBatchUid : _observerAssociationTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationInsertListByObserverAndUsersBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _observerAssociationInsertListByObserverAndUsersBatchUid observerAssociationInsertListByObserverAndUsersBatchUid;,,,"observerAssociationInsertListByObserverAndUsersBatchUid = new _observerAssociationInsertListByObserverAndUsersBatchUid();
+observerAssociationInsertListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationInsertListByObserverAndUsersBatchUid.execute();
+
+
+observerAssociationDeleteListByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Delete,ByObserverAndUsersBatchUid,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _observerAssociationDeleteListByObserverAndUsersBatchUid : _observerAssociationTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationDeleteListByObserverAndUsersBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _observerAssociationDeleteListByObserverAndUsersBatchUid observerAssociationDeleteListByObserverAndUsersBatchUid;,,,"observerAssociationDeleteListByObserverAndUsersBatchUid = new _observerAssociationDeleteListByObserverAndUsersBatchUid();
+observerAssociationDeleteListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationDeleteListByObserverAndUsersBatchUid.execute();
+
+
+
+
+
+
+
+
+observerAssociationUpdateRecordByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Update,ByObserverAndUsersBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _observerAssociationUpdateRecordByObserverAndUsersBatchUid : _observerAssociationTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationUpdateRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _observerAssociationUpdateRecordByObserverAndUsersBatchUid observerAssociationUpdateRecordByObserverAndUsersBatchUid;,,,"observerAssociationUpdateRecordByObserverAndUsersBatchUid = new _observerAssociationUpdateRecordByObserverAndUsersBatchUid();
+observerAssociationUpdateRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationUpdateRecordByObserverAndUsersBatchUid.execute();
+observerAssociationPersistRecordByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Persist,ByObserverAndUsersBatchUid,Record,Record,,args.wsResultRecord,args.wsInputRecord,,"    class _observerAssociationPersistRecordByObserverAndUsersBatchUid : _observerAssociationTestCase_RecordResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.observerAssociationPersistRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
+        }
+    }
+",,,public _observerAssociationPersistRecordByObserverAndUsersBatchUid observerAssociationPersistRecordByObserverAndUsersBatchUid;,,,"observerAssociationPersistRecordByObserverAndUsersBatchUid = new _observerAssociationPersistRecordByObserverAndUsersBatchUid();
+observerAssociationPersistRecordByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationPersistRecordByObserverAndUsersBatchUid.execute();
+observerAssociationPersistListByObserverAndUsersBatchUid,ObserverAssociation,observerAssociation,,Persist,ByObserverAndUsersBatchUid,List,List,,args.wsResultList,args.wsInputList.ToArray(),,"    class _observerAssociationPersistListByObserverAndUsersBatchUid : _observerAssociationTestCase_ListResult, ITestAction {
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.observerAssociationPersistListByObserverAndUsersBatchUid(args.param, args.wsInputList.ToArray());
+        }
+    }
+",,,public _observerAssociationPersistListByObserverAndUsersBatchUid observerAssociationPersistListByObserverAndUsersBatchUid;,,,"observerAssociationPersistListByObserverAndUsersBatchUid = new _observerAssociationPersistListByObserverAndUsersBatchUid();
+observerAssociationPersistListByObserverAndUsersBatchUid.init(this.testArgs.observerAssociation);",,,,testArgs.observerAssociation.observerAssociationPersistListByObserverAndUsersBatchUid.execute();
