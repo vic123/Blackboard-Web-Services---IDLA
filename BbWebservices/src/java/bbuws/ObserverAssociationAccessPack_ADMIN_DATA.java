@@ -14,6 +14,15 @@ import blackboard.admin.data.user.ObserverAssociation;
 import blackboard.admin.persist.user.impl.ObserverAssociationDbLoader;
 import blackboard.admin.persist.user.impl.ObserverAssociationDbPersister;
 import blackboard.admin.persist.user.ObserverAssociationPersister;
+import blackboard.platform.security.DomainManagerFactory;
+import blackboard.platform.security.DomainManager;
+import blackboard.platform.security.Domain;
+import blackboard.data.user.User;
+import blackboard.admin.data.user.Person;
+import blackboard.admin.persist.user.PersonPersister;
+import blackboard.admin.persist.user.impl.PersonDbLoader;
+import blackboard.admin.persist.user.impl.PersonDbPersister;
+
 
 public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociationAccessPack<ObserverAssociation> {
 
@@ -52,12 +61,21 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
         }
 
         @Override protected void insertRecord() throws Exception {
+            Person prsn = PersonDbLoader.Default.getInstance().load(bbObject.getObserverBatchUid());
+            if (prsn.getSystemRole().compareTo(User.SystemRole.OBSERVER) != 0) {
+                blackboard.platform.security.DomainManager dom_mgr = DomainManagerFactory.getInstance();
+                Domain default_domain = dom_mgr.getDefaultDomain();
+                String sec_roles[] = new String[0];
+                String usernames[] = {prsn.getUserName()};
+                dom_mgr.saveDomainAdminView(default_domain.getId().toExternalString(),
+                        usernames,
+                        sec_roles);
+                prsn.setSystemRole(User.SystemRole.OBSERVER);
+                PersonPersister uper = PersonDbPersister.Default.getInstance();
+                uper.update(prsn);
+            }
             ObserverAssociationPersister dbper = ObserverAssociationDbPersister.Default.getInstance();
             dbper.insert(bbObject);
-        }
-        @Override protected void updateRecord() throws Exception {
-            ObserverAssociationPersister dbper = ObserverAssociationDbPersister.Default.getInstance();
-            dbper.update(bbObject);
         }
 
         @Override protected void deleteRecord() throws Exception {
@@ -83,22 +101,7 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
             super.initialize(args, ObserverAssociation.class, da);
         }
     }
-    public static class UpdateRecordByObserverAndUsersBatchUid extends
-            ObserverAssociationRecordAccessPack {
-        public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
-            RecordUpdater da = new RecordUpdater();
-            da.initialize(null);
-            super.initialize(args, ObserverAssociation.class, da);
-        }
-    }
-    public static class PersistRecordByObserverAndUsersBatchUid extends
-            ObserverAssociationRecordAccessPack {
-        public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
-            RecordPersister da = new RecordPersister();
-            da.initialize(null);
-            super.initialize(args, ObserverAssociation.class, da);
-        }
-    }
+
     public static class DeleteRecordByObserverAndUsersBatchUid extends
             ObserverAssociationRecordAccessPack {
         public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
@@ -128,27 +131,7 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
             super.initialize(args, ObserverAssociation.class, ilp);
         }
     }
-    public static class UpdateListByObserverAndUsersBatchUid extends
-            ObserverAssociationRecordAccessPack {
-        public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
-            RecordUpdater da = new RecordUpdater();
-            da.initialize(null);
-            InputListProcessor ilp = new InputListProcessor();
-            ilp.initialize(da);
-            super.initialize(args, ObserverAssociation.class, ilp);
-        }
-    }
-    public static class PersistListByObserverAndUsersBatchUid extends
-            ObserverAssociationRecordAccessPack {
-        public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
-            RecordPersister da = new RecordPersister();
-            da.initialize(null);
-            InputListProcessor ilp = new InputListProcessor();
-            ilp.initialize(da);
-            super.initialize(args, ObserverAssociation.class, ilp);
 
-        }
-    }
     public static class DeleteListByObserverAndUsersBatchUid extends
             ObserverAssociationRecordAccessPack {
         public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
@@ -160,9 +143,6 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
 
         }
     }
-
-
-
 
     @Override protected void setBbFields() throws Exception {
             new BbFieldSetter() {

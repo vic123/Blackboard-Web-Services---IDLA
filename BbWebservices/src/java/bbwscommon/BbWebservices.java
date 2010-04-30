@@ -546,6 +546,27 @@ public class BbWebservices {
 
         return args.getResultList();
     }
+
+    @WebMethod
+    public List<UserDetails> userLoadListAvailableObserversByCourseId
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") UserDetails inputRecord,
+                    @WebParam(name = "inputCourseRecord") bbcrsws.CourseDetails inputCourseRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListAvailableObserversByCourseId()", this);
+        UserAccessPack.UserArgumentsWithUserAndCourseInput args
+                = new UserAccessPack.UserArgumentsWithUserAndCourseInput();
+        args.initialize(UserDetails.class, params, inputRecord,
+                    UserAccessPack.class.getName(), "LoadListAvailableObserversByCourseId");
+        args.setInputCourseRecord(inputCourseRecord);
+            BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndCourseInput> api_proc
+                = new BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserAndCourseInput>();
+            api_proc.initialize(args);
+            api_proc.run();
+
+        return args.getResultList();
+    }
+
     @WebMethod
     public List<UserDetails> userLoadListByGroupId
                 (@WebParam(name = "params") BbWsParams params,
