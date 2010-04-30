@@ -197,7 +197,7 @@ public abstract class BbWsArguments <WsResultType extends BbWsDataDetails, WsInp
     static final Hashtable<String, DataVerbosity> dataVerbosityTags = new Hashtable();
     static {
         dataVerbosityTags.put("NONE", DataVerbosity.NONE);
-        dataVerbosityTags.put("EXTENDED", DataVerbosity.ONLY_ID);
+        dataVerbosityTags.put("ONLY_ID", DataVerbosity.ONLY_ID);
         dataVerbosityTags.put("MINIMAL", DataVerbosity.MINIMAL);
         dataVerbosityTags.put("STANDARD", DataVerbosity.STANDARD);
         dataVerbosityTags.put("EXTENDED", DataVerbosity.EXTENDED);

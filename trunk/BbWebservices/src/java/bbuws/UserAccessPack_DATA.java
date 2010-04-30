@@ -33,9 +33,12 @@ import blackboard.admin.persist.user.impl.PersonDbLoader;
 import blackboard.persist.DataType;
 import blackboard.data.role.PortalRole;
 import blackboard.persist.role.PortalRoleDbLoader;
+import blackboard.persist.user.impl.UserDbMap;
+
 
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Calendar;
 
@@ -822,6 +825,22 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
     }
 
+    public static class LoadListAvailableObserversByCourseId extends UserAccessPack_DATA<User, UserAccessPack.UserArgumentsWithUserAndCourseInput> {
+        public void initialize(UserAccessPack.UserArgumentsWithUserAndCourseInput args) {
+            RecordListLoader  da = new RecordListLoader();
+            da.initialize(null);
+            super.initialize(args, User.class, da);
+        }
+        @Override protected void loadList () throws Exception {
+            String str_id = getArgs().getInputCourseRecord().getBbId();
+            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
+                        blackboard.data.course.Course.DATA_TYPE,str_id);
+            UserDbLoaderImpl udbli = (UserDbLoaderImpl) UserDbLoader.Default.getInstance();
+            bbObjectList = udbli.loadAvailableObserversByCourseId(id, BbWsUtil.getFullFilteredMap(UserDbMap.MAP));
+        }
+    }
+
+
     public static class LoadListByGroupId extends UserAccessPack_DATA<User, UserAccessPack.UserArgumentsWithUserAndGroupInput> {
         public void initialize(UserArgumentsWithUserAndGroupInput args) {
             RecordListLoader  da = new RecordListLoader();
@@ -849,8 +868,6 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
             bbObjectList = UserDbLoader.Default.getInstance().loadByPrimaryPortalRoleId(id);
         }
     }
-
-
 
 
     @Override protected void setWsFields() throws Exception {

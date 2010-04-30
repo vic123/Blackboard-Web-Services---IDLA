@@ -5,8 +5,14 @@
 
 package bbwscommon;
 
+import blackboard.persist.impl.mapping.FilteredDbObjectMap;
+import blackboard.persist.impl.mapping.DbObjectMap;
+import blackboard.persist.impl.mapping.DbMapping;
+
 import java.util.Calendar;
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
 
 
@@ -89,6 +95,12 @@ public class BbWsUtil {
         return msg;
     }
 
-
-
+    public static FilteredDbObjectMap getFullFilteredMap(DbObjectMap dbObjectMap)
+    {
+        List<String> fields_list = new ArrayList();
+        for (DbMapping db_map: dbObjectMap.getMappingList()) fields_list.add(db_map.getName());
+        String fields[] = fields_list.toArray(new String[fields_list.size()]);
+        FilteredDbObjectMap f_map = new FilteredDbObjectMap(dbObjectMap, fields);
+        return f_map;
+    }
 }
