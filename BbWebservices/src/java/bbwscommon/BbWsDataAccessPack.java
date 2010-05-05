@@ -315,11 +315,16 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
 
  *
  */
-    protected void setResultRecordIds() {
+    protected final void setResultRecordIds() {
         if (getArgs().getInputRecord() != null) {
-            getArgs().getResultRecord().setBbId(getArgs().getInputRecord().getBbId());
+            //getArgs().getResultRecord().setBbId(getArgs().getInputRecord().getBbId());
+            setSafeResultRecordIds();
         }
     }
+    protected void setSafeResultRecordIds() {
+        getArgs().getResultRecord().setBbId(getArgs().getInputRecord().getBbId());
+    }
+
 
 
     protected void setOrCreateWsResultObjectIfNull (WsResultType resultRecord) throws Exception {

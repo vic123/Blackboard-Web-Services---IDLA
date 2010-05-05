@@ -27,12 +27,10 @@ import blackboard.admin.persist.user.impl.PersonDbPersister;
 public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociationAccessPack<ObserverAssociation> {
 
 
-    protected void setResultRecordIds() {
-        super.setResultRecordIds();
-        if (getArgs().getInputRecord() != null) {
-            getArgs().getResultRecord().setObserverBbId(getArgs().getInputRecord().getObserverBbId());
-            getArgs().getResultRecord().setUsersBbId(getArgs().getInputRecord().getUsersBbId());
-        }
+    protected void setSafeResultRecordIds() {
+        super.setSafeResultRecordIds();
+        getArgs().getResultRecord().setObserverBbId(getArgs().getInputRecord().getObserverBbId());
+        getArgs().getResultRecord().setUsersBbId(getArgs().getInputRecord().getUsersBbId());
     }
 
     public static class LoadListByTemplate extends
@@ -145,6 +143,7 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
     }
 
     @Override protected void setBbFields() throws Exception {
+            super.setBbFields();
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                         return bbObject.getObserverBatchUid();
