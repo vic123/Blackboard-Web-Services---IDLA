@@ -128,13 +128,8 @@ public class UserAccessPack <BbUserType extends User, ArgumentsType extends User
     }
 
 
-    static List<String> specCharList = new ArrayList();
-    static {
-        specCharList.add(null);
-    }
-
-    @Override protected void setResultRecordIds() {
-        super.setResultRecordIds();
+    @Override protected void setSafeResultRecordIds() {
+        super.setSafeResultRecordIds();
         getArgs().getResultRecord().setBatchUid(getArgs().getInputRecord().getBatchUid());
     }
 

@@ -38,7 +38,6 @@ public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsArgum
 
 {
     public enum Verbosity{minimal,standard,extended}
-    
 
     private Verbosity verbosity;
     //standard details

@@ -34,8 +34,8 @@ public class PortalRoleAccessPack <BbPortalRoleType extends PortalRole,
     }
 
 
-    @Override protected void setResultRecordIds() {
-        super.setResultRecordIds();
+    @Override protected void setSafeResultRecordIds() {
+        super.setSafeResultRecordIds();
         getArgs().getResultRecord().setRoleName(getArgs().getInputRecord().getRoleName());
     }
 

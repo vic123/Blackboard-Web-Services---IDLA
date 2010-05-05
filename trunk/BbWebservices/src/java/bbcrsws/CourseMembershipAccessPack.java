@@ -42,8 +42,8 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
     protected abstract void setBbUserBatchUidField() throws Exception ;
     protected abstract void setWsUserBatchUidField() throws Exception ;
 
-    @Override protected void setResultRecordIds() {
-        super.setResultRecordIds();
+    @Override protected void setSafeResultRecordIds() {
+        super.setSafeResultRecordIds();
         getArgs().getResultRecord().setUserBbId(getArgs().getInputRecord().getUserBbId());
         getArgs().getResultRecord().setCourseBbId(getArgs().getInputRecord().getCourseBbId());
     }
