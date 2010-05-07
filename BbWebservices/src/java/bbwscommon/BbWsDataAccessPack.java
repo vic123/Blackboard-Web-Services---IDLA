@@ -123,7 +123,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
 
         protected void checkNotNullId() throws Exception {
             if (getArgs().getInputRecord().getBbId() == null) {
-                throw new blackboard.persist.KeyNotFoundException ("Id cannot be null for " + getClass().getName() + ".loadR3ecordById().");
+                throw new blackboard.persist.KeyNotFoundException ("Id cannot be null for " + getClass().getName() + ".{accessRecordById()}.");
             }
         }
 

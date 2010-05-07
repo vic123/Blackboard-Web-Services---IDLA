@@ -28,10 +28,15 @@ import java.util.*;
 
 //public class UserAccessPack <BbUserType extends User, WsObjectType extends BbWsDataDetails>
 public class PortalRoleMembershipAccessPack_ADMIN_DATA
-        extends PortalRoleMembershipAccessPack
+        extends PortalRoleMembershipAccessPack_DATA
             <PortalRoleMembership, PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA> {
 
 
+    /*
+     * load by template method of Bb 9.0 PortalRoleMembership API does not generate valid queries to database
+     * [TEST\SQLEXPRESS]Incorrect syntax near the keyword 'AND'. - when searched by userId
+     * com.inet.tds.be: Column 'p_person_batch_uid' not found. - when searched by userBatchUid
+     */
     public static class LoadListByTemplate extends
             PortalRoleMembershipAccessPack_ADMIN_DATA {
         public void initialize(PortalRoleMembershipAccessPack_ADMIN_DATA.PortalRoleMembershipArguments_ADMIN_DATA args) {
@@ -127,40 +132,9 @@ public class PortalRoleMembershipAccessPack_ADMIN_DATA
         }
     }
 
+
     @Override protected void setBbFields() throws Exception {
-            new BbFieldSetter() {
-                @Override public String getBbFieldValue() throws Exception {
-                        return bbObject.getId().toExternalString();
-                }
-                @Override public String getWsFieldValue() throws Exception {
-                    return getArgs().getInputRecord().getBbId();
-                }
-                @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setId(Id.generateId(PortalRoleMembership.DATA_TYPE, newValue));
-                }
-            }.setBbField("bbId");
-            new BbFieldSetter() {
-                @Override public String getBbFieldValue() throws Exception {
-                        return bbObject.getPersonId().toExternalString();
-                }
-                @Override public String getWsFieldValue() throws Exception {
-                    return getArgs().getInputRecord().getUserId();
-                }
-                @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setPersonId(Id.generateId(Person.DATA_TYPE, newValue));
-                }
-            }.setBbField("userId");
-            new BbFieldSetter() {
-                @Override public String getBbFieldValue() throws Exception {
-                        return bbObject.getPortalRoleId().toExternalString();
-                }
-                @Override public String getWsFieldValue() throws Exception {
-                    return getArgs().getInputRecord().getPortalRoleId();
-                }
-                @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setPortalRoleId(Id.generateId(PortalRole.DATA_TYPE, newValue));
-                }
-            }.setBbField("portalRoleId");
+            super.setBbFields();
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                         return bbObject.getPersonBatchUid();
@@ -194,6 +168,7 @@ public class PortalRoleMembershipAccessPack_ADMIN_DATA
                     bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));
                 }
             }.setBbField("rowStatus");
+
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getRecStatus().toFieldName();
@@ -205,7 +180,6 @@ public class PortalRoleMembershipAccessPack_ADMIN_DATA
                     bbObject.setRecStatus((IAdminObject.RecStatus)IAdminObject.RecStatus.fromFieldName(newValue, IAdminObject.RecStatus.class));
                 }
             }.setBbField("recStatus");
-
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                         return bbObject.getDataSourceBatchUid();
@@ -221,40 +195,7 @@ public class PortalRoleMembershipAccessPack_ADMIN_DATA
     }
 
     @Override protected void setWsFields() throws Exception {
-            new WsFieldSetter() {
-                @Override public String getBbFieldValue() throws Exception {
-                    return bbObject.getId().toExternalString();
-                }
-                @Override public String getWsFieldValue() throws Exception {
-                    return getArgs().getResultRecord().getBbId();
-                }
-                @Override public void setWsFieldImp(String newValue) throws Exception {
-                    getArgs().getResultRecord().setBbId(newValue);
-                }
-            }.setWsField("bbId");
-        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {
-            new WsFieldSetter() {
-                @Override public String getBbFieldValue() throws Exception {
-                    return bbObject.getPersonId().toExternalString();
-                }
-                @Override public String getWsFieldValue() throws Exception {
-                    return getArgs().getResultRecord().getUserId();
-                }
-                @Override public void setWsFieldImp(String newValue) throws Exception {
-                    getArgs().getResultRecord().setUserId(newValue);
-                }
-            }.setWsField("userId");
-            new WsFieldSetter() {
-                @Override public String getBbFieldValue() throws Exception {
-                    return bbObject.getPortalRoleId().toExternalString();
-                }
-                @Override public String getWsFieldValue() throws Exception {
-                    return getArgs().getResultRecord().getPortalRoleId();
-                }
-                @Override public void setWsFieldImp(String newValue) throws Exception {
-                    getArgs().getResultRecord().setPortalRoleId(newValue);
-                }
-            }.setWsField("portalRoleId");		        }
+            super.setWsFields();
         if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
@@ -289,6 +230,7 @@ public class PortalRoleMembershipAccessPack_ADMIN_DATA
                     getArgs().getResultRecord().setRowStatus(newValue);
                 }
             }.setWsField("rowStatus");
+
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return bbObject.getRecStatus().toFieldName();
@@ -313,5 +255,4 @@ public class PortalRoleMembershipAccessPack_ADMIN_DATA
             }.setWsField("dataSourceBatchUid");
         }
     }
-
 }
