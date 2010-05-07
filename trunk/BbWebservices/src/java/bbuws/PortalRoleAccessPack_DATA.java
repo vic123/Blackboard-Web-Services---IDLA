@@ -164,6 +164,7 @@ public class PortalRoleAccessPack_DATA <BbPortalRoleType extends PortalRole,
             uper.persist(bbObject);
         }
         @Override protected void deleteRecord() throws Exception {
+            checkNotNullId();
             Id id = generateInputPortalRoleId();
             PortalRoleDbPersister uper = PortalRoleDbPersister.Default.getInstance();
             uper.deleteById(id);

@@ -620,6 +620,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
 
         @Override protected void deleteRecord() throws Exception {
+            checkNotNullId();
             Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(User.DATA_TYPE,getArgs().getInputRecord().getBbId());
             UserDbPersister uper = UserDbPersister.Default.getInstance();
             uper.deleteById(id);

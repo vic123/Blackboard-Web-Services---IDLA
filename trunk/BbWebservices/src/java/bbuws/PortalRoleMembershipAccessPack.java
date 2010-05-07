@@ -19,6 +19,8 @@ import blackboard.admin.persist.role.PortalRoleMembershipLoader;
 import blackboard.admin.persist.role.impl.PortalRoleMembershipDbPersister;
 import blackboard.admin.persist.role.PortalRoleMembershipPersister;
 
+import blackboard.persist.Id;
+import blackboard.data.role.PortalRole;
 
 
 import java.util.*;
@@ -32,8 +34,10 @@ public class PortalRoleMembershipAccessPack <BbPortalRoleMembershipType extends 
 
     public static class PortalRoleMembershipArguments extends BbWsArguments<PortalRoleMembershipDetails, PortalRoleMembershipDetails> {
     }
+    public static class PortalRoleMembershipArguments_DATA extends PortalRoleMembershipArguments {
+    }
 
-    public static class PortalRoleMembershipArguments_ADMIN_DATA extends PortalRoleMembershipArguments {
+    public static class PortalRoleMembershipArguments_ADMIN_DATA extends PortalRoleMembershipArguments_DATA {
         protected void initializeDefaults() {
             super.initializeDefaults();
             getApiToUseList().clear();
@@ -49,5 +53,7 @@ public class PortalRoleMembershipAccessPack <BbPortalRoleMembershipType extends 
         //getArgs().getResultRecord().setUserBatchUid(getArgs().getInputRecord().getUserBatchUid());
         //getArgs().getResultRecord().setPortalRoleBatchUid(getArgs().getInputRecord().getPortalRoleBatchUid());
     }
+
+
 
 }
