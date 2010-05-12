@@ -214,11 +214,10 @@ public class PortalRoleMembershipAccessPack_DATA<BbPortalRoleMembershipType exte
             super.initialize(args, UserRole.class, da);
         }
     }
-    public static class LoadListByUserId
-            extends PortalRoleMembershipAccessPack_DATA<UserRole,PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA> {
+    public static class LoadListByUserId extends PortalRoleMembershipListLoadPack {
         @Override protected void loadList () throws Exception {
             if (getArgs().getInputRecord().getUserId() == null) {
-                throw new blackboard.persist.KeyNotFoundException ("UserId cannot be null for " + getClass().getName() + ".LoadListByUserId().");
+                throw new blackboard.persist.KeyNotFoundException ("UserId cannot be null for " + getClass().getName() + ".loadList().");
             }
             Id user_id = Id.generateId(User.DATA_TYPE,getArgs().getInputRecord().getUserId());
             bbObjectList
@@ -228,10 +227,10 @@ public class PortalRoleMembershipAccessPack_DATA<BbPortalRoleMembershipType exte
 
     public static class LoadListByPortalRoleId extends PortalRoleMembershipListLoadPack {
         @Override protected void loadList () throws Exception {
-            if (getArgs().getInputRecord().getUserId() == null) {
-                throw new blackboard.persist.KeyNotFoundException ("PortalRoleId cannot be null for " + getClass().getName() + ".LoadListByPortalRoleId().");
+            if (getArgs().getInputRecord().getPortalRoleId() == null) {
+                throw new blackboard.persist.KeyNotFoundException ("PortalRoleId cannot be null for " + getClass().getName() + ".loadList().");
             }
-            Id prole_id = Id.generateId(PortalRole.DATA_TYPE,getArgs().getInputRecord().getUserId());
+            Id prole_id = Id.generateId(PortalRole.DATA_TYPE,getArgs().getInputRecord().getPortalRoleId());
             bbObjectList
                     = UserRoleDbLoader.Default.getInstance().loadByPortalRoleId(prole_id);
         }
