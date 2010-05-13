@@ -8,14 +8,116 @@
       <xsd:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices?xsd=2" namespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" />
     </xsd:schema>
   </types>
+  <message name="courseMembershipLoadRecordById">
+    <part name="parameters" element="tns:courseMembershipLoadRecordById" />
+  </message>
+  <message name="courseMembershipLoadRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByIdResponse" />
+  </message>
+  <message name="BbWsFault">
+    <part xmlns:ns1="http://www.ncl.ac.uk/BbWsFaultException" name="fault" element="ns1:BbWsFaultException" />
+  </message>
+  <message name="courseMembershipLoadListById">
+    <part name="parameters" element="tns:courseMembershipLoadListById" />
+  </message>
+  <message name="courseMembershipLoadListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByIdResponse" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserId">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserId" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByUserId">
+    <part name="parameters" element="tns:courseMembershipLoadListByUserId" />
+  </message>
+  <message name="courseMembershipLoadListByUserIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByUserIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByCourseId">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseId" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdWithUserInfo">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdWithUserInfo" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdWithUserInfoResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdWithUserInfoResponse" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdAndRole">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdAndRole" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdAndRoleResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdAndRoleResponse" />
+  </message>
+  <message name="courseMembershipInsertRecordById">
+    <part name="parameters" element="tns:courseMembershipInsertRecordById" />
+  </message>
+  <message name="courseMembershipInsertRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipInsertRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipUpdateRecordById">
+    <part name="parameters" element="tns:courseMembershipUpdateRecordById" />
+  </message>
+  <message name="courseMembershipUpdateRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipUpdateRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipPersistRecordById">
+    <part name="parameters" element="tns:courseMembershipPersistRecordById" />
+  </message>
+  <message name="courseMembershipPersistRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipPersistRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipDeleteRecordById">
+    <part name="parameters" element="tns:courseMembershipDeleteRecordById" />
+  </message>
+  <message name="courseMembershipDeleteRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipDeleteRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipInsertListById">
+    <part name="parameters" element="tns:courseMembershipInsertListById" />
+  </message>
+  <message name="courseMembershipInsertListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipInsertListByIdResponse" />
+  </message>
+  <message name="courseMembershipUpdateListById">
+    <part name="parameters" element="tns:courseMembershipUpdateListById" />
+  </message>
+  <message name="courseMembershipUpdateListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipUpdateListByIdResponse" />
+  </message>
+  <message name="courseMembershipPersistListById">
+    <part name="parameters" element="tns:courseMembershipPersistListById" />
+  </message>
+  <message name="courseMembershipPersistListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipPersistListByIdResponse" />
+  </message>
+  <message name="courseMembershipDeleteListById">
+    <part name="parameters" element="tns:courseMembershipDeleteListById" />
+  </message>
+  <message name="courseMembershipDeleteListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipDeleteListByIdResponse" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserBatchId">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserBatchId" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserBatchIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserBatchIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByTemplate">
+    <part name="parameters" element="tns:courseMembershipLoadListByTemplate" />
+  </message>
+  <message name="courseMembershipLoadListByTemplateResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByTemplateResponse" />
+  </message>
   <message name="userLoadRecordByBatchUid">
     <part name="parameters" element="tns:userLoadRecordByBatchUid" />
   </message>
   <message name="userLoadRecordByBatchUidResponse">
     <part name="parameters" element="tns:userLoadRecordByBatchUidResponse" />
-  </message>
-  <message name="BbWsFault">
-    <part xmlns:ns1="http://www.ncl.ac.uk/BbWsFaultException" name="fault" element="ns1:BbWsFaultException" />
   </message>
   <message name="userLoadListByTemplate">
     <part name="parameters" element="tns:userLoadListByTemplate" />
@@ -155,108 +257,6 @@
   <message name="userLoadListByGroupIdResponse">
     <part name="parameters" element="tns:userLoadListByGroupIdResponse" />
   </message>
-  <message name="courseMembershipLoadRecordById">
-    <part name="parameters" element="tns:courseMembershipLoadRecordById" />
-  </message>
-  <message name="courseMembershipLoadRecordByIdResponse">
-    <part name="parameters" element="tns:courseMembershipLoadRecordByIdResponse" />
-  </message>
-  <message name="courseMembershipLoadListById">
-    <part name="parameters" element="tns:courseMembershipLoadListById" />
-  </message>
-  <message name="courseMembershipLoadListByIdResponse">
-    <part name="parameters" element="tns:courseMembershipLoadListByIdResponse" />
-  </message>
-  <message name="courseMembershipLoadRecordByCourseAndUserId">
-    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserId" />
-  </message>
-  <message name="courseMembershipLoadRecordByCourseAndUserIdResponse">
-    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserIdResponse" />
-  </message>
-  <message name="courseMembershipLoadListByUserId">
-    <part name="parameters" element="tns:courseMembershipLoadListByUserId" />
-  </message>
-  <message name="courseMembershipLoadListByUserIdResponse">
-    <part name="parameters" element="tns:courseMembershipLoadListByUserIdResponse" />
-  </message>
-  <message name="courseMembershipLoadListByCourseId">
-    <part name="parameters" element="tns:courseMembershipLoadListByCourseId" />
-  </message>
-  <message name="courseMembershipLoadListByCourseIdResponse">
-    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdResponse" />
-  </message>
-  <message name="courseMembershipLoadListByCourseIdWithUserInfo">
-    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdWithUserInfo" />
-  </message>
-  <message name="courseMembershipLoadListByCourseIdWithUserInfoResponse">
-    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdWithUserInfoResponse" />
-  </message>
-  <message name="courseMembershipLoadListByCourseIdAndRole">
-    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdAndRole" />
-  </message>
-  <message name="courseMembershipLoadListByCourseIdAndRoleResponse">
-    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdAndRoleResponse" />
-  </message>
-  <message name="courseMembershipInsertRecordById">
-    <part name="parameters" element="tns:courseMembershipInsertRecordById" />
-  </message>
-  <message name="courseMembershipInsertRecordByIdResponse">
-    <part name="parameters" element="tns:courseMembershipInsertRecordByIdResponse" />
-  </message>
-  <message name="courseMembershipUpdateRecordById">
-    <part name="parameters" element="tns:courseMembershipUpdateRecordById" />
-  </message>
-  <message name="courseMembershipUpdateRecordByIdResponse">
-    <part name="parameters" element="tns:courseMembershipUpdateRecordByIdResponse" />
-  </message>
-  <message name="courseMembershipPersistRecordById">
-    <part name="parameters" element="tns:courseMembershipPersistRecordById" />
-  </message>
-  <message name="courseMembershipPersistRecordByIdResponse">
-    <part name="parameters" element="tns:courseMembershipPersistRecordByIdResponse" />
-  </message>
-  <message name="courseMembershipDeleteRecordById">
-    <part name="parameters" element="tns:courseMembershipDeleteRecordById" />
-  </message>
-  <message name="courseMembershipDeleteRecordByIdResponse">
-    <part name="parameters" element="tns:courseMembershipDeleteRecordByIdResponse" />
-  </message>
-  <message name="courseMembershipInsertListById">
-    <part name="parameters" element="tns:courseMembershipInsertListById" />
-  </message>
-  <message name="courseMembershipInsertListByIdResponse">
-    <part name="parameters" element="tns:courseMembershipInsertListByIdResponse" />
-  </message>
-  <message name="courseMembershipUpdateListById">
-    <part name="parameters" element="tns:courseMembershipUpdateListById" />
-  </message>
-  <message name="courseMembershipUpdateListByIdResponse">
-    <part name="parameters" element="tns:courseMembershipUpdateListByIdResponse" />
-  </message>
-  <message name="courseMembershipPersistListById">
-    <part name="parameters" element="tns:courseMembershipPersistListById" />
-  </message>
-  <message name="courseMembershipPersistListByIdResponse">
-    <part name="parameters" element="tns:courseMembershipPersistListByIdResponse" />
-  </message>
-  <message name="courseMembershipDeleteListById">
-    <part name="parameters" element="tns:courseMembershipDeleteListById" />
-  </message>
-  <message name="courseMembershipDeleteListByIdResponse">
-    <part name="parameters" element="tns:courseMembershipDeleteListByIdResponse" />
-  </message>
-  <message name="courseMembershipLoadRecordByCourseAndUserBatchId">
-    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserBatchId" />
-  </message>
-  <message name="courseMembershipLoadRecordByCourseAndUserBatchIdResponse">
-    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserBatchIdResponse" />
-  </message>
-  <message name="courseMembershipLoadListByTemplate">
-    <part name="parameters" element="tns:courseMembershipLoadListByTemplate" />
-  </message>
-  <message name="courseMembershipLoadListByTemplateResponse">
-    <part name="parameters" element="tns:courseMembershipLoadListByTemplateResponse" />
-  </message>
   <message name="userLoadListByPrimaryPortalRoleId">
     <part name="parameters" element="tns:userLoadListByPrimaryPortalRoleId" />
   </message>
@@ -389,7 +389,218 @@
   <message name="observerAssociationDeleteListByObserverAndUsersBatchUidResponse">
     <part name="parameters" element="tns:observerAssociationDeleteListByObserverAndUsersBatchUidResponse" />
   </message>
+  <message name="userLoadListAvailableObserversByCourseId">
+    <part name="parameters" element="tns:userLoadListAvailableObserversByCourseId" />
+  </message>
+  <message name="userLoadListAvailableObserversByCourseIdResponse">
+    <part name="parameters" element="tns:userLoadListAvailableObserversByCourseIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByTemplate">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByTemplate" />
+  </message>
+  <message name="portalRoleMembershipLoadListByTemplateResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByTemplateResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordById" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleId" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordById" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipPersistRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipPersistRecordById" />
+  </message>
+  <message name="portalRoleMembershipPersistRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipPersistRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordById" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListById">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListById" />
+  </message>
+  <message name="portalRoleMembershipLoadListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertListById">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListById" />
+  </message>
+  <message name="portalRoleMembershipInsertListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipPersistListById">
+    <part name="parameters" element="tns:portalRoleMembershipPersistListById" />
+  </message>
+  <message name="portalRoleMembershipPersistListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipPersistListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteListById">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListById" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserId">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserId" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserId">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserId" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByPortalRoleId">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByPortalRoleId" />
+  </message>
+  <message name="portalRoleMembershipLoadListByPortalRoleIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByPortalRoleIdResponse" />
+  </message>
   <portType name="BbWebservices">
+    <operation name="courseMembershipLoadRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByIdRequest" message="tns:courseMembershipLoadRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByIdResponse" message="tns:courseMembershipLoadRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByIdRequest" message="tns:courseMembershipLoadListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByIdResponse" message="tns:courseMembershipLoadListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserIdRequest" message="tns:courseMembershipLoadRecordByCourseAndUserId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserIdResponse" message="tns:courseMembershipLoadRecordByCourseAndUserIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByUserId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByUserIdRequest" message="tns:courseMembershipLoadListByUserId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByUserIdResponse" message="tns:courseMembershipLoadListByUserIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByUserId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByCourseId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdRequest" message="tns:courseMembershipLoadListByCourseId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdResponse" message="tns:courseMembershipLoadListByCourseIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdWithUserInfo">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdWithUserInfoRequest" message="tns:courseMembershipLoadListByCourseIdWithUserInfo" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdWithUserInfoResponse" message="tns:courseMembershipLoadListByCourseIdWithUserInfoResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdWithUserInfo/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdAndRole">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdAndRoleRequest" message="tns:courseMembershipLoadListByCourseIdAndRole" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdAndRoleResponse" message="tns:courseMembershipLoadListByCourseIdAndRoleResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdAndRole/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipInsertRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertRecordByIdRequest" message="tns:courseMembershipInsertRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertRecordByIdResponse" message="tns:courseMembershipInsertRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipUpdateRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateRecordByIdRequest" message="tns:courseMembershipUpdateRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateRecordByIdResponse" message="tns:courseMembershipUpdateRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipPersistRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistRecordByIdRequest" message="tns:courseMembershipPersistRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistRecordByIdResponse" message="tns:courseMembershipPersistRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipDeleteRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteRecordByIdRequest" message="tns:courseMembershipDeleteRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteRecordByIdResponse" message="tns:courseMembershipDeleteRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipInsertListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertListByIdRequest" message="tns:courseMembershipInsertListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertListByIdResponse" message="tns:courseMembershipInsertListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipUpdateListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateListByIdRequest" message="tns:courseMembershipUpdateListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateListByIdResponse" message="tns:courseMembershipUpdateListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipPersistListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistListByIdRequest" message="tns:courseMembershipPersistListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistListByIdResponse" message="tns:courseMembershipPersistListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipDeleteListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteListByIdRequest" message="tns:courseMembershipDeleteListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteListByIdResponse" message="tns:courseMembershipDeleteListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserBatchId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserBatchIdRequest" message="tns:courseMembershipLoadRecordByCourseAndUserBatchId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserBatchIdResponse" message="tns:courseMembershipLoadRecordByCourseAndUserBatchIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserBatchId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByTemplate">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByTemplateRequest" message="tns:courseMembershipLoadListByTemplate" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByTemplateResponse" message="tns:courseMembershipLoadListByTemplateResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByTemplate/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
     <operation name="userLoadRecordByBatchUid">
       <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadRecordByBatchUidRequest" message="tns:userLoadRecordByBatchUid" />
       <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadRecordByBatchUidResponse" message="tns:userLoadRecordByBatchUidResponse" />
@@ -510,91 +721,6 @@
       <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadListByGroupIdResponse" message="tns:userLoadListByGroupIdResponse" />
       <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadListByGroupId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
     </operation>
-    <operation name="courseMembershipLoadRecordById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByIdRequest" message="tns:courseMembershipLoadRecordById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByIdResponse" message="tns:courseMembershipLoadRecordByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadListById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByIdRequest" message="tns:courseMembershipLoadListById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByIdResponse" message="tns:courseMembershipLoadListByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadRecordByCourseAndUserId">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserIdRequest" message="tns:courseMembershipLoadRecordByCourseAndUserId" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserIdResponse" message="tns:courseMembershipLoadRecordByCourseAndUserIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadListByUserId">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByUserIdRequest" message="tns:courseMembershipLoadListByUserId" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByUserIdResponse" message="tns:courseMembershipLoadListByUserIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByUserId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadListByCourseId">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdRequest" message="tns:courseMembershipLoadListByCourseId" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdResponse" message="tns:courseMembershipLoadListByCourseIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadListByCourseIdWithUserInfo">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdWithUserInfoRequest" message="tns:courseMembershipLoadListByCourseIdWithUserInfo" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdWithUserInfoResponse" message="tns:courseMembershipLoadListByCourseIdWithUserInfoResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdWithUserInfo/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadListByCourseIdAndRole">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdAndRoleRequest" message="tns:courseMembershipLoadListByCourseIdAndRole" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdAndRoleResponse" message="tns:courseMembershipLoadListByCourseIdAndRoleResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByCourseIdAndRole/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipInsertRecordById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertRecordByIdRequest" message="tns:courseMembershipInsertRecordById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertRecordByIdResponse" message="tns:courseMembershipInsertRecordByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipUpdateRecordById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateRecordByIdRequest" message="tns:courseMembershipUpdateRecordById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateRecordByIdResponse" message="tns:courseMembershipUpdateRecordByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipPersistRecordById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistRecordByIdRequest" message="tns:courseMembershipPersistRecordById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistRecordByIdResponse" message="tns:courseMembershipPersistRecordByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipDeleteRecordById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteRecordByIdRequest" message="tns:courseMembershipDeleteRecordById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteRecordByIdResponse" message="tns:courseMembershipDeleteRecordByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipInsertListById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertListByIdRequest" message="tns:courseMembershipInsertListById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertListByIdResponse" message="tns:courseMembershipInsertListByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipInsertListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipUpdateListById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateListByIdRequest" message="tns:courseMembershipUpdateListById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateListByIdResponse" message="tns:courseMembershipUpdateListByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipUpdateListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipPersistListById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistListByIdRequest" message="tns:courseMembershipPersistListById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistListByIdResponse" message="tns:courseMembershipPersistListByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipPersistListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipDeleteListById">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteListByIdRequest" message="tns:courseMembershipDeleteListById" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteListByIdResponse" message="tns:courseMembershipDeleteListByIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipDeleteListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadRecordByCourseAndUserBatchId">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserBatchIdRequest" message="tns:courseMembershipLoadRecordByCourseAndUserBatchId" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserBatchIdResponse" message="tns:courseMembershipLoadRecordByCourseAndUserBatchIdResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadRecordByCourseAndUserBatchId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
-    <operation name="courseMembershipLoadListByTemplate">
-      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByTemplateRequest" message="tns:courseMembershipLoadListByTemplate" />
-      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByTemplateResponse" message="tns:courseMembershipLoadListByTemplateResponse" />
-      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/courseMembershipLoadListByTemplate/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
-    </operation>
     <operation name="userLoadListByPrimaryPortalRoleId">
       <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadListByPrimaryPortalRoleIdRequest" message="tns:userLoadListByPrimaryPortalRoleId" />
       <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadListByPrimaryPortalRoleIdResponse" message="tns:userLoadListByPrimaryPortalRoleIdResponse" />
@@ -705,9 +831,318 @@
       <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/observerAssociationDeleteListByObserverAndUsersBatchUidResponse" message="tns:observerAssociationDeleteListByObserverAndUsersBatchUidResponse" />
       <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/observerAssociationDeleteListByObserverAndUsersBatchUid/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
     </operation>
+    <operation name="userLoadListAvailableObserversByCourseId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadListAvailableObserversByCourseIdRequest" message="tns:userLoadListAvailableObserversByCourseId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadListAvailableObserversByCourseIdResponse" message="tns:userLoadListAvailableObserversByCourseIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/userLoadListAvailableObserversByCourseId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByTemplate">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByTemplateRequest" message="tns:portalRoleMembershipLoadListByTemplate" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByTemplateResponse" message="tns:portalRoleMembershipLoadListByTemplateResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByTemplate/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidRequest" message="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse" message="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidRequest" message="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse" message="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidRequest" message="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidResponse" message="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUid">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByUserAndPortalRoleBatchUidRequest" message="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUid" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse" message="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByUserAndPortalRoleBatchUid/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUid">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertListByUserAndPortalRoleBatchUidRequest" message="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUid" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertListByUserAndPortalRoleBatchUidResponse" message="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUidResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertListByUserAndPortalRoleBatchUid/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidRequest" message="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse" message="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByIdRequest" message="tns:portalRoleMembershipLoadRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByIdResponse" message="tns:portalRoleMembershipLoadRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdRequest" message="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse" message="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadRecordByUserIdAndPortalRoleId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertRecordByIdRequest" message="tns:portalRoleMembershipInsertRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertRecordByIdResponse" message="tns:portalRoleMembershipInsertRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipPersistRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipPersistRecordByIdRequest" message="tns:portalRoleMembershipPersistRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipPersistRecordByIdResponse" message="tns:portalRoleMembershipPersistRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipPersistRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByIdRequest" message="tns:portalRoleMembershipDeleteRecordById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByIdResponse" message="tns:portalRoleMembershipDeleteRecordByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdRequest" message="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdResponse" message="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByIdRequest" message="tns:portalRoleMembershipLoadListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByIdResponse" message="tns:portalRoleMembershipLoadListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertListByIdRequest" message="tns:portalRoleMembershipInsertListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertListByIdResponse" message="tns:portalRoleMembershipInsertListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipInsertListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipPersistListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipPersistListByIdRequest" message="tns:portalRoleMembershipPersistListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipPersistListByIdResponse" message="tns:portalRoleMembershipPersistListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipPersistListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteListById">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByIdRequest" message="tns:portalRoleMembershipDeleteListById" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByIdResponse" message="tns:portalRoleMembershipDeleteListByIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListById/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByUserIdRequest" message="tns:portalRoleMembershipDeleteListByUserId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByUserIdResponse" message="tns:portalRoleMembershipDeleteListByUserIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipDeleteListByUserId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByUserIdRequest" message="tns:portalRoleMembershipLoadListByUserId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByUserIdResponse" message="tns:portalRoleMembershipLoadListByUserIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByUserId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByPortalRoleId">
+      <input wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByPortalRoleIdRequest" message="tns:portalRoleMembershipLoadListByPortalRoleId" />
+      <output wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByPortalRoleIdResponse" message="tns:portalRoleMembershipLoadListByPortalRoleIdResponse" />
+      <fault wsam:Action="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices/BbWebservices/portalRoleMembershipLoadListByPortalRoleId/Fault/BbWsFault" name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
   </portType>
   <binding name="BbWebservicesPortBinding" type="tns:BbWebservices">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="courseMembershipLoadRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdWithUserInfo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdAndRole">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipInsertRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipUpdateRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipPersistRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipDeleteRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipInsertListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipUpdateListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipPersistListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipDeleteListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserBatchId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByTemplate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
     <operation name="userLoadRecordByBatchUid">
       <soap:operation soapAction="" />
       <input>
@@ -996,210 +1431,6 @@
         <soap:fault use="literal" name="BbWsFault" namespace="" />
       </fault>
     </operation>
-    <operation name="courseMembershipLoadRecordById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadListById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadRecordByCourseAndUserId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadListByUserId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadListByCourseId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadListByCourseIdWithUserInfo">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadListByCourseIdAndRole">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipInsertRecordById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipUpdateRecordById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipPersistRecordById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipDeleteRecordById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipInsertListById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipUpdateListById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipPersistListById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipDeleteListById">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadRecordByCourseAndUserBatchId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
-    <operation name="courseMembershipLoadListByTemplate">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="BbWsFault">
-        <soap:fault use="literal" name="BbWsFault" namespace="" />
-      </fault>
-    </operation>
     <operation name="userLoadListByPrimaryPortalRoleId">
       <soap:operation soapAction="" />
       <input>
@@ -1453,6 +1684,258 @@
       </fault>
     </operation>
     <operation name="observerAssociationDeleteListByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListAvailableObserversByCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByTemplate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipPersistRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipPersistListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByPortalRoleId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

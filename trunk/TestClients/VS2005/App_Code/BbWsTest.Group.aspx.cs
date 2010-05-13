@@ -14,7 +14,7 @@ using System.Collections.Generic;
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunGroupTest() {
-        testArgs.ClearAllTestData();
+        //testArgs.ClearAllTestData();
         //testArgs.course.courseCopyCourseExact.execute();
     }
 

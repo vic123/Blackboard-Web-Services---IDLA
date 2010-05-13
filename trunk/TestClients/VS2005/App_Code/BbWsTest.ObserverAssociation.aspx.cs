@@ -14,19 +14,15 @@ using System.Collections.Generic;
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunObserverAssociationTest() {
-        testArgs.ClearAllTestData();
+        //testArgs.ClearAllTestData();
         testArgs.observerAssociation.observerAssociationLoadListByTemplate.execute();
-        
         testArgs.observerAssociation.observerAssociationLoadRecordByObserverAndUsersBatchUid.execute();
 
         testArgs.observerAssociation.observerAssociationInsertRecordByObserverAndUsersBatchUid.execute();
-        //--testArgs.observerAssociation.observerAssociationUpdateRecordByObserverAndUsersBatchUid.execute();
-        //--testArgs.observerAssociation.observerAssociationPersistRecordByObserverAndUsersBatchUid.execute();
+
         testArgs.observerAssociation.observerAssociationDeleteRecordByObserverAndUsersBatchUid.execute();
         testArgs.observerAssociation.observerAssociationLoadListByObserverAndUsersBatchUid.execute();
         testArgs.observerAssociation.observerAssociationInsertListByObserverAndUsersBatchUid.execute();
-        //--testArgs.observerAssociation.observerAssociationUpdateListByObserverAndUsersBatchUid.execute();
-        //--testArgs.observerAssociation.observerAssociationPersistListByObserverAndUsersBatchUid.execute();
         testArgs.observerAssociation.observerAssociationDeleteListByObserverAndUsersBatchUid.execute();
     }
 
@@ -116,6 +112,7 @@ public partial class BbWsTest : System.Web.UI.Page
     }
     class _observerAssociationInsertRecordByObserverAndUsersBatchUid : _observerAssociationTestCase_RecordResult, ITestAction {
         override public void preAction() {
+            
             args.testArgs.user.ClearInputsAndResults();
             args.testArgs.user.loadBaseRecordAction.PreActionAndExecuteImp();
             args.wsInputRecord.usersBatchUid = args.testArgs.user.wsResultRecord.batchUid;
@@ -123,8 +120,16 @@ public partial class BbWsTest : System.Web.UI.Page
             args.testArgs.user.insertRecordAction.PreActionAndExecuteImp();
             args.testArgs.user.loadInsertedRecordAction.executeImp();
             args.wsInputRecord.observerBatchUid = args.testArgs.user.wsResultRecord.batchUid;
-
             args.ClearResults();
+
+
+            //test preassigned with non-Parent primary and secondary system roles
+            /*
+            args.testArgs.user.loadBaseRecordAction.PreActionAndExecuteImp();
+            args.wsInputRecord.usersBatchUid = args.testArgs.user.wsResultRecord.batchUid;
+            args.testArgs.user.insertRecordAction.preAction();
+            args.wsInputRecord.observerBatchUid = args.testArgs.user.wsInputRecord.batchUid;
+            args.ClearResults(); */
         }
         override public void postAction() {
             args.testArgs.user.deleteRecordAction.executeImp();
