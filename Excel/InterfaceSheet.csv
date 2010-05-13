@@ -1,10 +1,10 @@
 Legend:,,Existing interface,,,,,,
-,,Question,,,,,,
-,,Initially agreed new interface to be implemented,,,,,,
-,,Duplicated reference to web method (multifunctional interfaces mentioned second or more time),,,,,,
+,,Question,,Red - Baseline comments on remaining problems or unimplemented interfaces,,,,
+,,Initially agreed new interface to be implemented,,Green - Baseline comments on implemented requirements/questions and planned/existed interfaces,,,,
+,,Duplicated reference to web method (multifunctional interfaces mentioned second or more time),,"Blue - fixed problems of ""Red"" colour",,,,
 ,,Answers are in blue,,,,,,
-,,"Bright yellow - additional interfaces, some Ryan comments are converted directly to them",,Red - Baseline comments on remaining problems or unimplemented interfaces,,,,
-,,"Violet - currently defined interfaces, some of them may be mentioned for more than one item if applicable",,Green - Baseline comments on implemented requirements/questions and planned/existed interfaces,,,,
+,,"Bright yellow - additional interfaces, some Ryan comments are converted directly to them",,,,,,
+,,"Violet - currently defined interfaces, some of them may be mentioned for more than one item if applicable",,,,,,
 Item,Operation ,,,,,,,
 ,Read,,Create,,Update,,Delete,
 ,Module,Existing Web Interface / Supposed to be used API for new interface,Module,Existing Web Interface / Supposed to be used API ,Module,Interface,Module,Existing Web Interface / Supposed to be used API 
@@ -51,6 +51,7 @@ userLoadListByEmailAddressFamilyNameGivenName
 userLoadListBySearchByUserName
 userLoadListObservedByObserverId
 userLoadListByCourseId
+userLoadListAvailableObserversByCourseId
 userLoadListByGroupId
 userLoadListByPrimaryPortalRoleId",bbws,"userPersistListByBatchUid
 userInsertListById
@@ -67,7 +68,7 @@ saveCourse()",bbcrsws,Boolean deleteCourseByCourseBbId(),,
 ,bbcrsws,List<CourseDetails> getAllCourseIDsNoDetailsWithNamedElements(),,"Ryan: Really we would like to see the ability to create a copy of a course from another existing course.  Not create a course from scratch.  The type of copy would be an exact copy.
 Vic: copyCourse()",,,,,,
 ,,,,"Final tests performed on Bb v.9 revealed some problems with current implementation of copyCourseExact, it was working however on Bb v.7.3",,,,,,
-,bbcrsws,String[] getAllCourseIDsWhereCourseIdContainsGivenSearchString(),,,,,,,,
+,bbcrsws,String[] getAllCourseIDsWhereCourseIdContainsGivenSearchString(),,"It appeared that copyCourseExact is working correctly, but Bb processing may take longer time than default client timeout",,,,,,
 ,bbcrsws,List<CourseDetails> getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements(),,,,,,,,
 ,bbcrsws,List<CourseDetails> getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements(),,,,,,,,
 ,bbcrsws,CourseDetails getCourseDetailsWithNamedElements(),,,,,,,,
@@ -143,6 +144,7 @@ Vic:PortalRoleDbLoader.loadAllByUserId() can be cleaned from appended primary ro
 ,,Load of various portal roles by UserId is implemented,,,,,,
 ,,"Assignment of secondary Portal Roles is not implemented in new design, but is available in initial bbuws API.
 Otherwise, this assignment is defined with UserRole data class in Bb API.",,,,,,
+,,"UserRole API is implemented - see ""Secondary Institutional Roles Membership"" block below",,,,,,
 ,bbws,"portalRoleLoadRecordPrimaryRoleByUserId
 portalRoleLoadListAllByUserId
 portalRoleLoadListSecondaryRolesByUserId",bbws,"userInsertRecordByBatchUid
@@ -164,7 +166,7 @@ may be public void remove(ObserverAssociation objToRemove) from bb-cms-admin.jar
 deleteObserver()"
 ,,,,Observer assignment by itself is implemented with observerAssociationInsertRecordByObserverAndUsersBatchUid,,,,Implemented with observerAssociationDeleteRecordByObserverAndUsersBatchUid
 ,,,,"Implemented ObserverAssociation methods just assign one user as observer of another without modification of observer's System Role, assignment passes this way but result of such ObserverAssociation was not tested with Bb UI.",,,,
-
+,,,,Secondary system roles are cleaned up and Parent (synonym of Observer) is assigned to Observer as per requirements defined in Bb administrative interface.,,,,
 ,,,,,,,,
 ,bbws,"observerAssociationLoadRecordByObserverAndUsersBatchUid
 ",bbws,"observerAssociationInsertRecordByObserverAndUsersBatchUid
@@ -178,9 +180,11 @@ BbList loadObservedByObserverId(Id observerId) - getObservedByObserverId()",,,,,
 ?? bHeavy, FilteredDbObjectMap - needs more research
 ?? public interface ObserverAssociationDef (!!)",,,,,,
 ,,Analogue of loadAvailableObserversByCourseId is not implemented,,,,,,
+,,Exposed as userLoadAvailableObserversByCourseId web method.,,,,,,
 List of ObserverAssociation,bbws,"observerAssociationLoadListByTemplate
 observerAssociationLoadListByObserverAndUsersBatchUid
-userLoadListObservedByObserverId",bbws,"observerAssociationInsertListByObserverAndUsersBatchUid
+userLoadListObservedByObserverId
+userLoadListAvailableObserversByCourseId",bbws,"observerAssociationInsertListByObserverAndUsersBatchUid
 ",,,bbws,"observerAssociationDeleteListByObserverAndUsersBatchUid
 "
 ,,,,,,,,
@@ -188,3 +192,14 @@ There are two parts to this question.  ,,,,,,,,
 "First, the observer is actually a system role (like system administrator) and the user needs to be associated to this role.  ",,,,,,,,
 "Second, the observer is the associated to different users that they are going to observe.  This allows that observer to see the observed courses and grades and what not.",,,,,,,,
 "An example of an observer would be a parent of a student.  This parent would be given the observer system role, and then would observe the student login.",,,,,,,,
+,,,,,,,,
+"Secondary Institutional Roles Membership
+Record access",bbws,"portalRoleMembershipLoadRecordById
+portalRoleMembershipLoadRecordByUserIdAndPortalRoleId
+",bbws,"portalRoleMembershipInsertRecordById
+portalRoleMembershipPersistRecordById",bbws,portalRoleMembershipPersistRecordById,bbws,"portalRoleMembershipDeleteRecordById
+portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId"
+List access,bbws,"portalRoleMembershipLoadListById
+portalRoleMembershipLoadListByUserId
+portalRoleMembershipLoadListByPortalRoleId",bbws,portalRoleMembershipInsertListById,bbws,portalRoleMembershipPersistListById,bbws,"portalRoleMembershipDeleteListById
+portalRoleMembershipDeleteListByUserId"

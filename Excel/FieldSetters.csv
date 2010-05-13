@@ -1856,8 +1856,7 @@ ObserverAssociation,dataSourceId,dataSourceId,getDataSourceId,getDataSourceId,se
                 }
             }.setWsField(""dataSourceId"");
 
-",,"
-        }","            new BbFieldSetter() {
+",,,"            new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                         return bbObject.getDataSourceId().toExternalString();
                 }
@@ -1932,7 +1931,211 @@ ObserverAssociation,dataSourceBatchUid,dataSourceBatchUid,getDataSourceBatchUid,
                 }
             }.setWsField(""dataSourceBatchUid"");
 
+",,"
+        }","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getDataSourceBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDataSourceBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setDataSourceBatchUid(newValue);
+                }
+            }.setBbField(""dataSourceBatchUid"");
+
+"
+PortalRoleMembership,id,bbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,                        return getArgs().getResultRecord().getBbId();,"                    bbObject.setId(Id.generateId(UserRole.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,"
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(UserRole.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+PortalRoleMembership,userId,userId,getUserId,getUserId,setUserId,setUserId,                    return bbObject.getUserId().toExternalString();,                        return getArgs().getResultRecord().getUserId();,"                    bbObject.setUserId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getUserId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserId(newValue);
+                }
+            }.setWsField(""userId"");
+
 ",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getUserId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUserId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setUserId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""userId"");
+
+"
+PortalRoleMembership,portalRoleId,portalRoleId,getPortalRoleId,getPortalRoleId,setPortalRoleId,setPortalRoleId,                    return bbObject.getPortalRoleId().toExternalString();,                        return getArgs().getResultRecord().getPortalRoleId();,"                    bbObject.setPortalRoleId(Id.generateId(PortalRole.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPortalRoleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPortalRoleId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPortalRoleId(newValue);
+                }
+            }.setWsField(""portalRoleId"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getPortalRoleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPortalRoleId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setPortalRoleId(Id.generateId(PortalRole.DATA_TYPE, newValue));
+                }
+            }.setBbField(""portalRoleId"");
+
+"
+PortalRoleMembership,personBatchUid,userBatchUid,getPersonBatchUid,getUserBatchUid,setPersonBatchUid,setUserBatchUid,                    return bbObject.getPersonBatchUid();,                        return getArgs().getResultRecord().getUserBatchUid();,                    bbObject.setPersonBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPersonBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserBatchUid(newValue);
+                }
+            }.setWsField(""userBatchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getPersonBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUserBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setPersonBatchUid(newValue);
+                }
+            }.setBbField(""userBatchUid"");
+
+"
+PortalRoleMembership,portalRoleBatchUid,portalRoleBatchUid,getPortalRoleBatchUid,getPortalRoleBatchUid,setPortalRoleBatchUid,setPortalRoleBatchUid,                    return bbObject.getPortalRoleBatchUid();,                        return getArgs().getResultRecord().getPortalRoleBatchUid();,                    bbObject.setPortalRoleBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPortalRoleBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPortalRoleBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPortalRoleBatchUid(newValue);
+                }
+            }.setWsField(""portalRoleBatchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getPortalRoleBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPortalRoleBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setPortalRoleBatchUid(newValue);
+                }
+            }.setBbField(""portalRoleBatchUid"");
+
+"
+PortalRoleMembership,rowStatus,rowStatus,getRowStatus,getRowStatus,setRowStatus,setRowStatus,                return bbObject.getRowStatus().toFieldName();,                return getArgs().getResultRecord().getRowStatus();,"                bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getRowStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRowStatus();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRowStatus(newValue);
+                }
+            }.setWsField(""rowStatus"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRowStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRowStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));
+                }
+            }.setBbField(""rowStatus"");
+
+"
+PortalRoleMembership,recStatus,recStatus,getRecStatus,getRecStatus,setRecStatus,setRecStatus,                return bbObject.getRecStatus().toFieldName();,                return getArgs().getResultRecord().getRecStatus();,"                bbObject.setRecStatus((IAdminObject.RecStatus)IAdminObject.RecStatus.fromFieldName(newValue, IAdminObject.RecStatus.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getRecStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRecStatus();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRecStatus(newValue);
+                }
+            }.setWsField(""recStatus"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRecStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRecStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setRecStatus((IAdminObject.RecStatus)IAdminObject.RecStatus.fromFieldName(newValue, IAdminObject.RecStatus.class));
+                }
+            }.setBbField(""recStatus"");
+
+"
+PortalRoleMembership,dataSourceBatchUid,dataSourceBatchUid,getDataSourceBatchUid,getDataSourceBatchUid,setDataSourceBatchUid,setDataSourceBatchUid,                    return bbObject.getDataSourceBatchUid();,                        return getArgs().getResultRecord().getDataSourceBatchUid();,                    bbObject.setDataSourceBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceBatchUid(newValue);
+                }
+            }.setWsField(""dataSourceBatchUid"");
+
+",,"
+        }","            new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                         return bbObject.getDataSourceBatchUid();
                 }
