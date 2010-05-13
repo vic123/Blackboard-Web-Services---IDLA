@@ -14,7 +14,7 @@ using System.Collections.Generic;
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunCourseTest() {
-        testArgs.ClearAllTestData();
+        //testArgs.ClearAllTestData();
         testArgs.course.courseCopyCourseExact.execute();
     }
 
@@ -54,23 +54,23 @@ public partial class BbWsTest : System.Web.UI.Page
         override public void preAction() {
             args.testArgs.courseMembership.courseMembershipLoadListByTemplate.PreActionAndExecuteImp();
             args.wsInputRecord.batchUid = args.testArgs.courseMembership.wsResultList[0].courseBatchUid;
+            //args.wsInputRecord.batchUid = "TestClass_001_ID";
             args.ClearResults();
         }
         override public void postAction() {
             Boolean b_spec = true;
             Boolean b;
-            //String course_batch_uid = args.testArgs.courseMembership.wsInputRecord.courseBatchUid;
             String course_batch_uid = args.wsInputRecord.batchUid;
             String new_course_batch_uid = course_batch_uid + args.currentTestKeySuffix;
-            args.bbCrsWs.deleteCourseByCourseId(null, new_course_batch_uid, out b, out b_spec);
+            args.bbCrsWs.deleteCourseByCourseId(args.param.password, new_course_batch_uid, out b, out b_spec);
         }
         override public void executeImp() {
             Boolean b_spec = true;
             Boolean b;
-            //String course_batch_uid = args.testArgs.courseMembership.wsInputRecord.courseBatchUid;
             String course_batch_uid = args.wsInputRecord.batchUid;
             String new_course_batch_uid = course_batch_uid + args.currentTestKeySuffix;
-            args.bbCrsWs.copyCourseExact(null, course_batch_uid, new_course_batch_uid, out b, out b_spec);
+            args.bbCrsWs.Timeout = 900000;
+            args.bbCrsWs.copyCourseExact(args.param.password, course_batch_uid, new_course_batch_uid, out b, out b_spec);
             args.wsResultRecord = args.wsInputRecord;
             args.wsResultRecord.bbWsBoolResult = b.ToString().ToLower();
         }

@@ -21,7 +21,8 @@ public partial class BbWsTest : System.Web.UI.Page
             RunCourseMembershipTest();
             RunPortalRoleTest();
             RunObserverAssociationTest();
-            RunCourseTest(); 
+            RunPortalRoleMembershipTest();
+            RunCourseTest();
 
         } catch (Exception e1) {
             Response.Output.Write(e1.ToString());
@@ -34,6 +35,7 @@ public partial class BbWsTest : System.Web.UI.Page
         public _courseTestArgs course = null;
         public _portalRoleTestArgs portalRole = null;
         public _observerAssociationTestArgs observerAssociation = null;
+        public _portalRoleMembershipTestArgs portalRoleMembership = null;
         public _groupTestArgs group = null;
         
         public TestArgsStruct() {
@@ -47,6 +49,8 @@ public partial class BbWsTest : System.Web.UI.Page
             portalRole.init(this);
             observerAssociation = new _observerAssociationTestArgs();
             observerAssociation.init(this);
+            portalRoleMembership = new _portalRoleMembershipTestArgs();
+            portalRoleMembership.init(this);
             group = new _groupTestArgs();
             group.init(this);
         }
@@ -56,6 +60,7 @@ public partial class BbWsTest : System.Web.UI.Page
             //course.ClearTestData();
             portalRole.ClearTestData();
             observerAssociation.ClearTestData();
+            portalRoleMembership.ClearTestData();
             //group.ClearTestData();
         }
         public void ClearAllInputsAndResults() {
@@ -73,6 +78,9 @@ public partial class BbWsTest : System.Web.UI.Page
 
             observerAssociation.ClearInputsAndResults();
             observerAssociation.currentTestKeySuffix = observerAssociation.testKeySuffixes[0];
+
+            portalRoleMembership.ClearInputsAndResults();
+            portalRoleMembership.currentTestKeySuffix = portalRoleMembership.testKeySuffixes[0];
 
             group.ClearInputsAndResults();
             group.currentTestKeySuffix = group.testKeySuffixes[0];
@@ -128,9 +136,12 @@ public partial class BbWsTest : System.Web.UI.Page
         public TestArgs() {
             HttpContext context = HttpContext.Current;
             this.response = context.Response;
-            //param.dataLogSeverity = "DEBUG";
+            param.password = "password"; //!!
+            //param.password = "idla";
+            //param.password = "IDLA";
+            param.dataLogSeverity = "DEBUG";
             //param.dataLogSeverity = "INFO";
-            param.dataLogSeverity = "WARN";
+            //param.dataLogSeverity = "WARN";
             //param.dataVerbosity = "NONE";
             //param.dataVerbosity = "STANDARD";
             param.dataVerbosity = "EXTENDED";
@@ -164,14 +175,6 @@ public partial class BbWsTest : System.Web.UI.Page
                 insertRecordAction.SafePostAction();
             }
         }
-
-
-
-
-        /*public TestAction<TestArgs<WsDataType>, WsDataType> loadBaseRecordAction;
-        public TestAction<TestArgs<WsDataType>, WsDataType> loadInsertedRecordAction;
-        public TestAction<TestArgs<WsDataType>, WsDataType> insertRecordAction;
-        public TestAction<TestArgs<WsDataType>, WsDataType> deleteRecordAction;*/
 
         public ITestAction loadBaseRecordAction;
         public ITestAction loadInsertedRecordAction;
@@ -295,6 +298,7 @@ public partial class BbWsTest : System.Web.UI.Page
 
         virtual public void execute() {
             try {
+                //!!args.ClearInputsAndResults(); -causes null pointer exception upon result analysis, probably because analysing class is built on same ancestor
                 if (preActionEvent != null) preActionEvent();
                 preAction();
                 if (executeEvent != null) executeEvent();

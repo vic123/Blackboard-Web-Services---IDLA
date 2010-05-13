@@ -14,49 +14,45 @@ using System.Collections.Generic;
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunUserTest() {
-        testArgs.ClearAllTestData();
+        //testArgs.ClearAllTestData();
         testArgs.user.userLoadRecordByBatchUid.execute();
         testArgs.user.userLoadListByTemplate.execute();
-        testArgs.user.userInsertRecordByBatchUid_duplicate.execute();
-        testArgs.user.userInsertRecordByBatchUid_minimal.execute();
-        testArgs.user.userUpdateRecordByBatchUid.execute();
-        testArgs.user.userPersistRecordByBatchUid_insert.execute();
-        testArgs.user.userPersistRecordByBatchUid_update.execute();
-        testArgs.user.userDeleteRecordByBatchUid.execute();
-        testArgs.user.userPersistListByBatchUid.execute();
-        testArgs.user.userDeleteListByBatchUid.execute();
-        testArgs.user.userLoadRecordById.execute();
-        testArgs.user.userLoadRecordByName.execute();
-        testArgs.user.userInsertRecordById_minimal.execute();
-        testArgs.user.userUpdateRecordById.execute();
+          testArgs.user.userInsertRecordByBatchUid_duplicate.execute();
+          testArgs.user.userInsertRecordByBatchUid_minimal.execute();
+          testArgs.user.userUpdateRecordByBatchUid.execute();
+          testArgs.user.userPersistRecordByBatchUid_insert.execute();
+          testArgs.user.userPersistRecordByBatchUid_update.execute();
+          testArgs.user.userDeleteRecordByBatchUid.execute();
+          testArgs.user.userPersistListByBatchUid.execute();
+          testArgs.user.userDeleteListByBatchUid.execute();
+          testArgs.user.userLoadRecordById.execute();
+          testArgs.user.userLoadRecordByName.execute();
+          testArgs.user.userInsertRecordById_minimal.execute();
+          testArgs.user.userUpdateRecordById.execute();
 
-        testArgs.user.userLoadRecordByName.execute();
-        testArgs.user.userUpdateRecordById_extended.execute();
+          testArgs.user.userLoadRecordByName.execute();
+          testArgs.user.userUpdateRecordById_extended.execute();
 
-        testArgs.user.userPersistRecordById_insert.execute();
-        testArgs.user.userPersistRecordById_update.execute();
-        testArgs.user.userDeleteRecordById.execute();
-        testArgs.user.userLoadListById.execute();
-        testArgs.user.userInsertListById.execute();
-        testArgs.user.userUpdateListById.execute();
-        testArgs.user.userPersistListById.execute();
-        testArgs.user.userDeleteListById.execute();
-        testArgs.user.userLoadListByEmailAddressFamilyNameGivenName_email.execute();
-        testArgs.user.userLoadListBySearchByUserName.execute();
+          testArgs.user.userPersistRecordById_insert.execute();
+          testArgs.user.userPersistRecordById_update.execute();
+          testArgs.user.userDeleteRecordById.execute();
+          testArgs.user.userLoadListById.execute();
+          testArgs.user.userInsertListById.execute();
+          testArgs.user.userUpdateListById.execute();
+          testArgs.user.userPersistListById.execute();
+          testArgs.user.userDeleteListById.execute();
+          testArgs.user.userLoadListByEmailAddressFamilyNameGivenName_email.execute();
+          testArgs.user.userLoadListBySearchByUserName.execute();
         
-        testArgs.user.userLoadListByCourseId.execute();
-        testArgs.user.userLoadListObservedByObserverId.execute();
-        testArgs.user.userLoadListByGroupId.execute();
-        testArgs.user.userLoadListByPrimaryRoleId.execute();
+          testArgs.user.userLoadListByCourseId.execute();
+          testArgs.user.userLoadListAvailableObserversByCourseId.execute();
+          testArgs.user.userLoadListObservedByObserverId.execute();
+          testArgs.user.userLoadListByGroupId.execute();
+          testArgs.user.userLoadListByPrimaryRoleId.execute();
 
         //!! assign customly created PortalRole to an user
     
     }
-
-
-
-
-
 
     //    class _userTestCase : BbWsTest.TestCase<_userTestArgs, bbws.userDetails>, ITestAction { }
     class _userTestCase_SuccessRecord : BbWsTest.TestCase_SuccessRecord<_userTestArgs, bbws.userDetails>, ITestAction { }
@@ -234,6 +230,7 @@ public partial class BbWsTest : System.Web.UI.Page
         public _userLoadListBySearchByUserName userLoadListBySearchByUserName;
         public _userLoadListObservedByObserverId userLoadListObservedByObserverId;
         public _userLoadListByCourseId userLoadListByCourseId;
+        public _userLoadListAvailableObserversByCourseId userLoadListAvailableObserversByCourseId;
         public _userLoadListByGroupId userLoadListByGroupId;
         public _userLoadListByPrimaryRoleId userLoadListByPrimaryRoleId;
 
@@ -313,6 +310,8 @@ public partial class BbWsTest : System.Web.UI.Page
             userLoadListObservedByObserverId.init(this.testArgs.user);
             userLoadListByCourseId = new _userLoadListByCourseId();
             userLoadListByCourseId.init(this.testArgs.user);
+            userLoadListAvailableObserversByCourseId = new _userLoadListAvailableObserversByCourseId();
+            userLoadListAvailableObserversByCourseId.init(this.testArgs.user);
             userLoadListByGroupId = new _userLoadListByGroupId();
             userLoadListByGroupId.init(this.testArgs.user);
 
@@ -524,6 +523,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsResultRecord = args.bbWs.userUpdateRecordById(args.param, args.wsInputRecord);
         }
     }
+    //!! method name and test result are not printed correctly, probably because of something in inheritance
     class _userUpdateRecordById_extended : _userUpdateRecordById, ITestAction {
         override public void preAction() {
             args.insertRecordAction.PreActionAndExecuteImp();
@@ -737,6 +737,17 @@ public partial class BbWsTest : System.Web.UI.Page
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userLoadListByCourseId(args.param, args.wsInputRecord, args.testArgs.course.wsInputRecord);
+        }
+    }
+
+    class _userLoadListAvailableObserversByCourseId : _userTestCase_SuccessList, ITestAction {
+        override public void preAction() {
+            args.testArgs.courseMembership.loadBaseRecordAction.PreActionAndExecuteImp();
+            args.testArgs.course.wsInputRecord = new bbws.courseDetails();
+            args.testArgs.course.wsInputRecord.bbId = args.testArgs.courseMembership.wsResultRecord.courseBbId;
+        }
+        override public void executeImp() {
+            args.wsResultList = args.bbWs.userLoadListAvailableObserversByCourseId(args.param, args.wsInputRecord, args.testArgs.course.wsInputRecord);
         }
     }
 

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunPortalRoleTest() {
-        testArgs.ClearAllTestData();
+        //testArgs.ClearAllTestData();
         testArgs.portalRole.portalRoleLoadRecordById.execute();
         testArgs.portalRole.portalRoleLoadRecordByRoleId.execute();
 
@@ -37,7 +37,6 @@ public partial class BbWsTest : System.Web.UI.Page
         testArgs.portalRole.portalRolePersistRecordById_insert.execute();
         testArgs.portalRole.portalRolePersistRecordById_update.execute();
         testArgs.portalRole.portalRoleDeleteRecordById.execute();
-
     }
 
     class _portalRoleTestCase_RecordResult : BbWsTest.TestCase_SuccessRecord<_portalRoleTestArgs, bbws.portalRoleDetails>, ITestAction { }
