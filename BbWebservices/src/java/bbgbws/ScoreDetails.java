@@ -21,10 +21,13 @@ package bbgbws;
 //blackboard
 import blackboard.data.gradebook.Score;
 import blackboard.data.gradebook.Score.AttemptLocation;
+import blackboard.data.course.CourseMembership;
+import blackboard.persist.course.CourseMembershipDbLoader;
 
 //java
 import java.util.Calendar;
 import blackboard.persist.Id;
+import blackboard.persist.PersistenceException;
 
 /**
  *
@@ -32,6 +35,34 @@ import blackboard.persist.Id;
  */
 public class ScoreDetails implements ReturnTypeInterface
 {
+
+    /**
+     * @return the userId
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    /**
+     * @return the userName
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * @param userName the userName to set
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public enum Verbosity{standard,extended}
 
     private Verbosity verbosity;
@@ -50,6 +81,9 @@ public class ScoreDetails implements ReturnTypeInterface
     private String dataType;
     private String lineItemBbId;
 
+    private String userId;
+    private String userName;
+
     public ScoreDetails()
     {
             super();
@@ -63,6 +97,9 @@ public class ScoreDetails implements ReturnTypeInterface
             this.grade = "-";
             this.outcomeDefBbId = "";
             this.scoreBbId = "";
+            this.userId = "";
+            this.userName = "";
+
     }
     public ScoreDetails(Verbosity verbosity)
     {
@@ -92,7 +129,12 @@ public class ScoreDetails implements ReturnTypeInterface
                 BbWsLog.logForward("ScoreDetails :    temp_id = (Id)gwas_class.getDeclaredMethod");
                 temp_id = (Id)gwas_class.getDeclaredMethod("getCourseUserId").invoke(_gwas); //??
                 BbWsLog.logForward("ScoreDetails :    if ( temp_id != null) this.courseMembershipBbId = temp_id.getExternalString()");
-                if ( temp_id != null) this.courseMembershipBbId = temp_id.getExternalString(); //??
+                if ( temp_id != null) {//??
+                    this.courseMembershipBbId = temp_id.getExternalString();
+                    CourseMembership cm = CourseMembershipDbLoader.Default.getInstance().loadById(temp_id);
+                    this.userId = cm.getUserId().getExternalString();
+                    this.userName = cm.getUser().getUserName();
+                }
                 BbWsLog.logForward("ScoreDetails :    this.dataType = ((blackboard.persist.DataType)gwas_class.getField");
                 this.dataType = ((blackboard.persist.DataType)gwas_class.getField("DATA_TYPE").get(null)).getName();
                 this.lineItemBbId = _lineItemBbId;
@@ -121,7 +163,7 @@ public class ScoreDetails implements ReturnTypeInterface
 		return;
         }     
     }
-    public ScoreDetails(Score s,Verbosity verbosity)
+    public ScoreDetails(Score s,Verbosity verbosity) throws PersistenceException
     {
         this.verbosity = verbosity;
 	switch(this.verbosity)
@@ -147,6 +189,10 @@ public class ScoreDetails implements ReturnTypeInterface
 		else if(al.equals(AttemptLocation.INTERNAL)){this.attemptLocation = "INTERNAL";}
 		else{this.attemptLocation = "UNSET";}
 		this.courseMembershipBbId = s.getCourseMembershipId().toExternalString();
+                CourseMembership cm = CourseMembershipDbLoader.Default.getInstance().loadById(s.getCourseMembershipId());
+                this.userId = cm.getUserId().getExternalString();
+                this.userName = cm.getUser().getUserName();
+
 		this.dataType = s.getDataType().getName();
 		this.lineItemBbId = s.getLineitemId().toExternalString();
 	    case standard:
@@ -299,7 +345,7 @@ public class ScoreDetails implements ReturnTypeInterface
                         this.lineItemBbId,
                         this.attemptBbId,
                         this.attemptLocation,
-                        this.dataType};
+                        this.dataType, this.getUserId(), this.getUserName()};
             default:
             return new String[]{};
         }
@@ -319,7 +365,7 @@ public class ScoreDetails implements ReturnTypeInterface
                         "Date Changed","Date Modified",
                         "Course Membership BbId","lineItemBbId",
                         "Attempt BbId","Attempt Location",
-                        "Data Type"};
+                        "Data Type", "User Id", "User Name"};
             default:
             return new String[]{};
         }
