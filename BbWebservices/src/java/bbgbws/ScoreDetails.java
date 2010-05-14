@@ -50,19 +50,6 @@ public class ScoreDetails implements ReturnTypeInterface
         this.userId = userId;
     }
 
-    /**
-     * @return the userName
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * @param userName the userName to set
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
     public enum Verbosity{standard,extended}
 
     private Verbosity verbosity;
@@ -82,7 +69,6 @@ public class ScoreDetails implements ReturnTypeInterface
     private String lineItemBbId;
 
     private String userId;
-    private String userName;
 
     public ScoreDetails()
     {
@@ -98,7 +84,6 @@ public class ScoreDetails implements ReturnTypeInterface
             this.outcomeDefBbId = "";
             this.scoreBbId = "";
             this.userId = "";
-            this.userName = "";
 
     }
     public ScoreDetails(Verbosity verbosity)
@@ -133,7 +118,9 @@ public class ScoreDetails implements ReturnTypeInterface
                     this.courseMembershipBbId = temp_id.getExternalString();
                     CourseMembership cm = CourseMembershipDbLoader.Default.getInstance().loadById(temp_id);
                     this.userId = cm.getUserId().getExternalString();
-                    this.userName = cm.getUser().getUserName();
+                    //causes NullPointerException
+                    //probably user data may be available only via CourseMembershipDbLoader.loadByCourseIdWithUserInfo()
+                    //this.userName = cm.getUser().getUserName();
                 }
                 BbWsLog.logForward("ScoreDetails :    this.dataType = ((blackboard.persist.DataType)gwas_class.getField");
                 this.dataType = ((blackboard.persist.DataType)gwas_class.getField("DATA_TYPE").get(null)).getName();
@@ -191,7 +178,6 @@ public class ScoreDetails implements ReturnTypeInterface
 		this.courseMembershipBbId = s.getCourseMembershipId().toExternalString();
                 CourseMembership cm = CourseMembershipDbLoader.Default.getInstance().loadById(s.getCourseMembershipId());
                 this.userId = cm.getUserId().getExternalString();
-                this.userName = cm.getUser().getUserName();
 
 		this.dataType = s.getDataType().getName();
 		this.lineItemBbId = s.getLineitemId().toExternalString();
@@ -345,7 +331,7 @@ public class ScoreDetails implements ReturnTypeInterface
                         this.lineItemBbId,
                         this.attemptBbId,
                         this.attemptLocation,
-                        this.dataType, this.getUserId(), this.getUserName()};
+                        this.dataType, this.getUserId()};
             default:
             return new String[]{};
         }
@@ -365,7 +351,7 @@ public class ScoreDetails implements ReturnTypeInterface
                         "Date Changed","Date Modified",
                         "Course Membership BbId","lineItemBbId",
                         "Attempt BbId","Attempt Location",
-                        "Data Type", "User Id", "User Name"};
+                        "Data Type", "User Id"};
             default:
             return new String[]{};
         }
