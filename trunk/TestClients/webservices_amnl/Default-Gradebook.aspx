@@ -256,6 +256,7 @@
             lineItemBbId: <%= score_details[i].lineItemBbId%> <br />
             outcomeDefBbId: <%= score_details[i].outcomeDefBbId%> <br />
             scoreBbId: <%= score_details[i].scoreBbId%> <br />
+            userId: <%= score_details[i].userId%> <br />
 <%
         }
 %>        
