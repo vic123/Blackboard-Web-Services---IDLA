@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://bbgrpws/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="BBGroupWebServiceService" targetNamespace="http://bbgrpws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=2" namespace="http://bbgrpws/" />
+    </xsd:schema>
+  </types>
+  <message name="deleteGroup">
+    <part name="parameters" element="tns:deleteGroup" />
+  </message>
+  <message name="deleteGroupResponse">
+    <part name="parameters" element="tns:deleteGroupResponse" />
+  </message>
+  <message name="addGivenUserToGivenGroup">
+    <part name="parameters" element="tns:addGivenUserToGivenGroup" />
+  </message>
+  <message name="addGivenUserToGivenGroupResponse">
+    <part name="parameters" element="tns:addGivenUserToGivenGroupResponse" />
+  </message>
+  <message name="addGivenUserToGivenGroupXML">
+    <part name="parameters" element="tns:addGivenUserToGivenGroupXML" />
+  </message>
+  <message name="addGivenUserToGivenGroupXMLResponse">
+    <part name="parameters" element="tns:addGivenUserToGivenGroupXMLResponse" />
+  </message>
+  <message name="addGroupToGivenCourse">
+    <part name="parameters" element="tns:addGroupToGivenCourse" />
+  </message>
+  <message name="addGroupToGivenCourseResponse">
+    <part name="parameters" element="tns:addGroupToGivenCourseResponse" />
+  </message>
+  <message name="addGroupToGivenCourseXML">
+    <part name="parameters" element="tns:addGroupToGivenCourseXML" />
+  </message>
+  <message name="addGroupToGivenCourseXMLResponse">
+    <part name="parameters" element="tns:addGroupToGivenCourseXMLResponse" />
+  </message>
+  <message name="deleteGivenUserFromGivenGroup">
+    <part name="parameters" element="tns:deleteGivenUserFromGivenGroup" />
+  </message>
+  <message name="deleteGivenUserFromGivenGroupResponse">
+    <part name="parameters" element="tns:deleteGivenUserFromGivenGroupResponse" />
+  </message>
+  <message name="deleteGivenUserFromGivenGroupXML">
+    <part name="parameters" element="tns:deleteGivenUserFromGivenGroupXML" />
+  </message>
+  <message name="deleteGivenUserFromGivenGroupXMLResponse">
+    <part name="parameters" element="tns:deleteGivenUserFromGivenGroupXMLResponse" />
+  </message>
+  <message name="deleteGroupXML">
+    <part name="parameters" element="tns:deleteGroupXML" />
+  </message>
+  <message name="deleteGroupXMLResponse">
+    <part name="parameters" element="tns:deleteGroupXMLResponse" />
+  </message>
+  <message name="getGroupDetailsForGivenCourseId">
+    <part name="parameters" element="tns:getGroupDetailsForGivenCourseId" />
+  </message>
+  <message name="getGroupDetailsForGivenCourseIdResponse">
+    <part name="parameters" element="tns:getGroupDetailsForGivenCourseIdResponse" />
+  </message>
+  <message name="getGroupDetailsForGivenCourseIdWithNamedElements">
+    <part name="parameters" element="tns:getGroupDetailsForGivenCourseIdWithNamedElements" />
+  </message>
+  <message name="getGroupDetailsForGivenCourseIdWithNamedElementsResponse">
+    <part name="parameters" element="tns:getGroupDetailsForGivenCourseIdWithNamedElementsResponse" />
+  </message>
+  <message name="getGroupDetailsForGivenCourseIdXML">
+    <part name="parameters" element="tns:getGroupDetailsForGivenCourseIdXML" />
+  </message>
+  <message name="getGroupDetailsForGivenCourseIdXMLResponse">
+    <part name="parameters" element="tns:getGroupDetailsForGivenCourseIdXMLResponse" />
+  </message>
+  <message name="getGroupDetailsForGivenGroupBbId">
+    <part name="parameters" element="tns:getGroupDetailsForGivenGroupBbId" />
+  </message>
+  <message name="getGroupDetailsForGivenGroupBbIdResponse">
+    <part name="parameters" element="tns:getGroupDetailsForGivenGroupBbIdResponse" />
+  </message>
+  <message name="getGroupDetailsForGivenGroupBbIdWithNamedElements">
+    <part name="parameters" element="tns:getGroupDetailsForGivenGroupBbIdWithNamedElements" />
+  </message>
+  <message name="getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse">
+    <part name="parameters" element="tns:getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+  </message>
+  <message name="getGroupDetailsForGivenGroupBbIdXML">
+    <part name="parameters" element="tns:getGroupDetailsForGivenGroupBbIdXML" />
+  </message>
+  <message name="getGroupDetailsForGivenGroupBbIdXMLResponse">
+    <part name="parameters" element="tns:getGroupDetailsForGivenGroupBbIdXMLResponse" />
+  </message>
+  <message name="getGroupMembersForGivenGroupBbId">
+    <part name="parameters" element="tns:getGroupMembersForGivenGroupBbId" />
+  </message>
+  <message name="getGroupMembersForGivenGroupBbIdResponse">
+    <part name="parameters" element="tns:getGroupMembersForGivenGroupBbIdResponse" />
+  </message>
+  <message name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElements">
+    <part name="parameters" element="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElements" />
+  </message>
+  <message name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse">
+    <part name="parameters" element="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+  </message>
+  <message name="getGroupMemberDetailsForGivenGroupBbIdXML">
+    <part name="parameters" element="tns:getGroupMemberDetailsForGivenGroupBbIdXML" />
+  </message>
+  <message name="getGroupMemberDetailsForGivenGroupBbIdXMLResponse">
+    <part name="parameters" element="tns:getGroupMemberDetailsForGivenGroupBbIdXMLResponse" />
+  </message>
+  <message name="modifyGroup">
+    <part name="parameters" element="tns:modifyGroup" />
+  </message>
+  <message name="modifyGroupResponse">
+    <part name="parameters" element="tns:modifyGroupResponse" />
+  </message>
+  <message name="modifyGroupXML">
+    <part name="parameters" element="tns:modifyGroupXML" />
+  </message>
+  <message name="modifyGroupXMLResponse">
+    <part name="parameters" element="tns:modifyGroupXMLResponse" />
+  </message>
+  <portType name="BBGroupWebService">
+    <operation name="deleteGroup">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupRequest" message="tns:deleteGroup" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupResponse" message="tns:deleteGroupResponse" />
+    </operation>
+    <operation name="addGivenUserToGivenGroup">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupRequest" message="tns:addGivenUserToGivenGroup" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupResponse" message="tns:addGivenUserToGivenGroupResponse" />
+    </operation>
+    <operation name="addGivenUserToGivenGroupXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupXMLRequest" message="tns:addGivenUserToGivenGroupXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupXMLResponse" message="tns:addGivenUserToGivenGroupXMLResponse" />
+    </operation>
+    <operation name="addGroupToGivenCourse">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseRequest" message="tns:addGroupToGivenCourse" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseResponse" message="tns:addGroupToGivenCourseResponse" />
+    </operation>
+    <operation name="addGroupToGivenCourseXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseXMLRequest" message="tns:addGroupToGivenCourseXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseXMLResponse" message="tns:addGroupToGivenCourseXMLResponse" />
+    </operation>
+    <operation name="deleteGivenUserFromGivenGroup">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupRequest" message="tns:deleteGivenUserFromGivenGroup" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupResponse" message="tns:deleteGivenUserFromGivenGroupResponse" />
+    </operation>
+    <operation name="deleteGivenUserFromGivenGroupXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupXMLRequest" message="tns:deleteGivenUserFromGivenGroupXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupXMLResponse" message="tns:deleteGivenUserFromGivenGroupXMLResponse" />
+    </operation>
+    <operation name="deleteGroupXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupXMLRequest" message="tns:deleteGroupXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupXMLResponse" message="tns:deleteGroupXMLResponse" />
+    </operation>
+    <operation name="getGroupDetailsForGivenCourseId">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdRequest" message="tns:getGroupDetailsForGivenCourseId" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdResponse" message="tns:getGroupDetailsForGivenCourseIdResponse" />
+    </operation>
+    <operation name="getGroupDetailsForGivenCourseIdWithNamedElements">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdWithNamedElementsRequest" message="tns:getGroupDetailsForGivenCourseIdWithNamedElements" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdWithNamedElementsResponse" message="tns:getGroupDetailsForGivenCourseIdWithNamedElementsResponse" />
+    </operation>
+    <operation name="getGroupDetailsForGivenCourseIdXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdXMLRequest" message="tns:getGroupDetailsForGivenCourseIdXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdXMLResponse" message="tns:getGroupDetailsForGivenCourseIdXMLResponse" />
+    </operation>
+    <operation name="getGroupDetailsForGivenGroupBbId">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdRequest" message="tns:getGroupDetailsForGivenGroupBbId" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdResponse" message="tns:getGroupDetailsForGivenGroupBbIdResponse" />
+    </operation>
+    <operation name="getGroupDetailsForGivenGroupBbIdWithNamedElements">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdWithNamedElementsRequest" message="tns:getGroupDetailsForGivenGroupBbIdWithNamedElements" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" message="tns:getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+    </operation>
+    <operation name="getGroupDetailsForGivenGroupBbIdXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdXMLRequest" message="tns:getGroupDetailsForGivenGroupBbIdXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdXMLResponse" message="tns:getGroupDetailsForGivenGroupBbIdXMLResponse" />
+    </operation>
+    <operation name="getGroupMembersForGivenGroupBbId">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMembersForGivenGroupBbIdRequest" message="tns:getGroupMembersForGivenGroupBbId" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMembersForGivenGroupBbIdResponse" message="tns:getGroupMembersForGivenGroupBbIdResponse" />
+    </operation>
+    <operation name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElements">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsRequest" message="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElements" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" message="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+    </operation>
+    <operation name="getGroupMemberDetailsForGivenGroupBbIdXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdXMLRequest" message="tns:getGroupMemberDetailsForGivenGroupBbIdXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdXMLResponse" message="tns:getGroupMemberDetailsForGivenGroupBbIdXMLResponse" />
+    </operation>
+    <operation name="modifyGroup">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupRequest" message="tns:modifyGroup" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupResponse" message="tns:modifyGroupResponse" />
+    </operation>
+    <operation name="modifyGroupXML">
+      <input wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupXMLRequest" message="tns:modifyGroupXML" />
+      <output wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupXMLResponse" message="tns:modifyGroupXMLResponse" />
+    </operation>
+  </portType>
+  <binding name="BBGroupWebServicePortBinding" type="tns:BBGroupWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="deleteGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addGivenUserToGivenGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addGivenUserToGivenGroupXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addGroupToGivenCourse">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addGroupToGivenCourseXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="deleteGivenUserFromGivenGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="deleteGivenUserFromGivenGroupXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="deleteGroupXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupDetailsForGivenCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupDetailsForGivenCourseIdWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupDetailsForGivenCourseIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupDetailsForGivenGroupBbId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupDetailsForGivenGroupBbIdWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupDetailsForGivenGroupBbIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupMembersForGivenGroupBbId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getGroupMemberDetailsForGivenGroupBbIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modifyGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modifyGroupXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BBGroupWebServiceService">
+    <port name="BBGroupWebServicePort" binding="tns:BBGroupWebServicePortBinding">
+      <soap:address location="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService" />
+    </port>
+  </service>
+</definitions>
