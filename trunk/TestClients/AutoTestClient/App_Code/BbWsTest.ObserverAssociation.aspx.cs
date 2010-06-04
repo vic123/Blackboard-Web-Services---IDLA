@@ -11,6 +11,9 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 
+using bbIDLA.BBAddedService;
+//!!using bbws;
+
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunObserverAssociationTest() {
@@ -26,11 +29,11 @@ public partial class BbWsTest : System.Web.UI.Page
         testArgs.observerAssociation.observerAssociationDeleteListByObserverAndUsersBatchUid.execute();
     }
 
-    class _observerAssociationTestCase_RecordResult : BbWsTest.TestCase_SuccessRecord<_observerAssociationTestArgs, bbws.observerAssociationDetails>, ITestAction { }
-    class _observerAssociationTestCase_ListResult : BbWsTest.TestCase_SuccessList<_observerAssociationTestArgs, bbws.observerAssociationDetails>, ITestAction { }
+    class _observerAssociationTestCase_RecordResult : BbWsTest.TestCase_SuccessRecord<_observerAssociationTestArgs, observerAssociationDetails>, ITestAction { }
+    class _observerAssociationTestCase_ListResult : BbWsTest.TestCase_SuccessList<_observerAssociationTestArgs, observerAssociationDetails>, ITestAction { }
 
-    class _observerAssociationTestArgs : TestArgs<bbws.observerAssociationDetails> {
-        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+    class _observerAssociationTestArgs : TestArgs<observerAssociationDetails> {
+        public override bbWsDataLogRecord[] getDataLogArray() {
             return wsResultRecord.bbWsDataLog;
         }
         public override String getBbWsBoolResult() {

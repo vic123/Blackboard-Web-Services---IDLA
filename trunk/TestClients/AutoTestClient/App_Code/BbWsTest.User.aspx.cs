@@ -11,6 +11,9 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 
+using bbIDLA.BBAddedService;
+//!!using bbws;
+
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunUserTest() {
@@ -55,8 +58,12 @@ public partial class BbWsTest : System.Web.UI.Page
     }
 
     //    class _userTestCase : BbWsTest.TestCase<_userTestArgs, bbws.userDetails>, ITestAction { }
-    class _userTestCase_SuccessRecord : BbWsTest.TestCase_SuccessRecord<_userTestArgs, bbws.userDetails>, ITestAction { }
-    class _userTestCase_SuccessList : BbWsTest.TestCase_SuccessList<_userTestArgs, bbws.userDetails>, ITestAction { }
+    class _userTestCase_SuccessRecord : BbWsTest.TestCase_SuccessRecord<_userTestArgs, userDetails>, ITestAction { }
+    class _userTestCase_SuccessList : BbWsTest.TestCase_SuccessList<_userTestArgs, userDetails>, ITestAction { }
+    //class _userTestCase_SuccessRecord : BbWsTest.TestCase_SuccessRecord<_userTestArgs, BbWsUserDetailsWebReference>, ITestAction { }
+    //class _userTestCase_SuccessList : BbWsTest.TestCase_SuccessList<_userTestArgs, BbWsUserDetailsWebReference>, ITestAction { }
+
+    
     /*
     class _userTestCase_SuccessRecord : TestCase<_userTestArgs, bbws.userDetails>, ITestAction {
         override public void init(Object args) {
@@ -71,8 +78,11 @@ public partial class BbWsTest : System.Web.UI.Page
         }
     }
     */
-    class _userTestArgs : TestArgs<bbws.userDetails> {
-        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+    class _userTestArgs : TestArgs<userDetails> {
+    //class _userTestArgs : TestArgs<BbWsUserDetailsWebReference> {
+    
+        public override bbWsDataLogRecord[] getDataLogArray() {
+        //public override BbWsDataLogRecordWebReference[] getDataLogArray() {
             return wsResultRecord.bbWsDataLog;
         }
         public override String getBbWsBoolResult() {
@@ -334,7 +344,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.batchUid = batch_uid;
         }
         override public void executeImp() {
-            args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
+            args.wsResultRecord = args.bbWs.UserLoadRecordByBatchUid(args.param, args.wsInputRecord);
         }
     }
 
@@ -343,7 +353,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.batchUid = "batchUid" + args.currentTestKeySuffix;
         }
         override public void executeImp() {
-            args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
+            args.wsResultRecord = args.bbWs.UserLoadRecordByBatchUid(args.param, args.wsInputRecord);
         }
     }
     class _userLoadListByTemplate : _userTestCase_SuccessList, ITestAction {
@@ -351,7 +361,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.loadBaseRecordAction.preAction();
         }
         override public void executeImp() {
-            args.wsResultList = args.bbWs.userLoadListByTemplate(args.param, args.wsInputRecord);
+            args.wsResultList = args.bbWs.UserLoadListByTemplate(args.param, args.wsInputRecord);
         }
     }
     class _userInsertRecordByBatchUid_duplicate : _userTestCase_SuccessRecord, ITestAction {
@@ -367,7 +377,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.deleteRecordAction.executeImp();
         }
         override public void executeImp() {
-            args.wsResultRecord = args.bbWs.userInsertRecordByBatchUid(args.param, args.wsInputRecord);
+            args.wsResultRecord = args.bbWs.UserInsertRecordByBatchUid(args.param, args.wsInputRecord);
         }
     }
     class _userInsertRecordByBatchUid_minimal : _userTestCase_SuccessRecord, ITestAction {
@@ -732,7 +742,7 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userLoadListByCourseId : _userTestCase_SuccessList, ITestAction {
         override public void preAction() {
             args.testArgs.courseMembership.loadBaseRecordAction.PreActionAndExecuteImp();
-            args.testArgs.course.wsInputRecord = new bbws.courseDetails();
+            args.testArgs.course.wsInputRecord = new courseDetails();
             args.testArgs.course.wsInputRecord.bbId = args.testArgs.courseMembership.wsResultRecord.courseBbId;
         }
         override public void executeImp() {
@@ -743,7 +753,7 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userLoadListAvailableObserversByCourseId : _userTestCase_SuccessList, ITestAction {
         override public void preAction() {
             args.testArgs.courseMembership.loadBaseRecordAction.PreActionAndExecuteImp();
-            args.testArgs.course.wsInputRecord = new bbws.courseDetails();
+            args.testArgs.course.wsInputRecord = new courseDetails();
             args.testArgs.course.wsInputRecord.bbId = args.testArgs.courseMembership.wsResultRecord.courseBbId;
         }
         override public void executeImp() {
@@ -764,7 +774,7 @@ public partial class BbWsTest : System.Web.UI.Page
         override public void postAction() {
         }
         override public void executeImp() {
-            bbws.groupDetails grpd = new bbws.groupDetails();
+            groupDetails grpd = new groupDetails();
             grpd.bbId = args.testArgs.group.wsInputRecord.bbId;
             args.wsResultList = args.bbWs.userLoadListByGroupId(args.param, args.wsInputRecord, grpd);
         }

@@ -11,6 +11,10 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 
+using bbIDLA;
+using bbIDLA.BBAddedService;
+//!!using bbws;
+
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected virtual void RunTest() {
@@ -18,16 +22,19 @@ public partial class BbWsTest : System.Web.UI.Page
 
             testArgs = new TestArgsStruct();
             RunUserTest();
+            
             RunCourseMembershipTest();
             RunPortalRoleTest();
             RunObserverAssociationTest();
             RunPortalRoleMembershipTest();
             RunCourseTest();
-
+            RunCourseMembershipTest();
         } catch (Exception e1) {
             Response.Output.Write(e1.ToString());
         }
     }
+
+
 
     class TestArgsStruct {
         public _userTestArgs user = null;
@@ -121,12 +128,12 @@ public partial class BbWsTest : System.Web.UI.Page
         */
 
 
-        public bbws.BbWebservices bbWs = new bbws.BbWebservices();
+        public BbWsWebReference bbWs = new BbWsWebReference(true);
         public bbcrsws.BBCourseWebService bbCrsWs = new bbcrsws.BBCourseWebService();
         public bbgrpws.BBGroupWebServiceService bbGrpWs = new bbgrpws.BBGroupWebServiceService();
-        
-        
-        public bbws.bbWsParams param = new bbws.bbWsParams();
+
+
+        public bbWsParams param = new bbWsParams();
         public WsDataType wsInputRecord = new WsDataType();
         public List<WsDataType> wsInputList = new List<WsDataType>();
         public WsDataType wsResultRecord = new WsDataType();//default(WsDataType);
@@ -147,8 +154,11 @@ public partial class BbWsTest : System.Web.UI.Page
             param.dataVerbosity = "EXTENDED";
 
             param.dataRecordErrorThrowSeverity = "FATAL";
+            //param.dataRecordErrorThrowSeverity = "WARN";
+            
             param.dataFieldErrorThrowSeverity = "FATAL";
             //param.dataFieldErrorThrowSeverity = "ERROR";
+            //param.dataFieldErrorThrowSeverity = "WARN";
 
             testKeySuffixes = new String[3];
             testKeySuffixes[0] = "_bbws_01";
@@ -161,7 +171,8 @@ public partial class BbWsTest : System.Web.UI.Page
         public virtual void init(TestArgsStruct testArgs) {
             this.testArgs = testArgs;
         }
-        public abstract bbws.bbWsDataLogRecord[] getDataLogArray();
+        public abstract bbWsDataLogRecord[] getDataLogArray();
+
         public abstract String getBbWsBoolResult();
         public abstract String getBbWsRecordResultId();
         public abstract void SetFieldsMinimal();
@@ -432,15 +443,16 @@ public partial class BbWsTest : System.Web.UI.Page
             dl_args.wsResultList = args.getDataLogArray();
             if (dl_args.wsResultList == null || dl_args.wsResultList.GetLength(0) == 0) return;
             //dl_args.wsResultArray = args.wsResultRecord.bbWsDataLog;
-            ShowResultListTableAction<bbws.bbWsDataLogRecord> datalogTableShow
-                    = new ShowResultListTableAction<bbws.bbWsDataLogRecord>();
+            ShowResultListTableAction<bbWsDataLogRecord> datalogTableShow
+                    = new ShowResultListTableAction<bbWsDataLogRecord>();
+                    
             datalogTableShow.init(dl_args);
             datalogTableShow.execute();
         }
     }
 
-    class _datalogTestArgs : TestArgs<bbws.bbWsDataLogRecord> {
-        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+    class _datalogTestArgs : TestArgs<bbWsDataLogRecord> {
+        public override bbWsDataLogRecord[] getDataLogArray() {
             throw new Exception("Unsupposed to be used");
         }
 
