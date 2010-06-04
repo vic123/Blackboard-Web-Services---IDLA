@@ -30,6 +30,7 @@ namespace bbIDLA
     {
         // Password must match Oscelot web services passwords in BB
         private const string bbPassword = "BbWsPassword";
+        private bool doRethrow = false; 
         BBAddedService.BbWebservices bbAdded = null;
 
         public BbAdded()
@@ -37,7 +38,12 @@ namespace bbIDLA
             bbAdded = new bbIDLA.BBAddedService.BbWebservices();
         }
 
-        //Course Membership Load Record By Id
+        public BbAdded(bool doRethrow):this()
+        {
+            this.doRethrow = doRethrow;
+        }
+
+        //CourseMembership Load Record ById
         public courseMembershipDetails CourseMembershipLoadRecordById(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -47,11 +53,12 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
-        //Course Membership Load List By Id
+        //CourseMembership Load List ById
         public courseMembershipDetails[] CourseMembershipLoadListById(bbWsParams @params, courseMembershipDetails[] inputList)
         {
             try
@@ -65,7 +72,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Load Record By Course And UserId
+        //CourseMembership Load Record ByCourseAndUserId
         public courseMembershipDetails CourseMembershipLoadRecordByCourseAndUserId(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -79,7 +86,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Load List By UserId
+        //CourseMembership Load List ByUserId
         public courseMembershipDetails[] CourseMembershipLoadListByUserId(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -93,7 +100,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Load List By CourseId
+        //CourseMembership Load List ByCourseId
         public courseMembershipDetails[] CourseMembershipLoadListByCourseId(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -107,7 +114,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Load List By CourseId With User Info
+        //CourseMembership Load List ByCourseIdWithUserInfo
         public courseMembershipDetails[] CourseMembershipLoadListByCourseIdWithUserInfo(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -121,7 +128,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Load List By CourseId And Role
+        //CourseMembership Load List ByCourseIdAndRole
         public courseMembershipDetails[] CourseMembershipLoadListByCourseIdAndRole(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -135,7 +142,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Insert Record By Id
+        //CourseMembership Insert Record ById
         public courseMembershipDetails CourseMembershipInsertRecordById(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -149,7 +156,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Update Record By Id
+        //CourseMembership Update Record ById
         public courseMembershipDetails CourseMembershipUpdateRecordById(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -163,7 +170,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Persist Record By Id
+        //CourseMembership Persist Record ById
         public courseMembershipDetails CourseMembershipPersistRecordById(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -177,7 +184,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Delete Record By Id
+        //CourseMembership Delete Record ById
         public courseMembershipDetails CourseMembershipDeleteRecordById(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -191,7 +198,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Insert List By Id
+        //CourseMembership Insert List ById
         public courseMembershipDetails[] CourseMembershipInsertListById(bbWsParams @params, courseMembershipDetails[] inputList)
         {
             try
@@ -205,7 +212,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Update List By Id
+        //CourseMembership Update List ById
         public courseMembershipDetails[] CourseMembershipUpdateListById(bbWsParams @params, courseMembershipDetails[] inputList)
         {
             try
@@ -219,7 +226,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Persist List By Id
+        //CourseMembership Persist List ById
         public courseMembershipDetails[] CourseMembershipPersistListById(bbWsParams @params, courseMembershipDetails[] inputList)
         {
             try
@@ -233,7 +240,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Delete List By Id
+        //CourseMembership Delete List ById
         public courseMembershipDetails[] CourseMembershipDeleteListById(bbWsParams @params, courseMembershipDetails[] inputList)
         {
             try
@@ -247,7 +254,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Load Record By Course And User BatchId
+        //CourseMembership Load Record ByCourseAndUserBatchId
         public courseMembershipDetails CourseMembershipLoadRecordByCourseAndUserBatchId(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -261,7 +268,7 @@ namespace bbIDLA
             }
         }
 
-        //Course Membership Load List By Template
+        //CourseMembership Load List ByTemplate
         public courseMembershipDetails[] CourseMembershipLoadListByTemplate(bbWsParams @params, courseMembershipDetails inputRecord)
         {
             try
@@ -275,7 +282,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load Record By BatchUid
+        //User Load Record ByBatchUid
         public userDetails UserLoadRecordByBatchUid(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -289,7 +296,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load List By Template
+        //User Load List ByTemplate
         public userDetails[] UserLoadListByTemplate(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -303,7 +310,7 @@ namespace bbIDLA
             }
         }
 
-        //User Insert Record By Batch Uid
+        //User Insert Record ByBatchUid
         public userDetails UserInsertRecordByBatchUid(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -317,7 +324,7 @@ namespace bbIDLA
             }
         }
 
-        //User Update Record By BatchUid
+        //User Update Record ByBatchUid
         public userDetails UserUpdateRecordByBatchUid(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -331,7 +338,7 @@ namespace bbIDLA
             }
         }
 
-        //User Persist Record By BatchUid
+        //User Persist Record ByBatchUid
         public userDetails UserPersistRecordByBatchUid(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -345,7 +352,7 @@ namespace bbIDLA
             }
         }
 
-        //User Delete Record By BatchUid
+        //User Delete Record ByBatchUid
         public userDetails UserDeleteRecordByBatchUid(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -359,7 +366,7 @@ namespace bbIDLA
             }
         }
 
-        //User Persist List By BatchUid
+        //User Persist List ByBatchUid
         public userDetails[] UserPersistListByBatchUid(bbWsParams @params, userDetails[] inputList)
         {
             try
@@ -373,7 +380,7 @@ namespace bbIDLA
             }
         }
 
-        //User Delete List By Batch Uid
+        //User Delete List ByBatchUid
         public userDetails[] UserDeleteListByBatchUid(bbWsParams @params, userDetails[] inputList)
         {
             try
@@ -387,7 +394,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load Record By Id
+        //User Load Record ById
         public userDetails UserLoadRecordById(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -401,7 +408,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load Record By Name
+        //User Load Record ByName
         public userDetails UserLoadRecordByName(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -415,7 +422,7 @@ namespace bbIDLA
             }
         }
 
-        //User Insert Record By Id
+        //User Insert Record ById
         public userDetails UserInsertRecordById(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -429,7 +436,7 @@ namespace bbIDLA
             }
         }
 
-        //User Update Record By Id
+        //User Update Record ById
         public userDetails UserUpdateRecordById(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -443,7 +450,7 @@ namespace bbIDLA
             }
         }
 
-        //User Persist Record By Id
+        //User Persist Record ById
         public userDetails UserPersistRecordById(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -457,7 +464,7 @@ namespace bbIDLA
             }
         }
 
-        //User Delete Record By Id
+        //User Delete Record ById
         public userDetails UserDeleteRecordById(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -471,7 +478,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load List By Id
+        //User Load List ById
         public userDetails[] UserLoadListById(bbWsParams @params, userDetails[] inputList)
         {
             try
@@ -485,7 +492,7 @@ namespace bbIDLA
             }
         }
 
-        //User Insert List By Id
+        //User Insert List ById
         public userDetails[] UserInsertListById(bbWsParams @params, userDetails[] inputList)
         {
             try
@@ -499,7 +506,7 @@ namespace bbIDLA
             }
         }
 
-        //User Update List By Id
+        //User Update List ById
         public userDetails[] UserUpdateListById(bbWsParams @params, userDetails[] inputList)
         {
             try
@@ -513,7 +520,7 @@ namespace bbIDLA
             }
         }
 
-        //User Persist List By Id
+        //User Persist List ById
         public userDetails[] UserPersistListById(bbWsParams @params, userDetails[] inputList)
         {
             try
@@ -527,7 +534,7 @@ namespace bbIDLA
             }
         }
 
-        //User Delete List By Id
+        //User Delete List ById
         public userDetails[] UserDeleteListById(bbWsParams @params, userDetails[] inputList)
         {
             try
@@ -540,7 +547,8 @@ namespace bbIDLA
                 return null;
             }
         }
-        //User Load List By Email Address Family Name Given Name
+
+        //User Load List ByEmailAddressFamilyNameGivenName
         public userDetails[] UserLoadListByEmailAddressFamilyNameGivenName(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -554,7 +562,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load List By Search By User Name
+        //User Load List BySearchByUserName
         public userDetails[] UserLoadListBySearchByUserName(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -568,7 +576,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load List Observed By ObserverId
+        //User Load List ObservedByObserverId
         public userDetails[] UserLoadListObservedByObserverId(bbWsParams @params, userDetails inputRecord)
         {
             try
@@ -582,7 +590,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load List By CourseId
+        //User Load List ByCourseId
         public userDetails[] UserLoadListByCourseId(bbWsParams @params, userDetails inputRecord, courseDetails inputCourseRecord)
         {
             try
@@ -596,7 +604,21 @@ namespace bbIDLA
             }
         }
 
-        //User Load List By GroupId
+        //User Load List AvailableObserversByCourseId
+        public userDetails[] UserLoadListAvailableObserversByCourseId(bbWsParams @params, userDetails inputRecord, courseDetails inputCourseRecord)
+        {
+            try
+            {
+                return bbAdded.userLoadListAvailableObserversByCourseId(@params, inputRecord, inputCourseRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.UserLoadListAvailableObserversByCourseId", ex);
+                return null;
+            }
+        }
+
+        //User Load List ByGroupId
         public userDetails[] UserLoadListByGroupId(bbWsParams @params, userDetails inputRecord, groupDetails inputGroupRecord)
         {
             try
@@ -610,7 +632,7 @@ namespace bbIDLA
             }
         }
 
-        //User Load List By Primary Portal RoleId
+        //User Load List ByPrimaryPortalRoleId
         public userDetails[] UserLoadListByPrimaryPortalRoleId(bbWsParams @params, userDetails inputRecord, roleDetails inputRoleRecord)
         {
             try
@@ -624,7 +646,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load Record By Id
+        //PortalRole Load Record ById
         public portalRoleDetails PortalRoleLoadRecordById(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -638,7 +660,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load Record By RoleId
+        //PortalRole Load Record ByRoleId
         public portalRoleDetails PortalRoleLoadRecordByRoleId(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -652,7 +674,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load Record By Role Name
+        //PortalRole Load Record ByRoleName
         public portalRoleDetails PortalRoleLoadRecordByRoleName(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -666,7 +688,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load Record Default
+        //PortalRole Load Record Default
         public portalRoleDetails PortalRoleLoadRecordDefault(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -680,7 +702,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load List Removable
+        //PortalRole Load List Removable
         public portalRoleDetails[] PortalRoleLoadListRemovable(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -694,7 +716,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load List All
+        //PortalRole Load List All
         public portalRoleDetails[] PortalRoleLoadListAll(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -708,7 +730,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load List Available
+        //PortalRole Load List Available
         public portalRoleDetails[] PortalRoleLoadListAvailable(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -722,6 +744,7 @@ namespace bbIDLA
             }
         }
 
+        //PortalRole Load Record PrimaryRoleByUserId
         public portalRoleDetails PortalRoleLoadRecordPrimaryRoleByUserId(bbWsParams @params, portalRoleDetails inputRecord, userDetails inputUserRecord)
         {
             try
@@ -735,7 +758,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load List All By UserId
+        //PortalRole Load List AllByUserId
         public portalRoleDetails[] PortalRoleLoadListAllByUserId(bbWsParams @params, portalRoleDetails inputRecord, userDetails inputUserRecord)
         {
             try
@@ -749,7 +772,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Load List Secondary Roles By UserId
+        //PortalRole Load List SecondaryRolesByUserId
         public portalRoleDetails[] PortalRoleLoadListSecondaryRolesByUserId(bbWsParams @params, portalRoleDetails inputRecord, userDetails inputUserRecord)
         {
             try
@@ -763,7 +786,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Insert Record By Id
+        //PortalRole Insert Record ById
         public portalRoleDetails PortalRoleInsertRecordById(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -777,7 +800,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Update Record By Id
+        //PortalRole Update Record ById
         public portalRoleDetails PortalRoleUpdateRecordById(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -790,7 +813,8 @@ namespace bbIDLA
                 return null;
             }
         }
-        //Portal Role Persist Record By Id
+
+        //PortalRole Persist Record ById
         public portalRoleDetails PortalRolePersistRecordById(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -804,7 +828,7 @@ namespace bbIDLA
             }
         }
 
-        //Portal Role Delete Record By Id
+        //PortalRole Delete Record ById
         public portalRoleDetails PortalRoleDeleteRecordById(bbWsParams @params, portalRoleDetails inputRecord)
         {
             try
@@ -818,7 +842,7 @@ namespace bbIDLA
             }
         }
 
-        //Observer Association Load List By Template
+        //ObserverAssociation Load List ByTemplate
         public observerAssociationDetails[] ObserverAssociationLoadListByTemplate(bbWsParams @params, observerAssociationDetails inputRecord)
         {
             try
@@ -832,7 +856,7 @@ namespace bbIDLA
             }
         }
 
-        //Observer Association Load Record By Observer And Users BatchUid
+        //ObserverAssociation Load Record ByObserverAndUsersBatchUid
         public observerAssociationDetails ObserverAssociationLoadRecordByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails inputRecord)
         {
             try
@@ -845,7 +869,8 @@ namespace bbIDLA
                 return null;
             }
         }
-        //Observer Association Insert Record By Observer And Users BatchUid
+
+        //ObserverAssociation Insert Record ByObserverAndUsersBatchUid
         public observerAssociationDetails ObserverAssociationInsertRecordByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails inputRecord)
         {
             try
@@ -859,7 +884,7 @@ namespace bbIDLA
             }
         }
 
-        //Observer Association Delete Record By Observer And Users BatchUid
+        //ObserverAssociation Delete Record ByObserverAndUsersBatchUid
         public observerAssociationDetails ObserverAssociationDeleteRecordByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails inputRecord)
         {
             try
@@ -873,7 +898,7 @@ namespace bbIDLA
             }
         }
 
-        //Observer Association Load List By Observer And Users BatchUid
+        //ObserverAssociation Load List ByObserverAndUsersBatchUid
         public observerAssociationDetails[] ObserverAssociationLoadListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
         {
             try
@@ -886,7 +911,8 @@ namespace bbIDLA
                 return null;
             }
         }
-        //Observer Association Insert List By Observer And Users BatchUid
+
+        //ObserverAssociation Insert List ByObserverAndUsersBatchUid
         public observerAssociationDetails[] ObserverAssociationInsertListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
         {
             try
@@ -899,7 +925,8 @@ namespace bbIDLA
                 return null;
             }
         }
-        //Observer Association Delete List By Observer And Users BatchUid
+
+        //ObserverAssociation Delete List ByObserverAndUsersBatchUid
         public observerAssociationDetails[] ObserverAssociationDeleteListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
         {
             try
@@ -912,5 +939,286 @@ namespace bbIDLA
                 return null;
             }
         }
-   }
+
+        //PortalRoleMembership Load Record ById
+        public portalRoleMembershipDetails PortalRoleMembershipLoadRecordById(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadRecordById(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadRecordById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Load Record ByUserIdAndPortalRoleId
+        public portalRoleMembershipDetails PortalRoleMembershipLoadRecordByUserIdAndPortalRoleId(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadRecordByUserIdAndPortalRoleId(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadRecordByUserIdAndPortalRoleId", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Insert Record ById
+        public portalRoleMembershipDetails PortalRoleMembershipInsertRecordById(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipInsertRecordById(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertRecordById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Persist Record ById
+        public portalRoleMembershipDetails PortalRoleMembershipPersistRecordById(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipPersistRecordById(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipPersistRecordById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Delete Record ById
+        public portalRoleMembershipDetails PortalRoleMembershipDeleteRecordById(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipDeleteRecordById(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Delete Record ByUserIdAndPortalRoleId
+        public portalRoleMembershipDetails PortalRoleMembershipDeleteRecordByUserIdAndPortalRoleId(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordByUserIdAndPortalRoleId", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Load List ById
+        public portalRoleMembershipDetails[] PortalRoleMembershipLoadListById(bbWsParams @params, portalRoleMembershipDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadListById(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Insert List ById
+        public portalRoleMembershipDetails[] PortalRoleMembershipInsertListById(bbWsParams @params, portalRoleMembershipDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipInsertListById(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertListById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Persist List ById
+        public portalRoleMembershipDetails[] PortalRoleMembershipPersistListById(bbWsParams @params, portalRoleMembershipDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipPersistListById(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipPersistListById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Delete List ById
+        public portalRoleMembershipDetails[] PortalRoleMembershipDeleteListById(bbWsParams @params, portalRoleMembershipDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipDeleteListById(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteListById", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Delete Record ByUserId
+        public portalRoleMembershipDetails PortalRoleMembershipDeleteRecordByUserId(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipDeleteListByUserId(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordByUserId", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Load List ByUserId
+        public portalRoleMembershipDetails[] PortalRoleMembershipLoadListByUserId(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadListByUserId(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByUserId", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Load List ByPortalRoleId
+        public portalRoleMembershipDetails[] PortalRoleMembershipLoadListByPortalRoleId(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadListByPortalRoleId(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByPortalRoleId", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Load List ByTemplate
+        public portalRoleMembershipDetails[] PortalRoleMembershipLoadListByTemplate(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadListByTemplate(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByTemplate", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Load Record ByUserAndPortalRoleBatchUid
+        public portalRoleMembershipDetails PortalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Insert Record ByUserAndPortalRoleBatchUid
+        public portalRoleMembershipDetails PortalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Delete Record ByUserAndPortalRoleBatchUid
+        public portalRoleMembershipDetails PortalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid(bbWsParams @params, portalRoleMembershipDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Load List ByUserAndPortalRoleBatchUid
+        public portalRoleMembershipDetails[] PortalRoleMembershipLoadListByUserAndPortalRoleBatchUid(bbWsParams @params, portalRoleMembershipDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipLoadListByUserAndPortalRoleBatchUid(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByUserAndPortalRoleBatchUid", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Insert List ByUserAndPortalRoleBatchUid
+        public portalRoleMembershipDetails[] PortalRoleMembershipInsertListByUserAndPortalRoleBatchUid(bbWsParams @params, portalRoleMembershipDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipInsertListByUserAndPortalRoleBatchUid(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertListByUserAndPortalRoleBatchUid", ex);
+                return null;
+            }
+        }
+
+        //PortalRoleMembership Delete List ByUserAndPortalRoleBatchUid
+        public portalRoleMembershipDetails[] PortalRoleMembershipDeleteListByUserAndPortalRoleBatchUid(bbWsParams @params, portalRoleMembershipDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteListByUserAndPortalRoleBatchUid", ex);
+                return null;
+            }
+        }
+
+    }
 }
