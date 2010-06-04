@@ -10,6 +10,8 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
+using bbIDLA.BBAddedService;
+//!!using bbws;
 
 public partial class BbWsTest : System.Web.UI.Page
 {
@@ -51,12 +53,12 @@ public partial class BbWsTest : System.Web.UI.Page
          * */
     }
 
-    class _portalRoleMembershipTestCase_RecordResult : BbWsTest.TestCase_SuccessRecord<_portalRoleMembershipTestArgs, bbws.portalRoleMembershipDetails>, ITestAction { }
-    class _portalRoleMembershipTestCase_ListResult : BbWsTest.TestCase_SuccessList<_portalRoleMembershipTestArgs, bbws.portalRoleMembershipDetails>, ITestAction { 
+    class _portalRoleMembershipTestCase_RecordResult : BbWsTest.TestCase_SuccessRecord<_portalRoleMembershipTestArgs, portalRoleMembershipDetails>, ITestAction { }
+    class _portalRoleMembershipTestCase_ListResult : BbWsTest.TestCase_SuccessList<_portalRoleMembershipTestArgs, portalRoleMembershipDetails>, ITestAction { 
     }
 
-    class _portalRoleMembershipTestArgs : TestArgs<bbws.portalRoleMembershipDetails> {
-        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+    class _portalRoleMembershipTestArgs : TestArgs<portalRoleMembershipDetails> {
+        public override bbWsDataLogRecord[] getDataLogArray() {
             return wsResultRecord.bbWsDataLog;
         }
         public override String getBbWsBoolResult() {

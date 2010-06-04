@@ -10,11 +10,13 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
+using bbIDLA.BBAddedService;
+//!!using bbws;
 
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunCourseMembershipTest() {
-            testArgs.ClearAllTestData();
+            //!!testArgs.ClearAllTestData();
 
             testArgs.courseMembership.courseMembershipLoadRecordById.execute();
             testArgs.courseMembership.courseMembershipLoadListById.execute();
@@ -39,11 +41,11 @@ public partial class BbWsTest : System.Web.UI.Page
             testArgs.courseMembership.courseMembershipLoadListByTemplate.execute();
     }
 
-    class _courseMembershipTestCase_RecordResult : TestCase_SuccessRecord<_courseMembershipTestArgs, bbws.courseMembershipDetails>, ITestAction { }
-    class _courseMembershipTestCase_ListResult : TestCase_SuccessList<_courseMembershipTestArgs, bbws.courseMembershipDetails>, ITestAction { }
+    class _courseMembershipTestCase_RecordResult : TestCase_SuccessRecord<_courseMembershipTestArgs, courseMembershipDetails>, ITestAction { }
+    class _courseMembershipTestCase_ListResult : TestCase_SuccessList<_courseMembershipTestArgs, courseMembershipDetails>, ITestAction { }
 
-    class _courseMembershipTestArgs : TestArgs<bbws.courseMembershipDetails> {
-        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+    class _courseMembershipTestArgs : TestArgs<courseMembershipDetails> {
+        public override bbWsDataLogRecord[] getDataLogArray() {
             return wsResultRecord.bbWsDataLog;
         }
         public override String getBbWsBoolResult() {
@@ -388,15 +390,15 @@ public partial class BbWsTest : System.Web.UI.Page
     }
     class _courseMembershipDeleteListById : _courseMembershipTestCase_ListResult, ITestAction {
         override public void preAction() {
-            List<bbws.courseMembershipDetails> cmd_list = new List<bbws.courseMembershipDetails>();
+            List<courseMembershipDetails> cmd_list = new List<courseMembershipDetails>();
             args.insertRecordAction.PreActionAndExecuteImp();
             args.loadInsertedRecordAction.executeImp();
-            bbws.courseMembershipDetails cmd = new bbws.courseMembershipDetails();
+            courseMembershipDetails cmd = new courseMembershipDetails();
             cmd.bbId = args.wsResultRecord.bbId;
             cmd_list.Add(cmd);
 
             args.courseMembershipUpdateRecordById.PreActionAndExecuteImp();
-            cmd = new bbws.courseMembershipDetails();
+            cmd = new courseMembershipDetails();
             cmd.bbId = args.wsInputRecord.bbId;
             cmd_list.Add(cmd);
             args.ClearInputsAndResults();

@@ -11,6 +11,9 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 
+using bbIDLA.BBAddedService;
+//!!using bbws;
+
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunGroupTest() {
@@ -19,7 +22,7 @@ public partial class BbWsTest : System.Web.UI.Page
     }
 
     class _groupTestArgs : TestArgs<bbgrpws.groupDetails> {
-        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+        public override bbWsDataLogRecord[] getDataLogArray() {
             //Error	1	Cannot implicitly convert type 'bbcrsws.bbWsDataLogRecord[]' to 'bbws.bbWsDataLogRecord[]'	W:\BB-webservice\src\wservices_idla\TestClients\VS2005\BbWebservices.aspx	380	20	W:\...\VS2005\
             //return wsResultRecord.bbWsDataLog;
             return null;

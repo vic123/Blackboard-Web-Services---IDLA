@@ -11,6 +11,9 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 
+using bbIDLA.BBAddedService;
+//!!using bbws;
+
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunPortalRoleTest() {
@@ -39,11 +42,11 @@ public partial class BbWsTest : System.Web.UI.Page
         testArgs.portalRole.portalRoleDeleteRecordById.execute();
     }
 
-    class _portalRoleTestCase_RecordResult : BbWsTest.TestCase_SuccessRecord<_portalRoleTestArgs, bbws.portalRoleDetails>, ITestAction { }
-    class _portalRoleTestCase_ListResult : BbWsTest.TestCase_SuccessList<_portalRoleTestArgs, bbws.portalRoleDetails>, ITestAction { }
+    class _portalRoleTestCase_RecordResult : BbWsTest.TestCase_SuccessRecord<_portalRoleTestArgs, portalRoleDetails>, ITestAction { }
+    class _portalRoleTestCase_ListResult : BbWsTest.TestCase_SuccessList<_portalRoleTestArgs, portalRoleDetails>, ITestAction { }
 
-    class _portalRoleTestArgs : TestArgs<bbws.portalRoleDetails> {
-        public override bbws.bbWsDataLogRecord[] getDataLogArray() {
+    class _portalRoleTestArgs : TestArgs<portalRoleDetails> {
+        public override bbWsDataLogRecord[] getDataLogArray() {
             return wsResultRecord.bbWsDataLog;
         }
         public override String getBbWsBoolResult() {
