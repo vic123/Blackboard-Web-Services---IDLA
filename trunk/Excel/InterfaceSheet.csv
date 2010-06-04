@@ -12,53 +12,47 @@ Item,Operation ,,,,,,,
 Users,bbuws,Boolean doesUserExist(),bbuws,Boolean addDefaultStudent(),,"void UserDbPersister.persist() 
 - Inserts or updates the supplied User - may be single implementation for both create and update operations
 saveUser()",bbuws,Boolean deleteUserByUserBbId()
-,,Covered by userLoadBy… set of methods,,,,Methods with persisting functionality are implemented as custom decision taking for insert or update operation - internal Bb API persist() methods seem not to be standard interface method included in all persisting APIs and as far as i remember behaved just as update when was tested for User DATA API.,,
+,,Covered by userLoadBy… set of methods,,,,Methods with persisting functionality are implemented as custom decision taking for insert or update operation - internal Bb API persist() methods seem not to be standard interface method included in all persisting APIs and as far as i remember behaved ju,,
 ,bbuws,UserDetails getUserDetailsWithNamedElements(),bbuws,"Boolean addUser() (!! Sets sec.portal roles)
 ?? Current addUser() utilizes PersonDbPersister.Default.getInstance().insert(p), but
 decompiled v.7.3 class does not have insert method
 (was from package blackboard.caliper.person.service;)
 
-        AdminInsertProcedureQuery query = new AdminInsertProcedureQuery(PersonInsertDbMap.MAP, objToSave);
-        try
-        {
-            super.runQuery(query, null);
-        }
-",,,bbuws,Boolean deleteUserByUserId()
+        AdminInsert",,,bbuws,Boolean deleteUserByUserId()
 ,bbuws,boolean isUserInCourse(),,Will this allow us to create a user?,,,,
 ,,covered by courseMembershipLoadRecordByCourseAndUserId,,Implemented userInsertRecordBy… methods are tested for intitial user creation,,,,
-,bbws,"userLoadRecordByBatchUid
-userLoadRecordById
-userLoadRecordByName",bbws,"userInsertRecordByBatchUid
-userPersistRecordByBatchUid
-userInsertRecordById",bbws,"userUpdateRecordByBatchUid
-userPersistRecordByBatchUid
-userUpdateRecordById
-userPersistRecordById",bbws,"userDeleteRecordByBatchUid
-userDeleteRecordById",,
+,bbws,"userLoadRecordByBatchUid (cms_admin)
+userLoadRecordById (bb_platform)
+userLoadRecordByName (bb_platform)",bbws,"userInsertRecordByBatchUid (cms_admin)
+userPersistRecordByBatchUid (cms_admin)
+userInsertRecordById (bb_platform)",bbws,"userUpdateRecordByBatchUid (cms_admin)
+userPersistRecordByBatchUid (cms_admin)
+userUpdateRecordById (bb_platform)
+userPersistRecordById (bb_platform)",bbws,"userDeleteRecordByBatchUid (cms_admin)
+userDeleteRecordById (bb_platform)",,
 List of Users,bbuws,List<UserDetails> getAllUserIDsNoDetailsWithNamedElements(),,"Should batch create/update/delete operations 
 for user lists be implemented??",,,,,,
 ,bbuws,List<UserDetails> getEnrolledUserDetailsForGivenCourseWithNamedElements(),,"Ryan: 
-It would be nice to process lists of students at a time.  Thus sending a list of 200 users to be added could be processed instead of sending them one at a time.  This allows us to send a list of students and student demographics to blackboard and for those users to be created
-Vic: saveUsers()",,"Ryan: 
+It would be nice to process lists of students at a time.  Thus sending a list of 200 users to be added could be processed instead of sending them one at a time.  This allows us to send a list of students and student demographics to blackboard and f",,"Ryan: 
 The batch update command would allow a list of users to be sent for checking to see if anything had changed.  Really what we would need here is the ability to help with a sync process.
 Vic: Will be same as insert, saveUsers()",,Ryan: This is not as important as Create or Update.  Deletes can be done one at a time.,,
 ,,,,Implemented with userInsertListById and userPersistListBy… - arbitrary list of users is provided on input,,"Implemented with userUpdateListById and userPersistListBy…, update modifies only fields provided",,Implemented too,,
 ,bbuws,List<UserDetails> getEnrolledStudentsForGivenCourseIDWithNamedElements(),,,,,,,,
 ,,,,,,,,,,
-,bbws,"userLoadListByTemplate
-userLoadListById
-userLoadListByEmailAddressFamilyNameGivenName
-userLoadListBySearchByUserName
-userLoadListObservedByObserverId
-userLoadListByCourseId
-userLoadListAvailableObserversByCourseId
-userLoadListByGroupId
-userLoadListByPrimaryPortalRoleId",bbws,"userPersistListByBatchUid
-userInsertListById
-userPersistListById",bbws,"userPersistListByBatchUid
-userUpdateListById
-userPersistListById",bbws,"userDeleteListByBatchUid
-userDeleteListById",,
+,bbws,"userLoadListByTemplate (cms_admin)
+userLoadListById (bb_platform)
+userLoadListByEmailAddressFamilyNameGivenName (bb_platform)
+userLoadListBySearchByUserName (bb_platform)
+userLoadListObservedByObserverId (bb_platform)
+userLoadListByCourseId (bb_platform)
+userLoadListAvailableObserversByCourseId (bb_platform)
+userLoadListByGroupId (bb_platform)
+userLoadListByPrimaryPortalRoleId (bb_platform)",bbws,"userPersistListByBatchUid (cms_admin)
+userInsertListById (bb_platform)
+userPersistListById (bb_platform)",bbws,"userPersistListByBatchUid (cms_admin)
+userUpdateListById (bb_platform)
+userPersistListById (bb_platform)",bbws,"userDeleteListByBatchUid (cms_admin)
+userDeleteListById (bb_platform)",,
 Courses,bbcrsws,Boolean doesCourseExist(),bbcrsws,"Boolean addCourse()
 uses blackboard.persist.course.CourseDbPersister.Default.getInstance().persist()",,"void   persist(Course course) 
           Inserts or updates the supplied Course
@@ -84,12 +78,12 @@ saveCourseMembership()",bbcrsws,Boolean unEnrollGivenUserFromGivenCourse()
 ,,,,,,"CourseMembership has boolean ""available"" field that should perform this function.",,
 ,,,,,,,,
 ,,,,,,,,
-,bbws,"courseMembershipLoadRecordById
-courseMembershipLoadRecordByCourseAndUserId
-courseMembershipLoadRecordByCourseAndUserBatchId",bbws,"courseMembershipInsertRecordById
-courseMembershipPersistRecordById",bbws,"courseMembershipUpdateRecordById
-courseMembershipPersistRecordById
-",bbws,"courseMembershipDeleteRecordById
+,bbws,"courseMembershipLoadRecordById (bb_platform)
+courseMembershipLoadRecordByCourseAndUserId (bb_platform)
+courseMembershipLoadRecordByCourseAndUserBatchId (cms_admin)",bbws,"courseMembershipInsertRecordById (bb_platform)
+courseMembershipPersistRecordById (bb_platform)",bbws,"courseMembershipUpdateRecordById (bb_platform)
+courseMembershipPersistRecordById (bb_platform)
+",bbws,"courseMembershipDeleteRecordById (bb_platform)
 "
 ,,,,,,,,
 List of Course Enrollments,bbuws,String[][] getEnrollmentsByBatchUIDandCourseIDPattern(),,,,,,
@@ -98,14 +92,14 @@ List of Course Enrollments,bbuws,String[][] getEnrollmentsByBatchUIDandCourseIDP
 ,,,,"Ryan: the ability to do a list of users would be benificial here as well.
 Boolean enrollUsersOnGivenCourse()",,Boolean enrollUsersOnGivenCourse(),,
 ,,,,Implemented with courseMembershipInsertListById and courseMembershipPersistListById,,Implemented with courseMembershipUpdateListById and courseMembershipPersistListById,,
-,bbws,"courseMembershipLoadListById
-courseMembershipLoadListByUserId
-courseMembershipLoadListByCourseId
-courseMembershipLoadListByCourseIdWithUserInfo
-courseMembershipLoadListByCourseIdAndRole
-courseMembershipLoadListByTemplate",bbws,"courseMembershipInsertListById
-courseMembershipPersistListById",bbws,"courseMembershipUpdateListById
-courseMembershipPersistListById",bbws,"courseMembershipDeleteListById
+,bbws,"courseMembershipLoadListById (bb_platform)
+courseMembershipLoadListByUserId (bb_platform)
+courseMembershipLoadListByCourseId (bb_platform)
+courseMembershipLoadListByCourseIdWithUserInfo (bb_platform)
+courseMembershipLoadListByCourseIdAndRole (bb_platform)
+courseMembershipLoadListByTemplate (cms_admin)",bbws,"courseMembershipInsertListById (bb_platform)
+courseMembershipPersistListById (bb_platform)",bbws,"courseMembershipUpdateListById (bb_platform)
+courseMembershipPersistListById (bb_platform)",bbws,"courseMembershipDeleteListById (bb_platform)
 "
 ,,,,,,,,
 Institutional Roles,bbuws,PortalRoleDbLoader.loadById()  ??loadByRoleId() - implementation is different,,"PortalRoleDbPersister.persist()
@@ -115,62 +109,62 @@ Inserts or updates the supplied PortalRole",,"PortalRoleDbPersister.deleteById()
 deletePortalRoleById()"
 ,,PortalRoleDbLoader.loadByRoleName(),,,,,,
 ,,Implemented - see cell below,,Implemented - see cell below,,Implemented - see cell below,,Implemented - see cell below
-,bbws,"portalRoleLoadRecordById
-portalRoleLoadRecordByRoleId
-portalRoleLoadRecordByRoleName
-portalRoleLoadRecordDefault
-portalRoleLoadRecordPrimaryRoleByUserId",bbws,"portalRoleInsertRecordById
-portalRolePersistRecordById",bbws,"portalRoleUpdateRecordById
-portalRolePersistRecordById",bbws,portalRoleDeleteRecordById
+,bbws,"portalRoleLoadRecordById (bb_platform)
+portalRoleLoadRecordByRoleId (bb_platform)
+portalRoleLoadRecordByRoleName (bb_platform)
+portalRoleLoadRecordDefault (bb_platform)
+portalRoleLoadRecordPrimaryRoleByUserId (bb_platform)",bbws,"portalRoleInsertRecordById (bb_platform)
+portalRolePersistRecordById (bb_platform)",bbws,"portalRoleUpdateRecordById (bb_platform)
+portalRolePersistRecordById (bb_platform)",bbws,portalRoleDeleteRecordById (bb_platform)
 ,,,,,,,,
 List of Institutional Roles,,"PortalRoleDbLoader.loadAll() - loadAllPortalRoles
 ?? loadAvailableRolesAll() - from source seem to do same thing, but avoid checking/filling of cache
-PortalRoleDbLoader.loadRemovable() - Load the list of PortalRole objects that have a removable attribute of true",,,,,,
+PortalRoleDbLoader.loadRemovable() - Load the list of PortalRole objects that have a removable attribute ",,,,,,
 ,,Implemented - see cell below,,,,,,
-,bbws,"portalRoleLoadListRemovable
-portalRoleLoadListAll
-portalRoleLoadListAvailable
-portalRoleLoadListAllByUserId
-portalRoleLoadListSecondaryRolesByUserId",,,,,,
+,bbws,"portalRoleLoadListRemovable (bb_platform)
+portalRoleLoadListAll (bb_platform)
+portalRoleLoadListAvailable (bb_platform)
+portalRoleLoadListAllByUserId (bb_platform)
+portalRoleLoadListSecondaryRolesByUserId (bb_platform)",,,,,,
 ,,,,,,,,
 Users assignments to institutional roles,bbuws,List<bbuws.Role> getSecondaryPortalRolesForGivenUserIdWithNamedElements,bbuws,Boolean setOrModifySecondaryPortalRolesForGivenUserId(),bbuws,Boolean setOrModifySecondaryPortalRolesForGivenUserId(),bbuws,Boolean setOrModifySecondaryPortalRolesForGivenUserId()
 ,bbuws, ## primary institution role is part of UserDetails - List<UserDetails> getAllUserIDsNoDetailsWithNamedElements(),,Boolean setOrModifyPrimaryPortalRoleForGivenUserId(),,Boolean setOrModifyPrimaryPortalRoleForGivenUserId(),,
 ,,,,Standard Primary Portal Role is assignable with new User API,,,,
-,,,,"There however is necessity of differentiation of standard and custom (created with portalRoleInsertRecordById) Portal Roles when they are assigned in User API, which is not handled yet. Custom portal creates key in different way from how standard portal role does.",,,,
+,,,,"There however is necessity of differentiation of standard and custom (created with portalRoleInsertRecordById) Portal Roles when they are assigned in User API, which is not handled yet. Custom portal creates key in different way from how standard portal r",,,,
 ,,PortalRoleDbLoader.loadPrimaryRoleByUserId() - getPrimaryRoleByUserId(),,,,,,
 ,,PortalRoleDbLoader.loadAllByUserId() //loads all secondary and appends primary - getSecondaryRolesByUserId(),,,,,,
 ,,"Ryan: In blackboard there is the concept of a primary role and a secondary role for institutions.  There can be only one primary role.  We would like to be able to CRUD primary and secondary institutional roles for users.
-Vic:PortalRoleDbLoader.loadAllByUserId() can be cleaned from appended primary role - so only secondary ones remain.",,,,,,
+Vic:PortalRoleDbLoader.loadAllByU",,,,,,
 ,,Load of various portal roles by UserId is implemented,,,,,,
 ,,"Assignment of secondary Portal Roles is not implemented in new design, but is available in initial bbuws API.
 Otherwise, this assignment is defined with UserRole data class in Bb API.",,,,,,
 ,,"UserRole API is implemented - see ""Secondary Institutional Roles Membership"" block below",,,,,,
-,bbws,"portalRoleLoadRecordPrimaryRoleByUserId
-portalRoleLoadListAllByUserId
-portalRoleLoadListSecondaryRolesByUserId",bbws,"userInsertRecordByBatchUid
-userUpdateRecordByBatchUid
-userPersistRecordByBatchUid
-userInsertRecordById
-userUpdateRecordById
-userPersistRecordById",,,,
+,bbws,"portalRoleLoadRecordPrimaryRoleByUserId (bb_platform)
+portalRoleLoadListAllByUserId (bb_platform)
+portalRoleLoadListSecondaryRolesByUserId (bb_platform)",bbws,"userInsertRecordByBatchUid (cms_admin)
+userUpdateRecordByBatchUid (cms_admin)
+userPersistRecordByBatchUid (cms_admin)
+userInsertRecordById (bb_platform)
+userUpdateRecordById (bb_platform)
+userPersistRecordById (bb_platform)",,,,
 ,,,,,,,,
 ObserverAssociation,,,,,,,,
 "Observer role assignments
 Does it mean assigning of observer to user?? Otherwise actual role assignment seem to be a subject of primary institutional and system roles.
-From Blackboard_Academic_Suite_Administrator_Manual_for_Release_8.pdf : Users must have their System Role set to Observer to appear in the list of available Observers.",,,,"blackboard\persist\user\impl\UserDbPersisterImpl.class 
+From Blackboard_Academic_Suite_Administrator_Manual_for_Release_8.pdf : Users must have",,,,"blackboard\persist\user\impl\UserDbPersisterImpl.class 
 void assignObserver(Id observerId, Id userId)
 will optionally set Observer role and assign to userId",,"Is it ok to omit Observer role update operation (if it really means observer to user assignment) ??
 Only create/delete operations for simple link relation seem reasonable.
-ObserverAssociationDbPersister has method update(ObserverAssociation objToSave), but it is not very clear how update logic is implemented because no old User/Observer ids are passed as arguments",,"?? Cannot find delete implementation way in bb-platform.jar (at least in v.7.3)… 
+ObserverAssociationDbPersister has method update(ObserverAssociation objToSave), bu",,"?? Cannot find delete implementation way in bb-platform.jar (at least in v.7.3)… 
 may be public void remove(ObserverAssociation objToRemove) from bb-cms-admin.jar, ObserverAssociationDbPersister can be used.
 deleteObserver()"
 ,,,,Observer assignment by itself is implemented with observerAssociationInsertRecordByObserverAndUsersBatchUid,,,,Implemented with observerAssociationDeleteRecordByObserverAndUsersBatchUid
 ,,,,"Implemented ObserverAssociation methods just assign one user as observer of another without modification of observer's System Role, assignment passes this way but result of such ObserverAssociation was not tested with Bb UI.",,,,
 ,,,,Secondary system roles are cleaned up and Parent (synonym of Observer) is assigned to Observer as per requirements defined in Bb administrative interface.,,,,
 ,,,,,,,,
-,bbws,"observerAssociationLoadRecordByObserverAndUsersBatchUid
-",bbws,"observerAssociationInsertRecordByObserverAndUsersBatchUid
-",,,bbws,"observerAssociationDeleteRecordByObserverAndUsersBatchUid
+,bbws,"observerAssociationLoadRecordByObserverAndUsersBatchUid (cms_admin)
+",bbws,"observerAssociationInsertRecordByObserverAndUsersBatchUid (cms_admin)
+",,,bbws,"observerAssociationDeleteRecordByObserverAndUsersBatchUid (cms_admin)
 "
 ,,,,,,Omiting the update operation is acceptable.,,
 ,,"blackboard\persist\user\impl\UserDbLoaderImpl.class
@@ -181,11 +175,11 @@ BbList loadObservedByObserverId(Id observerId) - getObservedByObserverId()",,,,,
 ?? public interface ObserverAssociationDef (!!)",,,,,,
 ,,Analogue of loadAvailableObserversByCourseId is not implemented,,,,,,
 ,,Exposed as userLoadAvailableObserversByCourseId web method.,,,,,,
-List of ObserverAssociation,bbws,"observerAssociationLoadListByTemplate
-observerAssociationLoadListByObserverAndUsersBatchUid
-userLoadListObservedByObserverId
-userLoadListAvailableObserversByCourseId",bbws,"observerAssociationInsertListByObserverAndUsersBatchUid
-",,,bbws,"observerAssociationDeleteListByObserverAndUsersBatchUid
+List of ObserverAssociation,bbws,"observerAssociationLoadListByTemplate (cms_admin)
+observerAssociationLoadListByObserverAndUsersBatchUid (cms_admin)
+userLoadListObservedByObserverId (bb_platform)
+userLoadListAvailableObserversByCourseId (bb_platform)",bbws,"observerAssociationInsertListByObserverAndUsersBatchUid (cms_admin)
+",,,bbws,"observerAssociationDeleteListByObserverAndUsersBatchUid (cms_admin)
 "
 ,,,,,,,,
 There are two parts to this question.  ,,,,,,,,
@@ -194,12 +188,12 @@ There are two parts to this question.  ,,,,,,,,
 "An example of an observer would be a parent of a student.  This parent would be given the observer system role, and then would observe the student login.",,,,,,,,
 ,,,,,,,,
 "Secondary Institutional Roles Membership
-Record access",bbws,"portalRoleMembershipLoadRecordById
-portalRoleMembershipLoadRecordByUserIdAndPortalRoleId
-",bbws,"portalRoleMembershipInsertRecordById
-portalRoleMembershipPersistRecordById",bbws,portalRoleMembershipPersistRecordById,bbws,"portalRoleMembershipDeleteRecordById
-portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId"
-List access,bbws,"portalRoleMembershipLoadListById
-portalRoleMembershipLoadListByUserId
-portalRoleMembershipLoadListByPortalRoleId",bbws,portalRoleMembershipInsertListById,bbws,portalRoleMembershipPersistListById,bbws,"portalRoleMembershipDeleteListById
-portalRoleMembershipDeleteListByUserId"
+Record access",bbws,"portalRoleMembershipLoadRecordById (bb_platform)
+portalRoleMembershipLoadRecordByUserIdAndPortalRoleId (bb_platform)
+",bbws,"portalRoleMembershipInsertRecordById (bb_platform)
+portalRoleMembershipPersistRecordById (bb_platform)",bbws,portalRoleMembershipPersistRecordById (bb_platform),bbws,"portalRoleMembershipDeleteRecordById (bb_platform)
+portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId (bb_platform)"
+List access,bbws,"portalRoleMembershipLoadListById (bb_platform)
+portalRoleMembershipLoadListByUserId (bb_platform)
+portalRoleMembershipLoadListByPortalRoleId (bb_platform)",bbws,portalRoleMembershipInsertListById (bb_platform),bbws,portalRoleMembershipPersistListById (bb_platform),bbws,"portalRoleMembershipDeleteListById (bb_platform)
+portalRoleMembershipDeleteRecordByUserId (bb_platform)"
