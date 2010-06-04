@@ -43,6 +43,7 @@ namespace bbIDLA
             this.doRethrow = doRethrow;
         }
 
+
         //CourseMembership Load Record ById
         public courseMembershipDetails CourseMembershipLoadRecordById(bbWsParams @params, courseMembershipDetails inputRecord)
         {
@@ -68,7 +69,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -82,7 +84,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadRecordByCourseAndUserId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -96,7 +99,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadListByUserId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -110,7 +114,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadListByCourseId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -124,7 +129,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadListByCourseIdWithUserInfo", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -138,7 +144,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadListByCourseIdAndRole", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -152,7 +159,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipInsertRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -166,7 +174,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipUpdateRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -180,7 +189,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipPersistRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -194,7 +204,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipDeleteRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -208,7 +219,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipInsertListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -222,7 +234,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipUpdateListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -236,7 +249,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipPersistListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -250,7 +264,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipDeleteListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -264,7 +279,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadRecordByCourseAndUserBatchId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -278,7 +294,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.CourseMembershipLoadListByTemplate", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -292,7 +309,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadRecordByBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -306,7 +324,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListByTemplate", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -320,7 +339,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserInsertRecordByBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -334,7 +354,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserUpdateRecordByBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -348,7 +369,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserPersistRecordByBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -362,7 +384,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserDeleteRecordByBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -376,7 +399,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserPersistListByBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -390,7 +414,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserDeleteListByBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -404,7 +429,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -418,7 +444,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadRecordByName", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -432,7 +459,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserInsertRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -446,7 +474,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserUpdateRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -460,7 +489,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserPersistRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -474,7 +504,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserDeleteRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -488,7 +519,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -502,7 +534,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserInsertListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -516,7 +549,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserUpdateListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -530,7 +564,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserPersistListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -544,7 +579,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserDeleteListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -558,7 +594,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListByEmailAddressFamilyNameGivenName", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -572,7 +609,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListBySearchByUserName", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -586,7 +624,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListObservedByObserverId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -600,7 +639,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListByCourseId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -614,7 +654,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListAvailableObserversByCourseId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -628,7 +669,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListByGroupId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -642,7 +684,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.UserLoadListByPrimaryPortalRoleId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -656,7 +699,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -670,7 +714,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadRecordByRoleId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -684,7 +729,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadRecordByRoleName", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -698,7 +744,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadRecordDefault", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -712,7 +759,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadListRemovable", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -726,7 +774,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadListAll", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -740,7 +789,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadListAvailable", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -754,7 +804,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadRecordPrimaryRoleByUserId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -768,7 +819,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadListAllByUserId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -782,7 +834,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleLoadListSecondaryRolesByUserId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -796,7 +849,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleInsertRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -810,7 +864,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleUpdateRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -824,7 +879,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRolePersistRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -838,7 +894,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleDeleteRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -852,7 +909,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.ObserverAssociationLoadListByTemplate", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -866,7 +924,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.ObserverAssociationLoadRecordByObserverAndUsersBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -880,7 +939,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.ObserverAssociationInsertRecordByObserverAndUsersBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -894,7 +954,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.ObserverAssociationDeleteRecordByObserverAndUsersBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -908,7 +969,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.ObserverAssociationLoadListByObserverAndUsersBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -922,7 +984,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.ObserverAssociationInsertListByObserverAndUsersBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -936,7 +999,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.ObserverAssociationDeleteListByObserverAndUsersBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -950,7 +1014,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -964,7 +1029,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadRecordByUserIdAndPortalRoleId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -978,7 +1044,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -992,7 +1059,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipPersistRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1006,7 +1074,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1020,7 +1089,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordByUserIdAndPortalRoleId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1034,7 +1104,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1048,7 +1119,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1062,7 +1134,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipPersistListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1076,7 +1149,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteListById", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1090,7 +1164,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordByUserId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1104,7 +1179,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByUserId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1118,7 +1194,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByPortalRoleId", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1132,7 +1209,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByTemplate", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1146,7 +1224,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1160,7 +1239,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1174,7 +1254,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1188,7 +1269,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipLoadListByUserAndPortalRoleBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1202,7 +1284,8 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipInsertListByUserAndPortalRoleBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
 
@@ -1216,9 +1299,9 @@ namespace bbIDLA
             catch (Exception ex)
             {
                 BlackBoardWebServices.LogError("bbAdded.PortalRoleMembershipDeleteListByUserAndPortalRoleBatchUid", ex);
-                return null;
+                if (doRethrow) throw;
+                else return null;
             }
         }
-
     }
 }
