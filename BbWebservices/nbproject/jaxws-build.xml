@@ -1,32 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
-        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
-        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
-        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
-
-        -->
 <project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
     <!--
                 ===================
-                JAX-WS WSGEN SECTION
+                JAX-WS WSIMPORT SECTION
                 ===================
             -->
     <target name="wsgen-init" depends="init, -do-compile">
-        <mkdir dir="${build.generated.sources.dir}/jax-ws/resources/"/>
+        <mkdir dir="${build.generated.dir}/wsgen/service"/>
+        <mkdir dir="${build.generated.dir}/wsgen/binaries"/>
         <mkdir dir="${build.classes.dir}"/>
         <taskdef name="wsgen" classname="com.sun.tools.ws.ant.WsGen">
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </taskdef>
     </target>
     <target name="wsgen-BBGradebookWebService" depends="wsgen-init">
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" xendorsed="true" keep="true" genwsdl="true" sei="bbgbws.BBGradebookWebService">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbgbws.BBGradebookWebService">
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
         </wsgen>
     </target>
-    <!--
-                ===================
-                JAX-WS WSIMPORT SECTION
-                ===================
-            -->
+    <target name="wsgen-BBAnnouncementsWebService" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbaws.BBAnnouncementsWebService">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-BBCalendarWebService" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbclnws.BBCalendarWebService">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-BBContentWebService" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbcntws.BBContentWebService">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-BBCourseWebService" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbcrsws.BBCourseWebService">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-BBDiscussionBoardWebService" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbdbws.BBDiscussionBoardWebService">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-BBGroupWebService" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbgrpws.BBGroupWebService">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-BBUserWebService" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbuws.BBUserWebService">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-BbWebservices" depends="wsgen-init">
+        <wsgen fork="true" xendorsed="true" sourcedestdir="${build.generated.dir}/wsgen/service" resourcedestdir="${build.generated.dir}/wsgen/service" destdir="${build.generated.dir}/wsgen/binaries" keep="true" genwsdl="true" sei="bbwscommon.BbWebservices">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+            <jvmarg value="-Djava.endorsed.dirs=${jaxws.endorsed.dir}"/>
+        </wsgen>
+    </target>
+    <target name="wsgen-service-compile" depends="wsgen-BBGradebookWebService, wsgen-BBAnnouncementsWebService, wsgen-BBCalendarWebService, wsgen-BBContentWebService, wsgen-BBCourseWebService, wsgen-BBDiscussionBoardWebService, wsgen-BBGroupWebService, wsgen-BBUserWebService, wsgen-BbWebservices">
+        <webproject2:javac srcdir="${build.generated.dir}/wsgen/service" classpath="${j2ee.platform.wsimport.classpath}:${javac.classpath}" destdir="${build.classes.dir}"/>
+    </target>
 </project>

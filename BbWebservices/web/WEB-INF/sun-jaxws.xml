@@ -6,8 +6,7 @@
   <endpoint implementation="bbcrsws.BBCourseWebService" name="BBCourseWebService" url-pattern="/BBCourseWebService"/>
   <endpoint implementation="bbdbws.BBDiscussionBoardWebService" name="BBDiscussionBoardWebService" url-pattern="/BBDiscussionBoardWebService"/>
   <endpoint implementation="bbgbws.BBGradebookWebService" name="BBGradebookWebService" url-pattern="/BBGradebookWebService"/>
-  <endpoint implementation="bbgrpws.BBGroupWebService" name="BBGroupWebService" url-pattern="/BBGroupWebService"/>    
+  <endpoint implementation="bbgrpws.BBGroupWebService" name="BBGroupWebService" url-pattern="/BBGroupWebService"/>
   <endpoint implementation="bbuws.BBUserWebService" name="BBUserWebService" url-pattern="/BBUserWebService"/>
-
   <endpoint implementation="bbwscommon.BbWebservices" name="BbWebservices" url-pattern="/BbWebservices"/>
 </endpoints>
