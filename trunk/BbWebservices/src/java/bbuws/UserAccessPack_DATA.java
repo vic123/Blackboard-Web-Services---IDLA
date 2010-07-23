@@ -35,6 +35,9 @@ import blackboard.data.role.PortalRole;
 import blackboard.persist.role.PortalRoleDbLoader;
 import blackboard.persist.user.impl.UserDbMap;
 
+//import blackboard.platform.integration.service.impl.UserPasswordHelper;
+import blackboard.platform.security.SecurityUtil;
+
 
 
 import java.util.List;
@@ -63,9 +66,9 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
                     return getArgs().getInputRecord().getBbId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setId(Id.generateId(User.DATA_TYPE, newValue));
+                        bbObject.setId(checkAndgenerateId(User.DATA_TYPE, newValue));
                 }
-            }.setBbField("id");
+            }.setBbField("bbId");
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getBatchUid();
@@ -88,6 +91,34 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
                     bbObject.setUserName(newValue);
                 }
             }.setBbField("userName");
+            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPassword();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPassword();
+                }
+
+                private boolean stringContainsHexCharsOnly(String s) {
+                    for (int i = 0; i < s.length(); i++) {
+                        char c = s.charAt(i);
+                        boolean is_hex_char = (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F');
+                        if (!is_hex_char) return false;
+                    }
+                    return true;
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    boolean do_hash = true;
+                    if (newValue.length() == 32) {
+                        if (stringContainsHexCharsOnly(newValue)) do_hash = false;
+                    }
+                    if (do_hash) {
+                        newValue = SecurityUtil.getHashValue(newValue);
+                        getArgs().getInputRecord().setPassword(newValue); //necessary for later successfull compare of loaded record
+                    } 
+                    bbObject.setPassword(newValue);
+                }
+            }.setBbField("password");
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getGivenName();
@@ -195,24 +226,24 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
                     return getArgs().getInputRecord().getPortalRoleId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setPortalRoleId(Id.generateId(User.DATA_TYPE, newValue));
+                        bbObject.setPortalRoleId(checkAndgenerateId(User.DATA_TYPE, newValue));
+                        
                 }
             }.setBbField("portalRoleId");
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     PortalRoleDbLoader prl = PortalRoleDbLoader.Default.getInstance();
-                PortalRole pr = prl.loadPrimaryRoleByUserId(bbObject.getPortalRoleId());
+                    PortalRole pr = prl.loadPrimaryRoleByUserId(bbObject.getPortalRoleId());
                     return pr.getRoleName();
-
                 }
                 @Override public String getWsFieldValue() throws Exception {
                     return getArgs().getInputRecord().getPortalRoleName();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                    PortalRoleDbLoader prl = PortalRoleDbLoader.Default.getInstance();
-                    newValue = newValue.toUpperCase() + ".role_name";
-                    PortalRole pr = prl.loadByRoleName(newValue);
+                    PortalRole pr = PortalRoleAccessPack_DATA.loadRecordByRoleNameLogic(newValue);
                     bbObject.setPortalRole(pr);
+                    getArgs().getInputRecord().setPortalRoleName(pr.getRoleName()); //necessary for later successfull compare of loaded record
+					//!!add warning to DataLog if names are not equal
                 }
             }.setBbField("portalRoleName");
             new BbFieldSetter() {
@@ -582,11 +613,9 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
     }*/
     public static class UserWithPwd extends User {
-        @Override public void setUserName(String strUserName)
-        {
+        @Override public void setUserName(String strUserName) {
             super.setUserName(strUserName);
-            if(strUserName != null && _bbAttributes.getBbAttribute("Password").getValue() == null)
-            {
+            if(strUserName != null && _bbAttributes.getBbAttribute("Password").getValue() == null) {
                 _bbAttributes.setString("Password",
                     blackboard.admin.snapshot.util.ConversionUtility.getHashValue(getUserName()));
                 _bbAttributes.getBbAttribute("Password").setIsDirty(false);
@@ -596,8 +625,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
 
     public static class UserAccessByIdPack extends UserAccessPackWithUserInput<User> {
         protected void loadRecordById() throws Exception {
-            checkNotNullId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(User.DATA_TYPE,getArgs().getInputRecord().getBbId());
+            Id id = checkAndgenerateId(User.DATA_TYPE, getArgs().getInputRecord().getBbId());
             bbObject = (UserDbLoader.Default.getInstance().loadById(id));
         }
         protected void loadRecordByName() throws Exception {
@@ -620,8 +648,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
 
         @Override protected void deleteRecord() throws Exception {
-            checkNotNullId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(User.DATA_TYPE,getArgs().getInputRecord().getBbId());
+            Id id = checkAndgenerateId(User.DATA_TYPE, getArgs().getInputRecord().getBbId());
             UserDbPersister uper = UserDbPersister.Default.getInstance();
             uper.deleteById(id);
         }
@@ -785,8 +812,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
                     getArgs().getInputRecord().getUserName());
         }
         protected void loadListObservedByObserverId()  throws Exception {
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.user.User.DATA_TYPE,getArgs().getInputRecord().getBbId());
+            Id id = checkAndgenerateId(User.DATA_TYPE, getArgs().getInputRecord().getBbId());
             bbObjectList = UserDbLoader.Default.getInstance().loadObservedByObserverId(id);
         }
     }
@@ -820,8 +846,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
         @Override protected void loadList () throws Exception {
             String str_id = getArgs().getInputCourseRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.course.Course.DATA_TYPE,str_id);
+            Id id = checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE,str_id);
             bbObjectList = UserDbLoader.Default.getInstance().loadByCourseId(id);
         }
     }
@@ -834,8 +859,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
         @Override protected void loadList () throws Exception {
             String str_id = getArgs().getInputCourseRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.course.Course.DATA_TYPE,str_id);
+            Id id = checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE,str_id);
             UserDbLoaderImpl udbli = (UserDbLoaderImpl) UserDbLoader.Default.getInstance();
             bbObjectList = udbli.loadAvailableObserversByCourseId(id, BbWsUtil.getFullFilteredMap(UserDbMap.MAP));
         }
@@ -850,8 +874,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
         @Override protected void loadList () throws Exception {
             String str_id = getArgs().getInputGroupRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.course.Group.DATA_TYPE, str_id);
+            Id id = checkAndgenerateId(blackboard.data.course.Group.DATA_TYPE, str_id);
             bbObjectList = UserDbLoader.Default.getInstance().loadByGroupId(id);
         }
     }
@@ -864,8 +887,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
         }
         @Override protected void loadList () throws Exception {
             String str_id = getArgs().getInputRoleRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.role.PortalRole.DATA_TYPE, str_id);
+            Id id = checkAndgenerateId(blackboard.data.role.PortalRole.DATA_TYPE, str_id);
             bbObjectList = UserDbLoader.Default.getInstance().loadByPrimaryPortalRoleId(id);
         }
     }
@@ -882,7 +904,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setBbId(newValue);
                 }
-            }.setWsField("id");
+            }.setWsField("bbId");
         if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
@@ -923,6 +945,21 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
                     getArgs().getResultRecord().setGivenName(newValue);
                 }
             }.setWsField("givenName");
+            new WsFieldSetter() {
+                @Override
+                protected boolean checkByNewValueCompareWithOld(String oldValue, String newValue) throws Exception {
+            return oldValue.compareToIgnoreCase(newValue) == 0;
+                }
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getPassword();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPassword();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPassword(newValue);
+                }
+            }.setWsField("password");
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return bbObject.getMiddleName();
@@ -1389,49 +1426,6 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
     protected String retrieveLastLogin(Calendar calendar) {
         return (calendar.get(Calendar.YEAR)+"-"+(calendar.get(calendar.MONTH)+1)+"-"+calendar.get(calendar.DAY_OF_MONTH)+" "+calendar.get(calendar.HOUR_OF_DAY)+":"+calendar.get(calendar.MINUTE)+":"+calendar.get(calendar.SECOND));
     }
-/* !!
-    private String retrieveRoleName(Id id) {
-        try
-        {
-            @SuppressWarnings("static-access")
-            BbPersistenceManager bbPm = new BbServiceManager().getPersistenceService().getDbPersistenceManager();
-            PortalRoleDbLoader prl = (PortalRoleDbLoader)bbPm.getLoader(PortalRoleDbLoader.TYPE);
-            PortalRole pr = prl.loadPrimaryRoleByUserId(id);
-            return pr.getRoleName();
-        }
-        catch(Exception e)
-        {
-            return "";
-        }
-    }
-
-    private String retrieveSystemRole(User bbUser) {
-        try
-        {
-            return bbUser.getSystemRole().toFieldName();
-        }
-        catch(Exception e)
-        {
-            return "";
-        }
-    }
-
-
-    public static class LoadListAvailableObserversByCourseId extends UserAccessPack_DATA<User, UserAccessPack.UserArgumentsWithUserAndCourseInput> {
-        public void initialize(UserAccessPack.UserArgumentsWithUserAndCourseInput args) {
-            RecordListLoader  da = new RecordListLoader();
-            da.initialize(null);
-            super.initialize(args, User.class, da);
-        }
-        @Override protected void loadList () throws Exception {
-            String str_id = getArgs().getInputCourseRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.course.Course.DATA_TYPE,str_id);
-            bbObjectList = ((UserDbLoaderImpl)(UserDbLoader.Default.getInstance())).loadAvailableObserversByCourseId(id);
-        }
-    }
-
-*/
 }
 
 

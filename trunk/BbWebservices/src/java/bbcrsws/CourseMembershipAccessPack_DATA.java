@@ -12,7 +12,9 @@ package bbcrsws;
 import blackboard.persist.Id;
 import blackboard.platform.persistence.PersistenceServiceFactory;
 import blackboard.data.course.Course;
+import blackboard.persist.course.CourseDbLoader;
 import blackboard.data.user.User;
+import blackboard.persist.user.UserDbLoader;
 import blackboard.data.course.CourseMembership;
 import blackboard.data.course.CourseMembership.Role;
 import blackboard.persist.course.CourseMembershipDbLoader;
@@ -30,50 +32,77 @@ public class CourseMembershipAccessPack_DATA
     @Override protected void setBbCourseBatchUidField() throws Exception {
         if (BbWsUtil.nullSafeStringComparator(getArgs().getInputRecord().getCourseBatchUid(), getArgs().getMissFieldTag()) != 0) {
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
-                "courseBatchUid", null, "Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
+                "courseBatchUid", null, null, getArgs().getInputRecord().getCourseBatchUid(), "Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
         }
         getArgs().getResultRecord().setCourseBatchUid(getArgs().getErrorValueTag());
     }
 
     @Override protected void setWsCourseBatchUidField() throws Exception {
+        new WsFieldSetter() {
+            @Override public String getBbFieldValue() throws Exception {
+                Course c = (CourseDbLoader.Default.getInstance().loadById(bbObject.getCourseId()));
+                return c.getBatchUid();
+            }
+            @Override public String getWsFieldValue() throws Exception {
+                return getArgs().getResultRecord().getCourseBatchUid();
+            }
+            @Override public void setWsFieldImp(String newValue) throws Exception {
+                getArgs().getResultRecord().setCourseBatchUid(newValue);
+            }
+        }.setWsField("courseBatchUid");
+        /*
         if (BbWsUtil.nullSafeStringComparator(getArgs().getResultRecord().getCourseBatchUid(), getArgs().getMissFieldTag()) != 0
             && getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.CUSTOM) == 0) {
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.WARN,
                 "courseBatchUid", null, "Field was requested, but is not available in DATA API (blackboard.data.CourseMebership)", null);
+         getArgs().getResultRecord().setCourseBatchUid(getArgs().getWarnValueTag());
         }
-        getArgs().getResultRecord().setCourseBatchUid(getArgs().getWarnValueTag());
+         */ 
     }
 
     @Override protected void setBbUserBatchUidField() throws Exception {
         if (BbWsUtil.nullSafeStringComparator(getArgs().getInputRecord().getCourseBatchUid(), getArgs().getMissFieldTag()) != 0) {
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
-                "userBatchUid", null, "Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
+                "userBatchUid", null, null, getArgs().getInputRecord().getCourseBatchUid(), "Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
         }
         getArgs().getResultRecord().setUserBatchUid(getArgs().getErrorValueTag());
     }
 
     @Override protected void setWsUserBatchUidField() throws Exception {
+        new WsFieldSetter() {
+            @Override public String getBbFieldValue() throws Exception {
+                User u = (UserDbLoader.Default.getInstance().loadById(bbObject.getUserId()));
+                return u.getBatchUid();
+            }
+            @Override public String getWsFieldValue() throws Exception {
+                return getArgs().getResultRecord().getUserBatchUid();
+            }
+            @Override public void setWsFieldImp(String newValue) throws Exception {
+                getArgs().getResultRecord().setUserBatchUid(newValue);
+            }
+        }.setWsField("userBatchUid");
+        /*
         if (BbWsUtil.nullSafeStringComparator(getArgs().getResultRecord().getCourseBatchUid(), getArgs().getMissFieldTag()) != 0
             && getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.CUSTOM) == 0) {
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.WARN,
                 "userBatchUid", null, "Field was requested, but is not available in DATA API (blackboard.data.CourseMebership)", null);
         }
         getArgs().getResultRecord().setUserBatchUid(getArgs().getWarnValueTag());
+         */ 
     }
 
 
     protected Id generateInputCourseId() throws Exception {
-        return PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(Course.DATA_TYPE, getArgs().getInputRecord().getCourseBbId());
+        return checkAndgenerateId(Course.DATA_TYPE, getArgs().getInputRecord().getCourseBbId());
     }
     protected Id generateInputUserId() throws Exception {
-        return PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(User.DATA_TYPE, getArgs().getInputRecord().getUserBbId());
+        return checkAndgenerateId(User.DATA_TYPE, getArgs().getInputRecord().getUserBbId());
     }
     protected Id generateInputCourseMembershipId() throws Exception {
-        return PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(CourseMembership.DATA_TYPE,getArgs().getInputRecord().getBbId());
+        return checkAndgenerateId(CourseMembership.DATA_TYPE,getArgs().getInputRecord().getBbId());
     }
 
     protected void loadRecordById()  throws Exception {
-        checkNotNullId();
         Id id = generateInputCourseMembershipId();
         bbObject = CourseMembershipDbLoader.Default.getInstance().loadById(id);
     }

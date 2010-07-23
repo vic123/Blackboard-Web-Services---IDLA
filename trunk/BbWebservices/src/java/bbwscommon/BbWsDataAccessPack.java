@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import blackboard.persist.Id;
+import blackboard.persist.DataType;
 
 public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsResultType, WsInputType>,
         BbObjectType extends Identifiable, WsResultType extends BbWsDataDetails, WsInputType extends BbWsDataDetails> {
@@ -93,40 +95,43 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
         }
         //abstract List<BbObjectType> loadList() throws Exception;
         protected void loadList() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.loadList() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".loadList() has to be overriden");
         }
         //abstract BbObjectType loadRecord() throws Exception;
         protected void loadRecord() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.loadRecord() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".loadRecord() has to be overriden");
         }
         protected void loadRecordByAltId() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.loadRecordByAltId() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".loadRecordByAltId() has to be overriden");
         }
         protected void setWsFields() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.getBbFields() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".getBbFields() has to be overriden");
         }
         protected void insertRecord() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.insertRecord() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".insertRecord() has to be overriden");
         }
         protected void updateRecord() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.updateRecord() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".updateRecord() has to be overriden");
         }
         protected void persistRecord() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.persistRecord() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".persistRecord() has to be overriden");
         }
         protected void setBbFields() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.setBbFields() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".setBbFields() has to be overriden");
         }
         protected void deleteRecord() throws Exception {
-            throw new BbWsException ("BbWsDataAccessPack.deleteRecord() has to be overriden");
+            throw new BbWsException (this.getClass().getName() + ".deleteRecord() has to be overriden");
         }
 
-        protected void checkNotNullId() throws Exception {
-            if (getArgs().getInputRecord().getBbId() == null) {
-                throw new blackboard.persist.KeyNotFoundException ("Id cannot be null for " + getClass().getName() + ".{accessRecordById()}.");
+        protected Id checkAndgenerateId(DataType idType, String strId) throws Exception {
+        //protected void checkNotNullId() throws Exception {
+            if (strId == null 
+                    || BbWsUtil.nullSafeStringComparator(strId, getArgs().getNullValueTag()) == 0
+                    || BbWsUtil.nullSafeStringComparator(strId, getArgs().getMissFieldTag()) == 0) {
+                throw new blackboard.persist.KeyNotFoundException ("Id for " + idType.getName() + " cannot be " + String.valueOf(strId) + " for " + getClass().getName() + ".");
             }
+            return Id.generateId(idType, strId);
         }
-
         //public abstract void accessInternal() throws Exception;
         public static class BbWsDataLogException extends BbWsException {
             BbWsDataLogException(String message, Throwable cause) {
@@ -139,11 +144,11 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
 
 
         public void addDataLog(BbWsDataDetails dd, BbWsArguments.DataLogSeverity severity,
-                String fieldName, String value, String message, Exception e) throws Exception {
+                String fieldName, String value, String bbValue, String wsValue, String message, Exception e) throws Exception {
             if (severity.compareTo(getArgs().getDataLogSeverity()) >= 0 ) {
                 String sev = severity.toString();
                 //dd.getDataLog().add(new BbWsDataLogRecord(fieldName, value, getArgs().getCurrentPassApi(), sev, message));
-                dd.addDataLogRecord(fieldName, value, getArgs().getCurrentPassApi().api, getArgs().getApiPassedCount() + 1, sev, message);
+                dd.addDataLogRecord(fieldName, value, bbValue, wsValue, getArgs().getCurrentPassApi().api, getArgs().getApiPassedCount() + 1, sev, message);
             }
             if (getArgs().getDataFieldErrorThrowLevel().compareTo(severity) <= 0) {
                 if (e != null) throw e;
@@ -155,6 +160,8 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 //"\n" + "recordId: " + recordId + "\t"
                 "fieldName: " + fieldName + "\t"
                 + "value: " + value + "\t"
+                + "bbValue: " + bbValue + "\t"
+                + "wsValue: " + wsValue + "\t"
                 + "apiUsed: " + getArgs().getCurrentPassApi().api.toString() + "\t"
                 + "apiPass: " + String.valueOf(getArgs().getApiPassedCount() + 1) + "\t"
                 + "severityLevel: " + severity.toString() + "\t"
@@ -332,7 +339,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
         if (args.getResultRecord() == null) {
             if (resultRecord == null) {
                 resultRecord = BbWsUtil.newClassInstanceWithThrow(args.getWsResultClass());
-                resultRecord.initialize();
+                resultRecord.initialize(args);
                 args.setResultRecord(resultRecord);
                 setResultRecordIds();
             } else args.setResultRecord(resultRecord);
@@ -369,11 +376,13 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 } else setOrCreateWsResultObjectIfNull(null);
                 if (bbObject == null) bbObject = BbWsUtil.newClassInstanceWithThrow(bbObjectClass);
                 setBbFields();
-                bbObject.setId(Id.UNSET_ID);
+                //may be check on supplied Id == missFieldTag should be performed... 
+                //or may be this restriction is not necessary and will only complicate client side
+                bbObject.setId(Id.UNSET_ID); //otherwise INSERT may behave as UPDATE if Bb API method used in insertRecord() is something like persist()
                 insertRecord();
                 getArgs().getResultRecord().incApiPassedCount();
                 if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.NONE) > 0) {
-                    getArgs().getResultRecord().setBbId(null);
+                    getArgs().getResultRecord().setBbId(getArgs().getMissFieldTag());
                     loadRecordByAltId();
                     setWsFields();
                 };
@@ -520,7 +529,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                             if (wso == null) {
                                 wso = getArgs().getResultRecord();
                                 addDataLog(wso, BbWsArguments.DataLogSeverity.WARN,
-                                        "", "",
+                                        null, null, null, null,
                                         "Record was missing in previously passed APIs", null);
                             } else {
                                 if (getArgs().getResultRecord() != null) wso.getBbWsDataLog().addAll(
@@ -545,7 +554,8 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 if (wso.getApiPassedCount() <= getArgs().getApiPassedCount()) {
                     wso.incApiPassedCount();
                     addDataLog(wso, BbWsArguments.DataLogSeverity.WARN,
-                            "", "", "Record is missing in currently passed API", null);
+                            null, null, null, null,
+                            "Record is missing in currently passed API", null);
                 }
                 BbWsLog.logForward(LogService.Verbosity.INFORMATION, "li.getApiPassedCount(): " + wso.getApiPassedCount()
                         + "; params.getApiPassedCount(): " + getArgs().getApiPassedCount(), this);
@@ -646,33 +656,33 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
         protected abstract String getWsFieldValue() throws Exception;;
         protected abstract String getBbFieldValue() throws Exception;
         protected boolean checkByNewValueCompareWithOld(String oldValue, String newValue) throws Exception {
-            return oldValue.compareTo(newValue) == 0;
+            return BbWsUtil.nullSafeStringComparator(oldValue, newValue) == 0;
         }
         public void setWsField(String fieldName) throws Exception {
             BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered setWsField(); fieldName: " + fieldName, this);
-            String curBbValue = null;
-            String oldWsValue = null;
-            String value = "";
+            String bb_value = null;
+            String ws_value = null;
+            String value = null;
             try {
-                oldWsValue = getWsFieldValue();
+                ws_value = getWsFieldValue();
                 if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.CUSTOM) == 0
-                        && BbWsUtil.nullSafeStringComparator(oldWsValue, getArgs().getMissFieldTag()) == 0
+                        && BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) == 0
                         //!! all possible IDs have to be handled here - those that are set with setResultRecordIds()
-                        && fieldName.compareTo("Id") != 0) {
+                        && fieldName.compareTo("bbId") != 0) {
                     addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.DEBUG,
-                            fieldName, oldWsValue, "setWsField(): Field is omitted - dataVerbosity is set to CUSTOM and input field value is set to missFieldTag.", null);
+                            fieldName, value, bb_value, ws_value, "setWsField(): Field is omitted - dataVerbosity is set to CUSTOM and ws_value is set to missFieldTag.", null);
                     return;
                 }
                 //curValue = setWsFieldImp();
-                curBbValue = getBbFieldValue();
-                value = curBbValue;
-                if (value == null) value = getArgs().getNullValueTag();
-                if (getArgs().getResultRecord().getApiPassedCount() > 0 && oldWsValue != null) {
-                    if (!checkByNewValueCompareWithOld(oldWsValue, value)) {
-                        String message = "setWsField(): APIs returned different values; " + "fieldName: " + fieldName + "; oldWsValue: " + oldWsValue
-                                + "; newWsValue: " + value + "; curBbValue: " + curBbValue;
+                bb_value = getBbFieldValue();
+                if (bb_value == null) value = getArgs().getNullValueTag();
+                else value = bb_value;
+                if (getArgs().getResultRecord().getApiPassedCount() > 0 
+                        && BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) != 0) {  //if we are comparing data reloaded after saving and dataVerbosity != CUSTOM
+                    if (!checkByNewValueCompareWithOld(ws_value, value)) {
+                        String message = "setWsField(): APIs returned different values.";
                         addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
-                            fieldName, value, message, null);
+                            fieldName, value, bb_value, ws_value, message, null);
                         value = getArgs().getErrorValueTag();
                         /*(if (getArgs().getDataFieldErrorThrowLevel().compareTo(BbWsArguments.DataLogSeverity.ERROR) <= 0) {
                             throw new BbWsException(message);
@@ -682,24 +692,18 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 setWsFieldImp(value);
             } catch (Exception e) {
                 if (e instanceof BbWsDataLogException) throw e;
-                String message = "setWsField(): fieldName: " + fieldName
-                        + "; oldValue: " + oldWsValue + "; value: " + value
-                        + "; curBbValue: " + curBbValue + "."
-                        + e.toString();
+                String message = "setWsField(): " + e.toString();
                 value = getArgs().getErrorValueTag();
                 addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
-                    fieldName, value, message, e);
+                    fieldName, value, bb_value, ws_value, message, e);
                 setWsFieldImp(value);
                 /*if (getArgs().getDataFieldErrorThrowLevel().compareTo(BbWsArguments.DataLogSeverity.ERROR) <= 0) {
                     throw new BbWsException(message, e);
                 }*/
             }
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.INFO,
-                fieldName, value,
-                "setWsField(): Processed. oldWsValue: " +  oldWsValue + "; curBbValue: " + curBbValue + "; newWsValue: " + value, null);
-        }
-        private void processError(String message) {
-
+                fieldName, value, bb_value, ws_value, 
+                "setWsField(): Processed.", null);
         }
     }
 
@@ -712,47 +716,34 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
         protected void checkInputValue(String value) {};
         public void setBbField(String fieldName) throws Exception {
             BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered setBbField(); fieldName: " + fieldName, this);
+            String bb_value = null;            
             String ws_value = null;
-            String bb_value = null;
-            String old_bb_value = null;
+            String value = null;            
             try {
-                old_bb_value = getBbFieldValue();
                 ws_value = getWsFieldValue();
                 if (BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) == 0) {
                     addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.DEBUG,
-                        fieldName, ws_value, "setBbField(): ws_value is null, field is ommitted; current bb_value: " +  old_bb_value, null);
+                        fieldName, value, bb_value, ws_value, "setBbField(): Field is omitted - ws_value is set to missFieldTag.", null);
                     return;
                 }
+                bb_value = getBbFieldValue();
                 ws_value = ws_value.trim();
-                bb_value = ws_value;
-                if (BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getNullValueTag()) == 0) bb_value = null;
-                checkInputValue(bb_value);
+                value = ws_value;
+                if (BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getNullValueTag()) == 0) value = null;
+                checkInputValue(value);
                 //try {
-                    setBbFieldImp(bb_value);
+                    setBbFieldImp(value);
                 //} catch (java.lang.IllegalArgumentException iae) {
                 //!!add custom error message with possible field values.
 
             } catch (Exception e) {
                 addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
-                    fieldName, ws_value, "setBbField(): Exception: " + e.toString() + "; ws_value: " + ws_value + "; oldBbValue: " +  old_bb_value + "; bb_value: " +  bb_value, e);
-                
-                /*if (getArgs().getDataRecordErrorThrowLevel().compareTo(BbWsArguments.DataLogSeverity.ERROR) <= 0 ) {
-                    throw new BbWsException(error_str, e);
-                }*/
+                    fieldName, value, bb_value, ws_value, "setBbField(): " + e.toString(), e);
             }
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.INFO,
-                fieldName, ws_value, "setBbField(): Processed." + "curWsValue: " + ws_value + "; oldBbValue: " +  old_bb_value + "; newBbValue: " +  bb_value, null);
+                fieldName, value, bb_value, ws_value, "setBbField(): Processed.", null);
         }
     }
-/*
-    protected String setWsField(String fieldName, String oldValue, WsFieldSetter wsFieldSetter) {
-            return wsFieldSetter.setWsField(fieldName, oldValue);
-    }
-    protected void setBbField(String fieldName, String value, BbFieldSetter bbFieldSetter) {
-            bbFieldSetter.setBbField(fieldName, value);
-    }
- *
- */
 }
 
 

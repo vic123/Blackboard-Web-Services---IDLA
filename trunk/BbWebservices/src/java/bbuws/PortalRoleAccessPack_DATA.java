@@ -22,11 +22,19 @@ public class PortalRoleAccessPack_DATA <BbPortalRoleType extends PortalRole,
 
 
     protected Id generateInputPortalRoleId() throws Exception {
-        return PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                PortalRole.DATA_TYPE,getArgs().getInputRecord().getBbId());
+        return checkAndgenerateId(PortalRole.DATA_TYPE,getArgs().getInputRecord().getBbId());
     }
 
 //************************* RoleLoadRecordPack ***********************
+    public static PortalRole loadRecordByRoleNameLogic (String roleName) throws Exception {
+        PortalRole bb_object;
+        try {
+            bb_object = PortalRoleDbLoader.Default.getInstance().loadByRoleName(roleName);
+        } catch (blackboard.persist.KeyNotFoundException e) {
+            bb_object = PortalRoleDbLoader.Default.getInstance().loadByRoleName(roleName + ".role_name");
+        }
+        return bb_object;
+    }
     public static class RoleLoadRecordPack
             extends PortalRoleAccessPack_DATA<PortalRole, PortalRoleArguments> {
         public void initialize(PortalRoleArguments args) {
@@ -35,7 +43,7 @@ public class PortalRoleAccessPack_DATA <BbPortalRoleType extends PortalRole,
             super.initialize(args, PortalRole.class, da);
         }
         protected void loadRecordByRoleName() throws Exception {
-            bbObject = PortalRoleDbLoader.Default.getInstance().loadByRoleName(getArgs().getInputRecord().getRoleName());
+            bbObject = loadRecordByRoleNameLogic(getArgs().getInputRecord().getRoleName());
         }
         protected void loadRecordDefault() throws Exception {
             bbObject = PortalRoleDbLoader.Default.getInstance().loadDefault();
@@ -97,8 +105,7 @@ public class PortalRoleAccessPack_DATA <BbPortalRoleType extends PortalRole,
         }
         @Override protected void loadRecord () throws Exception {
             String str_id = getArgs().getInputUserRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.user.User.DATA_TYPE, str_id);
+            Id id = checkAndgenerateId(blackboard.data.user.User.DATA_TYPE, str_id);
             bbObject = PortalRoleDbLoader.Default.getInstance().loadPrimaryRoleByUserId(id);
         }
     }
@@ -113,14 +120,12 @@ public class PortalRoleAccessPack_DATA <BbPortalRoleType extends PortalRole,
         }
         protected void loadListAllByUserId () throws Exception {
             String str_id = getArgs().getInputUserRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.user.User.DATA_TYPE, str_id);
+            Id id = checkAndgenerateId(blackboard.data.user.User.DATA_TYPE, str_id);
             bbObjectList = PortalRoleDbLoader.Default.getInstance().loadAllByUserId(id);
         }
         protected void loadListSecondaryRolesByUserId () throws Exception {
             String str_id = getArgs().getInputUserRecord().getBbId();
-            Id id = PersistenceServiceFactory.getInstance().getDbPersistenceManager().generateId(
-                        blackboard.data.user.User.DATA_TYPE, str_id);
+            Id id = checkAndgenerateId(blackboard.data.user.User.DATA_TYPE, str_id);
             bbObjectList = PortalRoleDbLoader.Default.getInstance().loadSecondaryRolesByUserId(id);
         }
     }
@@ -147,7 +152,6 @@ public class PortalRoleAccessPack_DATA <BbPortalRoleType extends PortalRole,
         }
 
         protected void loadRecordById()  throws Exception {
-            checkNotNullId();
             Id id = generateInputPortalRoleId();
             bbObject = PortalRoleDbLoader.Default.getInstance().loadById(id);
         }
@@ -164,7 +168,6 @@ public class PortalRoleAccessPack_DATA <BbPortalRoleType extends PortalRole,
             uper.persist(bbObject);
         }
         @Override protected void deleteRecord() throws Exception {
-            checkNotNullId();
             Id id = generateInputPortalRoleId();
             PortalRoleDbPersister uper = PortalRoleDbPersister.Default.getInstance();
             uper.deleteById(id);

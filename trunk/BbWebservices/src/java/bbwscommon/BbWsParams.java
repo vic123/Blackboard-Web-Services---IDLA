@@ -159,7 +159,7 @@ public class BbWsParams {
     public String getNullValueTag() {
         return nullValueTag;
     }
-  public String getErrorValueTag() {
+    public String getErrorValueTag() {
         return errorValueTag;
     }
 

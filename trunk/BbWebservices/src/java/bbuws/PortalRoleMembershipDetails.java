@@ -8,6 +8,10 @@ package bbuws;
 /**
  *
  * @author vic
+
+Row Status values: ENABLED, SOFT_DELETE, DISABLED, DELETE_PENDING, COPY_PENDING, DEFAULT. 
+DEFAULT = (DEFAULT)defineDefault(ENABLED); 
+
  */
 import bbwscommon.BbWsArguments.DataVerbosity;
 import blackboard.data.role.PortalRole;
@@ -22,113 +26,75 @@ import java.util.Calendar;
 public class PortalRoleMembershipDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsArguments> { //!! implements ReturnTypeInterface {
 
     private String bbId;
+//MINIMAL:    
     private String userId;
     private String portalRoleId;
+//STANDARD:    
     private String RowStatus;
-//_bbAttributes.setBbEnum("RowStatus", blackboard.admin.data.IAdminObject.RowStatus.DEFAULT);
+//EXTENDED:    
+    private String userBatchUid;    
+//unavailable (problems with ADMIN API)
     private String DataSourceBatchUid;
     private String RecStatus;
-    private String userBatchUid;
+
     private String portalRoleBatchUid;
 
     public PortalRoleMembershipDetails() {
 
 
     }
-    /**
-     * @return the userId
-     */
     public String getUserId() {
         return userId;
     }
 
-    /**
-     * @param userId the userId to set
-     */
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    /**
-     * @return the portalRoleId
-     */
     public String getPortalRoleId() {
         return portalRoleId;
     }
 
-    /**
-     * @param portalRoleId the portalRoleId to set
-     */
     public void setPortalRoleId(String portalRoleId) {
         this.portalRoleId = portalRoleId;
     }
 
-    /**
-     * @return the RowStatus
-     */
     public String getRowStatus() {
         return RowStatus;
     }
 
-    /**
-     * @param RowStatus the RowStatus to set
-     */
     public void setRowStatus(String RowStatus) {
         this.RowStatus = RowStatus;
     }
 
-    /**
-     * @return the DataSourceBatchUid
-     */
     public String getDataSourceBatchUid() {
         return DataSourceBatchUid;
     }
 
-    /**
-     * @param DataSourceBatchUid the DataSourceBatchUid to set
-     */
     public void setDataSourceBatchUid(String DataSourceBatchUid) {
         this.DataSourceBatchUid = DataSourceBatchUid;
     }
 
-    /**
-     * @return the RecStatus
-     */
     public String getRecStatus() {
         return RecStatus;
     }
 
-    /**
-     * @param RecStatus the RecStatus to set
-     */
     public void setRecStatus(String RecStatus) {
         this.RecStatus = RecStatus;
     }
 
-    /**
-     * @return the userBatchUid
-     */
     public String getUserBatchUid() {
         return userBatchUid;
     }
 
-    /**
-     * @param userBatchUid the userBatchUid to set
-     */
     public void setUserBatchUid(String userBatchUid) {
         this.userBatchUid = userBatchUid;
     }
 
-    /**
-     * @return the portalRoleBatchUid
-     */
     public String getPortalRoleBatchUid() {
         return portalRoleBatchUid;
     }
 
-    /**
-     * @param portalRoleBatchUid the portalRoleBatchUid to set
-     */
     public void setPortalRoleBatchUid(String portalRoleBatchUid) {
         this.portalRoleBatchUid = portalRoleBatchUid;
     }

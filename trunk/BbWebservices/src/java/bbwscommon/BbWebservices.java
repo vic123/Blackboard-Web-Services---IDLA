@@ -37,7 +37,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadRecordById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -50,7 +50,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadListById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputList,
@@ -63,7 +63,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByCourseAndUserId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadRecordByCourseAndUserId()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -76,7 +76,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByUserId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadListByUserId()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -89,7 +89,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByCourseId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadListByCourseId()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -102,7 +102,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByCourseIdWithUserInfo()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadListByCourseIdWithUserInfo()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -115,7 +115,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByCourseIdAndRole()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadListByCourseIdAndRole()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -128,7 +128,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipInsertRecordById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -141,7 +141,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered updateRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipUpdateRecordById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -154,7 +154,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipPersistRecordById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -167,7 +167,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipDeleteRecordById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -180,7 +180,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipInsertListById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputList,
@@ -193,7 +193,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered updateListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipUpdateListById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputList,
@@ -206,7 +206,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipPersistListById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputList,
@@ -219,7 +219,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<CourseMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipDeleteListById()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputList,
@@ -232,7 +232,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByCourseAndUserBatchId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadRecordByCourseAndUserBatchId()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -245,7 +245,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") CourseMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByTemplate()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseMembershipLoadListByTemplate()", this);
         CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA args
                 = new CourseMembershipAccessPack.CourseMembershipArguments_ADMIN_DATA();
         args.initialize(CourseMembershipDetails.class, params, inputRecord,
@@ -258,7 +258,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadRecordByBatchUid()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -271,7 +271,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByTemplate()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListByTemplate()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -284,7 +284,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertRecordByBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userInsertRecordByBatchUid()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -297,7 +297,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered updateRecordByBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userUpdateRecordByBatchUid()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -310,7 +310,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistRecordByBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userPersistRecordByBatchUid()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -323,7 +323,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordByBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userDeleteRecordByBatchUid()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -336,7 +336,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<UserDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistListByBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userPersistListByBatchUid()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputList,
@@ -349,7 +349,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<UserDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteListByBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userDeleteListByBatchUid()", this);
         UserAccessPack.UserArguments_ADMIN_DATA args
                 = new UserAccessPack.UserArguments_ADMIN_DATA();
         args.initialize(UserDetails.class, params, inputList,
@@ -362,7 +362,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadRecordById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "LoadRecordById");
@@ -374,7 +374,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByName()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadRecordByName()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "LoadRecordByName");
@@ -386,7 +386,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userInsertRecordById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "InsertRecordById");
@@ -398,7 +398,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered updateRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userUpdateRecordById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "UpdateRecordById");
@@ -410,7 +410,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userPersistRecordById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "PersistRecordById");
@@ -422,7 +422,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userDeleteRecordById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "DeleteRecordById");
@@ -434,7 +434,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<UserDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
                     UserAccessPack.class.getName(), "LoadListById");
@@ -446,7 +446,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<UserDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userInsertListById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
                     UserAccessPack.class.getName(), "InsertListById");
@@ -458,7 +458,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<UserDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered updateListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userUpdateListById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
                     UserAccessPack.class.getName(), "UpdateListById");
@@ -470,7 +470,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<UserDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userPersistListById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
                     UserAccessPack.class.getName(), "PersistListById");
@@ -482,7 +482,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<UserDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userDeleteListById()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputList,
                     UserAccessPack.class.getName(), "DeleteListById");
@@ -494,7 +494,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByEmailAddressFamilyNameGivenName()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListByEmailAddressFamilyNameGivenName()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "LoadListByEmailAddressFamilyNameGivenName");
@@ -506,7 +506,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListBySearchByUserName()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListBySearchByUserName()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "LoadListBySearchByUserName");
@@ -518,22 +518,20 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListObservedByObserverId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListObservedByObserverId()", this);
         UserAccessPack.UserArgumentsWithUserInput args
                 = UserAccessPack.UserArgumentsWithUserInput.create(UserDetails.class, params, inputRecord,
                     UserAccessPack.class.getName(), "LoadListObservedByObserverId");
         UserApiProcessor.start(args);
         return args.getResultList();
     }
-
-
     @WebMethod
     public List<UserDetails> userLoadListByCourseId
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord,
                     @WebParam(name = "inputCourseRecord") bbcrsws.CourseDetails inputCourseRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByCourseId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListByCourseId()", this);
         UserAccessPack.UserArgumentsWithUserAndCourseInput args
                 = new UserAccessPack.UserArgumentsWithUserAndCourseInput();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -546,14 +544,13 @@ public class BbWebservices {
 
         return args.getResultList();
     }
-
     @WebMethod
     public List<UserDetails> userLoadListAvailableObserversByCourseId
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord,
                     @WebParam(name = "inputCourseRecord") bbcrsws.CourseDetails inputCourseRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListAvailableObserversByCourseId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListAvailableObserversByCourseId()", this);
         UserAccessPack.UserArgumentsWithUserAndCourseInput args
                 = new UserAccessPack.UserArgumentsWithUserAndCourseInput();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -566,14 +563,13 @@ public class BbWebservices {
 
         return args.getResultList();
     }
-
     @WebMethod
     public List<UserDetails> userLoadListByGroupId
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") UserDetails inputRecord,
                     @WebParam(name = "inputGroupRecord") bbgrpws.GroupDetails inputGroupRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByGroupId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListByGroupId()", this);
         UserAccessPack.UserArgumentsWithUserAndGroupInput args
                 = new UserAccessPack.UserArgumentsWithUserAndGroupInput();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -592,7 +588,7 @@ public class BbWebservices {
                     @WebParam(name = "inputRecord") UserDetails inputRecord,
                     @WebParam(name = "inputRoleRecord") bbuws.RoleDetails inputRoleRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByPrimaryRoleId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered userLoadListByPrimaryPortalRoleId()", this);
         UserAccessPack.UserArgumentsWithUserAndRoleInput args
                 = new UserAccessPack.UserArgumentsWithUserAndRoleInput();
         args.initialize(UserDetails.class, params, inputRecord,
@@ -605,19 +601,12 @@ public class BbWebservices {
 
         return args.getResultList();
     }
-
-
-
-
-
-
-
     @WebMethod
     public PortalRoleDetails portalRoleLoadRecordById
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadRecordById()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -630,7 +619,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByRoleId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadRecordByRoleId()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -643,7 +632,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByRoleName()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadRecordByRoleName()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -656,7 +645,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordDefault()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadRecordDefault()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -669,7 +658,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListRemovable()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadListRemovable()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -682,7 +671,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListAll()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadListAll()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -695,7 +684,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListAvailable()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadListAvailable()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -703,15 +692,13 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultList();
     }
-
-
     @WebMethod
     public PortalRoleDetails portalRoleLoadRecordPrimaryRoleByUserId
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord,
                     @WebParam(name = "inputUserRecord") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordPrimaryRoleByUserId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadRecordPrimaryRoleByUserId()", this);
         PortalRoleAccessPack.PortalRoleArgumentsWithUserInput args
                 = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -726,7 +713,7 @@ public class BbWebservices {
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord,
                     @WebParam(name = "inputUserRecord") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListAllByUserId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadListAllByUserId()", this);
         PortalRoleAccessPack.PortalRoleArgumentsWithUserInput args
                 = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -741,7 +728,7 @@ public class BbWebservices {
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord,
                     @WebParam(name = "inputUserRecord") bbuws.UserDetails inputUserRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListSecondaryRolesByUserId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleLoadListSecondaryRolesByUserId()", this);
         PortalRoleAccessPack.PortalRoleArgumentsWithUserInput args
                 = new PortalRoleAccessPack.PortalRoleArgumentsWithUserInput();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -750,16 +737,12 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultList();
     }
-
-
-
-
     @WebMethod
     public PortalRoleDetails portalRoleInsertRecordById
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleInsertRecordById()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -772,7 +755,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered updateRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleUpdateRecordById()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -785,7 +768,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRolePersistRecordById()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -798,7 +781,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleDeleteRecordById()", this);
         PortalRoleAccessPack.PortalRoleArguments args
                 = new PortalRoleAccessPack.PortalRoleArguments();
         args.initialize(PortalRoleDetails.class, params, inputRecord,
@@ -806,16 +789,12 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultRecord();
     }
-
-
-
-
     @WebMethod
     public List<ObserverAssociationDetails> observerAssociationLoadListByTemplate
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByTemplate()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationLoadListByTemplate()", this);
         ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
                 = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
         args.initialize(ObserverAssociationDetails.class, params, inputRecord,
@@ -828,7 +807,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByObserverAndUsersBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationLoadRecordByObserverAndUsersBatchUid()", this);
         ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
                 = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
         args.initialize(ObserverAssociationDetails.class, params, inputRecord,
@@ -841,7 +820,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertRecordByObserverAndUsersBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationInsertRecordByObserverAndUsersBatchUid()", this);
         ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
                 = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
         args.initialize(ObserverAssociationDetails.class, params, inputRecord,
@@ -850,11 +829,24 @@ public class BbWebservices {
         return args.getResultRecord();
     }
     @WebMethod
+    public ObserverAssociationDetails observerAssociationPersistRecordByObserverAndUsersBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationPersistRecordByObserverAndUsersBatchUid()", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputRecord,
+                    ObserverAssociationAccessPack.class.getName(), "PersistRecordByObserverAndUsersBatchUid");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
     public ObserverAssociationDetails observerAssociationDeleteRecordByObserverAndUsersBatchUid
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") ObserverAssociationDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordByObserverAndUsersBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationDeleteRecordByObserverAndUsersBatchUid()", this);
         ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
                 = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
         args.initialize(ObserverAssociationDetails.class, params, inputRecord,
@@ -867,7 +859,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByObserverAndUsersBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationLoadListByObserverAndUsersBatchUid()", this);
         ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
                 = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
         args.initialize(ObserverAssociationDetails.class, params, inputList,
@@ -880,7 +872,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertListByObserverAndUsersBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationInsertListByObserverAndUsersBatchUid()", this);
         ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
                 = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
         args.initialize(ObserverAssociationDetails.class, params, inputList,
@@ -889,11 +881,24 @@ public class BbWebservices {
         return args.getResultList();
     }
     @WebMethod
+    public List<ObserverAssociationDetails> observerAssociationPersistListByObserverAndUsersBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputList") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationPersistListByObserverAndUsersBatchUid()", this);
+        ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
+                = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
+        args.initialize(ObserverAssociationDetails.class, params, inputList,
+                    ObserverAssociationAccessPack.class.getName(), "PersistListByObserverAndUsersBatchUid");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }
+    @WebMethod
     public List<ObserverAssociationDetails> observerAssociationDeleteListByObserverAndUsersBatchUid
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<ObserverAssociationDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteListByObserverAndUsersBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered observerAssociationDeleteListByObserverAndUsersBatchUid()", this);
         ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args
                 = new ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA();
         args.initialize(ObserverAssociationDetails.class, params, inputList,
@@ -901,14 +906,12 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultList();
     }
-
-
     @WebMethod
     public PortalRoleMembershipDetails portalRoleMembershipLoadRecordById
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadRecordById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -921,7 +924,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByUserIdAndPortalRoleId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadRecordByUserIdAndPortalRoleId()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -934,7 +937,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipInsertRecordById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -947,7 +950,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipPersistRecordById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -960,7 +963,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipDeleteRecordById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -973,7 +976,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordByUserIdAndPortalRoleId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -986,7 +989,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<PortalRoleMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadListById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputList,
@@ -999,7 +1002,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<PortalRoleMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipInsertListById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputList,
@@ -1012,7 +1015,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<PortalRoleMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered persistListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipPersistListById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputList,
@@ -1025,7 +1028,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<PortalRoleMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteListById()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipDeleteListById()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputList,
@@ -1038,7 +1041,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteListByUserId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipDeleteListByUserId()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -1046,13 +1049,12 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultRecord();
     }
-
     @WebMethod
     public List<PortalRoleMembershipDetails> portalRoleMembershipLoadListByUserId
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByUserId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadListByUserId()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -1065,7 +1067,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByPortalRoleId()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadListByPortalRoleId()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -1073,9 +1075,6 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultList();
     }
-
-
-
     /*
      * load by template method of Bb 9.0 PortalRoleMembership API does not generate valid queries to database
      * [TEST\SQLEXPRESS]Incorrect syntax near the keyword 'AND'. - when searched by userId
@@ -1086,7 +1085,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByTemplate()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadListByTemplate()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -1099,7 +1098,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadRecordByUserAndPortalRoleBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -1112,7 +1111,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertRecordByUserAndPortalRoleBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -1125,7 +1124,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputRecord") PortalRoleMembershipDetails inputRecord) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteRecordByUserAndPortalRoleBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputRecord,
@@ -1138,7 +1137,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<PortalRoleMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered loadListByUserAndPortalRoleBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipLoadListByUserAndPortalRoleBatchUid()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputList,
@@ -1151,7 +1150,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<PortalRoleMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered insertListByUserAndPortalRoleBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipInsertListByUserAndPortalRoleBatchUid()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputList,
@@ -1164,7 +1163,7 @@ public class BbWebservices {
                 (@WebParam(name = "params") BbWsParams params,
                     @WebParam(name = "inputList") List<PortalRoleMembershipDetails> inputList) throws WebServiceException, BbWsFault
     {
-        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered deleteListByUserAndPortalRoleBatchUid()", this);
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid()", this);
         PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA args
                 = new PortalRoleMembershipAccessPack.PortalRoleMembershipArguments_ADMIN_DATA();
         args.initialize(PortalRoleMembershipDetails.class, params, inputList,
@@ -1172,8 +1171,6 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultList();
     }
-
-
 
 
 }

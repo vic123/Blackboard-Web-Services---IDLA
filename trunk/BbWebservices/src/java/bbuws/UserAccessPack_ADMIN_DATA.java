@@ -5,7 +5,7 @@ import blackboard.admin.persist.user.PersonPersister;
 import blackboard.admin.persist.user.impl.PersonDbLoader;
 import blackboard.admin.persist.user.impl.PersonDbPersister;
 
-import bbwscommon.*;
+import bbwscommon.*; 
 
 public class UserAccessPack_ADMIN_DATA extends UserAccessPack_DATA.UserAccessPackWithUserInput<Person> {
 

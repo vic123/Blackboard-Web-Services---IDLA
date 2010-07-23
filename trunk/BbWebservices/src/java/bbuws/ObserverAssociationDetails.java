@@ -20,6 +20,7 @@ public class ObserverAssociationDetails extends BbWsDataDetails<BbWsArguments> {
     private String observerBatchUid;
     private String usersBatchUid;
     private String dataSourceBatchUid;
+    private String RowStatus;
 
     @Override
     public String getBbId() {
@@ -31,89 +32,58 @@ public class ObserverAssociationDetails extends BbWsDataDetails<BbWsArguments> {
         this.bbId = id;
     }
 
-    /**
-     * @return the observerId
-     */
     public String getObserverBbId() {
         return observerBbId;
     }
 
-    /**
-     * @param observerId the observerId to set
-     */
     public void setObserverBbId(String observerId) {
         this.observerBbId = observerId;
     }
 
-    /**
-     * @return the usersId
-     */
     public String getUsersBbId() {
         return usersBbId;
     }
 
-    /**
-     * @param usersId the usersId to set
-     */
     public void setUsersBbId(String usersId) {
         this.usersBbId = usersId;
     }
 
-    /**
-     * @return the dataSourceId
-     */
     public String getDataSourceId() {
         return dataSourceId;
     }
 
-    /**
-     * @param dataSourceId the dataSourceId to set
-     */
     public void setDataSourceId(String dataSourceId) {
         this.dataSourceId = dataSourceId;
     }
 
-    /**
-     * @return the observerBatchUid
-     */
     public String getObserverBatchUid() {
         return observerBatchUid;
     }
 
-    /**
-     * @param observerBatchUid the observerBatchUid to set
-     */
     public void setObserverBatchUid(String observerBatchUid) {
         this.observerBatchUid = observerBatchUid;
     }
 
-    /**
-     * @return the userBatchUid
-     */
     public String getUsersBatchUid() {
         return usersBatchUid;
     }
 
-    /**
-     * @param userBatchUid the userBatchUid to set
-     */
     public void setUsersBatchUid(String userBatchUid) {
         this.usersBatchUid = userBatchUid;
     }
 
-    /**
-     * @return the dataSourceBatchUid
-     */
     public String getDataSourceBatchUid() {
         return dataSourceBatchUid;
     }
 
-    /**
-     * @param dataSourceBatchUid the dataSourceBatchUid to set
-     */
     public void setDataSourceBatchUid(String dataSourceBatchUid) {
         this.dataSourceBatchUid = dataSourceBatchUid;
     }
+    public String getRowStatus() {
+        return RowStatus;
+    }
 
-
+    public void setRowStatus(String RowStatus) {
+        this.RowStatus = RowStatus;
+    }
 }

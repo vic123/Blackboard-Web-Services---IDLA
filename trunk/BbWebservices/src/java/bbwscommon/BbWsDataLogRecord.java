@@ -15,6 +15,8 @@ public class BbWsDataLogRecord {
     private String recordId;
     private String fieldName;
     private String value;
+    private String bbValue;    
+    private String wsValue;
     private String apiUsed;
     private String apiPass;
     private String severityLevel;
@@ -24,7 +26,7 @@ public class BbWsDataLogRecord {
     protected BbWsDataLogRecord () {
     }
     
-    BbWsDataLogRecord (String recordId, String fieldName, String value, BbWsArguments.ApiToUseEnum apiUsed, int apiPass, String severityLevel, String message) {
+    BbWsDataLogRecord (String recordId, String fieldName, String value, String bbValue, String wsValue, BbWsArguments.ApiToUseEnum apiUsed, int apiPass, String severityLevel, String message) {
         this.recordId = recordId;
         this.fieldName = fieldName;
         this.apiUsed = apiUsed.toString();
@@ -32,6 +34,8 @@ public class BbWsDataLogRecord {
         this.severityLevel = severityLevel;
         this.message = message;
         this.value = value;
+        this.bbValue = bbValue;
+        this.wsValue = wsValue;
         this.dateTime = getCurrentDateTime();
         /*BbWsLog.logForward(LogService.Verbosity.DEBUG,
                 "\n" + "recordId: " + recordId + "\t"
@@ -98,31 +102,34 @@ public class BbWsDataLogRecord {
     public void setValue(String value) {
         this.value = value;
     }
+    public String getBbValue() {
+        return bbValue;
+    }
 
-    /**
-     * @return the recordId
-     */
+    public void setBbValue(String bbValue) {
+        this.bbValue = bbValue;
+    }
+
+    public String getWsValue() {
+        return wsValue;
+    }
+
+    public void setWsValue(String wsValue) {
+        this.wsValue = wsValue;
+    }
+
     public String getRecordId() {
         return recordId;
     }
 
-    /**
-     * @param recordId the recordId to set
-     */
     public void setRecordId(String recordId) {
         this.recordId = recordId;
     }
 
-    /**
-     * @return the apiPass
-     */
     public String getApiPass() {
         return apiPass;
     }
 
-    /**
-     * @param apiPass the apiPass to set
-     */
     public void setApiPass(String apiPass) {
         this.apiPass = apiPass;
     }

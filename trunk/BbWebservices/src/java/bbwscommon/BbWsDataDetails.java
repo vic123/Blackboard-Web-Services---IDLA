@@ -8,6 +8,15 @@ package bbwscommon;
 /**
  *
  * @author vic
+ * 
+ * Row Status values: 
+ *  ENABLED = 0
+ *  SOFT_DELETE = 1
+ *  DISABLED = 2
+ *  DELETE_PENDING = 3
+ *  COPY_PENDING = 4
+ *  DEFAULT = (DEFAULT)defineDefault(ENABLED); 
+
  */
 import blackboard.platform.log.LogService;
 import blackboard.data.Identifiable;
@@ -48,14 +57,41 @@ public abstract class BbWsDataDetails<ArgumentsType extends BbWsArguments>
 
     //protected BbWsDataDetails() {
     //}
-    public void initialize() {
+    private void initialize() {
         bbWsDataLog = new java.util.ArrayList<BbWsDataLogRecord>();
         apiPassedCount = 0;
         bbWsBoolResult = "false";
     }
     public void initialize(BbWsArguments args) {
         initialize();
-        //initializeFields(args);
+        initializeFields(args);
+    }
+    protected void initializeFields(BbWsArguments args) {
+        String miss_tag = args.getMissFieldTag();
+        if (miss_tag != null) {
+            java.lang.Class<?> cls = this.getClass();
+            BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG,"initializeFields() - cls.getName(): " + cls.getName(), this);
+            java.lang.reflect.Field fieldlist[] = cls.getDeclaredFields();
+            for (int i = 0; i < fieldlist.length; i++) {
+                java.lang.reflect.Field fld = fieldlist[i];
+                if (fld.getName().compareTo("verbosity") == 0) continue;//!! - old field in UserDetails and other data structures
+                BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.DEBUG,"initializeFields() - fld.getName(): " + fld.getName(), this);
+                //!!
+                try {
+                    fld.setAccessible(true);
+                    /*
+                    Caused by: java.lang.IllegalArgumentException
+                        at sun.reflect.UnsafeObjectFieldAccessorImpl.set(UnsafeObjectFieldAccessorImpl.java:63)
+                        at java.lang.reflect.Field.set(Field.java:656)
+                    at bbwscommon.BbWsDataDetails.initializeFields(BbWsDataDetails.java:80)
+                    */
+                    fld.set(this, miss_tag);
+                    fld.setAccessible(false);//??
+                } catch (IllegalAccessException e) {
+                    BbWsLog.logForward(blackboard.platform.log.LogService.Verbosity.FATAL, e, "", this);
+                }
+            }
+        }
     }
     /*
     public void appendDataLog(BbWsDataDetails dd) {
@@ -81,7 +117,6 @@ public abstract class BbWsDataDetails<ArgumentsType extends BbWsArguments>
         bbWsBoolResult = "true";
         //??setBbWsTextResult("Error occurred");
     }
-    //protected abstract void initializeFields(BbWsArguments args);
     
 //works(1)    public void initialize(ParamsType params) {
 //    public <ParamsType1 super ParamsType> void initialize(ParamsType1 params) {
@@ -125,9 +160,9 @@ public abstract class BbWsDataDetails<ArgumentsType extends BbWsArguments>
         bbWsDataLog = dataLog;
         //throw new BbWsException("BbWsDataDetails.setDataLog() is not allowed, method is added just for automated web interface generation.");
     }
-    public void addDataLogRecord(String fieldName, String value, BbWsArguments.ApiToUseEnum apiUsed, int apiPass, String severityLevel, String message) {
+    public void addDataLogRecord(String fieldName, String value, String bbValue, String wsValue, BbWsArguments.ApiToUseEnum apiUsed, int apiPass, String severityLevel, String message) {
         if (bbWsDataLog == null) bbWsDataLog = new java.util.ArrayList<BbWsDataLogRecord>();
-        getBbWsDataLog().add(new BbWsDataLogRecord(getBbId(), fieldName, value, apiUsed, apiPass, severityLevel, message));
+        getBbWsDataLog().add(new BbWsDataLogRecord(getBbId(), fieldName, value, bbValue, wsValue, apiUsed, apiPass, severityLevel, message));
     }
 
 }

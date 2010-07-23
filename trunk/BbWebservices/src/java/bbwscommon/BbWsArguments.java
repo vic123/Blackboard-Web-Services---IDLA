@@ -286,15 +286,16 @@ public abstract class BbWsArguments <WsResultType extends BbWsDataDetails, WsInp
     public void initialize(Class<WsResultType> wsResultClass, BbWsParams params, WsInputType recordInput,
             String dataAccessPackClassName, String innerDAPDefaultClassName) {
         //initializeInternal(wsObjectClass, paramsClass, resultClass, params, dataParams);
-        if (recordInput != null) recordInput.initialize();
+        //if (recordInput != null) recordInput.initialize(this); - this did not cause bugs because missFieldTag was not set yet in this BbWsArguments 
         initializeInternal(wsResultClass, params, recordInput, null, dataAccessPackClassName, innerDAPDefaultClassName);
     }
 
     public void initialize(Class<WsResultType> wsResultClass, BbWsParams params, List<WsInputType> listInput,
             String dataAccessPackClassName, String innerDAPDefaultClassName) {
-        if (listInput != null) {
-            for (WsInputType wso: listInput) wso.initialize();
-        }
+        //this did not cause bugs because missFieldTag was not set yet in this BbWsArguments 
+        //if (listInput != null) {
+        //    for (WsInputType wso: listInput) wso.initialize(this);
+        //}
         initializeInternal(wsResultClass, params, null, listInput, dataAccessPackClassName, innerDAPDefaultClassName);
 
     }
@@ -316,7 +317,7 @@ public abstract class BbWsArguments <WsResultType extends BbWsDataDetails, WsInp
 
         if (params != null) {
             if (params.getPassword() != null) this.password = params.getPassword();
-            if (params.getNullValueTag() != null) this.nullValueTag = params.getNullValueTag();
+            if (BbWsUtil.nullSafeStringComparator(params.getNullValueTag(), params.getMissFieldTag()) != 0) this.nullValueTag = params.getNullValueTag();
             if (params.getErrorValueTag() != null) this.errorValueTag = params.getErrorValueTag();
             if (params.getWarnValueTag() != null) this.warnValueTag = params.getWarnValueTag();
             if (params.getMissFieldTag() != null) this.missFieldTag = params.getMissFieldTag();
