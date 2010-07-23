@@ -31,13 +31,24 @@ public class BbWsLog {
         
         public static LogService.Verbosity getOverridenSeverity (LogService.Verbosity verbosity) {
             if (logSeverityOverride == -1) {
+                log.log("BbWs - logging initialization. WebServiceProperties wsp = new WebServiceProperties...", log.getVerbosityLevel());
+                WebServiceProperties wsp = new WebServiceProperties("IDLA","BbWebservices");
+                String value = wsp.getConfigProperty("logSeverityOverride");
+                try {
+                    logSeverityOverride = Integer.decode(value);
+                } catch (java.lang.NumberFormatException e) {
+                    logSeverityOverride = 1;
+                    log.log("Invalid value of logSeverityOverride: " + value, log.getVerbosityLevel());
+                }
+                
+                /*
                 log.log("BBWS - logging initialization. (ServletContext sc = (ServletContext)wsContext.getMessageContext().get(MessageContext.SERVLET_CONTEXT);)", log.getVerbosityLevel());
                 //ServletContext sc = (ServletContext)wsContext.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
                 ServletContext sc = (ServletContext)BBGradebookWebService.wsContextStatic.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
                 String value = sc.getInitParameter("logSeverityOverride");
                 log.log("getOverridenSeverity - String value = sc.getInitParameter value: " + value, log.getVerbosityLevel());
                 if (value == null) value = "0";
-                logSeverityOverride = Integer.decode(value);
+                logSeverityOverride = Integer.decode(value);*/
             }
 //            return LogService.Verbosity.WARNING;
             
@@ -60,7 +71,7 @@ public class BbWsLog {
 	//without necessity of modifying of server log settings
 	//assumes that active server log level is at least WARNING 
 	public static void logForward(LogService.Verbosity verbosity, String message) {
-		message = "IDLA-BbWebservices	" + verbosity.toExternalString() + "	" + message;
+		message = "IDLA-BbWebservices | " + verbosity.toExternalString() + " | " + message;
 		//using higher severity log level for easier development testing, log is overfilled when all messages are of debug level
 		//actual log.logWarning has to be commented out in production release, but may be uncommented for collecting of log messages  
 //		if (verbosity.getLevelAsInt() > debuggingLogLevelOvercome) {
@@ -71,7 +82,7 @@ public class BbWsLog {
 		//log.log("strLogMessages: " + strLogMessages, verbosity);    
 	}
 	public static void logForward(LogService.Verbosity verbosity, String message, Object obj) {
-		message = "IDLA-BbWebservices	" + verbosity.toExternalString() + "	" + String.valueOf(obj) + "   " + message;
+		message = "IDLA-BbWebservices | " + verbosity.toExternalString() + " | " + String.valueOf(obj) + " | " + message;
 		//using higher severity log level for easier development testing, log is overfilled when all messages are of debug level
 		//actual log.logWarning has to be commented out in production release, but may be uncommented for collecting of log messages  
 //		if (verbosity.getLevelAsInt() > debuggingLogLevelOvercome) {
@@ -83,7 +94,7 @@ public class BbWsLog {
         
         //this.getClass().getName() 
 	public static void logForward(LogService.Verbosity verbosity, java.lang.Throwable error, String message) {
-		message = "IDLA-BbWebservices	" + verbosity.toExternalString() + "    " + message;
+		message = "IDLA-BbWebservices | " + verbosity.toExternalString() + " | " + message;
 		//using higher severity log level for easier development testing, log is overfilled when all messages are of debug level
 		//actual log.logWarning has to be commented out in production release, but may be uncommented for collecting of log messages  
 //		if (verbosity.getLevelAsInt() > debuggingLogLevelOvercome) {
@@ -92,7 +103,7 @@ public class BbWsLog {
 		log.log(message, error, getOverridenSeverity(verbosity));
 	}
 	public static void logForward(LogService.Verbosity verbosity, java.lang.Throwable error, String message, Object obj) {
-		message = "IDLA-BbWebservices	" + verbosity.toExternalString() + "	" + String.valueOf(obj) + " " + message + "; obj.toString(): " ;
+		message = "IDLA-BbWebservices | " + verbosity.toExternalString() + " | " + String.valueOf(obj) + " | " + message;
 		//using higher severity log level for easier development testing, log is overfilled when all messages are of debug level
 		//actual log.logWarning has to be commented out in production release, but may be uncommented for collecting of log messages  
 //		if (verbosity.getLevelAsInt() > debuggingLogLevelOvercome) {

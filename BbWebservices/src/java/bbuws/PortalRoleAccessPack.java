@@ -49,9 +49,9 @@ public class PortalRoleAccessPack <BbPortalRoleType extends PortalRole,
                         return getArgs().getResultRecord().getBbId();
             }
             @Override public void setBbFieldImp(String newValue) throws Exception {
-                    bbObject.setId(Id.generateId(PortalRole.DATA_TYPE, newValue));
+                    bbObject.setId(checkAndgenerateId(PortalRole.DATA_TYPE, newValue));
             }
-        }.setBbField("id");
+        }.setBbField("bbId");
         new BbFieldSetter() {
             @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getRoleID();
@@ -120,7 +120,7 @@ public class PortalRoleAccessPack <BbPortalRoleType extends PortalRole,
                         return getArgs().getResultRecord().getDataSourceBbId();
             }
             @Override public void setBbFieldImp(String newValue) throws Exception {
-                    bbObject.setDataSourceId(Id.generateId(PortalRole.DATA_TYPE, newValue));
+                    bbObject.setDataSourceId(checkAndgenerateId(PortalRole.DATA_TYPE, newValue));
             }
         }.setBbField("dataSourceId");
         new BbFieldSetter() {
@@ -149,7 +149,7 @@ public class PortalRoleAccessPack <BbPortalRoleType extends PortalRole,
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setBbId(newValue);
                 }
-            }.setWsField("id");
+            }.setWsField("bbId");
 	    new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getRoleID();

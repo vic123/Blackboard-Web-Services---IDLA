@@ -33,16 +33,97 @@ import java.util.Calendar;
  * @author Andrew.Martin@ncl.ac.uk
  * @author G.G.Bowie@ljmu.ac.uk
  */
-//public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsParams<UserDetails>>  implements ReturnTypeInterface
-public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsArguments>  implements ReturnTypeInterface
 
+/* When setting, password can be provided both as clear text or as pre-prepared MD5 hash.
+ * MD5 hash must have a form 32 hexadecimal symbols with letters A-F being in upper case, 
+ * otherwise it will be assumed as clear-text password that has to be hashed.
+ * Returned value is always hash of the password
+ * Sample in C#:
+ *                      str_value = "bla-bla";
+                        //str_value = "636F03926A5A3EB24DAF67461D8A075B";
+                        byte[] data_buffer = System.Text.Encoding.Unicode.GetBytes(str_value);
+                        System.Security.Cryptography.MD5 md = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                        byte[] md5_hash = md.ComputeHash(data_buffer);
+                        str_value = System.Convert.ToString(md5_hash);
+                        str_value = System.Convert.ToBase64String(md5_hash);
+                        str_value = BitConverter.ToString(md5_hash).Replace("-", string.Empty);
+                        break;
+ * Code from UserAccessPack:
+ *                 private boolean stringContainsHexCharsOnly(String s) {
+                    for (int i = 0; i < s.length(); i++) {
+                        char c = s.charAt(i);
+                        boolean is_hex_char = (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F');
+                        if (!is_hex_char) return false;
+                    }
+                    return true;
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    boolean do_hash = true;
+                    if (newValue.length() == 32) {
+                        if (stringContainsHexCharsOnly(newValue)) do_hash = false;
+                    }
+                    if (do_hash) {
+                        newValue = SecurityUtil.getHashValue(newValue);
+                        getArgs().getInputRecord().setPassword(newValue); //necessary for later successfull compare of loaded record
+                    } 
+                    bbObject.setPassword(newValue);
+                }
+            }.setBbField("password");
+ * 
+*/
+
+/*
+ * Bb password hashing code:
+ * 
+ class blackboard.platform.security.SecurityUtil:
+ 
+    public static String getHashValue(String input)
+    {
+        return getHashValue(input, "UTF-16LE");
+    }
+
+    public static String getHashValue(String input, String charSet)
+    {
+        byte digest[] = getDigest(input, charSet);
+        if(digest == null)
+            return null;
+        else
+            return getHexString(digest);
+    }
+     private static String getHexString(byte bytes[])
+    {
+        char chars[] = new char[bytes.length * 2];
+        for(int i = 0; i < bytes.length; i++)
+        {
+            chars[i * 2 + 1] = getChar(bytes[i] & 0xf);
+            chars[i * 2] = getChar((bytes[i] & 0xf0) >> 4);
+        }
+
+        String ret = new String(chars);
+        return ret;
+    }
+ * 
+ * 
+ * 
+*/
+   
+public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsArguments>  implements ReturnTypeInterface
 {
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public enum Verbosity{minimal,standard,extended}
 
     private Verbosity verbosity;
     //standard details
     private String bbId;
     private String userName;
+    private String password;
     private String givenName;
     private String middleName;
     private String familyName;
@@ -724,6 +805,7 @@ public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsArgum
 //    public void initialize(UserDetails params) {
 //    @Override public void initialize(bbwscommon.BbWsDataDetails<? super bbwscommon.BbWsCommonParams<UserDetails>> params) {
 //    @Override public void initialize(bbwscommon.BbWsArguments args) {
+/*    
     public void initializeFields(bbwscommon.BbWsArguments args) {
         //super.initialize(args);
         //!! does not checks for verbosity of paarams
@@ -787,5 +869,5 @@ public class UserDetails extends bbwscommon.BbWsDataDetails<bbwscommon.BbWsArgum
             modifiedDate = miss_field_tag;
             locale = miss_field_tag;
     }
-
+*/
 }

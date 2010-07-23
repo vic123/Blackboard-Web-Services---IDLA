@@ -40,7 +40,7 @@ public class ObserverAssociationAccessPack<BbObserverAssociationType extends Obs
                     return getArgs().getInputRecord().getObserverBbId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setObserverId(Id.generateId(User.DATA_TYPE, newValue));
+                        bbObject.setObserverId(checkAndgenerateId(User.DATA_TYPE, newValue));
                 }
             }.setBbField("observerId");
             new BbFieldSetter() {
@@ -51,7 +51,7 @@ public class ObserverAssociationAccessPack<BbObserverAssociationType extends Obs
                     return getArgs().getInputRecord().getUsersBbId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setUsersId(Id.generateId(User.DATA_TYPE, newValue));
+                        bbObject.setUsersId(checkAndgenerateId(User.DATA_TYPE, newValue));
                 }
             }.setBbField("usersId");
             new BbFieldSetter() {
@@ -62,7 +62,7 @@ public class ObserverAssociationAccessPack<BbObserverAssociationType extends Obs
                     return getArgs().getInputRecord().getDataSourceId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setDataSourceId(Id.generateId(User.DATA_TYPE, newValue));
+                        bbObject.setDataSourceId(checkAndgenerateId(User.DATA_TYPE, newValue));
                 }
             }.setBbField("dataSourceId");
     }
@@ -78,8 +78,8 @@ public class ObserverAssociationAccessPack<BbObserverAssociationType extends Obs
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setBbId(newValue);
                 }
-            }.setWsField("bbId");
-            if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {
+            }.setWsField("bbId");	 	
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getObserverId().toExternalString();
@@ -90,7 +90,7 @@ public class ObserverAssociationAccessPack<BbObserverAssociationType extends Obs
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setObserverBbId(newValue);
                 }
-            }.setWsField("observerId");
+            }.setWsField("observerBbId");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getUsersId().toExternalString();
@@ -101,9 +101,8 @@ public class ObserverAssociationAccessPack<BbObserverAssociationType extends Obs
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setUsersBbId(newValue);
                 }
-            }.setWsField("usersId");
-            }
-        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {
+            }.setWsField("usersBbId");		        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getDataSourceId().toExternalString();
@@ -114,11 +113,8 @@ public class ObserverAssociationAccessPack<BbObserverAssociationType extends Obs
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setDataSourceId(newValue);
                 }
-            }.setWsField("dataSourceId");
+            }.setWsField("dataSourceId");		
         }
-
-
-
     }
 
 }

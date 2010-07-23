@@ -8,6 +8,7 @@ package bbwscommon;
 import blackboard.persist.impl.mapping.FilteredDbObjectMap;
 import blackboard.persist.impl.mapping.DbObjectMap;
 import blackboard.persist.impl.mapping.DbMapping;
+import blackboard.base.BbEnum;
 
 import java.util.Calendar;
 import java.util.Arrays;
@@ -103,4 +104,28 @@ public class BbWsUtil {
         FilteredDbObjectMap f_map = new FilteredDbObjectMap(dbObjectMap, fields);
         return f_map;
     }
+    //public static <BbEnumClass extends BbEnum.class> int convertBbEnumFieldName2Int(String fieldName, BbEnumClass BbEnum.class enumClass) {
+    //public static <BbEnumClass extends BbEnum> int convertBbEnumFieldName2Int(String fieldName, BbEnumClass enumClass) {
+    public static int convertBbEnum2Int(BbEnum bbEnum) {
+        int field_index = -1; 
+        BbEnum bb_enums[] = BbEnum.getValues(bbEnum.getClass());
+        for (int i = 0; i < bb_enums.length; i++) {
+            if (bb_enums[i].compareTo(bbEnum) == 0) {
+                field_index = i;
+                break;
+            }
+        }
+        /*
+        if (field_index == -1) {
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < bb_enums.length; i++) {
+                sb.append(bb_enums[i].toFieldName() + ", ");
+            }
+            sb.delete(sb.length()-3, sb.length()-1);
+            throw new BbWsException("Invalid field value. Possible values are: " + sb + ". Provided: " + fieldName);
+        }*/
+        return field_index;
+    }
+    
+    
 }

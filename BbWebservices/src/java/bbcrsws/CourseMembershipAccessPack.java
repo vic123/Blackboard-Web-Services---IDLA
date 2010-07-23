@@ -57,7 +57,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                     return getArgs().getInputRecord().getBbId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                        bbObject.setId(checkAndgenerateId(CourseMembership.DATA_TYPE, newValue));
                 }
             }.setBbField("bbId");
             new BbFieldSetter() {
@@ -68,7 +68,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                     return getArgs().getInputRecord().getCourseBbId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setCourseId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                        bbObject.setCourseId(checkAndgenerateId(CourseMembership.DATA_TYPE, newValue));
                 }
             }.setBbField("courseBbId");
             new BbFieldSetter() {
@@ -79,13 +79,14 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                     return getArgs().getInputRecord().getUserBbId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setUserId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                        bbObject.setUserId(checkAndgenerateId(CourseMembership.DATA_TYPE, newValue));
                 }
             }.setBbField("userBbId");
 
+            
             setBbCourseBatchUidField();
 
-
+            
             setBbUserBatchUidField();
 
             new BbFieldSetter() {
@@ -118,7 +119,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                     return getArgs().getInputRecord().getDataSourceBbId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setDataSourceId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                        bbObject.setDataSourceId(checkAndgenerateId(CourseMembership.DATA_TYPE, newValue));
                 }
             }.setBbField("dataSourceBbId");
             new BbFieldSetter() {
@@ -206,7 +207,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                     return getArgs().getInputRecord().getChildCourseId();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                        bbObject.setChildCourseId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                        bbObject.setChildCourseId(checkAndgenerateId(CourseMembership.DATA_TYPE, newValue));
                 }
             }.setBbField("childCourseId");
 
@@ -215,7 +216,6 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
 
     
     @Override protected void setWsFields() throws Exception {
-
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getId().toExternalString();
@@ -226,7 +226,8 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setBbId(newValue);
                 }
-            }.setWsField("bbId");
+            }.setWsField("bbId");	 	
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getCourseId().toExternalString();
@@ -237,7 +238,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setCourseBbId(newValue);
                 }
-            }.setWsField("courseBbId");
+            }.setWsField("courseBbId");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getUserId().toExternalString();
@@ -248,13 +249,8 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setUserBbId(newValue);
                 }
-            }.setWsField("userBbId");
-
-            setWsCourseBatchUidField();
-
-
-            setWsUserBatchUidField();
-
+            }.setWsField("userBbId");		        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return Boolean.toString(bbObject.getIsAvailable());
@@ -265,7 +261,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setAvailable(newValue);
                 }
-            }.setWsField("available");
+            }.setWsField("available");	 	 
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return Boolean.toString(bbObject.getHasCartridgeAccess());
@@ -276,7 +272,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setCartridgeAccess(newValue);
                 }
-            }.setWsField("cartridgeAccess");
+            }.setWsField("cartridgeAccess");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getDataSourceId().toExternalString();
@@ -287,7 +283,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setDataSourceBbId(newValue);
                 }
-            }.setWsField("dataSourceBbId");
+            }.setWsField("dataSourceBbId");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return extractDate(bbObject.getEnrollmentDate());
@@ -298,7 +294,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setEnrollmentDate(newValue);
                 }
-            }.setWsField("enrollmentDate");
+            }.setWsField("enrollmentDate");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return extractDate(bbObject.getLastAccessDate());
@@ -309,7 +305,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setLastAccessDate(newValue);
                 }
-            }.setWsField("lastAccessDate");
+            }.setWsField("lastAccessDate");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return extractDate(bbObject.getModifiedDate());
@@ -320,7 +316,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setModifiedDate(newValue);
                 }
-            }.setWsField("modifiedDate");
+            }.setWsField("modifiedDate");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return bbObject.getRole().toFieldName();
@@ -332,6 +328,11 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                     getArgs().getResultRecord().setRole(newValue);
                 }
             }.setWsField("role");
+            setWsCourseBatchUidField();
+            setWsUserBatchUidField();		
+        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {
+
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return bbObject.getIntroduction();
@@ -342,7 +343,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setIntroduction(newValue);
                 }
-            }.setWsField("introduction");
+            }.setWsField("introduction");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return bbObject.getNotes();
@@ -353,7 +354,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setNotes(newValue);
                 }
-            }.setWsField("notes");
+            }.setWsField("notes");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                 return bbObject.getPersonalInfo();
@@ -364,7 +365,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setPersonalInfo(newValue);
                 }
-            }.setWsField("personalInfo");
+            }.setWsField("personalInfo");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getChildCourseId().toExternalString();
@@ -376,7 +377,7 @@ public abstract class CourseMembershipAccessPack <BbCourseMembershipType extends
                     getArgs().getResultRecord().setChildCourseId(newValue);
                 }
             }.setWsField("childCourseId");
-
+        }
     }
 }
 

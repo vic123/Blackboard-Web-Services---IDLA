@@ -157,17 +157,6 @@ public class PortalRoleMembershipAccessPack_ADMIN_DATA
                         bbObject.setPortalRoleBatchUid(newValue);
                 }
             }.setBbField("portalRoleBatchUid");
-            new BbFieldSetter() {
-                @Override public String getBbFieldValue() throws Exception {
-                    return bbObject.getRowStatus().toFieldName();
-                }
-                @Override public String getWsFieldValue() throws Exception {
-                    return getArgs().getInputRecord().getRowStatus();
-                }
-                @Override public void setBbFieldImp(String newValue) throws Exception {
-                    bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));
-                }
-            }.setBbField("rowStatus");
 
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {

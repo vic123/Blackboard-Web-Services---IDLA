@@ -37,6 +37,8 @@ under the License.
 //BbWsLog.logForward("BbWsProperty usePwd = new BbWsProperty");
     BbWsProperty usePwd = new BbWsProperty(PersistWSProperties.getProperty("pwd.use"));
     BbWsProperty pwdSet = new BbWsProperty(PersistWSProperties.getProperty("pwd.set"));
+    String logSeverityOverride = PersistWSProperties.getProperty("logSeverityOverride");
+    if (logSeverityOverride == null) logSeverityOverride = "0";
 //BbWsLog.logForward("if(!submit.equalsIgnoreCase(");
     if(!submit.equalsIgnoreCase("true"))
     {
@@ -83,7 +85,19 @@ under the License.
 	    <bbUI:step number="2" title="Method access">
 		<bbUI:dataElement><a href="methodAccess.jsp">Change >></a></bbUI:dataElement>
 	    </bbUI:step>
-	    <bbUI:stepSubmit number="3" cancelUrl="/webapps/blackboard/admin/manage_plugins.jsp" />
+	    <bbUI:step number="3" title="Log Severity">
+		<bbUI:dataElement label="" required="true">
+		    <select name="logSeverityOverride" id="logSeverityOverride">
+                        <OPTION value="0" <% if (logSeverityOverride.compareTo("0") == 0) out.print("SELECTED"); %>>FATAL</OPTION>
+                        <OPTION value="1" <% if (logSeverityOverride.compareTo("1") == 0) out.print("SELECTED"); %>>ERROR</OPTION>
+                        <OPTION value="2" <% if (logSeverityOverride.compareTo("2") == 0) out.print("SELECTED"); %>>WARNING</OPTION>
+                        <OPTION value="3" <% if (logSeverityOverride.compareTo("3") == 0) out.print("SELECTED"); %>>INFORMATION</OPTION>
+                        <OPTION value="4" <% if (logSeverityOverride.compareTo("4") == 0) out.print("SELECTED"); %>>DEBUG</OPTION>
+                        <OPTION value="5" <% if (logSeverityOverride.compareTo("5") == 0) out.print("SELECTED"); %>>DEBUG2</OPTION>
+                    </select> 
+		</bbUI:dataElement>
+	    </bbUI:step>
+	    <bbUI:stepSubmit number="4" cancelUrl="/webapps/blackboard/admin/manage_plugins.jsp" />
 	</form>
 <%
     }

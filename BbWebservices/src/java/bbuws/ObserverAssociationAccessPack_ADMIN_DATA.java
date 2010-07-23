@@ -18,10 +18,12 @@ import blackboard.platform.security.DomainManagerFactory;
 import blackboard.platform.security.DomainManager;
 import blackboard.platform.security.Domain;
 import blackboard.data.user.User;
+import blackboard.persist.user.UserDbLoader;
 import blackboard.admin.data.user.Person;
 import blackboard.admin.persist.user.PersonPersister;
 import blackboard.admin.persist.user.impl.PersonDbLoader;
 import blackboard.admin.persist.user.impl.PersonDbPersister;
+import blackboard.admin.data.IAdminObject;
 
 
 public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociationAccessPack<ObserverAssociation> {
@@ -75,6 +77,10 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
             ObserverAssociationPersister dbper = ObserverAssociationDbPersister.Default.getInstance();
             dbper.insert(bbObject);
         }
+        @Override protected void updateRecord() throws Exception {
+            ObserverAssociationPersister dbper = ObserverAssociationDbPersister.Default.getInstance();
+            dbper.save(bbObject);
+        }
 
         @Override protected void deleteRecord() throws Exception {
             if (bbObject == null) bbObject = BbWsUtil.newClassInstanceWithThrow(bbObjectClass);
@@ -95,6 +101,15 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
             ObserverAssociationRecordAccessPack {
         public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
             RecordInserter da = new RecordInserter();
+            da.initialize(null);
+            super.initialize(args, ObserverAssociation.class, da);
+        }
+    }
+
+    public static class PersistRecordByObserverAndUsersBatchUid extends
+            ObserverAssociationRecordAccessPack {
+        public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
+            RecordPersister da = new RecordPersister();
             da.initialize(null);
             super.initialize(args, ObserverAssociation.class, da);
         }
@@ -130,6 +145,17 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
         }
     }
 
+    public static class PersistListByObserverAndUsersBatchUid extends
+            ObserverAssociationRecordAccessPack {
+        public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
+            RecordPersister da = new RecordPersister();
+            da.initialize(null);
+            InputListProcessor ilp = new InputListProcessor();
+            ilp.initialize(da);
+            super.initialize(args, ObserverAssociation.class, ilp);
+        }
+    }
+    
     public static class DeleteListByObserverAndUsersBatchUid extends
             ObserverAssociationRecordAccessPack {
         public void initialize(ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA args) {
@@ -177,11 +203,61 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
                         bbObject.setDataSourceBatchUid(newValue);
                 }
             }.setBbField("dataSourceBatchUid");
+            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRowStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRowStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));
+                }
+            }.setBbField("rowStatus");
+/*
+  
+ new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                     bbObject._bbAttributes.getInteger("RowStatus", 0);                    
+                    return bbObject.getRowStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRowStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    try {
+                        bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));
+                    } catch (Exception e) {
+                        blackboard.base.BbEnum rs = IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class);
+                        rs.hashCode()
+                        IAdminObject.RowStatus rs_all[] = IAdminObject.RowStatus.getValues();
+                        StringBuffer msg = new StringBuffer("");
+                        for (int i = 0; i < rs_all.length; i++) {
+                            IAdminObject.RowStatus rs = rs_all[i];
+                            msg.append(rs.toFieldName() + ": " + String.valueOf(rs.hashCode()) + "; ");
+                            throw 
+                        }
+                    }
+                }
+            }.setBbField("rowStatus");            
+   
+ *          
+ */ 
     }
 
     @Override protected void setWsFields() throws Exception {
-        super.setWsFields();
-        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {
+            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField("bbId");	 	
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getObserverBatchUid();
@@ -192,7 +268,7 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setObserverBatchUid(newValue);
                 }
-            }.setWsField("observerBatchUid");
+            }.setWsField("observerBatchUid");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getUsersBatchUid();
@@ -203,7 +279,55 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setUsersBatchUid(newValue);
                 }
-            }.setWsField("userBatchUid");
+            }.setWsField("usersBatchUid");		        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {
+            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getRowStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRowStatus();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRowStatus(newValue);
+                }
+            }.setWsField("rowStatus");		        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {
+            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    User u = (UserDbLoader.Default.getInstance().loadByBatchUid(bbObject.getObserverBatchUid()));
+                    return u.getId().getExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getObserverBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setObserverBbId(newValue);
+                }
+            }.setWsField("observerBbId");		
+            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    User u = (UserDbLoader.Default.getInstance().loadByBatchUid(bbObject.getUsersBatchUid()));
+                    return u.getId().getExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUsersBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUsersBbId(newValue);
+                }
+            }.setWsField("usersBbId");		
+            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceId(newValue);
+                }
+            }.setWsField("dataSourceId");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     return bbObject.getDataSourceBatchUid();
@@ -214,9 +338,7 @@ public class ObserverAssociationAccessPack_ADMIN_DATA extends ObserverAssociatio
                 @Override public void setWsFieldImp(String newValue) throws Exception {
                     getArgs().getResultRecord().setDataSourceBatchUid(newValue);
                 }
-            }.setWsField("dataSourceBatchUid");		        
+            }.setWsField("dataSourceBatchUid");		
         }
-
     }
-    
 }
