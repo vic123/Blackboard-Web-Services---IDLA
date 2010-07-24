@@ -65,7 +65,7 @@ Vic: copyCourse()",,,,,,
 ,bbcrsws,String[] getAllCourseIDsWhereCourseIdContainsGivenSearchString(),,"It appeared that copyCourseExact is working correctly, but Bb processing may take longer time than default client timeout",,,,,,
 ,bbcrsws,List<CourseDetails> getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements(),,,,,,,,
 ,bbcrsws,List<CourseDetails> getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements(),,,,,,,,
-,bbcrsws,CourseDetails getCourseDetailsWithNamedElements(),,,,,,,,
+,bbcrsws,"CourseDetails getCourseDetailsWithNamedElements(String pwd, String courseId, Boolean extendedDetails)",,,,,,,,
 ,,,bbcrsws,copyCourseExact,bbcrsws,updateCourse,,
 ,,,,,,,,
 Course Enrollments,bbcrsws,String getCourseMembershipBbIdForGivenUserIdAndCourseId(),bbcrsws,"Boolean enrollGivenUserOnGivenCourse()
@@ -164,7 +164,7 @@ deleteObserver()"
 ,,,,,,,,
 ,bbws,"observerAssociationLoadRecordByObserverAndUsersBatchUid (cms_admin)
 ",bbws,"observerAssociationInsertRecordByObserverAndUsersBatchUid (cms_admin)
-",,,bbws,"observerAssociationDeleteRecordByObserverAndUsersBatchUid (cms_admin)
+observerAssociationPersistRecordByObserverAndUsersBatchUid (cms_admin)",,observerAssociationPersistRecordByObserverAndUsersBatchUid (cms_admin),bbws,"observerAssociationDeleteRecordByObserverAndUsersBatchUid (cms_admin)
 "
 ,,,,,,Omiting the update operation is acceptable.,,
 ,,"blackboard\persist\user\impl\UserDbLoaderImpl.class
@@ -179,7 +179,7 @@ List of ObserverAssociation,bbws,"observerAssociationLoadListByTemplate (cms_adm
 observerAssociationLoadListByObserverAndUsersBatchUid (cms_admin)
 userLoadListObservedByObserverId (bb_platform)
 userLoadListAvailableObserversByCourseId (bb_platform)",bbws,"observerAssociationInsertListByObserverAndUsersBatchUid (cms_admin)
-",,,bbws,"observerAssociationDeleteListByObserverAndUsersBatchUid (cms_admin)
+observerAssociationPersistListByObserverAndUsersBatchUid (cms_admin)",,observerAssociationPersistListByObserverAndUsersBatchUid (cms_admin),bbws,"observerAssociationDeleteListByObserverAndUsersBatchUid (cms_admin)
 "
 ,,,,,,,,
 There are two parts to this question.  ,,,,,,,,
@@ -188,6 +188,7 @@ There are two parts to this question.  ,,,,,,,,
 "An example of an observer would be a parent of a student.  This parent would be given the observer system role, and then would observe the student login.",,,,,,,,
 ,,,,,,,,
 "Secondary Institutional Roles Membership
+(Portal Role Membership)
 Record access",bbws,"portalRoleMembershipLoadRecordById (bb_platform)
 portalRoleMembershipLoadRecordByUserIdAndPortalRoleId (bb_platform)
 ",bbws,"portalRoleMembershipInsertRecordById (bb_platform)
@@ -197,3 +198,36 @@ List access,bbws,"portalRoleMembershipLoadListById (bb_platform)
 portalRoleMembershipLoadListByUserId (bb_platform)
 portalRoleMembershipLoadListByPortalRoleId (bb_platform)",bbws,portalRoleMembershipInsertListById (bb_platform),bbws,portalRoleMembershipPersistListById (bb_platform),bbws,"portalRoleMembershipDeleteListById (bb_platform)
 portalRoleMembershipDeleteRecordByUserId (bb_platform)"
+
+Course,,"
+
+public CourseSite load(String batchUid)
+public BbList load(CourseSite template)
+
+public final Course loadById(Id id)
+public final Course loadByIdIgnoreRowStatus(Id id) -- almost all the rest of other methods filter by row_status = 0
+public Course loadBy",,"public void insert(CourseSite objToSave)
+public void clone(final String srcCrsBatchUid, final String tgtCrsBatchUid, final CloneConfig cfg)",,"public void save(IAdminObject obj, String strSessionId)
+public void save(CourseSite objToSave)
+public void update(CourseSite objToSave)
+public void changeKey(CourseSite objToSave, String newKey)
+
+public void persist(Course target)
+public void deleteById(I",,
+
+,,"    public BookDataRequest(Id courseId)
+GradebookManager:
+    public BookData getBookData(BookDataRequest req)
+        if(null != req.getItemId())
+            return getBookDataForItem(req);
+        if(null != req.getStudentId())
+            return getBoo"
+LineItem,,"
+    public void persistGradebookItem(GradableItem g)
+    public void deleteGradebookItem(Id id)
+    public GradableItem getGradebookItem(Id gradeableItemId)
+    public GradableItem getGradebookItemByContentId(Id contentId)
+    public List getGradebookIte"
+Score,,"    public GradeWithAttemptScore getGrade(Id gradeableItemId, Id courseUserId)
+    public Collection updateGrade(int courseId, long bookVersion, double score, String textInput, int courseUserPk1, int itemId)
+    public Id getAttemptId(GradableItem item, G"
