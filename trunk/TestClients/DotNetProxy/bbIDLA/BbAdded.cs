@@ -943,7 +943,20 @@ namespace bbIDLA
                 else return null;
             }
         }
-
+        //ObserverAssociation Persist Record ByObserverAndUsersBatchUid
+        public observerAssociationDetails ObserverAssociationPersistRecordByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails inputRecord)
+        {
+            try
+            {
+                return bbAdded.observerAssociationPersistRecordByObserverAndUsersBatchUid(@params, inputRecord);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.ObserverAssociationPersistRecordByObserverAndUsersBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
         //ObserverAssociation Delete Record ByObserverAndUsersBatchUid
         public observerAssociationDetails ObserverAssociationDeleteRecordByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails inputRecord)
         {
@@ -988,7 +1001,20 @@ namespace bbIDLA
                 else return null;
             }
         }
-
+        //ObserverAssociation Persist List ByObserverAndUsersBatchUid
+        public observerAssociationDetails[] ObserverAssociationPersistListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
+        {
+            try
+            {
+                return bbAdded.observerAssociationPersistListByObserverAndUsersBatchUid(@params, inputList);
+            }
+            catch (Exception ex)
+            {
+                BlackBoardWebServices.LogError("bbAdded.ObserverAssociationPersistListByObserverAndUsersBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
         //ObserverAssociation Delete List ByObserverAndUsersBatchUid
         public observerAssociationDetails[] ObserverAssociationDeleteListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
         {

@@ -20,8 +20,8 @@ public partial class BbWsTest : System.Web.UI.Page
         //testArgs.ClearAllTestData();
         testArgs.portalRole.portalRoleLoadRecordById.execute();
         testArgs.portalRole.portalRoleLoadRecordByRoleId.execute();
-
         testArgs.portalRole.portalRoleLoadRecordByRoleName.execute();
+
         testArgs.portalRole.portalRoleLoadRecordDefault.execute();
         testArgs.portalRole.portalRoleLoadListRemovable.execute();
         testArgs.portalRole.portalRoleLoadListAll.execute();
@@ -178,7 +178,7 @@ public partial class BbWsTest : System.Web.UI.Page
         override public void preAction() {
             args.portalRoleLoadListAll.executeImp();
             args.ClearInputs();
-            args.wsInputRecord.roleId = args.wsResultList[0].roleId;
+            args.wsInputRecord.roleId = args.wsResultList[args.wsResultList.Length-1].roleId;
             args.ClearResults();
         }
         override public void executeImp() {
@@ -191,6 +191,9 @@ public partial class BbWsTest : System.Web.UI.Page
             args.ClearInputs();
             args.wsInputRecord.roleName = args.wsResultList[0].roleName;
             args.wsInputRecord.roleName = args.wsInputRecord.roleName.ToUpper() + ".role_name";
+            //args.wsInputRecord.roleName = "ALUMNI.role_name"; 
+            args.wsInputRecord.roleName = "Alumni"; 
+            //args.wsInputRecord.roleName = "Alumni.role_name"; 
             args.ClearResults();
         }
         override public void executeImp() {

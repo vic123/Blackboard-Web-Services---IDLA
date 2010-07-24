@@ -18,7 +18,6 @@ using bbIDLA.BBAddedService;
 /// <summary>
 /// Summary description for BbWsWebReference
 /// </summary>
-//!!public class BbWsWebReference : bbws.BbWebservices
 public class BbWsWebReference : bbIDLA.BbAdded
 {
         public BbWsWebReference(bool doRethrow) : base(doRethrow) { }
@@ -263,6 +262,10 @@ public class BbWsWebReference : bbIDLA.BbAdded
         {
             return base.ObserverAssociationInsertRecordByObserverAndUsersBatchUid(@params, inputRecord);
         }
+        public observerAssociationDetails observerAssociationPersistRecordByObserverAndUsersBatchUid_update_rowStatus(bbWsParams @params, observerAssociationDetails inputRecord)
+        {
+            return base.ObserverAssociationPersistRecordByObserverAndUsersBatchUid(@params, inputRecord);
+        }
         public observerAssociationDetails observerAssociationDeleteRecordByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails inputRecord)
         {
             return base.ObserverAssociationDeleteRecordByObserverAndUsersBatchUid(@params, inputRecord);
@@ -274,6 +277,10 @@ public class BbWsWebReference : bbIDLA.BbAdded
         public observerAssociationDetails[] observerAssociationInsertListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
         {
             return base.ObserverAssociationInsertListByObserverAndUsersBatchUid(@params, inputList);
+        }
+        public observerAssociationDetails[] observerAssociationPersistListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
+        {
+            return base.ObserverAssociationPersistListByObserverAndUsersBatchUid(@params, inputList);
         }
         public observerAssociationDetails[] observerAssociationDeleteListByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails[] inputList)
         {
