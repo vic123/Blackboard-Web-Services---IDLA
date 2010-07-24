@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using System.Reflection;
+
 
 using System.Collections.Generic;
 
@@ -21,19 +23,19 @@ public partial class BbWsTest : System.Web.UI.Page
         try {
 
             testArgs = new TestArgsStruct();
+
             RunUserTest();
-            
             RunCourseMembershipTest();
             RunPortalRoleTest();
             RunObserverAssociationTest();
             RunPortalRoleMembershipTest();
             RunCourseTest();
-            RunCourseMembershipTest();
         } catch (Exception e1) {
+            Response.Output.Write("<PRE>");
             Response.Output.Write(e1.ToString());
+            Response.Output.Write("</PRE><br/>");
         }
     }
-
 
 
     class TestArgsStruct {
@@ -134,9 +136,9 @@ public partial class BbWsTest : System.Web.UI.Page
 
 
         public bbWsParams param = new bbWsParams();
-        public WsDataType wsInputRecord = new WsDataType();
+        public WsDataType wsInputRecord = default(WsDataType);//new WsDataType();
         public List<WsDataType> wsInputList = new List<WsDataType>();
-        public WsDataType wsResultRecord = new WsDataType();//default(WsDataType);
+        public WsDataType wsResultRecord = default(WsDataType);//new WsDataType();//default(WsDataType);
         public WsDataType[] wsResultList = null; //new List<WsDataType>();
         public HttpResponse response;
         public String resultString = "";
@@ -144,21 +146,22 @@ public partial class BbWsTest : System.Web.UI.Page
             HttpContext context = HttpContext.Current;
             this.response = context.Response;
             param.password = "password"; //!!
-            //param.password = "idla";
-            //param.password = "IDLA";
+            //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
             param.dataLogSeverity = "DEBUG";
-            //param.dataLogSeverity = "INFO";
-            //param.dataLogSeverity = "WARN";
-            //param.dataVerbosity = "NONE";
-            //param.dataVerbosity = "STANDARD";
-            param.dataVerbosity = "EXTENDED";
-
-            param.dataRecordErrorThrowSeverity = "FATAL";
-            //param.dataRecordErrorThrowSeverity = "WARN";
+            //public static enum DataVerbosity{NONE, ONLY_ID, MINIMAL, STANDARD, EXTENDED, CUSTOM}; 
+            //param.dataVerbosity = "EXTENDED";
+            //param.dataVerbosity = "CUSTOM";
+            param.dataVerbosity = "STANDARD";
             
+            //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
+            //Same type as for dataLogSeverity
+            param.dataRecordErrorThrowSeverity = "FATAL";
+            //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
+            //Same type as for dataLogSeverity
             param.dataFieldErrorThrowSeverity = "FATAL";
-            //param.dataFieldErrorThrowSeverity = "ERROR";
-            //param.dataFieldErrorThrowSeverity = "WARN";
+            //param.missFieldTag = null;
+            param.missFieldTag = "BbWsMissField";
+            param.nullValueTag = null;
 
             testKeySuffixes = new String[3];
             testKeySuffixes[0] = "_bbws_01";
@@ -198,6 +201,17 @@ public partial class BbWsTest : System.Web.UI.Page
         }
         public virtual void CreateInputRecord() {
             wsInputRecord = new WsDataType();
+            Type type = typeof(WsDataType);
+            //response.Output.Write("<br/>" + type.Name + "<br/>");
+            if (String.Compare(type.Name, "courseDetails") == 0 || String.Compare(type.Name, "groupDetails") == 0) return; //!!
+            
+            //FieldInfo[] fields = type.GetFields();
+            PropertyInfo[] props = type.GetProperties();
+            //foreach (var field in fields) { // Loop through fields
+            foreach (var prop in props) { // Loop through fields
+                //response.Output.Write(prop.Name + "<br/>");
+                if (String.Compare(prop.Name, "bbWsDataLog") != 0) prop.SetValue(wsInputRecord, param.missFieldTag, null);
+            }
         }
 
         public virtual void MoveInputRecordToList() {
@@ -234,13 +248,17 @@ public partial class BbWsTest : System.Web.UI.Page
             args.response.Output.Write("<b>" + this.GetType().ToString() + "</b><br>");
         }
         public virtual void ShowException() {
+            args.response.Output.Write("<PRE>");
             args.response.Output.Write(exception.ToString());
+            args.response.Output.Write("</PRE><br/>");
         }
         public virtual void SafePostAction() {
             try {
                 postAction();
             } catch (Exception e) {
+                args.response.Output.Write("<PRE>");
                 args.response.Output.Write(GetType().ToString() + " SafePostAction warning: " + e.ToString());
+                args.response.Output.Write("</PRE><br/>");
             }
         }
         public virtual void ShowResultListTableAndDataLog() {
@@ -279,7 +297,9 @@ public partial class BbWsTest : System.Web.UI.Page
                 checkResultsEvent();
                 checkResultsImp();
             } catch (Exception e) {
+                args.response.Output.Write("<PRE>");
                 args.response.Output.Write("<b>Test Case FAILED: </b> " + e.ToString() + "");
+                args.response.Output.Write("</PRE><br/>");
                 return;
             }
             args.response.Output.Write("<b>Test Case SUCCESS</b>");
@@ -340,6 +360,7 @@ public partial class BbWsTest : System.Web.UI.Page
         where TestArgsType : TestArgs<WsDataType> {
         override public void init(Object args) {
             base.init(args);
+            this.args.ClearInputsAndResults();
             preActionEvent += ShowClassName;
             //preActionEvent += this.args.ClearInputsAndResults;
             preActionEvent += this.args.testArgs.ClearAllInputsAndResults;

@@ -17,10 +17,11 @@ using bbIDLA.BBAddedService;
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunUserTest() {
-        //testArgs.ClearAllTestData();
+        //testArgs.ClearAllTestData();//!!
         testArgs.user.userLoadRecordByBatchUid.execute();
         testArgs.user.userLoadListByTemplate.execute();
           testArgs.user.userInsertRecordByBatchUid_duplicate.execute();
+        
           testArgs.user.userInsertRecordByBatchUid_minimal.execute();
           testArgs.user.userUpdateRecordByBatchUid.execute();
           testArgs.user.userPersistRecordByBatchUid_insert.execute();
@@ -35,7 +36,7 @@ public partial class BbWsTest : System.Web.UI.Page
 
           testArgs.user.userLoadRecordByName.execute();
           testArgs.user.userUpdateRecordById_extended.execute();
-
+        
           testArgs.user.userPersistRecordById_insert.execute();
           testArgs.user.userPersistRecordById_update.execute();
           testArgs.user.userDeleteRecordById.execute();
@@ -52,9 +53,6 @@ public partial class BbWsTest : System.Web.UI.Page
           testArgs.user.userLoadListObservedByObserverId.execute();
           testArgs.user.userLoadListByGroupId.execute();
           testArgs.user.userLoadListByPrimaryRoleId.execute();
-
-        //!! assign customly created PortalRole to an user
-    
     }
 
     //    class _userTestCase : BbWsTest.TestCase<_userTestArgs, bbws.userDetails>, ITestAction { }
@@ -120,7 +118,9 @@ public partial class BbWsTest : System.Web.UI.Page
                         str_value = wsResultRecord.modifiedDate;
                         break;
                     case "cardNumber":
-                        continue;
+                        str_value = "3902854230";
+                        break;
+                        //continue;
                     case "cdRomDrivePC":
                         str_value = "D";
                         break;
@@ -149,6 +149,7 @@ public partial class BbWsTest : System.Web.UI.Page
 
                     case "modifiedDate":
                         //str_value = wsResultRecord.modifiedDate;
+                        str_value = param.missFieldTag;
                         continue;
                     case "showAddContactInfo":
                         str_value = "true";
@@ -178,16 +179,35 @@ public partial class BbWsTest : System.Web.UI.Page
                         break;
                         //continue;
                     case "portalRoleName":
-                        //str_value = "STAFF";
-                        //str_value = "FACULTY" + ".role_name"; 
-                        str_value = "Staff";
+                        //str_value = "ALUmni";
+                        //str_value = "Alumni";
+                        str_value = "ALUmni" + ".role_name";
+                        //str_value = "FACULTY" + ".role_name";
+                        //str_value = "Staff";
+                        //str_value = param.missFieldTag;
                         break;
-                    case "portalRoleId": //!! - assign custom (created role)
-                        //str_value = "FACULTY";
-                        continue;
+                    case "portalRoleId": 
+                        //str_value = "_2_1";
+                        //str_value = "_27_1";
+                        //str_value = param.missFieldTag;
                         break;
                     //case "batchUid": 
                     //case "userName": continue;
+                    case "password":
+                        str_value = "bla-bla";
+                        //md5 hash of "bla-bla":
+                        //str_value = "636F03926A5A3EB24DAF67461D8A075B";
+                        
+                        //byte[] data_buffer = System.Text.Encoding.UTF8.GetBytes(str_value);
+                        byte[] data_buffer = System.Text.Encoding.Unicode.GetBytes(str_value);
+                        System.Security.Cryptography.MD5 md = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                        byte[] md5_hash = md.ComputeHash(data_buffer);
+                        str_value = System.Convert.ToString(md5_hash);
+                        str_value = System.Convert.ToBase64String(md5_hash);
+                        str_value = BitConverter.ToString(md5_hash).Replace("-", string.Empty);
+
+                        //continue;
+                        break;
                     default:
                         str_value = prop.Name + currentTestKeySuffix;
                         break;
@@ -338,10 +358,14 @@ public partial class BbWsTest : System.Web.UI.Page
 
     class _userLoadRecordByBatchUid : _userTestCase_SuccessRecord, ITestAction {
         override public void preAction() {
+            String data_verb = args.param.dataVerbosity;
+            args.param.dataVerbosity = "EXTENDED";
             args.loadBaseRecordAction.PreActionAndExecuteImp();
+            args.param.dataVerbosity = data_verb;
             String batch_uid = args.wsResultRecord.batchUid;
             args.ClearInputsAndResults();
             args.wsInputRecord.batchUid = batch_uid;
+            args.wsInputRecord.businessFax = args.param.missFieldTag;
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.UserLoadRecordByBatchUid(args.param, args.wsInputRecord);
@@ -534,6 +558,7 @@ public partial class BbWsTest : System.Web.UI.Page
         }
     }
     //!! method name and test result are not printed correctly, probably because of something in inheritance
+    //?? seem to print now ok
     class _userUpdateRecordById_extended : _userUpdateRecordById, ITestAction {
         override public void preAction() {
             args.insertRecordAction.PreActionAndExecuteImp();
@@ -709,7 +734,6 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.emailAddress = email;
             args.wsInputRecord.familyName = fname;
             args.wsInputRecord.givenName = gname;
-            //??!! - by names
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userLoadListByEmailAddressFamilyNameGivenName(args.param, args.wsInputRecord);
