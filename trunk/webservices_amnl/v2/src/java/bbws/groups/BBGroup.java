@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbgrpws;
+package bbws.groups;
 
 import blackboard.data.course.Group;
 import java.util.Calendar;
@@ -25,7 +25,7 @@ import java.util.Calendar;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class GroupDetails implements ReturnTypeInterface
+public class BBGroup
 {
     private Boolean available;
     private Boolean chatRoomsAvailable;
@@ -37,8 +37,8 @@ public class GroupDetails implements ReturnTypeInterface
     private String title;
     private Boolean transferAreaAvailable;
 
-    public GroupDetails(){}
-    public GroupDetails(Group g)
+    public BBGroup(){}
+    public BBGroup(Group g)
     {
 	this.available = g.getIsAvailable();
 	this.chatRoomsAvailable = g.getIsChatRoomAvailable();
@@ -151,28 +151,5 @@ public class GroupDetails implements ReturnTypeInterface
         {
             return "Never";
         }
-    }
-
-    public String[] toStringArray()
-    {
-        return new String[]{
-            this.groupBbId,
-            this.title,
-            this.description,
-            Boolean.toString(this.available),
-            Boolean.toString(this.chatRoomsAvailable),
-            Boolean.toString(this.discussionBoardsAvailable),
-            Boolean.toString(this.emailAvailable),
-            Boolean.toString(this.transferAreaAvailable),
-            this.modifiedDate
-        };
-    }
-    
-    public String[] toStringArrayHeader()
-    {
-        return new String[]{"GroupBbId","Title","Description",
-                            "Available","Chat Rooms Available",
-                            "Discussion Boards Available","Email Available",
-                            "Transfer Area Available","Modified Date"};
     }
 }

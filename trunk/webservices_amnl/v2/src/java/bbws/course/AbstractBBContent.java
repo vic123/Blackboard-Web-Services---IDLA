@@ -17,60 +17,67 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbws.user;
-
-import blackboard.data.course.CourseMembership;
-import blackboard.data.role.PortalRole;
-import blackboard.platform.security.SystemRole;
-
+package bbws.course;
 
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class BBRole
+public abstract class AbstractBBContent
 {
-    private String roleId;
-    private String roleName;
+    protected Boolean available;
+    protected String contentBbId;
+    protected String dataType;
+    protected Integer position;
+    protected String url;
 
-    public BBRole(){}
-    public BBRole(PortalRole pr)
+    public Boolean getAvailable()
     {
-	this.roleId = pr.getRoleID();
-	this.roleName = pr.getRoleName();
-    }
-    public BBRole(SystemRole sr)
-    {
-	this.roleId = sr.getIdentifier();
-	this.roleName = sr.getName();
-    }
-    public BBRole(CourseMembership cm)
-    {
-	this.roleName = cm.getRole().toFieldName();
+	return this.available;
     }
 
-    public String getRoleId()
+    public void setAvailable(Boolean available)
     {
-	return this.roleId;
+	this.available = available;
     }
 
-    public void setRoleId(String roleId)
+    public String getDataType()
     {
-	this.roleId = roleId;
+	return this.dataType;
     }
 
-    public String getRoleName()
+    public void setDataType(String dataType)
     {
-	return this.roleName;
+	this.dataType = dataType;
     }
 
-    public void setRoleName(String roleName)
+    public String getContentBbId()
     {
-	this.roleName = roleName;
+	return this.contentBbId;
     }
 
-    private String[] getUserDetailsArray()
+    public void setContentBbId(String contentBbId)
     {
-        return new String[]{this.roleId, this.roleName};
+	this.contentBbId = contentBbId;
+    }
+
+    public Integer getPosition()
+    {
+	return this.position;
+    }
+
+    public void setPosition(Integer position)
+    {
+	this.position = position;
+    }
+
+    public String getUrl()
+    {
+	return this.url;
+    }
+
+    public void setUrl(String url)
+    {
+	this.url = url;
     }
 }

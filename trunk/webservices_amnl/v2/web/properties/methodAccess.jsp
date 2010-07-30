@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" import="java.util.*,bbaws.BbWsProperty" %>
+<%@ page language="java" pageEncoding="UTF-8" import="java.util.*,bbws.BbWsProperty" %>
 <%@ taglib uri="/bbUI" prefix="bbUI"%>
 <%@ taglib uri="/bbData" prefix="bbData"%>
 <%
@@ -23,51 +23,89 @@ under the License.
 %>
 <bbData:context>
     <bbUI:docTemplate title="Blackboard Administrator Tools">
-	<bbUI:titleBar>Announcements webservice security properties</bbUI:titleBar>
-	<jsp:useBean id="PersistWSProperties" scope="session" class="bbaws.PropertiesBean.PropertiesBean"/>
+	<bbUI:titleBar>Gradebook webservice security properties</bbUI:titleBar>
+	<jsp:useBean id="PersistWSProperties" scope="session" class="bbws.PropertiesBean.PropertiesBean"/>
 <%
     String submit = request.getParameter("submit");
     if(submit==null) submit = "false";
 
-    ArrayList methods = new ArrayList();
-    methods.add("deleteAnnouncement");
-    methods.add("deleteAnnouncementXML");
-    methods.add("getAllAnnouncementsForGivenCourseId");
-    methods.add("getAllAnnouncementsForGivenCourseIdWithNamedElements");
-    methods.add("getAllAnnouncementsForGivenCourseIdXML");
-    methods.add("getAllAvailableAnnouncementsForGivenUserId");
-    methods.add("getAllAvailableAnnouncementsForGivenUserIdWithNamedElements");
-    methods.add("getAllAvailableAnnouncementsForGivenUserIdXML");
-    methods.add("getAllSystemAnnouncements");
-    methods.add("getAllSystemAnnouncementsWithNamedElements");
-    methods.add("getAllSystemAnnouncementsXML");
-    methods.add("modifyAnnouncement");
-    methods.add("modifyAnnouncementXML");
-    methods.add("postCourseAnnouncement");
-    methods.add("postCourseAnnouncementXML");
-    methods.add("postSystemAnnouncement");
-    methods.add("postSystemAnnouncementXML");
+    List<String> methods = new ArrayList<String>();
+    methods.add("bbAnnouncementCreate");
+    methods.add("bbAnnouncementDelete");
+    methods.add("bbAnnouncementReadSearchByAvailableAnnouncementAndUserId");
+    methods.add("bbAnnouncementReadSearchByCourseId");
+    methods.add("bbAnnouncementUpdate");
+    methods.add("bbCourseCreate");
+    methods.add("bbCourseDelete");
+    methods.add("bbCourseMembershipCreate");
+    methods.add("bbCourseMembershipDelete");
+    methods.add("bbCourseMembershipRead");
+    methods.add("bbCourseMembershipReadSearchByUserIdAndCourseId");
+    methods.add("bbCourseQuotaRead");
+    methods.add("bbCourseQuotaUpdate");
+    methods.add("bbCourseRead");
+    methods.add("bbCourseReadAll");
+    methods.add("bbCourseReadSearchByRegex");
+    methods.add("bbCourseReadSearchByUserIdAndCMRole");
+    methods.add("bbEnrollmentReadSearchByUserId");
+    methods.add("bbGradeCentreAttemptDelete");
+    methods.add("bbGradeCentreAttemptReadSearchByOutcomeDefinitionId");
+    methods.add("bbGradeCentreLineitemAdd");
+    methods.add("bbGradeCentreLineitemDelete");
+    methods.add("bbGradeCentreLineitemRead");
+    methods.add("bbGradeCentreLineitemReadSearchByCourseId");
+    methods.add("bbGradeCentreOutcomeDefinitionDelete");
+    methods.add("bbGradeCentreOutcomeDefinitionRead");
+    methods.add("bbGradeCentreOutcomeDefinitionReadSearchByCourseId");
+    methods.add("bbGradeCentreOutcomeRead");
+    methods.add("bbGradeCentreOutcomeReadSearchByOutcomeDefinitionId");
+    methods.add("bbGradeCentreScoreRead");
+    methods.add("bbGradeCentreScoreReadSearchByLineitemId");
+    methods.add("bbGradeCentreScoreReadSearchByLineitemIdAndCourseMembershipId");
+    methods.add("bbGradeCentreScoreReadSearchByLineitemIdAndUserId");
+    methods.add("bbGradeCentreSettingsRead");
+    methods.add("bbGroupAdd");
+    methods.add("bbGroupDelete");
+    methods.add("bbGroupMembershipCreateByUserIdAndGroupId");
+    methods.add("bbGroupMembershipDeleteByUserIdAndGroupId");
+    methods.add("bbGroupMembershipReadByGroupId");
+    methods.add("bbGroupRead");
+    methods.add("bbGroupUpdate");
+    methods.add("bbRoleSecondaryPortalReadSearchByUserId");
+    methods.add("bbRoleSecondaryPortalUpdate");
+    methods.add("bbRoleSecondarySystemReadSearchByUserId");
+    methods.add("bbRoleUserReadSearchByUserIdAndCourseId");
+    methods.add("bbUserCreate");
+    methods.add("bbUserDelete");
+    methods.add("bbUserRead");
+    methods.add("bbUserReadAll");
+    methods.add("bbUserReadSearchByCourseId");
+    methods.add("bbUserReadSearchByCourseIdAndCMRole");
+    methods.add("bbUserUpdate");
 
     if(!submit.equalsIgnoreCase("true"))
     {
 %>
     <form action="#" method="POST" name="aForm">
 	<input type="hidden" name="submit" value="true" />
-	<bbUI:step number="1" title="Allow access to method?">
+	<bbUI:step title="Allow access to method?">
 <%
-    for(int i=0;i<methods.size();i++)
+    Iterator<String> i = methods.iterator();
+    String currentMethod = "";
+    while(i.hasNext())
     {
-	BbWsProperty methodProperty = new BbWsProperty(PersistWSProperties.getProperty(methods.get(i)+".access"));
+        currentMethod = i.next();
+            BbWsProperty methodProperty = new BbWsProperty(PersistWSProperties.getProperty(currentMethod+".access"));
 %>
-		<bbUI:dataElement label="<%= methods.get(i).toString() %>" required="true">
-		    <input type="radio" name="<%= methods.get(i)+".access" %>" id="<%= methods.get(i)+".access" %>" value="Yes" <%= methodProperty.getSetting()?"checked":""%>> Yes 
-		    <input type="radio" name="<%= methods.get(i)+".access" %>" id="<%= methods.get(i)+".access" %>" value="No"  <%= methodProperty.getSetting()?"":"checked"%>> No
+                <bbUI:dataElement label="<%= currentMethod %>" required="true">
+		    <input type="radio" name="<%= currentMethod+".access" %>" id="<%= currentMethod+".access" %>" value="Yes" <%= methodProperty.getSetting()?"checked":""%>> Yes
+		    <input type="radio" name="<%= currentMethod+".access" %>" id="<%= currentMethod+".access" %>" value="No"  <%= methodProperty.getSetting()?"":"checked"%>> No
 		</bbUI:dataElement>
 <%
     }
 %>
 	</bbUI:step>
-	<bbUI:stepSubmit number="2" cancelUrl="properties.jsp" />
+	<bbUI:stepSubmit cancelUrl="properties.jsp" />
     </form>
 <%
     }

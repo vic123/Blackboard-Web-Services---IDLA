@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbgbws;
+package bbws.gradecentre;
 
 //blackboard
 import blackboard.data.gradebook.impl.Attempt;
@@ -29,11 +29,11 @@ import java.util.Calendar;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class AttemptDetails implements ReturnTypeInterface
+public class BBAttempt
 {
-    public enum Verbosity{standard,extended}
+    public enum BBAttemptVerbosity{standard,extended}
 
-    private Verbosity verbosity;
+    private BBAttemptVerbosity verbosity;
     //standard details
     private String attemptBbId;
     private String attemptedDate;
@@ -52,12 +52,12 @@ public class AttemptDetails implements ReturnTypeInterface
     private String resultObjectBbId;
     private String studentComments;
 
-    public AttemptDetails(){}
-    public AttemptDetails(Verbosity verbosity)
+    public BBAttempt(){}
+    public BBAttempt(BBAttemptVerbosity verbosity)
     {
         this.verbosity = verbosity;
     }
-    public AttemptDetails(Attempt a,Verbosity verbosity) throws Exception
+    public BBAttempt(Attempt a,BBAttemptVerbosity verbosity) throws Exception
     {
         this.verbosity = verbosity;
 
@@ -245,56 +245,5 @@ public class AttemptDetails implements ReturnTypeInterface
 	{
 	    return "Never";
 	}
-    }
-
-    public String[] toStringArray()
-    {
-        switch(this.verbosity)
-        {
-            case standard:
-                return new String[]{this.attemptBbId,
-                        this.grade,
-                        Float.toString(this.score),
-                        this.status,
-                        this.attemptedDate};
-            case extended:
-                return new String[]{this.attemptBbId,
-                        this.grade,
-                        Float.toString(this.score),
-                        this.status,
-                        this.attemptedDate,
-                        this.outcomeBbId,
-                        this.resultObjectBbId,
-                        this.dataType,
-                        Boolean.toString(this.publicComments),
-                        this.instructorComments,
-                        this.studentComments,
-                        this.instructorNotes,
-                        this.linkRefBbId,
-                        this.dateCreated,
-                        this.dateModified};
-            default:
-                return new String[]{};
-        }
-    }
-
-    public String[] toStringArrayHeader()
-    {
-        switch(this.verbosity)
-        {
-            case standard:
-                return new String[]{"AttemptBbId","Grade","Score",
-                        "Status","Attempted Date"};
-            case extended:
-                return new String[]{"AttemptBbId","Grade","Score",
-                        "Status","Attempted Date",
-                        "Outcome BbId","Result Object BbId",
-                        "Data Type","Public Comments",
-                        "Instructor Comments","Student Comments",
-                        "Instructor Notes","Link Ref BbId",
-                        "Date Created","Date Modified"};
-            default:
-                return new String[]{};
-        }
     }
 }

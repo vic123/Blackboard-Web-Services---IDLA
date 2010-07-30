@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbaws;
+package bbws;
 
 import blackboard.data.registry.SystemRegistryEntry;
 import blackboard.persist.BbPersistenceManager;

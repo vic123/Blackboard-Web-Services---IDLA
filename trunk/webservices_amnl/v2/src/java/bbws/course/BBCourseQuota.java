@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbcrsws;
+package bbws.course;
 
 import blackboard.data.course.CourseQuota;
 
@@ -25,7 +25,7 @@ import blackboard.data.course.CourseQuota;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class CourseQuotaDetails implements ReturnTypeInterface
+public class BBCourseQuota
 {
     private Long courseAbsoluteLimit;
     private Long courseAbsoluteLimitRemainingSize;
@@ -38,8 +38,8 @@ public class CourseQuotaDetails implements ReturnTypeInterface
     private Long systemSoftLimit;
     private Long systemUploadLimit;
 
-    public CourseQuotaDetails(){}
-    public CourseQuotaDetails(CourseQuota courseQuota)
+    public BBCourseQuota(){}
+    public BBCourseQuota(CourseQuota courseQuota)
     {
 	this.courseAbsoluteLimit = courseQuota.getCourseAbsoluteLimit();
 	this.courseAbsoluteLimitRemainingSize = courseQuota.getCourseAbsoluteLimitRemainingSize();
@@ -151,23 +151,5 @@ public class CourseQuotaDetails implements ReturnTypeInterface
     public void setSystemUploadLimit(Long systemUploadLimit)
     {
 	this.systemUploadLimit = systemUploadLimit;
-    }
-
-    public String[] toStringArray()
-    {
-	return new String[]{Long.toString(this.courseAbsoluteLimit),Long.toString(this.courseAbsoluteLimitRemainingSize),
-			    Long.toString(this.courseSize),Long.toString(this.courseSoftLimit),
-			    Long.toString(this.courseUploadLimit),Boolean.toString(this.enforceQuota),
-			    Boolean.toString(this.enforceUploadLimit),Long.toString(this.systemAbsoluteLimit),
-			    Long.toString(this.systemSoftLimit),Long.toString(this.systemUploadLimit)};
-    }
-
-    public String[] toStringArrayHeader()
-    {    
-	return new String[]{"course absolute limit","course absolute limit remaining",
-			    "course size","course soft limit",
-			    "course upload limit","course enforced quota",
-			    "course enforced upload limit","system absolute limit",
-			    "system soft limit","system upload limit"};
     }
 }

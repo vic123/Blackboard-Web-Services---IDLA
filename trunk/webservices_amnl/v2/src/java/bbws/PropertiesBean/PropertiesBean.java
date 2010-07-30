@@ -16,7 +16,8 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
  */
-package bbaws.PropertiesBean;
+
+package bbws.PropertiesBean;
 
 /**
  *
@@ -25,7 +26,7 @@ package bbaws.PropertiesBean;
 
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
-import blackboard.platform.plugin.PlugInUtil;
+//import blackboard.platform.plugin.PlugInUtil;
 import blackboard.data.registry.*;
 import blackboard.persist.*;
 import blackboard.persist.registry.*;
@@ -36,7 +37,7 @@ public class PropertiesBean implements java.io.Serializable
 {	
 	private static PropertiesBean propertiesBean;
 	private static String vendorId = "amnl";
-	private static String applicationHandle = "BBAnnouncementsWebService";
+	private static String applicationHandle = "BBWebService";
 	private Properties p;
 	
 	public PropertiesBean()

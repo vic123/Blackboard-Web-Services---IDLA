@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbgrpws;
+package bbws.groups;
 
 import blackboard.persist.course.CourseMembershipDbLoader;
 import blackboard.data.course.GroupMembership;
@@ -25,12 +25,12 @@ import blackboard.data.course.GroupMembership;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class GroupMemberDetails implements ReturnTypeInterface
+public class BBGroupMembership
 {
     private String userId;
 
-    public GroupMemberDetails(){}
-    public GroupMemberDetails(GroupMembership gm) throws Exception
+    public BBGroupMembership(){}
+    public BBGroupMembership(GroupMembership gm) throws Exception
     {
         this.userId = CourseMembershipDbLoader.Default.getInstance().loadById(gm.getCourseMembershipId(),null,true).getUser().getUserName();
     }
@@ -45,13 +45,4 @@ public class GroupMemberDetails implements ReturnTypeInterface
         this.userId = userId;
     }
 
-    public String[] toStringArray()
-    {
-        return new String[]{this.userId};
-    }
-
-    public String[] toStringArrayHeader()
-    {
-        return new String[]{"userId"};
-    }
 }

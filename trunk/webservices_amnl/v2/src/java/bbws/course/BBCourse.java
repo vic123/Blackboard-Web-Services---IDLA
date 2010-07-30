@@ -16,7 +16,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
  */
-package bbcrsws;
+package bbws.course;
 
 import blackboard.data.course.Course;
 
@@ -24,11 +24,11 @@ import blackboard.data.course.Course;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class CourseDetails extends AbstractCourseDetails implements ReturnTypeInterface
+public class BBCourse extends AbstractBBCourse
 {
-    public enum Verbosity{minimal,standard,extended}
+    public enum BBCourseVerbosity{minimal,standard,extended}
 
-    private Verbosity verbosity;
+    private BBCourseVerbosity verbosity;
     //standard details
     private String courseBbId;
     private String title;
@@ -61,12 +61,12 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     private String startDate;
     private String uploadLimit;
 
-    public CourseDetails(){}
-    public CourseDetails(Verbosity verbosity)
+    public BBCourse(){}
+    public BBCourse(BBCourseVerbosity verbosity)
     {
         this.verbosity = verbosity;
     }
-    public CourseDetails(Course course, Verbosity verbosity) throws Exception
+    public BBCourse(Course course, BBCourseVerbosity verbosity) throws Exception
     {
         this.verbosity = verbosity;
 
@@ -384,84 +384,5 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     public void setUploadLimit(String uploadLimit)
     {
 	this.uploadLimit = uploadLimit;
-    }
-
-    public String[] toStringArray()
-    {
-        switch(verbosity)
-        {
-            case minimal:
-                return new String[]{this.courseId};
-            case standard:
-                return new String[]{this.courseBbId,
-                        this.courseId,
-                        this.title,
-                        this.description,
-                        this.creationDate,
-                        this.modifiedDate,
-                        Boolean.toString(this.available)};
-            case extended:
-                return new String[]{this.courseBbId,
-                        this.courseId,
-                        this.title,
-                        this.description,
-                        this.creationDate,
-                        this.modifiedDate,
-                        Boolean.toString(this.available),
-                        this.absoluteLimit,
-                        Boolean.toString(this.allowGuests),
-                        Boolean.toString(this.allowObservers),
-                        this.bannerImageFile,
-                        this.batchUId,
-                        this.buttonStyle,
-                        this.cartridgeDescription,
-                        this.classification,
-                        this.durationType,
-                        this.endDate,
-                        this.enrollment,
-                        this.institution,
-                        Boolean.toString(this.localeEnforced),
-                        Boolean.toString(this.lockedOut),
-                        Boolean.toString(this.navigationCollapsible),
-                        this.locale,
-                        this.navigationBackgroundColour,
-                        this.navigationForegroundColour,
-                        this.navigationStyle,
-                        Integer.toString(this.numberOfDaysOfUse),
-                        this.paceType,
-                        this.serviceLevelType,
-                        this.softLimit,
-                        this.startDate,
-                        this.uploadLimit};
-            default:
-                return new String[]{};
-        }
-    }
-
-    public String[] toStringArrayHeader()
-    {
-        switch(verbosity)
-        {
-            case minimal:
-                return new String[]{"course Id"};
-            case standard:
-                return new String[]{"courseBbId","course Id","title",
-                        "description","creation date",
-                        "modified date","available"};
-            case extended:
-                return new String[]{"courseBbId","course Id","title",
-                        "description","creation date",
-                        "modified date","available",
-                        "absolute limit","allow guests",
-                        "allow observers","banner image url","batch uid",
-                        "button style","cartridge","classification",
-                        "duration type","end date","enrollment","institution",
-                        "locale enforced","locked out","navigation collapsible",
-                        "locale","navigation background colour","navigation foreground colour",
-                        "navigation style","number of days of use","pace type",
-                        "service level type","soft limit","start date","upload limit"};
-            default:
-                return new String[]{};
-        }
     }
 }
