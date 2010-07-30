@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbcrsws;
+package bbws.course;
 
 import blackboard.admin.data.course.Enrollment;
 
@@ -25,12 +25,12 @@ import blackboard.admin.data.course.Enrollment;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class EnrollmentDetails extends AbstractCourseDetails implements ReturnTypeInterface
+public class BBEnrollment extends AbstractBBCourse
 {
     private String userRole;
     
-    EnrollmentDetails(){}
-    EnrollmentDetails(Enrollment enr)
+    BBEnrollment(){}
+    public BBEnrollment(Enrollment enr)
     {
         this.available = enr.getIsAvailable();
         this.creationDate = extractDate(enr.getEnrollmentDate());
@@ -46,23 +46,5 @@ public class EnrollmentDetails extends AbstractCourseDetails implements ReturnTy
     public void setUserRole(String userRole)
     {
 	this.userRole = userRole;
-    }
-    
-    public String[] toStringArray()
-    {
-	return new String[]{this.courseId,
-			    Boolean.toString(this.available),
-			    this.creationDate,
-			    this.userRole
-	};
-    }
-
-    public String[] toStringArrayHeader()
-    {
-	return new String[]{"Course Id",
-			    "Available",
-			    "Date Created",
-			    "User Role"
-	};
     }
 }

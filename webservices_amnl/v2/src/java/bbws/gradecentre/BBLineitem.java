@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbgbws;
+package bbws.gradecentre;
 
 //blackboard
 import blackboard.data.gradebook.Lineitem;
@@ -30,7 +30,7 @@ import java.util.Calendar;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class LineitemDetails implements ReturnTypeInterface
+public class BBLineitem
 {
     private String assessmentBbId;
     private String assessmentLocation;
@@ -41,15 +41,27 @@ public class LineitemDetails implements ReturnTypeInterface
     private String lineItemBbId;
     private String name;
     private String outcomeDefBbId;
-    private String pointsPossible;
+    private Float pointsPossible;
+    private String title;
     private String type;
-    private String weight;
+    private Float weight;
 
-    public LineitemDetails(){}
-    public LineitemDetails(Object gi)
+    public BBLineitem()
     {
+        System.out.println("Creating from nowt");
+    }
+    public BBLineitem(Object gi)
+    {
+        System.out.println("Creating from gi");
         Class gradableItem = gi.getClass();
-        try{this.name = (String)gradableItem.getDeclaredMethod("getTitle").invoke(gi);}catch(Exception e){}
+        try
+        {
+            this.name = (String)gradableItem.getDeclaredMethod("getTitle").invoke(gi);
+        }
+        catch(Exception e)
+        {
+            this.title = "";
+        }
         try{
             Object o = gradableItem.getDeclaredMethod("getAssessmentId").invoke(gi);
             if(o!=null)
@@ -64,24 +76,29 @@ public class LineitemDetails implements ReturnTypeInterface
                     this.assessmentBbId = ((blackboard.persist.Id)o).getExternalString();
                 }
             }
-        }catch(Exception e){}
+        }
+        catch(Exception e)
+        {
+            this.assessmentBbId = "";
+        }
         //if(gi.getAssessmentLocation().equals(AssessmentLocation.EXTERNAL)){this.assessmentLocation = "EXTERNAL";}
         //else if(gi.getAssessmentLocation().equals(AssessmentLocation.INTERNAL)){this.assessmentLocation = "INTERNAL";}
         //else if(gi.getAssessmentLocation().equals(AssessmentLocation.UNSET)){this.assessmentLocation = "UNSET";}
 
-        try{this.available = (Boolean)gradableItem.getDeclaredMethod("getIsVisibleInAllTerms").invoke(gi);}catch(Exception e){}
+        try{this.available = (Boolean)gradableItem.getDeclaredMethod("getIsVisibleInAllTerms").invoke(gi);}catch(Exception e){this.available = false;}
         try{this.columnPosition = (Integer)gradableItem.getDeclaredMethod("getPosition").invoke(gi);}catch(Exception e){}
         try{this.dateAdded = extractDate((Calendar)gradableItem.getDeclaredMethod("getDateAdded").invoke(gi));}catch(Exception e){}
         try{this.dateChanged = extractDate((Calendar)gradableItem.getDeclaredMethod("getDateModified").invoke(gi));}catch(Exception e){}
         try{this.lineItemBbId = ((String)gradableItem.getDeclaredMethod("getExternalId").invoke(gi));}catch(Exception e){}
         try{this.name = (String)gradableItem.getDeclaredMethod("getTitle").invoke(gi);}catch(Exception e){}
         //this.outcomeDefBbId = gi.getOutcomeDefinition().getId().toExternalString();
-        try{this.pointsPossible = Double.toString((Double)gradableItem.getDeclaredMethod("getPoints").invoke(gi));}catch(Exception e){}
+        try{this.pointsPossible = Float.parseFloat(((Double)gradableItem.getDeclaredMethod("getPoints").invoke(gi)).toString());}catch(Exception e){}
         //this.type = gi.getType();
-        try{this.weight = Double.toString((Double)gradableItem.getDeclaredMethod("getWeight").invoke(gi));}catch(Exception e){}
+        try{this.weight = Float.parseFloat(((Double)gradableItem.getDeclaredMethod("getWeight").invoke(gi)).toString());}catch(Exception e){}
     }
-    public LineitemDetails(Lineitem li)
+    public BBLineitem(Lineitem li)
     {
+        System.out.println("Creating from li");
         Object o = li.getAssessmentId();
         if(o!=null)
         {
@@ -105,9 +122,9 @@ public class LineitemDetails implements ReturnTypeInterface
         this.lineItemBbId = li.getId().toExternalString();
         this.name = li.getName();
         this.outcomeDefBbId = li.getOutcomeDefinition().getId().toExternalString();
-        this.pointsPossible = Float.toString(li.getPointsPossible());
+        this.pointsPossible = li.getPointsPossible();
         this.type = li.getType();
-        this.weight = Float.toString(li.getWeight());
+        this.weight = li.getWeight();
     }
 
     public String getAssessmentBbId()
@@ -200,14 +217,24 @@ public class LineitemDetails implements ReturnTypeInterface
 	this.outcomeDefBbId = outcomeDefBbId;
     }
 
-    public String getPointsPossible()
+    public Float getPointsPossible()
     {
         return this.pointsPossible;
     }
 
-    public void setPointsPossible(String pointsPossible)
+    public void setPointsPossible(Float pointsPossible)
     {
         this.pointsPossible = pointsPossible;
+    }
+
+    public String getTitle()
+    {
+	return this.title;
+    }
+
+    public void setTitle(String title)
+    {
+	this.title = title;
     }
 
     public String getType()
@@ -220,12 +247,12 @@ public class LineitemDetails implements ReturnTypeInterface
 	this.type = type;
     }
 
-    public String getWeight()
+    public Float getWeight()
     {
         return this.weight;
     }
 
-    public void setWeight(String weight)
+    public void setWeight(Float weight)
     {
         this.weight = weight;
     }
@@ -242,27 +269,4 @@ public class LineitemDetails implements ReturnTypeInterface
         }
     }
 
-    public String[] toStringArray()
-    {
-        return new String[]{this.lineItemBbId,
-                            this.name,
-                            this.dateAdded,
-                            this.dateChanged,
-                            Integer.toString(this.columnPosition),
-                            Boolean.toString(this.available),
-                            this.pointsPossible,
-                            this.type,
-                            this.weight,
-                            this.assessmentBbId,
-                            this.assessmentLocation};
-    }
-
-    public String[] toStringArrayHeader()
-    {
-        return new String[]{"LineItemBbId","Name","Date Added",
-                            "Date Changed","Column position",
-                            "Available","Points Possible","Type",
-                            "Weight","to do:AssessmentBbId",
-                            "Assessment Location"};
-    }
 }

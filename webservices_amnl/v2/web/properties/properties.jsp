@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" import="java.util.*,bbaws.BbWsProperty" %>
+<%@ page language="java" pageEncoding="UTF-8" import="java.util.*,bbws.BbWsProperty" %>
 <%@ taglib uri="/bbUI" prefix="bbUI"%>
 <%@ taglib uri="/bbData" prefix="bbData"%>
 <%
@@ -23,8 +23,8 @@ under the License.
 %>
 <bbData:context>
     <bbUI:docTemplate title="Blackboard Administrator Tools">
-	<bbUI:titleBar>Announcements webservice security properties</bbUI:titleBar>
-	<jsp:useBean id="PersistWSProperties" scope="session" class="bbaws.PropertiesBean.PropertiesBean"/>
+	<bbUI:titleBar>Course webservice security properties</bbUI:titleBar>
+	<jsp:useBean id="PersistWSProperties" scope="session" class="bbws.PropertiesBean.PropertiesBean"/>
 <%
     String submit = request.getParameter("submit");
     if(submit==null) submit = "false";
@@ -37,7 +37,7 @@ under the License.
 %>
 	<script type="text/javascript" src="md5.js"></script>
 	<script type="text/javascript" src="hash.js"></script>
-	<form action="#" method="POST" name="aForm" onsubmit="preSubmit()">
+	    <form action="#" method="POST" name="aForm" onsubmit="preSubmit()">
 	    <input type="hidden" name="submit" value="true" />
 	    <bbUI:step number="1" title="Security options">
 <%
@@ -62,7 +62,7 @@ under the License.
 %>
 
 		<bbUI:instructions>Enter a password:</bbUI:instructions>
-		    <input type="hidden" name="pwd.set" value="Yes" />
+		<input type="hidden" name="pwd.set" value="Yes" />
 		<bbUI:dataElement label="Hash password?" required="true">
 		    <input type="checkbox" id="pwd.isHashed" checked />
 		</bbUI:dataElement>
@@ -96,7 +96,7 @@ under the License.
 <%
     }
 %>
-    <a href="/webapps/amnl-BBAnnouncementsWebService-bb_bb60/BBAnnouncementsWebService">Click for endpoint</a><br/>
-    <a href="/webapps/amnl-BBAnnouncementsWebService-bb_bb60/BBAnnouncementsWebService?wsdl">Click for wsdl</a>
+    <a href="/webapps/amnl-BBWebService-bb_bb60/BBWebService">Click for endpoint</a><br/>
+    <a href="/webapps/amnl-BBWebService-bb_bb60/BBWebService?wsdl">Click for wsdl</a>
     </bbUI:docTemplate>
 </bbData:context>

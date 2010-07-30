@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbuws;
+package bbws.user;
 
 import blackboard.data.role.PortalRole;
 import blackboard.data.user.User;
@@ -32,11 +32,11 @@ import java.util.Calendar;
  * @author Andrew.Martin@ncl.ac.uk
  * @author G.G.Bowie@ljmu.ac.uk
  */
-public class UserDetails implements ReturnTypeInterface
+public class BBUser
 {
-    public enum Verbosity{minimal,standard,extended}
+    public enum BBUserVerbosity{minimal,standard,extended}
 
-    private Verbosity verbosity;
+    private BBUserVerbosity verbosity;
     //standard details
     private String bbId;
     private String userName;
@@ -85,6 +85,8 @@ public class UserDetails implements ReturnTypeInterface
     private Boolean isInfoPublic;
     private String modifiedDate;
     private String locale;
+    private String password;
+    private String stateOrProvince;
 
     //standard details
     
@@ -453,17 +455,32 @@ public class UserDetails implements ReturnTypeInterface
     public String getLocale() {
         return locale;
     }
-
+ 
     public void setLocale(String locale) {
         this.locale = locale;
     }
-    
-    public UserDetails(){}
-    public UserDetails(Verbosity verbosity)
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setStateOrProvince(String stateOrProvince) {
+        this.stateOrProvince = stateOrProvince;
+    }
+
+    public String getStateOrProvince() {
+        return stateOrProvince;
+    }
+
+    public BBUser(){}
+    public BBUser(BBUserVerbosity verbosity)
     {
 	this.verbosity = verbosity;	
     }
-    public UserDetails(User bbUser, Verbosity verbosity) throws Exception
+    public BBUser(User bbUser, BBUserVerbosity verbosity) throws Exception
     {
 	this.verbosity = verbosity;
 	switch(this.verbosity)
@@ -513,6 +530,8 @@ public class UserDetails implements ReturnTypeInterface
 
 		modifiedDate = extractModifiedDate(bbUser);
 		locale = bbUser.getLocale();
+                password = bbUser.getPassword();
+                stateOrProvince = bbUser.getState();
 	    case standard:
 		bbId = bbUser.getId().toExternalString();
 		givenName = bbUser.getGivenName();
@@ -589,108 +608,5 @@ public class UserDetails implements ReturnTypeInterface
         {
             return "Never";
         }
-    }
-
-    public String[] toStringArrayHeader()
-    {
-	switch(this.verbosity)
-	{
-        case minimal:
-        return new String[]{"Username"};
-	    case standard:
-        return new String[]{"User BbId","First Name","Middle Name",
-				    "Second Name","Email Address",
-				    "Last Logged In","Primary Portal Role","System Role"};
-	    case extended:
-		return new String[]{"User BbId","First Name","Middle Name",
-				    "Second Name","Email Address",
-				    "Last Logged In","Primary Portal Role","System Role",
-				    "Batch User BbId","Data Source BbId",
-				    "User Name","Student Id","Title",
-				    "System Role Id","Portal Role Id",
-				    "Gender","Birth Date","Education Level","Job Title",
-				    "Company","Department","Street 1","Street 2",
-				    "City","State/County","Country","Zip/Post Code",
-				    "Business Phone 1","Business Phone 2",
-				    "Mobile Phone","Home Phone 1","Home Phone 2",
-				    "Business Fax","Home Fax","Web Page","Card Number",
-				    "CDROM Drive Mac","CDROM Drive PC","Show Add Contact Info.",
-				    "Show Address Info.","Show Email Info.","Show Work Info.",
-				    "Avaialble","Info. Public",
-				    "Modified Date","Locale"};
-	    default: return new String[]{};
-	}
-    }
-
-    public String[] toStringArray()
-    {
-	switch(this.verbosity)
-	{
-        case minimal:
-        return new String[]{
-            this.userName
-        };
-	    case standard:
-		return new String[]{
-		    this.bbId,
-		    this.givenName,
-		    this.middleName,
-		    this.familyName,
-		    this.emailAddress,
-		    this.lastLogin,
-		    this.roleName,
-		    this.systemRole
-		};
-	    case extended:
-		return new String[]{
-		    this.bbId,
-		    this.givenName,
-		    this.middleName,
-		    this.familyName,
-		    this.emailAddress,
-		    this.lastLogin,
-		    this.roleName,
-		    this.systemRole,
-		    this.batchUserBbId,
-		    this.dataSourceBbId,
-		    this.userName,
-		    this.studentId,
-		    this.title,
-		    this.systemRoleId,
-		    this.portalRoleId,
-		    this.gender,
-		    this.birthDate,
-		    this.educationLevel,
-		    this.jobTitle,
-		    this.company,
-		    this.department,
-		    this.street1,
-		    this.street2,
-		    this.city,
-		    this.county,
-		    this.country,
-		    this.postCode,
-		    this.businessPhone1,
-		    this.businessPhone2,
-		    this.mobilePhone,
-		    this.homePhone1,
-		    this.homePhone2,
-		    this.businessFax,
-		    this.homeFax,
-		    this.webPage,
-		    this.cardNumber,
-		    this.cdROMDriveMac,
-		    this.cdROMDrivePC,
-		    Boolean.toString(this.showAddContactInfo),
-		    Boolean.toString(this.showAddressInfo),
-		    Boolean.toString(this.showEmailInfo),
-		    Boolean.toString(this.showWorkInfo),
-		    Boolean.toString(this.isAvailable),
-		    Boolean.toString(this.isInfoPublic),
-		    this.modifiedDate,
-		    this.locale,
-		};
-	    default: return new String[]{};
-	}
     }
 }

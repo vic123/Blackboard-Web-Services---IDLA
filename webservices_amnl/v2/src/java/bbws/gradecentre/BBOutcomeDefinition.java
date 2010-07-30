@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbgbws;
+package bbws.gradecentre;
 
 //blackboard
 import blackboard.data.gradebook.impl.OutcomeDefinition;
@@ -26,7 +26,7 @@ import blackboard.data.gradebook.impl.OutcomeDefinition;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class OutcomeDefinitionDetails implements ReturnTypeInterface
+public class BBOutcomeDefinition
         
 {
     private String asiDataBbId;
@@ -38,8 +38,8 @@ public class OutcomeDefinitionDetails implements ReturnTypeInterface
     private String title;
     private Float weight;
 
-    public OutcomeDefinitionDetails(){}
-    public OutcomeDefinitionDetails(OutcomeDefinition od)
+    public BBOutcomeDefinition(){}
+    public BBOutcomeDefinition(OutcomeDefinition od)
     {
         this.asiDataBbId = od.getAsiDataId().toExternalString();
         this.category = od.getCategory().getDescription();
@@ -131,23 +131,4 @@ public class OutcomeDefinitionDetails implements ReturnTypeInterface
 	this.weight = weight;
     }
     
-    public String[] toStringArray()
-    {
-        return new String[]{
-            this.outcomeDefinitionBbId,
-            this.title,
-            Float.toString(this.weight),
-            this.category,
-            this.description,
-            Integer.toString(this.numOfOutcomes),
-            Integer.toString(this.position)
-        };
-    }
-    
-    public String[] toStringArrayHeader()
-    {
-        return new String[]{"OutcomeDefinitionBbId","Title",
-                    "Weight","Category","Description",
-                    "Num of outcomes","Position"};
-    }
 }

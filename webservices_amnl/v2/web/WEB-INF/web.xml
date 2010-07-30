@@ -4,22 +4,17 @@
         <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
     </listener>
     <servlet>
-        <servlet-name>BBAnnouncementsWebService</servlet-name>
+        <servlet-name>BBWebService</servlet-name>
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
-        </servlet>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>BBAnnouncementsWebService</servlet-name>
-        <url-pattern>/BBAnnouncementsWebService</url-pattern>
+        <servlet-name>BBWebService</servlet-name>
+        <url-pattern>/BBWebService</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-	<welcome-file>
-            index.jsp
-        </welcome-file>
-    </welcome-file-list>
 </web-app>

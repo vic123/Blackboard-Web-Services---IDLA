@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbgbws;
+package bbws.gradecentre;
 
 //blackboard
 import blackboard.data.gradebook.impl.Outcome;
@@ -26,7 +26,7 @@ import blackboard.data.gradebook.impl.Outcome;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class OutcomeDetails implements ReturnTypeInterface
+public class BBOutcome
 {
     private String averageGrade;
     private Float averageScore;
@@ -46,8 +46,8 @@ public class OutcomeDetails implements ReturnTypeInterface
     private String studentComments;
     private Float totalScore;
     
-    public OutcomeDetails(){}
-    public OutcomeDetails(Outcome o)
+    public BBOutcome(){}
+    public BBOutcome(Outcome o)
     {
         this.averageGrade = o.getAverageGrade(false);
         try{this.averageScore = o.getAverageScore();}catch(Exception e){this.averageScore = new Float(0);}
@@ -238,47 +238,4 @@ public class OutcomeDetails implements ReturnTypeInterface
 	this.totalScore = totalScore;
     }
 
-    public String[] toStringArray()
-    {
-        return new String[]{this.averageGrade,
-                    Float.toString(this.averageScore),
-                    this.courseMembershipBbId,
-                    this.firstAttemptBbId,
-                    this.grade,
-                    this.gradebookStatus,
-                    this.highestAttemptBbId,
-                    this.instructorComments,
-                    this.lastAttemptBbId,
-                    this.lowestAttemptBbId,
-                    this.manualGrade,
-                    Float.toString(this.manualScore),
-                    this.outcomeBbId,
-                    this.outcomeDefinitionBbId,
-                    Float.toString(this.score),
-                    this.studentComments,
-                    Float.toString(this.totalScore)
-        };
-    }
-
-    public String[] toStringArrayHeader()
-    {
-        return new String[]{"Average Grade",
-                    "Average Score",
-                    "Course Membership BbId",
-                    "First Attempt BbId",
-                    "Grade",
-                    "Gradebook Status",
-                    "Highest Attempt BbId",
-                    "Instructor Comments",
-                    "Last Attempt BbId",
-                    "Lowest Attempt BbId",
-                    "Manual Grade",
-                    "Manual Score",
-                    "Outcome BbId",
-                    "Outcome Definition BbId",
-                    "Score",
-                    "Student Comments",
-                    "totalScore"
-        };
-    }
 }

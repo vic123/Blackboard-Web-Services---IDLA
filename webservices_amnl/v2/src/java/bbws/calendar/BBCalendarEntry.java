@@ -17,56 +17,52 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbws.announcement;
+package bbws.calendar;
 
-import blackboard.data.announcement.Announcement;
+import blackboard.data.calendar.CalendarEntry;
 import java.util.Calendar;
 /**
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class BBAnnouncement
+public class BBCalendarEntry
 {
-    private String announcementBbId;
-    private String body;
+    private String calendarEntryBbId;
+    private String description;
     private String endDate;
-    private Boolean permanent;
+    private String externalType;
     private String startDate;
-    private String title;
-    private String type;
-    
-    public BBAnnouncement(){}
-    public BBAnnouncement(Announcement a)
-    {
-	this.announcementBbId = a.getId().toExternalString();
-	this.body = a.getBody().getText();
-	this.endDate = extractDate(a.getRestrictionEndDate());
-	this.permanent = a.getIsPermanent();
-	this.startDate = extractDate(a.getRestrictionStartDate());
-	this.title = a.getTitle();
-	this.type = a.getType().toFieldName();
-    }
-    
-    public String getAnnouncementBbId()
-    {
-	return this.announcementBbId;
-    }
-    
-    public void setAnnouncementBbId(String announcementBbId)
-    {
-	this.announcementBbId = announcementBbId;
-    }
-    
-    public String getBody()
-    {
-	return this.body;
-    }
-    
-    public void setBody(String body)
-    {
-	this.body = body;
-    }
 
+    public BBCalendarEntry(){}
+    public BBCalendarEntry(CalendarEntry ce)
+    {
+	this.calendarEntryBbId = ce.getId().toExternalString();
+	this.description = ce.getDescription().getText();
+	this.endDate = extractDate(ce.getEndDate());
+	this.externalType = ce.getType().toFieldName();
+	this.startDate = extractDate(ce.getStartDate());
+    }
+    
+    public String getCalendarEntryBbId()
+    {
+	return this.calendarEntryBbId;
+    }
+    
+    public void setCalendarEntryBbId(String calendarEntryBbId)
+    {
+	this.calendarEntryBbId = calendarEntryBbId;
+    }
+    
+    public String getDescription()
+    {
+	return this.description;
+    }
+    
+    public void setDescription(String description)
+    {
+	this.description = description;
+    }
+    
     public String getEndDate()
     {
 	return this.endDate;
@@ -77,16 +73,16 @@ public class BBAnnouncement
 	this.endDate = endDate;
     }
     
-    public Boolean getPermanent()
+    public String getExternalType()
     {
-	return this.permanent;
+	return this.externalType;
     }
     
-    public void setPermanent(Boolean permanent)
+    public void setExternalType(String externalType)
     {
-	this.permanent = permanent;
+	this.externalType = externalType;
     }
-
+    
     public String getStartDate()
     {
 	return this.startDate;
@@ -95,26 +91,6 @@ public class BBAnnouncement
     public void setStartDate(String startDate)
     {
 	this.startDate = startDate;
-    }
-
-    public String getTitle()
-    {
-	return title;
-    }
-    
-    public void setTitle(String title)
-    {
-	this.title = title;
-    }
-
-    public String getType()
-    {
-	return this.type;
-    }
-    
-    public void setType(String type)
-    {
-	this.type = type;
     }
 
     private String extractDate(Calendar cal)
@@ -129,16 +105,14 @@ public class BBAnnouncement
 	}
     }
     
-    private String[] getAnnouncementDetails()
+    private String[] getCalendarEntryDetails()
     {
 	return new String[]{
-	  this.announcementBbId,
-	  this.startDate,
-	  this.endDate,
-	  this.title,
-	  this.body,
-	  this.type,
-	  Boolean.toString(this.permanent)
+	    this.calendarEntryBbId,
+	    this.startDate,
+	    this.endDate,
+	    this.description,
+	    this.externalType
 	};
     }
 }

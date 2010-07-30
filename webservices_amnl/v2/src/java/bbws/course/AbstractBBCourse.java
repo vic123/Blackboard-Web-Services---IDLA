@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbcrsws;
+package bbws.course;
 
 import java.util.Calendar;
 
@@ -25,7 +25,7 @@ import java.util.Calendar;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public abstract class AbstractCourseDetails
+public abstract class AbstractBBCourse
 {
     protected String courseId;
     protected String creationDate;

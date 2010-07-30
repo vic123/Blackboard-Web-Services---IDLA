@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
  */
 
-package bbgbws;
+package bbws.gradecentre;
 
 //blackboard
 import blackboard.data.gradebook.impl.GradeBookSettings;
@@ -26,7 +26,7 @@ import blackboard.data.gradebook.impl.GradeBookSettings;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class GradeBookSettingsDetails implements ReturnTypeInterface
+public class BBGradeCentreSettings
 {
     private Boolean averageDisplayed;
     private Boolean commentsDisplayed;
@@ -37,8 +37,8 @@ public class GradeBookSettingsDetails implements ReturnTypeInterface
     private Boolean userIdDisplayed;
     private String weightType;
 
-    public GradeBookSettingsDetails(){}
-    public GradeBookSettingsDetails(GradeBookSettings gbs)
+    public BBGradeCentreSettings(){}
+    public BBGradeCentreSettings(GradeBookSettings gbs)
     {
         this.averageDisplayed = gbs.isAverageDisplayed();
         this.commentsDisplayed = gbs.areCommentsDisplayed();
@@ -130,25 +130,4 @@ public class GradeBookSettingsDetails implements ReturnTypeInterface
 	this.weightType = weightType;
     }
 
-    public String[] toStringArray()
-    {
-        return new String[]{
-            this.gradeBookSettingBbId,
-            Boolean.toString(this.commentsDisplayed),
-            this.weightType,
-            Boolean.toString(this.averageDisplayed),
-            Boolean.toString(this.firstLastDisplayed),
-            Boolean.toString(this.lastFirstDisplayed),
-            Boolean.toString(this.studentIdDisplayed),
-            Boolean.toString(this.userIdDisplayed)
-        };
-    }
-
-    public String[] toStringArrayHeader()
-    {
-        return new String[]{"GradeBookSettingBbId","Comments Displayed",
-                    "Weight Type","Average Displayed",
-                    "First/Last Displayed","Last/First Displayed",
-                    "Student Id Displayed","User Id Displayed"};
-    }
 }

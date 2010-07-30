@@ -16,7 +16,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
  */
-package bbgbws;
+package bbws.gradecentre;
 
 //blackboard
 import blackboard.data.gradebook.Score;
@@ -29,11 +29,11 @@ import java.util.Calendar;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
-public class ScoreDetails implements ReturnTypeInterface
+public class BBScore
 {
-    public enum Verbosity{standard,extended}
+    public enum BBScoreVerbosity{standard,extended}
 
-    private Verbosity verbosity;
+    private BBScoreVerbosity verbosity;
     //standard details
     private String dateAdded;
     private String dateChanged;
@@ -48,12 +48,12 @@ public class ScoreDetails implements ReturnTypeInterface
     private String dataType;
     private String lineItemBbId;
 
-    public ScoreDetails(){}
-    public ScoreDetails(Verbosity verbosity)
+    public BBScore(){}
+    public BBScore(BBScoreVerbosity verbosity)
     {
         this.verbosity = verbosity;
     }
-    public ScoreDetails(Score s,Verbosity verbosity)
+    public BBScore(Score s,BBScoreVerbosity verbosity)
     {
         this.verbosity = verbosity;
 
@@ -209,51 +209,4 @@ public class ScoreDetails implements ReturnTypeInterface
         }
     }
 
-    public String[] toStringArray()
-    {
-        switch(this.verbosity)
-        {
-            case standard:
-            return new String[]{this.scoreBbId,
-                        this.grade,
-                        this.outcomeDefBbId,
-                        this.dateAdded,
-                        this.dateChanged,
-                        this.dateModified};
-            case extended:
-            return new String[]{this.scoreBbId,
-                        this.grade,
-                        this.outcomeDefBbId,
-                        this.dateAdded,
-                        this.dateChanged,
-                        this.dateModified,
-                        this.courseMembershipBbId,
-                        this.lineItemBbId,
-                        this.attemptBbId,
-                        this.attemptLocation,
-                        this.dataType};
-            default:
-            return new String[]{};
-        }
-    }
-
-    public String[] toStringArrayHeader()
-    {
-        switch(this.verbosity)
-        {
-            case standard:
-            return new String[]{"ScoreBbId","Grade",
-                        "OutcomeDefBbId","Date Added",
-                        "Date Changed","Date Modified"};
-            case extended:
-            return new String[]{"ScoreBbId","Grade",
-                        "OutcomeDefBbId","Date Added",
-                        "Date Changed","Date Modified",
-                        "Course Membership BbId","lineItemBbId",
-                        "Attempt BbId","Attempt Location",
-                        "Data Type"};
-            default:
-            return new String[]{};
-        }
-    }
 }
