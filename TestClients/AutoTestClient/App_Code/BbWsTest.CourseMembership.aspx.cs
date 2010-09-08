@@ -17,7 +17,7 @@ public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunCourseMembershipTest() {
             //!!testArgs.ClearAllTestData();
-
+        
             testArgs.courseMembership.courseMembershipLoadRecordById.execute();
             testArgs.courseMembership.courseMembershipLoadListById.execute();
             testArgs.courseMembership.courseMembershipLoadRecordByCourseAndUserId.execute();
@@ -270,6 +270,9 @@ public partial class BbWsTest : System.Web.UI.Page
             args.testArgs.user.insertRecordAction.PreActionAndExecuteImp();
             args.testArgs.user.loadInsertedRecordAction.executeImp();
             args.wsInputRecord.userBbId = args.testArgs.user.wsResultRecord.bbId;
+            //causes error Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)	
+            args.wsInputRecord.userBatchUid = args.param.missFieldTag;
+            args.wsInputRecord.courseBatchUid = args.param.missFieldTag;
             args.ClearResults();
         }
         override public void postAction() {
@@ -288,11 +291,13 @@ public partial class BbWsTest : System.Web.UI.Page
             args.courseMembershipLoadRecordByCourseAndUserId.executeImp();
             args.wsInputRecord = args.wsResultRecord;
             args.wsInputRecord.userBbId = args.testArgs.user.wsResultRecord.bbId;
+            //causes error Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)	
+            args.wsInputRecord.userBatchUid = args.param.missFieldTag;
+            args.wsInputRecord.courseBatchUid = args.param.missFieldTag;
+            args.SetStandardUnsetabbleFieldsToMissFieldTag();
         }
         override public void postAction() {
-            args.insertRecordAction.preAction();
             args.insertRecordAction.postAction();
-            args.testArgs.user.insertRecordAction.postAction();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.courseMembershipUpdateRecordById(args.param, args.wsInputRecord);
@@ -303,6 +308,9 @@ public partial class BbWsTest : System.Web.UI.Page
             base.preAction();
             ShowResultListTableAndDataLog();
             args.SetFieldsExtended();
+            //causes error Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)	
+            args.wsInputRecord.userBatchUid = args.param.missFieldTag;
+            args.wsInputRecord.courseBatchUid = args.param.missFieldTag;
             args.ClearResults();
         }
     }
@@ -379,10 +387,11 @@ public partial class BbWsTest : System.Web.UI.Page
             args.MoveInputRecordToList();
         }
         override public void postAction() {
-            args.courseMembershipUpdateRecordById.postAction();
             args.testArgs.user.currentTestKeySuffix = args.testArgs.user.testKeySuffixes[0];
-            args.insertRecordAction.preAction();
-            args.insertRecordAction.postAction();
+            args.testArgs.user.insertRecordAction.postAction();
+            args.testArgs.user.currentTestKeySuffix = args.testArgs.user.testKeySuffixes[1];
+            args.testArgs.user.insertRecordAction.postAction();
+            args.testArgs.user.currentTestKeySuffix = args.testArgs.user.testKeySuffixes[0];
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.courseMembershipPersistListById(args.param, args.wsInputList.ToArray());
@@ -403,6 +412,9 @@ public partial class BbWsTest : System.Web.UI.Page
             cmd_list.Add(cmd);
             args.ClearInputsAndResults();
             args.wsInputList = cmd_list;
+        }
+        override public void postAction() {
+            args.courseMembershipPersistListById.postAction();
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.courseMembershipDeleteListById(args.param, args.wsInputList.ToArray());

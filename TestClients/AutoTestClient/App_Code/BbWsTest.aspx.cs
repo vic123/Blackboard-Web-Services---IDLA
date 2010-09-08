@@ -25,6 +25,7 @@ public partial class BbWsTest : System.Web.UI.Page
             testArgs = new TestArgsStruct();
 
             RunUserTest();
+            
             RunCourseMembershipTest();
             RunPortalRoleTest();
             RunObserverAssociationTest();
@@ -95,6 +96,8 @@ public partial class BbWsTest : System.Web.UI.Page
             group.currentTestKeySuffix = group.testKeySuffixes[0];
 
         }
+
+
     }
     TestArgsStruct testArgs;
 
@@ -117,6 +120,7 @@ public partial class BbWsTest : System.Web.UI.Page
     //class TestArgs<TestActionType> where TestActionType : TestAction<TestArgs<TestActionType>> {
     abstract class TestArgs<WsDataType> where WsDataType : new() {
         public String baseUserName = "student_001";
+        public String baseCourseId = "TestClass_001_ID";
         public String currentTestKeySuffix;
         public String[] testKeySuffixes;
 
@@ -147,21 +151,24 @@ public partial class BbWsTest : System.Web.UI.Page
             this.response = context.Response;
             param.password = "password"; //!!
             //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
-            param.dataLogSeverity = "DEBUG";
+            //param.dataLogSeverity = "DEBUG";
+            param.dataLogSeverity = "INFO";
             //public static enum DataVerbosity{NONE, ONLY_ID, MINIMAL, STANDARD, EXTENDED, CUSTOM}; 
-            //param.dataVerbosity = "EXTENDED";
+            param.dataVerbosity = "EXTENDED";
             //param.dataVerbosity = "CUSTOM";
-            param.dataVerbosity = "STANDARD";
+            //param.dataVerbosity = "STANDARD";
             
             //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
             //Same type as for dataLogSeverity
-            param.dataRecordErrorThrowSeverity = "FATAL";
+            //param.dataRecordErrorThrowSeverity = "FATAL";
+            param.dataRecordErrorThrowSeverity = "ERROR";
             //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
             //Same type as for dataLogSeverity
-            param.dataFieldErrorThrowSeverity = "FATAL";
-            //param.missFieldTag = null;
-            param.missFieldTag = "BbWsMissField";
-            param.nullValueTag = null;
+            //param.dataFieldErrorThrowSeverity = "FATAL";
+            param.dataFieldErrorThrowSeverity = "ERROR";
+            param.missFieldTag = null;
+            //param.missFieldTag = "BbWsMissField";
+            //param.nullValueTag = null;
 
             testKeySuffixes = new String[3];
             testKeySuffixes[0] = "_bbws_01";
@@ -226,8 +233,22 @@ public partial class BbWsTest : System.Web.UI.Page
             ClearInputs();
             ClearResults();
         }
-
-
+        public void SetStandardUnsetabbleFieldsToMissFieldTag() {
+            System.Reflection.PropertyInfo[] props = wsInputRecord.GetType().GetProperties();
+            foreach (System.Reflection.PropertyInfo prop in props) {
+                //wsResultRecord.
+                Object value = prop.GetValue(wsInputRecord, null);
+                String str_value = Convert.ToString(value);
+                switch (prop.Name) {
+                    case "creationDate":
+                        prop.SetValue(wsInputRecord, param.missFieldTag, null);
+                        break;
+                    case "modifiedDate":
+                        prop.SetValue(wsInputRecord, param.missFieldTag, null);
+                        break;
+                }
+            }
+        }
     }
 
     //***************************************************************************************    

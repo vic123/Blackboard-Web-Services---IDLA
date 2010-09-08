@@ -1329,5 +1329,161 @@ namespace bbIDLA
                 else return null;
             }
         }
+
+
+        //Course Load Record ById
+        public courseDetails CourseLoadRecordById(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseLoadRecordById(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseLoadRecordById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Load Record ByCourseId
+        public courseDetails CourseLoadRecordByCourseId(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseLoadRecordByCourseId(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseLoadRecordByCourseId", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Load Record ByBatchUid
+        public courseDetails CourseLoadRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseLoadRecordByBatchUid(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseLoadRecordByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Load List ByTemplate
+        public courseDetails[] CourseLoadListByTemplate(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseLoadListByTemplate(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseLoadListByTemplate", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Insert Record ById
+        public courseDetails CourseInsertRecordById(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseInsertRecordById(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseInsertRecordById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Update Record ById
+        public courseDetails CourseUpdateRecordById(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseUpdateRecordById(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseUpdateRecordById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Persist Record ById
+        public courseDetails CoursePersistRecordById(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.coursePersistRecordById(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CoursePersistRecordById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Delete Record ById
+        public courseDetails CourseDeleteRecordById(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseDeleteRecordById(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseDeleteRecordById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Copy Record ById
+        public courseDetails CourseCopyRecordById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord) {
+            try {
+                return bbAdded.courseCopyRecordById(@params, inputRecord, inputTargetCourseRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseCopyRecordById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Copy Record ByBatchUid
+        public courseDetails CourseCopyRecordByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord) {
+            try {
+                return bbAdded.courseCopyRecordByBatchUid(@params, inputRecord, inputTargetCourseRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseCopyRecordByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Insert Record ByBatchUid
+        public courseDetails CourseInsertRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseInsertRecordByBatchUid(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseInsertRecordByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Update Record ByBatchUid
+        public courseDetails CourseUpdateRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseUpdateRecordByBatchUid(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseUpdateRecordByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Persist Record ByBatchUid
+        public courseDetails CoursePersistRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.coursePersistRecordByBatchUid(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CoursePersistRecordByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Delete Record ByBatchUid
+        public courseDetails CourseDeleteRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            try {
+                return bbAdded.courseDeleteRecordByBatchUid(@params, inputRecord);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseDeleteRecordByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
     }
 }

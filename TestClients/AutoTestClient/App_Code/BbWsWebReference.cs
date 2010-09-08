@@ -366,4 +366,48 @@ public class BbWsWebReference : bbIDLA.BbAdded
         {
             return base.PortalRoleMembershipDeleteListByUserAndPortalRoleBatchUid(@params, inputList);
         }
+
+        public courseDetails courseLoadRecordById(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseLoadRecordById(@params, inputRecord);
+        }
+        public courseDetails courseLoadRecordByCourseId(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseLoadRecordByCourseId(@params, inputRecord);
+        }
+        public courseDetails courseLoadRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseLoadRecordByBatchUid(@params, inputRecord);
+        }
+        public courseDetails[] courseLoadListByTemplate(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseLoadListByTemplate(@params, inputRecord);
+        }
+        public courseDetails courseInsertRecordById(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseInsertRecordById(@params, inputRecord);
+        }
+        public courseDetails courseUpdateRecordById(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseUpdateRecordById(@params, inputRecord);
+        }
+        public courseDetails coursePersistRecordById(bbWsParams @params, courseDetails inputRecord) {
+            return base.CoursePersistRecordById(@params, inputRecord);
+        }
+        public courseDetails courseDeleteRecordById(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseDeleteRecordById(@params, inputRecord);
+        }
+        public courseDetails courseCopyRecordById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord) {
+            return base.CourseCopyRecordById(@params, inputRecord, inputTargetCourseRecord);
+        }
+        public courseDetails courseCopyRecordByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord) {
+            return base.CourseCopyRecordByBatchUid(@params, inputRecord, inputTargetCourseRecord);
+        }
+        public courseDetails courseInsertRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseInsertRecordByBatchUid(@params, inputRecord);
+        }
+        public courseDetails courseUpdateRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseUpdateRecordByBatchUid(@params, inputRecord);
+        }
+        public courseDetails coursePersistRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            return base.CoursePersistRecordByBatchUid(@params, inputRecord);
+        }
+        public courseDetails courseDeleteRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
+            return base.CourseDeleteRecordByBatchUid(@params, inputRecord);
+        }
+
 }
