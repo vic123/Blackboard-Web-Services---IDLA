@@ -210,7 +210,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
         if (lhm != null) {
             if (getArgs().getResultRecord() != null) {
                 if ( ! lhm.containsKey(getArgs().getResultRecord().getBbId())) {
-                    if (getArgs().getResultRecord().getBbId() == null) {
+                    if (BbWsUtil.nullSafeStringComparator(getArgs().getMissFieldTag(), getArgs().getResultRecord().getBbId()) == 0) {
                         getArgs().getResultRecord().setBbId(java.util.UUID.randomUUID().toString());
                     }
                     lhm.put(getArgs().getResultRecord().getBbId(), getArgs().getResultRecord());
@@ -261,7 +261,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 }
                 else {
                     if (getArgs().getResultRecord() != null ) {
-                        if (getArgs().getResultRecord().getBbId() == null) {
+                        if (BbWsUtil.nullSafeStringComparator(getArgs().getMissFieldTag(), getArgs().getResultRecord().getBbId()) == 0) {
                             getArgs().getResultRecord().setBbId(java.util.UUID.randomUUID().toString());
                         }
                         recordLHM.put(getArgs().getResultRecord().getBbId(), getArgs().getResultRecord());
@@ -289,8 +289,12 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                     accessRecord();
 
                     //??!! in case of handled exception it gets re-set incorrectly - may happen if RecordAccessor calls another RecordAccessor.access
-                    getArgs().getResultRecord().setTrueResult();
-
+                    //initial code:
+                    //getArgs().getResultRecord().setTrueResult();
+                    //100824 - trying this, was not tested well 
+                    if (BbWsUtil.nullSafeStringComparator(getArgs().getResultRecord().getBbWsBoolResult(), "false") != 0) {
+                        getArgs().getResultRecord().setTrueResult();
+                    }
                 } catch (Exception e) {
                     if (getArgs().getDataRecordErrorThrowLevel().compareTo(BbWsArguments.DataLogSeverity.ERROR) <= 0 ) {
                         //just rethrow it, it will be logged by DataAccessPack.execute()
@@ -334,6 +338,8 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
 
 
 
+    //Currently expected resultRecord argument can be only wsInputRecord
+    //?? function and/or its use needs revising
     protected void setOrCreateWsResultObjectIfNull (WsResultType resultRecord) throws Exception {
         //giving possibility for operations over resultRecord preparation to be handled in successor
         if (args.getResultRecord() == null) {
@@ -343,6 +349,9 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 args.setResultRecord(resultRecord);
                 setResultRecordIds();
             } else args.setResultRecord(resultRecord);
+            resultRecord.setBbWsBoolResult(null);
+            resultRecord.setBbWsTextResult(null);
+            resultRecord.setBbWsDataLog(new java.util.ArrayList<BbWsDataLogRecord>());
         }
     }
 
@@ -374,6 +383,11 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.ONLY_ID) > 0) {
                     setOrCreateWsResultObjectIfNull(getArgs().getInputRecord());
                 } else setOrCreateWsResultObjectIfNull(null);
+                //reset BbId of result record. If another record was used by client as a template, 
+                //and BbId remained set to this old record (client side flexibility - BbId value is ignored by insert),
+                //then returned result with set BbId is confusing
+                //!!Thing if in any other methods this should be considered
+                getArgs().getResultRecord().setBbId(getArgs().getMissFieldTag());
                 if (bbObject == null) bbObject = BbWsUtil.newClassInstanceWithThrow(bbObjectClass);
                 setBbFields();
                 //may be check on supplied Id == missFieldTag should be performed... 
@@ -382,7 +396,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 insertRecord();
                 getArgs().getResultRecord().incApiPassedCount();
                 if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.NONE) > 0) {
-                    getArgs().getResultRecord().setBbId(getArgs().getMissFieldTag());
+                    getArgs().getResultRecord().setBbId(getArgs().getMissFieldTag()); //?? it is not necessary here now (was added above)
                     loadRecordByAltId();
                     setWsFields();
                 };
@@ -445,7 +459,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 } else setOrCreateWsResultObjectIfNull(null);
                 
                 deleteRecord();
-                getArgs().getResultRecord().setTrueResult();
+                //??getArgs().getResultRecord().setTrueResult();
             }
         }
 
@@ -669,7 +683,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                         && BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) == 0
                         //!! all possible IDs have to be handled here - those that are set with setResultRecordIds()
                         && fieldName.compareTo("bbId") != 0) {
-                    addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.DEBUG,
+                    addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.INFO,
                             fieldName, value, bb_value, ws_value, "setWsField(): Field is omitted - dataVerbosity is set to CUSTOM and ws_value is set to missFieldTag.", null);
                     return;
                 }
@@ -680,7 +694,9 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 if (getArgs().getResultRecord().getApiPassedCount() > 0 
                         && BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) != 0) {  //if we are comparing data reloaded after saving and dataVerbosity != CUSTOM
                     if (!checkByNewValueCompareWithOld(ws_value, value)) {
-                        String message = "setWsField(): APIs returned different values.";
+                        value = getArgs().getErrorValueTag(); //!! quick fix - when error is thrown from here, but not thrown on record level, returned value is not set to BbWsError 
+                        setWsFieldImp(value); //!!
+                        String message = "setWsField(): APIs returned different values for " + fieldName + "; bb_value: " + bb_value + ";ws_value: " + ws_value;
                         addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
                             fieldName, value, bb_value, ws_value, message, null);
                         value = getArgs().getErrorValueTag();
@@ -701,7 +717,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                     throw new BbWsException(message, e);
                 }*/
             }
-            addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.INFO,
+            addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.DEBUG,
                 fieldName, value, bb_value, ws_value, 
                 "setWsField(): Processed.", null);
         }
@@ -722,7 +738,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
             try {
                 ws_value = getWsFieldValue();
                 if (BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) == 0) {
-                    addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.DEBUG,
+                    addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.INFO,
                         fieldName, value, bb_value, ws_value, "setBbField(): Field is omitted - ws_value is set to missFieldTag.", null);
                     return;
                 }
@@ -740,7 +756,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
                     fieldName, value, bb_value, ws_value, "setBbField(): " + e.toString(), e);
             }
-            addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.INFO,
+            addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.DEBUG,
                 fieldName, value, bb_value, ws_value, "setBbField(): Processed.", null);
         }
     }

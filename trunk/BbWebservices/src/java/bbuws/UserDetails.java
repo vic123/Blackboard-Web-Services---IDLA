@@ -34,7 +34,8 @@ import java.util.Calendar;
  * @author G.G.Bowie@ljmu.ac.uk
  */
 
-/* When setting, password can be provided both as clear text or as pre-prepared MD5 hash.
+/* (vic) - 
+ * When setting, password can be provided both as clear text or as pre-prepared MD5 hash.
  * MD5 hash must have a form 32 hexadecimal symbols with letters A-F being in upper case, 
  * otherwise it will be assumed as clear-text password that has to be hashed.
  * Returned value is always hash of the password

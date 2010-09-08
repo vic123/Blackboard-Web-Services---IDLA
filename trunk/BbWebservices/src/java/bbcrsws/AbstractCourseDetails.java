@@ -28,7 +28,7 @@ public abstract class AbstractCourseDetails extends bbwscommon.BbWsDataDetails {
 
     protected String courseId;
     protected String creationDate;
-    protected Boolean available;
+    protected String isAvailable;
 
     protected String extractDate(Calendar cal) {
         try {
@@ -54,11 +54,11 @@ public abstract class AbstractCourseDetails extends bbwscommon.BbWsDataDetails {
         this.creationDate = creationDate;
     }
 
-    public Boolean getAvailable() {
-        return this.available;
+    public String getIsAvailable() {
+        return this.isAvailable;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public void setIsAvailable(String isAvailable) {
+        this.isAvailable = isAvailable;
     }
 }

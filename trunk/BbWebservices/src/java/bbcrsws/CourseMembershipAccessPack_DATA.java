@@ -32,9 +32,9 @@ public class CourseMembershipAccessPack_DATA
     @Override protected void setBbCourseBatchUidField() throws Exception {
         if (BbWsUtil.nullSafeStringComparator(getArgs().getInputRecord().getCourseBatchUid(), getArgs().getMissFieldTag()) != 0) {
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
-                "courseBatchUid", null, null, getArgs().getInputRecord().getCourseBatchUid(), "Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
+                "courseBatchUid", null, null, getArgs().getInputRecord().getCourseBatchUid(), "setBbField(): Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
+            getArgs().getResultRecord().setCourseBatchUid(getArgs().getErrorValueTag());            
         }
-        getArgs().getResultRecord().setCourseBatchUid(getArgs().getErrorValueTag());
     }
 
     @Override protected void setWsCourseBatchUidField() throws Exception {
@@ -63,9 +63,9 @@ public class CourseMembershipAccessPack_DATA
     @Override protected void setBbUserBatchUidField() throws Exception {
         if (BbWsUtil.nullSafeStringComparator(getArgs().getInputRecord().getCourseBatchUid(), getArgs().getMissFieldTag()) != 0) {
             addDataLog(getArgs().getResultRecord(), BbWsArguments.DataLogSeverity.ERROR,
-                "userBatchUid", null, null, getArgs().getInputRecord().getCourseBatchUid(), "Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
+                "userBatchUid", null, null, getArgs().getInputRecord().getCourseBatchUid(), "setBbField(): Field was provided, but is not accessible from DATA API (blackboard.data.CourseMebership)", null);
+            getArgs().getResultRecord().setUserBatchUid(getArgs().getErrorValueTag());            
         }
-        getArgs().getResultRecord().setUserBatchUid(getArgs().getErrorValueTag());
     }
 
     @Override protected void setWsUserBatchUidField() throws Exception {
