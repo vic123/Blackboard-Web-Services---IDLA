@@ -32,7 +32,7 @@ public class EnrollmentDetails extends AbstractCourseDetails implements ReturnTy
     EnrollmentDetails(){}
     EnrollmentDetails(Enrollment enr)
     {
-        this.available = enr.getIsAvailable();
+        this.isAvailable = Boolean.toString(enr.getIsAvailable());
         this.creationDate = extractDate(enr.getEnrollmentDate());
         this.courseId = enr.getCourseSiteBatchUid();
         this.userRole = enr.getRole().toFieldName();
@@ -52,7 +52,7 @@ public class EnrollmentDetails extends AbstractCourseDetails implements ReturnTy
     public String[] toStringArray()
     {
 	return new String[]{this.courseId,
-			    Boolean.toString(this.available),
+			    this.isAvailable,
 			    this.creationDate,
 			    this.userRole
 	};

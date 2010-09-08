@@ -1171,8 +1171,196 @@ public class BbWebservices {
         BbWsApiProcessor.start(args);
         return args.getResultList();
     }
+//**************************************************************************************************************** 
+//******************************************************** Course
+//****************************************************************************************************************    
+    @WebMethod
+    public CourseDetails courseLoadRecordById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseLoadRecordById()", this);
+        CourseAccessPack.CourseArguments_DATA args
+                = new CourseAccessPack.CourseArguments_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "LoadRecordById");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails courseLoadRecordByCourseId
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseLoadRecordByCourseId()", this);
+        CourseAccessPack.CourseArguments_DATA args
+                = new CourseAccessPack.CourseArguments_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "LoadRecordByCourseId");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails courseLoadRecordByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseLoadRecordByBatchUid()", this);
+        CourseAccessPack.CourseArguments_DATA args
+                = new CourseAccessPack.CourseArguments_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "LoadRecordByBatchUid");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public List<CourseDetails> courseLoadListByTemplate
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseLoadListByTemplate()", this);
+        CourseAccessPack.CourseArguments_ADMIN_DATA args
+                = new CourseAccessPack.CourseArguments_ADMIN_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "LoadListByTemplate");
+        BbWsApiProcessor.start(args);
+        return args.getResultList();
+    }
+    @WebMethod
+    public CourseDetails courseInsertRecordById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseInsertRecordById()", this);
+        CourseAccessPack.CourseArguments_DATA args
+                = new CourseAccessPack.CourseArguments_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "InsertRecordById");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails courseUpdateRecordById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseUpdateRecordById()", this);
+        CourseAccessPack.CourseArguments_DATA args
+                = new CourseAccessPack.CourseArguments_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "UpdateRecordById");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails coursePersistRecordById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered coursePersistRecordById()", this);
+        CourseAccessPack.CourseArguments_DATA args
+                = new CourseAccessPack.CourseArguments_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "PersistRecordById");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails courseDeleteRecordById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseDeleteRecordById()", this);
+        CourseAccessPack.CourseArguments_DATA args
+                = new CourseAccessPack.CourseArguments_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "DeleteRecordById");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
 
-
+    @WebMethod
+    public CourseDetails courseCopyRecordById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord,
+                    @WebParam(name = "inputTargetCourseRecord") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordById()", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInput args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "CopyRecordById", inputTargetCourseRecord);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    
+    @WebMethod
+    public CourseDetails courseCopyRecordByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord,
+                    @WebParam(name = "inputTargetCourseRecord") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordByBatchUid()", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInput args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "CopyRecordByBatchUid", inputTargetCourseRecord);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails courseInsertRecordByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseInsertRecordByBatchUid()", this);
+        CourseAccessPack.CourseArguments_ADMIN_DATA args
+                = new CourseAccessPack.CourseArguments_ADMIN_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "InsertRecordByBatchUid");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails courseUpdateRecordByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseUpdateRecordByBatchUid()", this);
+        CourseAccessPack.CourseArguments_ADMIN_DATA args
+                = new CourseAccessPack.CourseArguments_ADMIN_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "UpdateRecordByBatchUid");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails coursePersistRecordByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered coursePersistRecordByBatchUid()", this);
+        CourseAccessPack.CourseArguments_ADMIN_DATA args
+                = new CourseAccessPack.CourseArguments_ADMIN_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "PersistRecordByBatchUid");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    @WebMethod
+    public CourseDetails courseDeleteRecordByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseDeleteRecordByBatchUid()", this);
+        CourseAccessPack.CourseArguments_ADMIN_DATA args
+                = new CourseAccessPack.CourseArguments_ADMIN_DATA();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "DeleteRecordByBatchUid");
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+    
 }
 
 /*

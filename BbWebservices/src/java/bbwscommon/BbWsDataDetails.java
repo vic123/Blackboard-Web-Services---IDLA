@@ -109,13 +109,13 @@ public abstract class BbWsDataDetails<ArgumentsType extends BbWsArguments>
     public void setFalseResult() {
         //appendDataLog(dd);
         //setBbWsBoolResult("false");
+        //!!- change "false"/"true" at least to constants. Or internal independent boolean value
         bbWsBoolResult = "false";
-        //??setBbWsTextResult("Successful operation");
     }
     public void setTrueResult() {
         //appendDataLog(dd);
         bbWsBoolResult = "true";
-        //??setBbWsTextResult("Error occurred");
+        setBbWsTextResult("Success");
     }
     
 //works(1)    public void initialize(ParamsType params) {

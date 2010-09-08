@@ -52,6 +52,7 @@ public class UserAccessPack_ADMIN_DATA extends UserAccessPack_DATA.UserAccessPac
         if (bbObject == null) {
             bbObject = new Person();
         }
+        //!! deleteRecord - this way, or through setBbFields()??
         bbObject.setBatchUid(getArgs().getInputRecord().getBatchUid());
         PersonPersister uper = PersonDbPersister.Default.getInstance();
         uper.remove(bbObject);

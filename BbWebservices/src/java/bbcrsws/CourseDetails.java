@@ -24,8 +24,57 @@ import blackboard.data.course.Course;
  *
  * @author Andrew.Martin@ncl.ac.uk
  */
+
+
+/* (vic) - 
+ * Following behavior was detected during update of Course via 
+ * CourseDbPersister.persist() in Bb rel. 9.0.440.0 
+ * (corresponds to courseUpdateRecordById() web method) :
+ * It looks like internal cache indexed by BatchUid does not update BatchUid key, 
+ * and if batchUid was updated, then loading by new batchUid immediately after update
+ * does not find anything, loading by previous batchUid returns updated record with  
+ * new batchUid value.
+ * Upon attempt of updating of CourseId it is updated only in cache, changes are not actually saved 
+ * to database, i.e. upon immediate reload CourseId will contain new value, but after some time it 
+ * changes back to initial value.
+ * 
+ * 
+ * courseDeleteRecordByBatchUid method performs archiving of deleted course, while
+ * courseDeleteRecordById does not.
+ * Archive of the course is placed in \blackboard\content\vi\bb_bb60\recyclebin.
+ * 
+ * classificationId is not settable via courseInsertRecordByBatchUid() and 
+ * courseUpdateRecordByBatchUid() methods
+ * 
+ * Updating of courseId with courseUpdateRecordByBatchUid() causes
+ * blackboard.data.ImmutableException: An immutable object can not be modified [Course id cannot be modified.]
+ */ 
 public class CourseDetails extends AbstractCourseDetails implements ReturnTypeInterface
 {
+
+    public String getEnrollmentStartDate() {
+        return enrollmentStartDate;
+    }
+
+    public void setEnrollmentStartDate(String enrollmentStartDate) {
+        this.enrollmentStartDate = enrollmentStartDate;
+    }
+
+    public String getEnrollmentEndDate() {
+        return enrollmentEndDate;
+    }
+
+    public void setEnrollmentEndDate(String enrollmentEndDate) {
+        this.enrollmentEndDate = enrollmentEndDate;
+    }
+
+    public String getEnrollmentAccessCode() {
+        return EnrollmentAccessCode;
+    }
+
+    public void setEnrollmentAccessCode(String EnrollmentAccessCode) {
+        this.EnrollmentAccessCode = EnrollmentAccessCode;
+    }
     public enum Verbosity{minimal,standard,extended}
 
     private Verbosity verbosity;
@@ -36,25 +85,28 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     private String modifiedDate;
     //extended details
     private String absoluteLimit;
-    private Boolean allowGuests;
-    private Boolean allowObservers;
+    private String allowGuests;
+    private String allowObservers;
     private String bannerImageFile;
     private String batchUid;
-    private String buttonStyle;
-    private String cartridgeDescription;
-    private String classification;
+    private String buttonStyleId;
+    private String cartridgeId;
+    private String classificationId;
     private String durationType;
     private String endDate;
-    private String enrollment;
+    private String enrollmentType;
+    private String enrollmentStartDate;
+    private String enrollmentEndDate;
+    private String EnrollmentAccessCode;
     private String institution;
-    private Boolean localeEnforced;
-    private Boolean lockedOut;
-    private Boolean navigationCollapsible;
+    private String isLocaleEnforced;
+    private String isLockedOut;
+    private String isNavigationCollapsible;
     private String locale;
-    private String navigationBackgroundColour;
-    private String navigationForegroundColour;
+    private String navigationBackgroundColor;
+    private String navigationForegroundColor;
     private String navigationStyle;
-    private Integer numberOfDaysOfUse;
+    private String numberOfDaysOfUse;
     private String paceType;
     private String serviceLevelType;
     private String softLimit;
@@ -74,25 +126,25 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
         {
             case extended:
                 this.absoluteLimit = Long.toString(course.getAbsoluteLimit());
-                this.allowGuests = course.getAllowGuests();
-                this.allowObservers = course.getAllowObservers();
+                this.allowGuests = Boolean.toString(course.getAllowGuests());
+                this.allowObservers = Boolean.toString(course.getAllowObservers());
                 try{this.bannerImageFile = course.getBannerImageFile().getPath();}catch(Exception e){this.bannerImageFile = "";}
                 this.batchUid = course.getBatchUid();
-                try{this.buttonStyle = course.getButtonStyle().getDescription();}catch(Exception e){this.buttonStyle = "";}
-                try{this.cartridgeDescription = course.getCartridge().getDescription();}catch(Exception e){this.cartridgeDescription = "";}
-                try{this.classification = course.getClassification().getTitle();}catch(Exception e){this.classification = "";}
+                this.buttonStyleId = course.getButtonStyleId().toExternalString();
+                this.cartridgeId = course.getCartridgeId().toExternalString();
+                this.classificationId = course.getClassificationId().toExternalString();
                 this.durationType = course.getDurationType().toFieldName();
                 this.endDate = extractDate(course.getEndDate());
-                this.enrollment = course.getEnrollmentType().toFieldName();
+                this.enrollmentType = course.getEnrollmentType().toFieldName();
                 this.institution = course.getInstitutionName();
-                this.localeEnforced = course.getIsLocaleEnforced();
-                this.lockedOut = course.getIsLockedOut();
-                this.navigationCollapsible = course.getIsNavCollapsible();
+                this.isLocaleEnforced = Boolean.toString(course.getIsLocaleEnforced());
+                this.isLockedOut = Boolean.toString(course.getIsLockedOut());
+                this.isNavigationCollapsible = Boolean.toString(course.getIsNavCollapsible());
                 this.locale = course.getLocale();
-                this.navigationBackgroundColour = course.getNavColorBg();
-                this.navigationForegroundColour = course.getNavColorFg();
+                this.navigationBackgroundColor = course.getNavColorBg();
+                this.navigationForegroundColor = course.getNavColorFg();
                 this.navigationStyle = course.getNavStyle().toFieldName();
-                this.numberOfDaysOfUse = course.getNumDaysOfUse();
+                this.numberOfDaysOfUse = Integer.toString(course.getNumDaysOfUse());
                 this.paceType = course.getPaceType().toFieldName();
                 this.serviceLevelType = course.getServiceLevelType().toFieldName();
                 this.softLimit = Long.toString(course.getSoftLimit());
@@ -104,7 +156,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                 this.description = course.getDescription();
                 this.creationDate = extractDate(course.getCreatedDate());
                 this.modifiedDate = extractDate(course.getModifiedDate());
-                this.available = course.getIsAvailable();
+                this.isAvailable = Boolean.toString(course.getIsAvailable());
             case minimal:
                 this.courseId = course.getCourseId();
             return;
@@ -164,22 +216,22 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
 	this.absoluteLimit = absoluteLimit;
     }
 
-    public Boolean getAllowGuests()
+    public String getAllowGuests()
     {
 	return this.allowGuests;
     }
 
-    public void setAllowGuests(Boolean allowGuests)
+    public void setAllowGuests(String allowGuests)
     {
 	this.allowGuests = allowGuests;
     }
 
-    public Boolean getAllowObservers()
+    public String getAllowObservers()
     {
 	return this.allowObservers;
     }
 
-    public void setAllowObservers(Boolean allowObservers)
+    public void setAllowObservers(String allowObservers)
     {
 	this.allowObservers = allowObservers;
     }
@@ -202,32 +254,32 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     {
 	this.batchUid = batchUId;
     }
-    public String getButtonStyle()
+    public String getButtonStyleId()
     {
-	return this.buttonStyle;
+	return this.buttonStyleId;
     }
 
-    public void setButtonStyle(String buttonStyle)
+    public void setButtonStyleId(String buttonStyleId)
     {
-	this.buttonStyle = buttonStyle;
+	this.buttonStyleId = buttonStyleId;
     }
-    public String getCartridgeDescription()
+    public String getCartridgeId()
     {
-	return this.cartridgeDescription;
-    }
-
-    public void setCartridgeDescription(String cartridgeDescription)
-    {
-	this.cartridgeDescription = cartridgeDescription;
-    }
-    public String getClassification()
-    {
-	return this.classification;
+	return this.cartridgeId;
     }
 
-    public void setClassification(String classification)
+    public void setCartridgeId(String cartridgeId)
     {
-	this.classification = classification;
+	this.cartridgeId = cartridgeId;
+    }
+    public String getClassificationId()
+    {
+	return this.classificationId;
+    }
+
+    public void setClassificationId(String classificationId)
+    {
+	this.classificationId = classificationId;
     }
     public String getDurationType()
     {
@@ -247,14 +299,14 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     {
 	this.endDate = endDate;
     }
-    public String getEnrollment()
+    public String getEnrollmentType()
     {
-	return this.enrollment;
+	return this.enrollmentType;
     }
 
-    public void setEnrollment(String enrollment)
+    public void setEnrollmentType(String enrollmentType)
     {
-	this.enrollment = enrollment;
+	this.enrollmentType = enrollmentType;
     }
     public String getInstitution()
     {
@@ -266,14 +318,14 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
 	this.institution = institution;
     }
 
-    public Boolean getLocaleEnforced()
+    public String getIsLocaleEnforced()
     {
-	return this.localeEnforced;
+	return this.isLocaleEnforced;
     }
 
-    public void setLocaleEnforced(Boolean localeEnforced)
+    public void setIsLocaleEnforced(String isLocaleEnforced)
     {
-	this.localeEnforced = localeEnforced;
+	this.isLocaleEnforced = isLocaleEnforced;
     }
 
     public String getLocale()
@@ -286,43 +338,43 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
 	this.locale = locale;
     }
 
-    public Boolean getNavigationCollapsible()
+    public String getIsNavigationCollapsible()
     {
-	return this.navigationCollapsible;
+	return this.isNavigationCollapsible;
     }
 
-    public void setNavigationCollapsible(Boolean navigationCollapsible)
+    public void setIsNavigationCollapsible(String isNavigationCollapsible)
     {
-	this.navigationCollapsible = navigationCollapsible;
+	this.isNavigationCollapsible = isNavigationCollapsible;
     }
 
-    public Boolean getLockedOut()
+    public String getIsLockedOut()
     {
-	return this.lockedOut;
+	return this.isLockedOut;
     }
 
-    public void setLockedOut(Boolean lockedOut)
+    public void setIsLockedOut(String isLockedOut)
     {
-	this.lockedOut = lockedOut;
+	this.isLockedOut = isLockedOut;
     }
 
-    public String getNavigationBackgroundColour()
+    public String getNavigationBackgroundColor()
     {
-	return this.navigationBackgroundColour;
+	return this.navigationBackgroundColor;
     }
 
-    public void setNavigationBackgroundColour(String navigationBackgroundColour)
+    public void setNavigationBackgroundColor(String navigationBackgroundColor)
     {
-	this.navigationBackgroundColour = navigationBackgroundColour;
+	this.navigationBackgroundColor = navigationBackgroundColor;
     }
-    public String getNavigationForegroundColour()
+    public String getNavigationForegroundColor()
     {
-	return this.navigationForegroundColour;
+	return this.navigationForegroundColor;
     }
 
-    public void setNavigationForegroundColour(String navigationForegroundColour)
+    public void setNavigationForegroundColor(String navigationForegroundColor)
     {
-	this.navigationForegroundColour = navigationForegroundColour;
+	this.navigationForegroundColor = navigationForegroundColor;
     }
     public String getNavigationStyle()
     {
@@ -333,12 +385,12 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
     {
 	this.navigationStyle = navigationStyle;
     }
-    public Integer getNumberOfDaysOfUse()
+    public String getNumberOfDaysOfUse()
     {
 	return this.numberOfDaysOfUse;
     }
 
-    public void setNumberOfDaysOfUse(Integer numberOfDaysOfUse)
+    public void setNumberOfDaysOfUse(String numberOfDaysOfUse)
     {
 	this.numberOfDaysOfUse = numberOfDaysOfUse;
     }
@@ -401,7 +453,7 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                         this.description,
                         this.creationDate,
                         this.modifiedDate,
-                        Boolean.toString(this.available)};
+                        this.isAvailable};
             case extended:
                 return new String[]{this.bbId,
                         this.courseId,
@@ -409,27 +461,27 @@ public class CourseDetails extends AbstractCourseDetails implements ReturnTypeIn
                         this.description,
                         this.creationDate,
                         this.modifiedDate,
-                        Boolean.toString(this.available),
+                        this.isAvailable,
                         this.absoluteLimit,
-                        Boolean.toString(this.allowGuests),
-                        Boolean.toString(this.allowObservers),
+                        this.allowGuests,
+                        this.allowObservers,
                         this.bannerImageFile,
                         this.batchUid,
-                        this.buttonStyle,
-                        this.cartridgeDescription,
-                        this.classification,
+                        this.buttonStyleId,
+                        this.cartridgeId,
+                        this.classificationId,
                         this.durationType,
                         this.endDate,
-                        this.enrollment,
+                        this.enrollmentType,
                         this.institution,
-                        Boolean.toString(this.localeEnforced),
-                        Boolean.toString(this.lockedOut),
-                        Boolean.toString(this.navigationCollapsible),
+                        this.isLocaleEnforced,
+                        this.isLockedOut,
+                        this.isNavigationCollapsible,
                         this.locale,
-                        this.navigationBackgroundColour,
-                        this.navigationForegroundColour,
+                        this.navigationBackgroundColor,
+                        this.navigationForegroundColor,
                         this.navigationStyle,
-                        Integer.toString(this.numberOfDaysOfUse),
+                        this.numberOfDaysOfUse,
                         this.paceType,
                         this.serviceLevelType,
                         this.softLimit,

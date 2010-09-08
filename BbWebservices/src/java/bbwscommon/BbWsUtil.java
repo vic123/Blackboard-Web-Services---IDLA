@@ -9,6 +9,7 @@ import blackboard.persist.impl.mapping.FilteredDbObjectMap;
 import blackboard.persist.impl.mapping.DbObjectMap;
 import blackboard.persist.impl.mapping.DbMapping;
 import blackboard.base.BbEnum;
+import blackboard.platform.log.LogService;
 
 import java.util.Calendar;
 import java.util.Arrays;
@@ -86,11 +87,18 @@ public class BbWsUtil {
         return Arrays.asList(lhm.values().toArray());
     }
     public static String constructExceptionMessage(Exception e) {
+        BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered BbWsUtil.constructExceptionMessage() ");
         String msg = e.toString();
         if (e.getCause() != null) msg += " CAUSED BY: " + e.getCause().toString();
-        if (e instanceof blackboard.base.NestedException) {
-            if (((blackboard.base.NestedException)e).getNestedException() != null) {
-                msg += " NESTED EXCEPTION: " + ((blackboard.base.NestedException)e).getNestedException().toString();
+        Throwable nested_e = e;
+		//!! add some loop variable protecting of the dead cycle (to allow no more than 10 loops for example) 
+        while (nested_e instanceof blackboard.base.NestedException) {
+        //if (e instanceof blackboard.base.NestedException) {
+            BbWsLog.logForward(LogService.Verbosity.DEBUG, "BbWsUtil.constructExceptionMessage() nested_e: " + String.valueOf(nested_e));
+            nested_e = ((blackboard.base.NestedException)nested_e).getNestedException();
+            if (nested_e != null) {
+                msg += " NESTED EXCEPTION: " + nested_e.toString();
+                if (nested_e.getCause() != null) msg += " CAUSED BY: " + nested_e.getCause().toString();
             }
         }
         return msg;
