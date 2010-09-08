@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" targetNamespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="WebServiceException" type="tns:WebServiceException" />
+  <xs:element name="courseCopyRecordByBatchUid" type="tns:courseCopyRecordByBatchUid" />
+  <xs:element name="courseCopyRecordByBatchUidResponse" type="tns:courseCopyRecordByBatchUidResponse" />
+  <xs:element name="courseCopyRecordById" type="tns:courseCopyRecordById" />
+  <xs:element name="courseCopyRecordByIdResponse" type="tns:courseCopyRecordByIdResponse" />
+  <xs:element name="courseDeleteRecordByBatchUid" type="tns:courseDeleteRecordByBatchUid" />
+  <xs:element name="courseDeleteRecordByBatchUidResponse" type="tns:courseDeleteRecordByBatchUidResponse" />
+  <xs:element name="courseDeleteRecordById" type="tns:courseDeleteRecordById" />
+  <xs:element name="courseDeleteRecordByIdResponse" type="tns:courseDeleteRecordByIdResponse" />
+  <xs:element name="courseInsertRecordByBatchUid" type="tns:courseInsertRecordByBatchUid" />
+  <xs:element name="courseInsertRecordByBatchUidResponse" type="tns:courseInsertRecordByBatchUidResponse" />
+  <xs:element name="courseInsertRecordById" type="tns:courseInsertRecordById" />
+  <xs:element name="courseInsertRecordByIdResponse" type="tns:courseInsertRecordByIdResponse" />
+  <xs:element name="courseLoadListByTemplate" type="tns:courseLoadListByTemplate" />
+  <xs:element name="courseLoadListByTemplateResponse" type="tns:courseLoadListByTemplateResponse" />
+  <xs:element name="courseLoadRecordByBatchUid" type="tns:courseLoadRecordByBatchUid" />
+  <xs:element name="courseLoadRecordByBatchUidResponse" type="tns:courseLoadRecordByBatchUidResponse" />
+  <xs:element name="courseLoadRecordByCourseId" type="tns:courseLoadRecordByCourseId" />
+  <xs:element name="courseLoadRecordByCourseIdResponse" type="tns:courseLoadRecordByCourseIdResponse" />
+  <xs:element name="courseLoadRecordById" type="tns:courseLoadRecordById" />
+  <xs:element name="courseLoadRecordByIdResponse" type="tns:courseLoadRecordByIdResponse" />
   <xs:element name="courseMembershipDeleteListById" type="tns:courseMembershipDeleteListById" />
   <xs:element name="courseMembershipDeleteListByIdResponse" type="tns:courseMembershipDeleteListByIdResponse" />
   <xs:element name="courseMembershipDeleteRecordById" type="tns:courseMembershipDeleteRecordById" />
@@ -34,6 +55,14 @@
   <xs:element name="courseMembershipUpdateListByIdResponse" type="tns:courseMembershipUpdateListByIdResponse" />
   <xs:element name="courseMembershipUpdateRecordById" type="tns:courseMembershipUpdateRecordById" />
   <xs:element name="courseMembershipUpdateRecordByIdResponse" type="tns:courseMembershipUpdateRecordByIdResponse" />
+  <xs:element name="coursePersistRecordByBatchUid" type="tns:coursePersistRecordByBatchUid" />
+  <xs:element name="coursePersistRecordByBatchUidResponse" type="tns:coursePersistRecordByBatchUidResponse" />
+  <xs:element name="coursePersistRecordById" type="tns:coursePersistRecordById" />
+  <xs:element name="coursePersistRecordByIdResponse" type="tns:coursePersistRecordByIdResponse" />
+  <xs:element name="courseUpdateRecordByBatchUid" type="tns:courseUpdateRecordByBatchUid" />
+  <xs:element name="courseUpdateRecordByBatchUidResponse" type="tns:courseUpdateRecordByBatchUidResponse" />
+  <xs:element name="courseUpdateRecordById" type="tns:courseUpdateRecordById" />
+  <xs:element name="courseUpdateRecordByIdResponse" type="tns:courseUpdateRecordByIdResponse" />
   <xs:element name="observerAssociationDeleteListByObserverAndUsersBatchUid" type="tns:observerAssociationDeleteListByObserverAndUsersBatchUid" />
   <xs:element name="observerAssociationDeleteListByObserverAndUsersBatchUidResponse" type="tns:observerAssociationDeleteListByObserverAndUsersBatchUidResponse" />
   <xs:element name="observerAssociationDeleteRecordByObserverAndUsersBatchUid" type="tns:observerAssociationDeleteRecordByObserverAndUsersBatchUid" />
@@ -48,6 +77,10 @@
   <xs:element name="observerAssociationLoadListByTemplateResponse" type="tns:observerAssociationLoadListByTemplateResponse" />
   <xs:element name="observerAssociationLoadRecordByObserverAndUsersBatchUid" type="tns:observerAssociationLoadRecordByObserverAndUsersBatchUid" />
   <xs:element name="observerAssociationLoadRecordByObserverAndUsersBatchUidResponse" type="tns:observerAssociationLoadRecordByObserverAndUsersBatchUidResponse" />
+  <xs:element name="observerAssociationPersistListByObserverAndUsersBatchUid" type="tns:observerAssociationPersistListByObserverAndUsersBatchUid" />
+  <xs:element name="observerAssociationPersistListByObserverAndUsersBatchUidResponse" type="tns:observerAssociationPersistListByObserverAndUsersBatchUidResponse" />
+  <xs:element name="observerAssociationPersistRecordByObserverAndUsersBatchUid" type="tns:observerAssociationPersistRecordByObserverAndUsersBatchUid" />
+  <xs:element name="observerAssociationPersistRecordByObserverAndUsersBatchUidResponse" type="tns:observerAssociationPersistRecordByObserverAndUsersBatchUidResponse" />
   <xs:element name="portalRoleDeleteRecordById" type="tns:portalRoleDeleteRecordById" />
   <xs:element name="portalRoleDeleteRecordByIdResponse" type="tns:portalRoleDeleteRecordByIdResponse" />
   <xs:element name="portalRoleInsertRecordById" type="tns:portalRoleInsertRecordById" />
@@ -168,10 +201,10 @@
   <xs:element name="userUpdateRecordByBatchUidResponse" type="tns:userUpdateRecordByBatchUidResponse" />
   <xs:element name="userUpdateRecordById" type="tns:userUpdateRecordById" />
   <xs:element name="userUpdateRecordByIdResponse" type="tns:userUpdateRecordByIdResponse" />
-  <xs:complexType name="observerAssociationLoadListByTemplate">
+  <xs:complexType name="courseInsertRecordByBatchUid">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="bbWsParams">
@@ -196,16 +229,52 @@
       <xs:element minOccurs="0" name="innerClassOverride" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="observerAssociationDetails">
+  <xs:complexType name="courseDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractCourseDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="absoluteLimit" type="xs:string" />
+          <xs:element minOccurs="0" name="allowGuests" type="xs:string" />
+          <xs:element minOccurs="0" name="allowObservers" type="xs:string" />
+          <xs:element minOccurs="0" name="bannerImageFile" type="xs:string" />
+          <xs:element minOccurs="0" name="batchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="buttonStyleId" type="xs:string" />
+          <xs:element minOccurs="0" name="cartridgeId" type="xs:string" />
+          <xs:element minOccurs="0" name="classificationId" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="durationType" type="xs:string" />
+          <xs:element minOccurs="0" name="endDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentAccessCode" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentEndDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentStartDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentType" type="xs:string" />
+          <xs:element minOccurs="0" name="institution" type="xs:string" />
+          <xs:element minOccurs="0" name="isLocaleEnforced" type="xs:string" />
+          <xs:element minOccurs="0" name="isLockedOut" type="xs:string" />
+          <xs:element minOccurs="0" name="isNavigationCollapsible" type="xs:string" />
+          <xs:element minOccurs="0" name="locale" type="xs:string" />
+          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationBackgroundColor" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationForegroundColor" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationStyle" type="xs:string" />
+          <xs:element minOccurs="0" name="numberOfDaysOfUse" type="xs:string" />
+          <xs:element minOccurs="0" name="paceType" type="xs:string" />
+          <xs:element minOccurs="0" name="serviceLevelType" type="xs:string" />
+          <xs:element minOccurs="0" name="softLimit" type="xs:string" />
+          <xs:element minOccurs="0" name="startDate" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="uploadLimit" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="abstractCourseDetails" abstract="true">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:bbWsDataDetails">
         <xs:sequence>
-          <xs:element minOccurs="0" name="dataSourceBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="dataSourceId" type="xs:string" />
-          <xs:element minOccurs="0" name="observerBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="observerBbId" type="xs:string" />
-          <xs:element minOccurs="0" name="usersBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="usersBbId" type="xs:string" />
+          <xs:element minOccurs="0" name="courseId" type="xs:string" />
+          <xs:element minOccurs="0" name="creationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="isAvailable" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -222,135 +291,30 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="apiPass" type="xs:string" />
       <xs:element minOccurs="0" name="apiUsed" type="xs:string" />
+      <xs:element minOccurs="0" name="bbValue" type="xs:string" />
       <xs:element minOccurs="0" name="dateTime" type="xs:string" />
       <xs:element minOccurs="0" name="fieldName" type="xs:string" />
       <xs:element minOccurs="0" name="message" type="xs:string" />
       <xs:element minOccurs="0" name="recordId" type="xs:string" />
       <xs:element minOccurs="0" name="severityLevel" type="xs:string" />
       <xs:element minOccurs="0" name="value" type="xs:string" />
+      <xs:element minOccurs="0" name="wsValue" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="observerAssociationLoadListByTemplateResponse">
+  <xs:complexType name="courseInsertRecordByBatchUidResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WebServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="bbWsFaultException">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="dataLog" nillable="true" type="tns:bbWsDataLogRecord" />
       <xs:element minOccurs="0" name="message" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipDetails">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:bbWsDataDetails">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="dataSourceBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="portalRoleBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="portalRoleId" type="xs:string" />
-          <xs:element minOccurs="0" name="recStatus" type="xs:string" />
-          <xs:element minOccurs="0" name="rowStatus" type="xs:string" />
-          <xs:element minOccurs="0" name="userBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="userId" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationLoadRecordByObserverAndUsersBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationLoadRecordByObserverAndUsersBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleLoadListRemovable">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleDetails">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:roleDetails">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="dataSourceBbId" type="xs:string" />
-          <xs:element minOccurs="0" name="description" type="xs:string" />
-          <xs:element minOccurs="0" name="isGuest" type="xs:string" />
-          <xs:element minOccurs="0" name="isRemovable" type="xs:string" />
-          <xs:element minOccurs="0" name="isSelfSelectable" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="roleDetails">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:role">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="role">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:bbWsDataDetails">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="roleId" type="xs:string" />
-          <xs:element minOccurs="0" name="roleName" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="portalRoleLoadListRemovableResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipUpdateListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipDetails">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:bbWsDataDetails">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="available" type="xs:string" />
-          <xs:element minOccurs="0" name="cartridgeAccess" type="xs:string" />
-          <xs:element minOccurs="0" name="childCourseId" type="xs:string" />
-          <xs:element minOccurs="0" name="courseBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="courseBbId" type="xs:string" />
-          <xs:element minOccurs="0" name="dataSourceBbId" type="xs:string" />
-          <xs:element minOccurs="0" name="enrollmentDate" type="xs:string" />
-          <xs:element minOccurs="0" name="introduction" type="xs:string" />
-          <xs:element minOccurs="0" name="lastAccessDate" type="xs:string" />
-          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
-          <xs:element minOccurs="0" name="notes" type="xs:string" />
-          <xs:element minOccurs="0" name="personalInfo" type="xs:string" />
-          <xs:element minOccurs="0" name="role" type="xs:string" />
-          <xs:element minOccurs="0" name="userBatchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="userBbId" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipUpdateListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userLoadListByEmailAddressFamilyNameGivenName">
@@ -393,6 +357,7 @@
           <xs:element minOccurs="0" name="middleName" type="xs:string" />
           <xs:element minOccurs="0" name="mobilePhone" type="xs:string" />
           <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
           <xs:element minOccurs="0" name="portalRoleId" type="xs:string" />
           <xs:element minOccurs="0" name="portalRoleName" type="xs:string" />
           <xs:element minOccurs="0" name="postCode" type="xs:string" />
@@ -428,6 +393,32 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="portalRoleMembershipPersistListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataSourceBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="portalRoleBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="portalRoleId" type="xs:string" />
+          <xs:element minOccurs="0" name="recStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="rowStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="userBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="userId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipPersistListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="portalRoleMembershipLoadListByUserId">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
@@ -437,56 +428,6 @@
   <xs:complexType name="portalRoleMembershipLoadListByUserIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipPersistListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipPersistListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipDeleteListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipDeleteListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadListByGroupId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-      <xs:element minOccurs="0" name="inputGroupRecord" type="tns:groupDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="groupDetails">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:bbWsDataDetails">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="available" type="xs:boolean" />
-          <xs:element minOccurs="0" name="chatRoomsAvailable" type="xs:boolean" />
-          <xs:element minOccurs="0" name="description" type="xs:string" />
-          <xs:element minOccurs="0" name="discussionBoardsAvailable" type="xs:boolean" />
-          <xs:element minOccurs="0" name="emailAvailable" type="xs:boolean" />
-          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
-          <xs:element minOccurs="0" name="title" type="xs:string" />
-          <xs:element minOccurs="0" name="transferAreaAvailable" type="xs:boolean" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="userLoadListByGroupIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="portalRoleMembershipInsertRecordById">
@@ -500,48 +441,30 @@
       <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleLoadRecordByRoleName">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleLoadRecordByRoleNameResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="observerAssociationDeleteRecordByObserverAndUsersBatchUid">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
       <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="observerAssociationDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataSourceBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="dataSourceId" type="xs:string" />
+          <xs:element minOccurs="0" name="observerBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="observerBbId" type="xs:string" />
+          <xs:element minOccurs="0" name="rowStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="usersBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="usersBbId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="observerAssociationDeleteRecordByObserverAndUsersBatchUidResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationInsertRecordByObserverAndUsersBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationInsertRecordByObserverAndUsersBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userUpdateRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userUpdateRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userPersistRecordByBatchUid">
@@ -561,6 +484,29 @@
       <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="courseMembershipDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="available" type="xs:string" />
+          <xs:element minOccurs="0" name="cartridgeAccess" type="xs:string" />
+          <xs:element minOccurs="0" name="childCourseId" type="xs:string" />
+          <xs:element minOccurs="0" name="courseBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="courseBbId" type="xs:string" />
+          <xs:element minOccurs="0" name="dataSourceBbId" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentDate" type="xs:string" />
+          <xs:element minOccurs="0" name="introduction" type="xs:string" />
+          <xs:element minOccurs="0" name="lastAccessDate" type="xs:string" />
+          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="notes" type="xs:string" />
+          <xs:element minOccurs="0" name="personalInfo" type="xs:string" />
+          <xs:element minOccurs="0" name="role" type="xs:string" />
+          <xs:element minOccurs="0" name="userBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="userBbId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="courseMembershipPersistRecordByIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
@@ -577,37 +523,89 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleInsertRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleInsertRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="portalRoleLoadListAll">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
       <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="portalRoleDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:roleDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataSourceBbId" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="isGuest" type="xs:string" />
+          <xs:element minOccurs="0" name="isRemovable" type="xs:string" />
+          <xs:element minOccurs="0" name="isSelfSelectable" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="roleDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:role">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="role">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="roleId" type="xs:string" />
+          <xs:element minOccurs="0" name="roleName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="portalRoleLoadListAllResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coursePersistRecordByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coursePersistRecordByBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseLoadRecordByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseLoadRecordByBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseInsertRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseInsertRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseDeleteRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseDeleteRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="courseMembershipLoadRecordByCourseAndUserBatchId">
@@ -632,15 +630,15 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByCourseIdAndRole">
+  <xs:complexType name="userInsertRecordByBatchUid">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByCourseIdAndRoleResponse">
+  <xs:complexType name="userInsertRecordByBatchUidResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
+      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="observerAssociationInsertListByObserverAndUsersBatchUid">
@@ -654,39 +652,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="userDeleteListByBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userDeleteListByBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userInsertRecordByBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userInsertRecordByBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipLoadRecordByCourseAndUserId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipLoadRecordByCourseAndUserIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="courseMembershipLoadListByCourseIdWithUserInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
@@ -696,29 +661,6 @@
   <xs:complexType name="courseMembershipLoadListByCourseIdWithUserInfoResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadListByPrimaryPortalRoleId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-      <xs:element minOccurs="0" name="inputRoleRecord" type="tns:roleDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadListByPrimaryPortalRoleIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="portalRoleLoadListAvailable">
@@ -732,17 +674,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="userUpdateListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userUpdateListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUid">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
@@ -752,28 +683,6 @@
   <xs:complexType name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipInsertRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipInsertRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipUpdateRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipUpdateRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="portalRoleLoadRecordDefault">
@@ -787,26 +696,15 @@
       <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+  <xs:complexType name="courseMembershipUpdateRecordById">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse">
+  <xs:complexType name="courseMembershipUpdateRecordByIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userPersistListByBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userPersistListByBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="portalRoleLoadRecordByRoleId">
@@ -829,28 +727,6 @@
   <xs:complexType name="portalRoleMembershipLoadListByPortalRoleIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRolePersistRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRolePersistRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipDeleteRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipDeleteRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="portalRoleLoadListAllByUserId">
@@ -887,15 +763,15 @@
       <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+  <xs:complexType name="userLoadRecordByName">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse">
+  <xs:complexType name="userLoadRecordByNameResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
+      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userLoadListByTemplate">
@@ -909,15 +785,509 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="userLoadRecordByName">
+  <xs:complexType name="courseLoadListByTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseLoadListByTemplateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadListByCourseId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
+      <xs:element minOccurs="0" name="inputCourseRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadListByCourseIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationDeleteListByObserverAndUsersBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationDeleteListByObserverAndUsersBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseDeleteRecordByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseDeleteRecordByBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadListBySearchByUserName">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
       <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="userLoadRecordByNameResponse">
+  <xs:complexType name="userLoadListBySearchByUserNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPersistListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPersistListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPersistRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPersistRecordByIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipDeleteListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipDeleteListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDeleteListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDeleteListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationPersistListByObserverAndUsersBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationPersistListByObserverAndUsersBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseCopyRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+      <xs:element minOccurs="0" name="inputTargetCourseRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseCopyRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadListByUserId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadListByUserIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationLoadListByObserverAndUsersBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationLoadListByObserverAndUsersBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadListByCourseId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadListByCourseIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipInsertListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipInsertListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipPersistRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipPersistRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationLoadListByTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationLoadListByTemplateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationLoadRecordByObserverAndUsersBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationLoadRecordByObserverAndUsersBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseUpdateRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseUpdateRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleLoadListRemovable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleLoadListRemovableResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipUpdateListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipUpdateListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseLoadRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseLoadRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadListByGroupId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
+      <xs:element minOccurs="0" name="inputGroupRecord" type="tns:groupDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="groupDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="available" type="xs:boolean" />
+          <xs:element minOccurs="0" name="chatRoomsAvailable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="discussionBoardsAvailable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="emailAvailable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="transferAreaAvailable" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="userLoadListByGroupIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipDeleteListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipDeleteListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleLoadRecordByRoleName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleLoadRecordByRoleNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationInsertRecordByObserverAndUsersBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationInsertRecordByObserverAndUsersBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userUpdateRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userUpdateRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseCopyRecordByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+      <xs:element minOccurs="0" name="inputTargetCourseRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseCopyRecordByBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseUpdateRecordByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseUpdateRecordByBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleInsertRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleInsertRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipLoadRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipLoadRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadListByCourseIdAndRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadListByCourseIdAndRoleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDeleteListByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDeleteListByBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadRecordByCourseAndUserId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipLoadRecordByCourseAndUserIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadListByPrimaryPortalRoleId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
+      <xs:element minOccurs="0" name="inputRoleRecord" type="tns:roleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadListByPrimaryPortalRoleIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userUpdateListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userUpdateListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipInsertRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipInsertRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPersistListByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPersistListByBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coursePersistRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coursePersistRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRolePersistRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRolePersistRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipDeleteRecordById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipDeleteRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="portalRoleLoadRecordById">
@@ -929,6 +1299,17 @@
   <xs:complexType name="portalRoleLoadRecordByIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="courseMembershipDeleteRecordById">
@@ -953,17 +1334,6 @@
       <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="courseMembershipInsertListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipInsertListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="userDeleteRecordById">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
@@ -975,6 +1345,17 @@
       <xs:element minOccurs="0" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="courseMembershipInsertListById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipInsertListByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="userUpdateRecordByBatchUid">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
@@ -984,76 +1365,6 @@
   <xs:complexType name="userUpdateRecordByBatchUidResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadListByCourseId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-      <xs:element minOccurs="0" name="inputCourseRecord" type="tns:courseDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseDetails">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:abstractCourseDetails">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="absoluteLimit" type="xs:string" />
-          <xs:element minOccurs="0" name="allowGuests" type="xs:boolean" />
-          <xs:element minOccurs="0" name="allowObservers" type="xs:boolean" />
-          <xs:element minOccurs="0" name="bannerImageFile" type="xs:string" />
-          <xs:element minOccurs="0" name="batchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="buttonStyle" type="xs:string" />
-          <xs:element minOccurs="0" name="cartridgeDescription" type="xs:string" />
-          <xs:element minOccurs="0" name="classification" type="xs:string" />
-          <xs:element minOccurs="0" name="description" type="xs:string" />
-          <xs:element minOccurs="0" name="durationType" type="xs:string" />
-          <xs:element minOccurs="0" name="endDate" type="xs:string" />
-          <xs:element minOccurs="0" name="enrollment" type="xs:string" />
-          <xs:element minOccurs="0" name="institution" type="xs:string" />
-          <xs:element minOccurs="0" name="locale" type="xs:string" />
-          <xs:element minOccurs="0" name="localeEnforced" type="xs:boolean" />
-          <xs:element minOccurs="0" name="lockedOut" type="xs:boolean" />
-          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
-          <xs:element minOccurs="0" name="navigationBackgroundColour" type="xs:string" />
-          <xs:element minOccurs="0" name="navigationCollapsible" type="xs:boolean" />
-          <xs:element minOccurs="0" name="navigationForegroundColour" type="xs:string" />
-          <xs:element minOccurs="0" name="navigationStyle" type="xs:string" />
-          <xs:element minOccurs="0" name="numberOfDaysOfUse" type="xs:int" />
-          <xs:element minOccurs="0" name="paceType" type="xs:string" />
-          <xs:element minOccurs="0" name="serviceLevelType" type="xs:string" />
-          <xs:element minOccurs="0" name="softLimit" type="xs:string" />
-          <xs:element minOccurs="0" name="startDate" type="xs:string" />
-          <xs:element minOccurs="0" name="title" type="xs:string" />
-          <xs:element minOccurs="0" name="uploadLimit" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="abstractCourseDetails" abstract="true">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:bbWsDataDetails">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="available" type="xs:boolean" />
-          <xs:element minOccurs="0" name="courseId" type="xs:string" />
-          <xs:element minOccurs="0" name="creationDate" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="userLoadListByCourseIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationDeleteListByObserverAndUsersBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationDeleteListByObserverAndUsersBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="portalRoleLoadRecordPrimaryRoleByUserId">
@@ -1068,37 +1379,15 @@
       <xs:element minOccurs="0" name="return" type="tns:portalRoleDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="userPersistListById">
+  <xs:complexType name="courseMembershipLoadListByTemplate">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="userPersistListByIdResponse">
+  <xs:complexType name="courseMembershipLoadListByTemplateResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadListBySearchByUserName">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadListBySearchByUserNameResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userPersistRecordById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userPersistRecordByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userDeleteRecordByBatchUid">
@@ -1112,26 +1401,15 @@
       <xs:element minOccurs="0" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByTemplate">
+  <xs:complexType name="courseLoadRecordByCourseId">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:courseDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByTemplateResponse">
+  <xs:complexType name="courseLoadRecordByCourseIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipDeleteListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipDeleteListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="courseMembershipLoadListById">
@@ -1165,17 +1443,6 @@
   <xs:complexType name="courseMembershipPersistListByIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userDeleteListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userDeleteListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userLoadListById">
@@ -1222,6 +1489,17 @@
       <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="observerAssociationPersistRecordByObserverAndUsersBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="observerAssociationPersistRecordByObserverAndUsersBatchUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:observerAssociationDetails" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="portalRoleLoadListSecondaryRolesByUserId">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
@@ -1234,28 +1512,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByUserId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByUserIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationLoadListByObserverAndUsersBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="observerAssociationLoadListByObserverAndUsersBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:observerAssociationDetails" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="userLoadRecordById">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
@@ -1265,39 +1521,6 @@
   <xs:complexType name="userLoadRecordByIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByCourseId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="courseMembershipLoadListByCourseIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipInsertListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipInsertListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadListById">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="portalRoleMembershipLoadListByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userLoadListAvailableObserversByCourseId">
@@ -1312,26 +1535,15 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:userDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleMembershipPersistRecordById">
+  <xs:complexType name="portalRoleMembershipLoadListById">
     <xs:sequence>
       <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:portalRoleMembershipDetails" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inputList" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="portalRoleMembershipPersistRecordByIdResponse">
+  <xs:complexType name="portalRoleMembershipLoadListByIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:portalRoleMembershipDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadRecordByBatchUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
-      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="userLoadRecordByBatchUidResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:portalRoleMembershipDetails" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userInsertRecordById">
@@ -1341,6 +1553,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="userInsertRecordByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadRecordByBatchUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:bbWsParams" />
+      <xs:element minOccurs="0" name="inputRecord" type="tns:userDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userLoadRecordByBatchUidResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:userDetails" />
     </xs:sequence>

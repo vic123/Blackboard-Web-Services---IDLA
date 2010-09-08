@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://bbgrpws/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="BBGroupWebServiceService" targetNamespace="http://bbgrpws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:tns="http://bbgrpws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBGroupWebServiceService" targetNamespace="http://bbgrpws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=2" namespace="http://bbgrpws/" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=2" namespace="http://bbgrpws/" />
     </xsd:schema>
   </types>
-  <message name="deleteGroup">
-    <part name="parameters" element="tns:deleteGroup" />
-  </message>
-  <message name="deleteGroupResponse">
-    <part name="parameters" element="tns:deleteGroupResponse" />
-  </message>
   <message name="addGivenUserToGivenGroup">
     <part name="parameters" element="tns:addGivenUserToGivenGroup" />
   </message>
   <message name="addGivenUserToGivenGroupResponse">
     <part name="parameters" element="tns:addGivenUserToGivenGroupResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
   </message>
   <message name="addGivenUserToGivenGroupXML">
     <part name="parameters" element="tns:addGivenUserToGivenGroupXML" />
@@ -49,6 +46,12 @@
   </message>
   <message name="deleteGivenUserFromGivenGroupXMLResponse">
     <part name="parameters" element="tns:deleteGivenUserFromGivenGroupXMLResponse" />
+  </message>
+  <message name="deleteGroup">
+    <part name="parameters" element="tns:deleteGroup" />
+  </message>
+  <message name="deleteGroupResponse">
+    <part name="parameters" element="tns:deleteGroupResponse" />
   </message>
   <message name="deleteGroupXML">
     <part name="parameters" element="tns:deleteGroupXML" />
@@ -123,94 +126,104 @@
     <part name="parameters" element="tns:modifyGroupXMLResponse" />
   </message>
   <portType name="BBGroupWebService">
-    <operation name="deleteGroup">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupRequest" message="tns:deleteGroup" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupResponse" message="tns:deleteGroupResponse" />
-    </operation>
     <operation name="addGivenUserToGivenGroup">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupRequest" message="tns:addGivenUserToGivenGroup" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupResponse" message="tns:addGivenUserToGivenGroupResponse" />
+      <input message="tns:addGivenUserToGivenGroup" />
+      <output message="tns:addGivenUserToGivenGroupResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="addGivenUserToGivenGroupXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupXMLRequest" message="tns:addGivenUserToGivenGroupXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGivenUserToGivenGroupXMLResponse" message="tns:addGivenUserToGivenGroupXMLResponse" />
+      <input message="tns:addGivenUserToGivenGroupXML" />
+      <output message="tns:addGivenUserToGivenGroupXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="addGroupToGivenCourse">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseRequest" message="tns:addGroupToGivenCourse" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseResponse" message="tns:addGroupToGivenCourseResponse" />
+      <input message="tns:addGroupToGivenCourse" />
+      <output message="tns:addGroupToGivenCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="addGroupToGivenCourseXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseXMLRequest" message="tns:addGroupToGivenCourseXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/addGroupToGivenCourseXMLResponse" message="tns:addGroupToGivenCourseXMLResponse" />
+      <input message="tns:addGroupToGivenCourseXML" />
+      <output message="tns:addGroupToGivenCourseXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteGivenUserFromGivenGroup">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupRequest" message="tns:deleteGivenUserFromGivenGroup" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupResponse" message="tns:deleteGivenUserFromGivenGroupResponse" />
+      <input message="tns:deleteGivenUserFromGivenGroup" />
+      <output message="tns:deleteGivenUserFromGivenGroupResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteGivenUserFromGivenGroupXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupXMLRequest" message="tns:deleteGivenUserFromGivenGroupXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGivenUserFromGivenGroupXMLResponse" message="tns:deleteGivenUserFromGivenGroupXMLResponse" />
+      <input message="tns:deleteGivenUserFromGivenGroupXML" />
+      <output message="tns:deleteGivenUserFromGivenGroupXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="deleteGroup">
+      <input message="tns:deleteGroup" />
+      <output message="tns:deleteGroupResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteGroupXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupXMLRequest" message="tns:deleteGroupXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/deleteGroupXMLResponse" message="tns:deleteGroupXMLResponse" />
+      <input message="tns:deleteGroupXML" />
+      <output message="tns:deleteGroupXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupDetailsForGivenCourseId">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdRequest" message="tns:getGroupDetailsForGivenCourseId" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdResponse" message="tns:getGroupDetailsForGivenCourseIdResponse" />
+      <input message="tns:getGroupDetailsForGivenCourseId" />
+      <output message="tns:getGroupDetailsForGivenCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupDetailsForGivenCourseIdWithNamedElements">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdWithNamedElementsRequest" message="tns:getGroupDetailsForGivenCourseIdWithNamedElements" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdWithNamedElementsResponse" message="tns:getGroupDetailsForGivenCourseIdWithNamedElementsResponse" />
+      <input message="tns:getGroupDetailsForGivenCourseIdWithNamedElements" />
+      <output message="tns:getGroupDetailsForGivenCourseIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupDetailsForGivenCourseIdXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdXMLRequest" message="tns:getGroupDetailsForGivenCourseIdXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenCourseIdXMLResponse" message="tns:getGroupDetailsForGivenCourseIdXMLResponse" />
+      <input message="tns:getGroupDetailsForGivenCourseIdXML" />
+      <output message="tns:getGroupDetailsForGivenCourseIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupDetailsForGivenGroupBbId">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdRequest" message="tns:getGroupDetailsForGivenGroupBbId" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdResponse" message="tns:getGroupDetailsForGivenGroupBbIdResponse" />
+      <input message="tns:getGroupDetailsForGivenGroupBbId" />
+      <output message="tns:getGroupDetailsForGivenGroupBbIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupDetailsForGivenGroupBbIdWithNamedElements">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdWithNamedElementsRequest" message="tns:getGroupDetailsForGivenGroupBbIdWithNamedElements" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" message="tns:getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+      <input message="tns:getGroupDetailsForGivenGroupBbIdWithNamedElements" />
+      <output message="tns:getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupDetailsForGivenGroupBbIdXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdXMLRequest" message="tns:getGroupDetailsForGivenGroupBbIdXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupDetailsForGivenGroupBbIdXMLResponse" message="tns:getGroupDetailsForGivenGroupBbIdXMLResponse" />
+      <input message="tns:getGroupDetailsForGivenGroupBbIdXML" />
+      <output message="tns:getGroupDetailsForGivenGroupBbIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupMembersForGivenGroupBbId">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMembersForGivenGroupBbIdRequest" message="tns:getGroupMembersForGivenGroupBbId" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMembersForGivenGroupBbIdResponse" message="tns:getGroupMembersForGivenGroupBbIdResponse" />
+      <input message="tns:getGroupMembersForGivenGroupBbId" />
+      <output message="tns:getGroupMembersForGivenGroupBbIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElements">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsRequest" message="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElements" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" message="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+      <input message="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElements" />
+      <output message="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getGroupMemberDetailsForGivenGroupBbIdXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdXMLRequest" message="tns:getGroupMemberDetailsForGivenGroupBbIdXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/getGroupMemberDetailsForGivenGroupBbIdXMLResponse" message="tns:getGroupMemberDetailsForGivenGroupBbIdXMLResponse" />
+      <input message="tns:getGroupMemberDetailsForGivenGroupBbIdXML" />
+      <output message="tns:getGroupMemberDetailsForGivenGroupBbIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="modifyGroup">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupRequest" message="tns:modifyGroup" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupResponse" message="tns:modifyGroupResponse" />
+      <input message="tns:modifyGroup" />
+      <output message="tns:modifyGroupResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="modifyGroupXML">
-      <input wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupXMLRequest" message="tns:modifyGroupXML" />
-      <output wsam:Action="http://bbgrpws/BBGroupWebService/modifyGroupXMLResponse" message="tns:modifyGroupXMLResponse" />
+      <input message="tns:modifyGroupXML" />
+      <output message="tns:modifyGroupXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
   </portType>
   <binding name="BBGroupWebServicePortBinding" type="tns:BBGroupWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="deleteGroup">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="addGivenUserToGivenGroup">
       <soap:operation soapAction="" />
       <input>
@@ -219,6 +232,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="addGivenUserToGivenGroupXML">
       <soap:operation soapAction="" />
@@ -228,6 +244,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="addGroupToGivenCourse">
       <soap:operation soapAction="" />
@@ -237,6 +256,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="addGroupToGivenCourseXML">
       <soap:operation soapAction="" />
@@ -246,6 +268,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="deleteGivenUserFromGivenGroup">
       <soap:operation soapAction="" />
@@ -255,6 +280,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="deleteGivenUserFromGivenGroupXML">
       <soap:operation soapAction="" />
@@ -264,6 +292,21 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="deleteGroupXML">
       <soap:operation soapAction="" />
@@ -273,6 +316,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupDetailsForGivenCourseId">
       <soap:operation soapAction="" />
@@ -282,6 +328,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupDetailsForGivenCourseIdWithNamedElements">
       <soap:operation soapAction="" />
@@ -291,6 +340,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupDetailsForGivenCourseIdXML">
       <soap:operation soapAction="" />
@@ -300,6 +352,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupDetailsForGivenGroupBbId">
       <soap:operation soapAction="" />
@@ -309,6 +364,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupDetailsForGivenGroupBbIdWithNamedElements">
       <soap:operation soapAction="" />
@@ -318,6 +376,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupDetailsForGivenGroupBbIdXML">
       <soap:operation soapAction="" />
@@ -327,6 +388,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupMembersForGivenGroupBbId">
       <soap:operation soapAction="" />
@@ -336,6 +400,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElements">
       <soap:operation soapAction="" />
@@ -345,6 +412,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getGroupMemberDetailsForGivenGroupBbIdXML">
       <soap:operation soapAction="" />
@@ -354,6 +424,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="modifyGroup">
       <soap:operation soapAction="" />
@@ -363,6 +436,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="modifyGroupXML">
       <soap:operation soapAction="" />
@@ -372,11 +448,14 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
   </binding>
   <service name="BBGroupWebServiceService">
     <port name="BBGroupWebServicePort" binding="tns:BBGroupWebServicePortBinding">
-      <soap:address location="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService" />
     </port>
   </service>
 </definitions>

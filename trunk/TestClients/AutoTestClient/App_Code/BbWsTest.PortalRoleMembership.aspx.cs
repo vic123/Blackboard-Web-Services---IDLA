@@ -22,7 +22,7 @@ public partial class BbWsTest : System.Web.UI.Page
         testArgs.portalRoleMembership.portalRoleMembershipLoadRecordByUserIdAndPortalRoleId.execute();
         testArgs.portalRoleMembership.portalRoleMembershipInsertRecordById.execute();
         testArgs.portalRoleMembership.portalRoleMembershipPersistRecordById_insert.execute();
-        testArgs.portalRoleMembership.portalRoleMembershipPersistRecordById_update.execute();
+        testArgs.portalRoleMembership.portalRoleMembershipPersistRecordById_update.execute(); 
         testArgs.portalRoleMembership.portalRoleMembershipPersistRecordById_update_rowStatus.execute();
         testArgs.portalRoleMembership.portalRoleMembershipDeleteRecordById.execute();
         testArgs.portalRoleMembership.portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId.execute();
@@ -247,6 +247,7 @@ public partial class BbWsTest : System.Web.UI.Page
         {
             args.ClearInputsAndResults();
             args.portalRoleMembershipInsertRecordById.PreActionAndExecuteImp();
+            //args.wsInputRecord.bbId = "394_1";
             args.wsInputRecord.bbId = args.wsResultRecord.bbId;
             args.param.dataVerbosity = "EXTENDED";
             args.loadBaseRecordAction.executeImp();
@@ -275,7 +276,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord = ws_i_rec;
             
             args.response.Write("setRowStatus(\"ENABLED\"): </br>");
-            setRowStatus("ENABLED");
+            setRowStatus("ENABLED");///*!!
             args.response.Write("setRowStatus(\"SOFT_DELETE\"): </br>");
             setRowStatus("SOFT_DELETE");
             args.response.Write("setRowStatus(\"DELETE_PENDING\"): </br>");
@@ -283,7 +284,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.response.Write("setRowStatus(\"COPY_PENDING\"): </br>");
             setRowStatus("COPY_PENDING");
             args.response.Write("setRowStatus(\"BAD_VALUE\"): </br>");
-            setRowStatus("BAD_VALUE");
+            setRowStatus("BAD_VALUE");//*/
             args.ClearResults();
             args.loadBaseRecordAction.executeImp();
         }
@@ -316,6 +317,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.ClearResults();
         }
         override public void postAction() {
+            args.testArgs.user.insertRecordAction.postAction();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.portalRoleMembershipDeleteRecordById(args.param, args.wsInputRecord);
@@ -331,6 +333,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.ClearResults();
         }
         override public void postAction() {
+            args.testArgs.user.insertRecordAction.postAction();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId(args.param, args.wsInputRecord);

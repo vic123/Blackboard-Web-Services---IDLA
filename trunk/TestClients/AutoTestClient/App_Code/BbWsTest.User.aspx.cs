@@ -18,6 +18,7 @@ public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunUserTest() {
         //testArgs.ClearAllTestData();//!!
+        
         testArgs.user.userLoadRecordByBatchUid.execute();
         testArgs.user.userLoadListByTemplate.execute();
           testArgs.user.userInsertRecordByBatchUid_duplicate.execute();
@@ -33,54 +34,32 @@ public partial class BbWsTest : System.Web.UI.Page
           testArgs.user.userLoadRecordByName.execute();
           testArgs.user.userInsertRecordById_minimal.execute();
           testArgs.user.userUpdateRecordById.execute();
-
-          testArgs.user.userLoadRecordByName.execute();
-          testArgs.user.userUpdateRecordById_extended.execute();
+        testArgs.user.userUpdateRecordById_extended.execute();
+        testArgs.user.userPersistRecordById_insert.execute();
+        testArgs.user.userPersistRecordById_update.execute();
+        testArgs.user.userDeleteRecordById.execute();
+        testArgs.user.userLoadListById.execute();
+        testArgs.user.userInsertListById.execute();
+        testArgs.user.userUpdateListById.execute();
+        testArgs.user.userPersistListById.execute();
+        testArgs.user.userDeleteListById.execute();
+        testArgs.user.userLoadListByEmailAddressFamilyNameGivenName_email.execute();
+        testArgs.user.userLoadListBySearchByUserName.execute();
         
-          testArgs.user.userPersistRecordById_insert.execute();
-          testArgs.user.userPersistRecordById_update.execute();
-          testArgs.user.userDeleteRecordById.execute();
-          testArgs.user.userLoadListById.execute();
-          testArgs.user.userInsertListById.execute();
-          testArgs.user.userUpdateListById.execute();
-          testArgs.user.userPersistListById.execute();
-          testArgs.user.userDeleteListById.execute();
-          testArgs.user.userLoadListByEmailAddressFamilyNameGivenName_email.execute();
-          testArgs.user.userLoadListBySearchByUserName.execute();
-        
-          testArgs.user.userLoadListByCourseId.execute();
-          testArgs.user.userLoadListAvailableObserversByCourseId.execute();
-          testArgs.user.userLoadListObservedByObserverId.execute();
-          testArgs.user.userLoadListByGroupId.execute();
-          testArgs.user.userLoadListByPrimaryRoleId.execute();
+        testArgs.user.userLoadListByCourseId.execute();
+        testArgs.user.userLoadListAvailableObserversByCourseId.execute();
+        testArgs.user.userLoadListObservedByObserverId.execute();
+        testArgs.user.userLoadListByGroupId.execute();
+        testArgs.user.userLoadListByPrimaryRoleId.execute();
     }
 
-    //    class _userTestCase : BbWsTest.TestCase<_userTestArgs, bbws.userDetails>, ITestAction { }
     class _userTestCase_SuccessRecord : BbWsTest.TestCase_SuccessRecord<_userTestArgs, userDetails>, ITestAction { }
     class _userTestCase_SuccessList : BbWsTest.TestCase_SuccessList<_userTestArgs, userDetails>, ITestAction { }
-    //class _userTestCase_SuccessRecord : BbWsTest.TestCase_SuccessRecord<_userTestArgs, BbWsUserDetailsWebReference>, ITestAction { }
-    //class _userTestCase_SuccessList : BbWsTest.TestCase_SuccessList<_userTestArgs, BbWsUserDetailsWebReference>, ITestAction { }
 
     
-    /*
-    class _userTestCase_SuccessRecord : TestCase<_userTestArgs, bbws.userDetails>, ITestAction {
-        override public void init(Object args) {
-            base.init(args);
-            checkResultsEvent += checkRecordSuccessResult;
-        }
-    }
-    class _userTestCase_SuccessList : TestCase<_userTestArgs, bbws.userDetails>, ITestAction {
-        override public void init(Object args) {
-            base.init(args);
-            checkResultsEvent += checkListSuccessResult;
-        }
-    }
-    */
     class _userTestArgs : TestArgs<userDetails> {
-    //class _userTestArgs : TestArgs<BbWsUserDetailsWebReference> {
     
         public override bbWsDataLogRecord[] getDataLogArray() {
-        //public override BbWsDataLogRecordWebReference[] getDataLogArray() {
             return wsResultRecord.bbWsDataLog;
         }
         public override String getBbWsBoolResult() {
@@ -91,9 +70,10 @@ public partial class BbWsTest : System.Web.UI.Page
         }
         public override void SetFieldsMinimal() {
             wsInputRecord.batchUid = "batchUid" + currentTestKeySuffix;
-            wsInputRecord.userName += "userName" + currentTestKeySuffix;
-            wsInputRecord.familyName += "familyName" + currentTestKeySuffix;
-            wsInputRecord.givenName += "givenName" + currentTestKeySuffix;
+            wsInputRecord.userName = "username" + currentTestKeySuffix;
+            wsInputRecord.familyName = "familyName" + currentTestKeySuffix;
+            wsInputRecord.givenName = "givenName" + currentTestKeySuffix;
+            wsInputRecord.middleName = "middleName" + currentTestKeySuffix;
             wsInputRecord.emailAddress = "emailAddress" + "@" + currentTestKeySuffix;
         }
         public override void UpdateFieldsMinimal() {
@@ -186,10 +166,12 @@ public partial class BbWsTest : System.Web.UI.Page
                         //str_value = "Staff";
                         //str_value = param.missFieldTag;
                         break;
-                    case "portalRoleId": 
+                    case "portalRoleId":
+                        //either portalRoleName or portalRoleId has to be set, portalRoleName overrides portalRoleId, 
+                        // but if values do not point to same portal role it will generate BbWsError upon field compare
                         //str_value = "_2_1";
                         //str_value = "_27_1";
-                        //str_value = param.missFieldTag;
+                        str_value = param.missFieldTag;
                         break;
                     //case "batchUid": 
                     //case "userName": continue;
@@ -207,6 +189,9 @@ public partial class BbWsTest : System.Web.UI.Page
                         str_value = BitConverter.ToString(md5_hash).Replace("-", string.Empty);
 
                         //continue;
+                        break;
+                    case "middleName": //test that "" is not transferred as null (otherwise may get interpreted as missFieldTag which is null by default 
+                        str_value = "";
                         break;
                     default:
                         str_value = prop.Name + currentTestKeySuffix;
@@ -228,7 +213,6 @@ public partial class BbWsTest : System.Web.UI.Page
         public _userInsertRecordByBatchUid_minimal userInsertRecordByBatchUid_minimal;
 
         public _userUpdateRecordByBatchUid userUpdateRecordByBatchUid;
-        //public _userPersistRecordByBatchUid userPersistRecordByBatchUid;
 
         public _userPersistRecordByBatchUid_insert userPersistRecordByBatchUid_insert;
         public _userPersistRecordByBatchUid_update userPersistRecordByBatchUid_update;
@@ -245,7 +229,6 @@ public partial class BbWsTest : System.Web.UI.Page
         public _userUpdateRecordById userUpdateRecordById;
         public _userUpdateRecordById_extended userUpdateRecordById_extended;
 
-        //public _userPersistRecordById userPersistRecordById;
         public _userPersistRecordById_insert userPersistRecordById_insert;
         public _userPersistRecordById_update userPersistRecordById_update;
 
@@ -286,8 +269,6 @@ public partial class BbWsTest : System.Web.UI.Page
 
             userUpdateRecordByBatchUid = new _userUpdateRecordByBatchUid();
             userUpdateRecordByBatchUid.init(this.testArgs.user);
-            //userPersistRecordByBatchUid = new _userPersistRecordByBatchUid();
-            //userPersistRecordByBatchUid.init(this.testArgs.user);
 
             userPersistRecordByBatchUid_update = new _userPersistRecordByBatchUid_update();
             userPersistRecordByBatchUid_update.init(this.testArgs.user);
@@ -312,8 +293,6 @@ public partial class BbWsTest : System.Web.UI.Page
             userUpdateRecordById = new _userUpdateRecordById();
             userUpdateRecordById.init(this.testArgs.user);
 
-            //userPersistRecordById = new _userPersistRecordById();
-            //userPersistRecordById.init(this.testArgs.user);		                
             userPersistRecordById_insert = new _userPersistRecordById_insert();
             userPersistRecordById_insert.init(this.testArgs.user);
             userPersistRecordById_update = new _userPersistRecordById_update();
@@ -394,8 +373,11 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord = args.wsResultRecord;
             String batchUid = "batchUid" + args.currentTestKeySuffix;
             args.UpdateFieldsMinimal();
+            //cdRomDrivePC with empty string value causes BbWsError - setWsField(): APIs returned different values
+            args.wsInputRecord.cdRomDrivePC = args.param.missFieldTag;
             args.wsInputRecord.batchUid = batchUid;
             args.wsInputRecord.userName = "userName" + args.currentTestKeySuffix;
+            args.SetStandardUnsetabbleFieldsToMissFieldTag();
         }
         override public void postAction() {
             args.deleteRecordAction.executeImp();
@@ -425,6 +407,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.loadInsertedRecordAction.PreActionAndExecuteImp();
             args.currentTestKeySuffix = args.testKeySuffixes[1];
             args.UpdateFieldsMinimal();
+            args.currentTestKeySuffix = args.testKeySuffixes[0];
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.userUpdateRecordByBatchUid(args.param, args.wsInputRecord);
@@ -483,8 +466,6 @@ public partial class BbWsTest : System.Web.UI.Page
         override public void postAction() {
             args.insertRecordAction.preAction();
             args.insertRecordAction.postAction();
-            args.userUpdateRecordByBatchUid.preAction();
-            args.userUpdateRecordByBatchUid.postAction();
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userPersistListByBatchUid(args.param, args.wsInputList.ToArray());
@@ -612,25 +593,20 @@ public partial class BbWsTest : System.Web.UI.Page
     }
     class _userLoadListById : _userTestCase_SuccessList, ITestAction {
         override public void preAction() {
-            //List<bbws.userDetails> = new List<bbws.userDetails>();
-            //List<String> id_list = new List<String>();
             args.userLoadRecordByName.PreActionAndExecuteImp();
             args.CreateInputRecord();
             args.wsInputRecord.bbId = args.wsResultRecord.bbId;
-            //id_list.Add(args.wsResultRecord.bbId);
+            //??cdRomDrivePC with empty string value causes BbWsError - setWsField(): APIs returned different values
+            args.wsInputRecord.cdRomDrivePC = args.param.missFieldTag;
             args.MoveInputRecordToList();
-            //CreateInputRecord();
             args.insertRecordAction.PreActionAndExecuteImp();
             args.loadInsertedRecordAction.executeImp();
-            //id_list.Add(args.wsResultRecord.bbId);
             args.wsInputRecord.bbId = args.wsResultRecord.bbId;
+            //cdRomDrivePC with empty string value causes BbWsError - setWsField(): APIs returned different values
+            args.wsInputRecord.cdRomDrivePC = args.param.missFieldTag;
             args.MoveInputRecordToList();
             //ClearInputsAndResults();
             args.ClearResults();
-            //foreach (String str_id in id_list) {
-            //args.wsInputRecord.bbId = str_id;
-            //MoveInputRecordToList();
-            //}
         }
         override public void postAction() {
             args.insertRecordAction.postAction();
@@ -666,6 +642,9 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord = args.wsResultRecord;
             args.currentTestKeySuffix = args.testKeySuffixes[1];
             args.UpdateFieldsMinimal();
+            //??cdRomDrivePC with empty string value causes BbWsError - setWsField(): APIs returned different values
+            args.wsInputRecord.cdRomDrivePC = args.param.missFieldTag;
+            args.SetStandardUnsetabbleFieldsToMissFieldTag();
             args.MoveInputRecordToList();
 
             args.insertRecordAction.PreActionAndExecuteImp();
@@ -673,6 +652,9 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord = args.wsResultRecord;
             args.currentTestKeySuffix = args.testKeySuffixes[2];
             args.UpdateFieldsMinimal();
+            //??cdRomDrivePC with empty string value causes BbWsError - setWsField(): APIs returned different values
+            args.wsInputRecord.cdRomDrivePC = args.param.missFieldTag;
+            args.SetStandardUnsetabbleFieldsToMissFieldTag();
             args.MoveInputRecordToList();
             args.ClearResults();
         }
@@ -681,6 +663,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.insertRecordAction.postAction();
             args.currentTestKeySuffix = args.testKeySuffixes[1];
             args.insertRecordAction.postAction();
+            args.currentTestKeySuffix = args.testKeySuffixes[0];
         }
 
         override public void executeImp() {
@@ -718,6 +701,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.CreateInputRecord();
             args.wsInputRecord.bbId = args.wsResultRecord.bbId;
             args.MoveInputRecordToList();
+            args.currentTestKeySuffix = args.testKeySuffixes[0];
             args.ClearResults();
         }
         override public void executeImp() {
@@ -734,6 +718,9 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.emailAddress = email;
             args.wsInputRecord.familyName = fname;
             args.wsInputRecord.givenName = gname;
+        }
+        override public void postAction() {
+            args.insertRecordAction.postAction();
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userLoadListByEmailAddressFamilyNameGivenName(args.param, args.wsInputRecord);
@@ -756,7 +743,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.bbId = args.wsResultRecord.bbId;
         }
         override public void postAction() {
-            args.testArgs.observerAssociation.insertRecordAction.postAction();
+            args.insertRecordAction.postAction();
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userLoadListObservedByObserverId(args.param, args.wsInputRecord);
@@ -790,8 +777,8 @@ public partial class BbWsTest : System.Web.UI.Page
             args.loadBaseRecordAction.PreActionAndExecuteImp();
             args.testArgs.courseMembership.wsInputRecord.userBbId = args.wsResultRecord.bbId;
             args.testArgs.courseMembership.courseMembershipLoadListByTemplate.PreActionAndExecuteImp();
-            //args.userLoadListByCourseId.preAction();
-            //args.testArgs.group.wsResultList = args.bbGrpWs.getGroupDetailsForGivenCourseIdWithNamedElements(null, args.testArgs.courseMembership.wsResultRecord.courseBbId);
+            //don't forget to allow access to getGroupDetailsForGivenCourseIdWithNamedElements from building block settings
+            //System.Net.WebException: The request failed with HTTP status 404: Not Found. - update App_WebReferences
             args.testArgs.group.wsResultList = args.bbGrpWs.getGroupDetailsForGivenCourseIdWithNamedElements(null, args.testArgs.courseMembership.wsResultList[0].courseBatchUid);
             args.testArgs.group.wsInputRecord.bbId = args.testArgs.group.wsResultList[0].bbId;
         }

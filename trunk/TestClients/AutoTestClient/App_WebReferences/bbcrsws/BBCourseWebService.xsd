@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://www.ncl.ac.uk/BBCourseWebService" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://www.ncl.ac.uk/BBCourseWebService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:element name="WebServiceException" type="tns:WebServiceException" />
   <xs:element name="addCourse" type="tns:addCourse" />
   <xs:element name="addCourseResponse" type="tns:addCourseResponse" />
   <xs:element name="addCourseXML" type="tns:addCourseXML" />
@@ -90,6 +91,11 @@
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="WebServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="getAllCourseIDsNoDetailsXML">
     <xs:sequence>
       <xs:element minOccurs="0" name="pwd" type="xs:string" />
@@ -116,27 +122,30 @@
       <xs:extension base="tns:abstractCourseDetails">
         <xs:sequence>
           <xs:element minOccurs="0" name="absoluteLimit" type="xs:string" />
-          <xs:element minOccurs="0" name="allowGuests" type="xs:boolean" />
-          <xs:element minOccurs="0" name="allowObservers" type="xs:boolean" />
+          <xs:element minOccurs="0" name="allowGuests" type="xs:string" />
+          <xs:element minOccurs="0" name="allowObservers" type="xs:string" />
           <xs:element minOccurs="0" name="bannerImageFile" type="xs:string" />
           <xs:element minOccurs="0" name="batchUid" type="xs:string" />
-          <xs:element minOccurs="0" name="buttonStyle" type="xs:string" />
-          <xs:element minOccurs="0" name="cartridgeDescription" type="xs:string" />
-          <xs:element minOccurs="0" name="classification" type="xs:string" />
+          <xs:element minOccurs="0" name="buttonStyleId" type="xs:string" />
+          <xs:element minOccurs="0" name="cartridgeId" type="xs:string" />
+          <xs:element minOccurs="0" name="classificationId" type="xs:string" />
           <xs:element minOccurs="0" name="description" type="xs:string" />
           <xs:element minOccurs="0" name="durationType" type="xs:string" />
           <xs:element minOccurs="0" name="endDate" type="xs:string" />
-          <xs:element minOccurs="0" name="enrollment" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentAccessCode" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentEndDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentStartDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentType" type="xs:string" />
           <xs:element minOccurs="0" name="institution" type="xs:string" />
+          <xs:element minOccurs="0" name="isLocaleEnforced" type="xs:string" />
+          <xs:element minOccurs="0" name="isLockedOut" type="xs:string" />
+          <xs:element minOccurs="0" name="isNavigationCollapsible" type="xs:string" />
           <xs:element minOccurs="0" name="locale" type="xs:string" />
-          <xs:element minOccurs="0" name="localeEnforced" type="xs:boolean" />
-          <xs:element minOccurs="0" name="lockedOut" type="xs:boolean" />
           <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
-          <xs:element minOccurs="0" name="navigationBackgroundColour" type="xs:string" />
-          <xs:element minOccurs="0" name="navigationCollapsible" type="xs:boolean" />
-          <xs:element minOccurs="0" name="navigationForegroundColour" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationBackgroundColor" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationForegroundColor" type="xs:string" />
           <xs:element minOccurs="0" name="navigationStyle" type="xs:string" />
-          <xs:element minOccurs="0" name="numberOfDaysOfUse" type="xs:int" />
+          <xs:element minOccurs="0" name="numberOfDaysOfUse" type="xs:string" />
           <xs:element minOccurs="0" name="paceType" type="xs:string" />
           <xs:element minOccurs="0" name="serviceLevelType" type="xs:string" />
           <xs:element minOccurs="0" name="softLimit" type="xs:string" />
@@ -151,9 +160,9 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:bbWsDataDetails">
         <xs:sequence>
-          <xs:element minOccurs="0" name="available" type="xs:boolean" />
           <xs:element minOccurs="0" name="courseId" type="xs:string" />
           <xs:element minOccurs="0" name="creationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="isAvailable" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -170,12 +179,14 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="apiPass" type="xs:string" />
       <xs:element minOccurs="0" name="apiUsed" type="xs:string" />
+      <xs:element minOccurs="0" name="bbValue" type="xs:string" />
       <xs:element minOccurs="0" name="dateTime" type="xs:string" />
       <xs:element minOccurs="0" name="fieldName" type="xs:string" />
       <xs:element minOccurs="0" name="message" type="xs:string" />
       <xs:element minOccurs="0" name="recordId" type="xs:string" />
       <xs:element minOccurs="0" name="severityLevel" type="xs:string" />
       <xs:element minOccurs="0" name="value" type="xs:string" />
+      <xs:element minOccurs="0" name="wsValue" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllCourseIDsNoDetails">

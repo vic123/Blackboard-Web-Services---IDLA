@@ -237,6 +237,9 @@
     <None Include="Web References\BBAddedService\BbWebservices.wsdl" />
     <None Include="Web References\BBAddedService\BbWebservices.xsd" />
     <None Include="Web References\BBAddedService\BbWebservices0.xsd" />
+    <None Include="Web References\BBAddedService\courseDetails.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\BBAddedService\courseMembershipDetails.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

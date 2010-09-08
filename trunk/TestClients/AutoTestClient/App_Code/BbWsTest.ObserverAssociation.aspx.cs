@@ -180,12 +180,14 @@ public partial class BbWsTest : System.Web.UI.Page
             setRowStatus("SOFT_DELETE");
             args.response.Write("setRowStatus(\"DELETE_PENDING\"): </br>");
             setRowStatus("DELETE_PENDING");
+            
             args.response.Write("setRowStatus(\"COPY_PENDING\"): </br>");
             setRowStatus("COPY_PENDING");
+            /*!!
             args.response.Write("setRowStatus(\"BAD_VALUE\"): </br>");
             setRowStatus("BAD_VALUE");
             args.ClearResults();
-            args.loadBaseRecordAction.executeImp();
+            args.loadBaseRecordAction.executeImp();*/
         }
 
         private void setRowStatus(String rowStatus) {
@@ -259,6 +261,10 @@ public partial class BbWsTest : System.Web.UI.Page
         override public void preAction() {
             args.observerAssociationInsertListByObserverAndUsersBatchUid.PreActionAndExecuteImp();
             args.ClearResults();
+        }
+        override public void postAction() {
+            args.observerAssociationInsertListByObserverAndUsersBatchUid.postAction();
+            
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.observerAssociationPersistListByObserverAndUsersBatchUid(args.param, args.wsInputList.ToArray());

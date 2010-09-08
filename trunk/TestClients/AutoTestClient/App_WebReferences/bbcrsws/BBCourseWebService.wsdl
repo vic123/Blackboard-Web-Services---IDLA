@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://www.ncl.ac.uk/BBCourseWebService" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="BBCourseWebService" targetNamespace="http://www.ncl.ac.uk/BBCourseWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:tns="http://www.ncl.ac.uk/BBCourseWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBCourseWebService" targetNamespace="http://www.ncl.ac.uk/BBCourseWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCourseWebService" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCourseWebService" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
   </types>
   <message name="addCourse">
@@ -13,6 +13,9 @@
   </message>
   <message name="addCourseResponse">
     <part name="parameters" element="tns:addCourseResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
   </message>
   <message name="addCourseXML">
     <part name="parameters" element="tns:addCourseXML" />
@@ -238,156 +241,194 @@
   </message>
   <portType name="BBCourseWebService">
     <operation name="addCourse">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/addCourseRequest" message="tns:addCourse" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/addCourseResponse" message="tns:addCourseResponse" />
+      <input message="tns:addCourse" />
+      <output message="tns:addCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="addCourseXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/addCourseXMLRequest" message="tns:addCourseXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/addCourseXMLResponse" message="tns:addCourseXMLResponse" />
+      <input message="tns:addCourseXML" />
+      <output message="tns:addCourseXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteCourseByCourseBbId">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseBbIdRequest" message="tns:deleteCourseByCourseBbId" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseBbIdResponse" message="tns:deleteCourseByCourseBbIdResponse" />
+      <input message="tns:deleteCourseByCourseBbId" />
+      <output message="tns:deleteCourseByCourseBbIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteCourseByCourseBbIdXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseBbIdXMLRequest" message="tns:deleteCourseByCourseBbIdXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseBbIdXMLResponse" message="tns:deleteCourseByCourseBbIdXMLResponse" />
+      <input message="tns:deleteCourseByCourseBbIdXML" />
+      <output message="tns:deleteCourseByCourseBbIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteCourseByCourseId">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseIdRequest" message="tns:deleteCourseByCourseId" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseIdResponse" message="tns:deleteCourseByCourseIdResponse" />
+      <input message="tns:deleteCourseByCourseId" />
+      <output message="tns:deleteCourseByCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteCourseByCourseIdXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseIdXMLRequest" message="tns:deleteCourseByCourseIdXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/deleteCourseByCourseIdXMLResponse" message="tns:deleteCourseByCourseIdXMLResponse" />
+      <input message="tns:deleteCourseByCourseIdXML" />
+      <output message="tns:deleteCourseByCourseIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="doesCourseExist">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/doesCourseExistRequest" message="tns:doesCourseExist" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/doesCourseExistResponse" message="tns:doesCourseExistResponse" />
+      <input message="tns:doesCourseExist" />
+      <output message="tns:doesCourseExistResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="doesCourseExistXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/doesCourseExistXMLRequest" message="tns:doesCourseExistXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/doesCourseExistXMLResponse" message="tns:doesCourseExistXMLResponse" />
+      <input message="tns:doesCourseExistXML" />
+      <output message="tns:doesCourseExistXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="enrollGivenUserOnGivenCourse">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/enrollGivenUserOnGivenCourseRequest" message="tns:enrollGivenUserOnGivenCourse" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/enrollGivenUserOnGivenCourseResponse" message="tns:enrollGivenUserOnGivenCourseResponse" />
+      <input message="tns:enrollGivenUserOnGivenCourse" />
+      <output message="tns:enrollGivenUserOnGivenCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="enrollGivenUserOnGivenCourseXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/enrollGivenUserOnGivenCourseXMLRequest" message="tns:enrollGivenUserOnGivenCourseXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/enrollGivenUserOnGivenCourseXMLResponse" message="tns:enrollGivenUserOnGivenCourseXMLResponse" />
+      <input message="tns:enrollGivenUserOnGivenCourseXML" />
+      <output message="tns:enrollGivenUserOnGivenCourseXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsNoDetails">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsNoDetailsRequest" message="tns:getAllCourseIDsNoDetails" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsNoDetailsResponse" message="tns:getAllCourseIDsNoDetailsResponse" />
+      <input message="tns:getAllCourseIDsNoDetails" />
+      <output message="tns:getAllCourseIDsNoDetailsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsNoDetailsWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsNoDetailsWithNamedElementsRequest" message="tns:getAllCourseIDsNoDetailsWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsNoDetailsWithNamedElementsResponse" message="tns:getAllCourseIDsNoDetailsWithNamedElementsResponse" />
+      <input message="tns:getAllCourseIDsNoDetailsWithNamedElements" />
+      <output message="tns:getAllCourseIDsNoDetailsWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsNoDetailsXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsNoDetailsXMLRequest" message="tns:getAllCourseIDsNoDetailsXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsNoDetailsXMLResponse" message="tns:getAllCourseIDsNoDetailsXMLResponse" />
+      <input message="tns:getAllCourseIDsNoDetailsXML" />
+      <output message="tns:getAllCourseIDsNoDetailsXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsWhereCourseIdContainsGivenSearchString">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereCourseIdContainsGivenSearchStringRequest" message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchString" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereCourseIdContainsGivenSearchStringResponse" message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringResponse" />
+      <input message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchString" />
+      <output message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElementsRequest" message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElementsResponse" message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElementsResponse" />
+      <input message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements" />
+      <output message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereCourseIdContainsGivenSearchStringXMLRequest" message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereCourseIdContainsGivenSearchStringXMLResponse" message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringXMLResponse" />
+      <input message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML" />
+      <output message="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElementsRequest" message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElementsResponse" message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElementsResponse" />
+      <input message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements" />
+      <output message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllCourseIDsWhereGivenUserIdIsAnInstructorXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereGivenUserIdIsAnInstructorXMLRequest" message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getAllCourseIDsWhereGivenUserIdIsAnInstructorXMLResponse" message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorXMLResponse" />
+      <input message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorXML" />
+      <output message="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseDetails">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseDetailsRequest" message="tns:getCourseDetails" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseDetailsResponse" message="tns:getCourseDetailsResponse" />
+      <input message="tns:getCourseDetails" />
+      <output message="tns:getCourseDetailsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseDetailsWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseDetailsWithNamedElementsRequest" message="tns:getCourseDetailsWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseDetailsWithNamedElementsResponse" message="tns:getCourseDetailsWithNamedElementsResponse" />
+      <input message="tns:getCourseDetailsWithNamedElements" />
+      <output message="tns:getCourseDetailsWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseDetailsXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseDetailsXMLRequest" message="tns:getCourseDetailsXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseDetailsXMLResponse" message="tns:getCourseDetailsXMLResponse" />
+      <input message="tns:getCourseDetailsXML" />
+      <output message="tns:getCourseDetailsXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseMembershipBbIdForGivenUserIdAndCourseId">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipBbIdForGivenUserIdAndCourseIdRequest" message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseId" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipBbIdForGivenUserIdAndCourseIdResponse" message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdResponse" />
+      <input message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseId" />
+      <output message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElementsRequest" message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElementsResponse" message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElementsResponse" />
+      <input message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements" />
+      <output message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseMembershipBbIdForGivenUserIdAndCourseIdXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipBbIdForGivenUserIdAndCourseIdXMLRequest" message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipBbIdForGivenUserIdAndCourseIdXMLResponse" message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdXMLResponse" />
+      <input message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdXML" />
+      <output message="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElementsRequest" message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElementsResponse" message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElementsResponse" />
+      <input message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements" />
+      <output message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseMembershipDetailsForGivenCourseMembershipBbIdXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipDetailsForGivenCourseMembershipBbIdXMLRequest" message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseMembershipDetailsForGivenCourseMembershipBbIdXMLResponse" message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdXMLResponse" />
+      <input message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdXML" />
+      <output message="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseQuotaDetails">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseQuotaDetailsRequest" message="tns:getCourseQuotaDetails" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseQuotaDetailsResponse" message="tns:getCourseQuotaDetailsResponse" />
+      <input message="tns:getCourseQuotaDetails" />
+      <output message="tns:getCourseQuotaDetailsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseQuotaDetailsWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseQuotaDetailsWithNamedElementsRequest" message="tns:getCourseQuotaDetailsWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseQuotaDetailsWithNamedElementsResponse" message="tns:getCourseQuotaDetailsWithNamedElementsResponse" />
+      <input message="tns:getCourseQuotaDetailsWithNamedElements" />
+      <output message="tns:getCourseQuotaDetailsWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getCourseQuotaDetailsXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseQuotaDetailsXMLRequest" message="tns:getCourseQuotaDetailsXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getCourseQuotaDetailsXMLResponse" message="tns:getCourseQuotaDetailsXMLResponse" />
+      <input message="tns:getCourseQuotaDetailsXML" />
+      <output message="tns:getCourseQuotaDetailsXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getEnrolledCoursesForGivenUser">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getEnrolledCoursesForGivenUserRequest" message="tns:getEnrolledCoursesForGivenUser" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getEnrolledCoursesForGivenUserResponse" message="tns:getEnrolledCoursesForGivenUserResponse" />
+      <input message="tns:getEnrolledCoursesForGivenUser" />
+      <output message="tns:getEnrolledCoursesForGivenUserResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getEnrolledCoursesForGivenUserWithNamedElements">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getEnrolledCoursesForGivenUserWithNamedElementsRequest" message="tns:getEnrolledCoursesForGivenUserWithNamedElements" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getEnrolledCoursesForGivenUserWithNamedElementsResponse" message="tns:getEnrolledCoursesForGivenUserWithNamedElementsResponse" />
+      <input message="tns:getEnrolledCoursesForGivenUserWithNamedElements" />
+      <output message="tns:getEnrolledCoursesForGivenUserWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getEnrolledCoursesForGivenUserXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getEnrolledCoursesForGivenUserXMLRequest" message="tns:getEnrolledCoursesForGivenUserXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/getEnrolledCoursesForGivenUserXMLResponse" message="tns:getEnrolledCoursesForGivenUserXMLResponse" />
+      <input message="tns:getEnrolledCoursesForGivenUserXML" />
+      <output message="tns:getEnrolledCoursesForGivenUserXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="modifyCourseQuotaDetails">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/modifyCourseQuotaDetailsRequest" message="tns:modifyCourseQuotaDetails" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/modifyCourseQuotaDetailsResponse" message="tns:modifyCourseQuotaDetailsResponse" />
+      <input message="tns:modifyCourseQuotaDetails" />
+      <output message="tns:modifyCourseQuotaDetailsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="modifyCourseQuotaDetailsXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/modifyCourseQuotaDetailsXMLRequest" message="tns:modifyCourseQuotaDetailsXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/modifyCourseQuotaDetailsXMLResponse" message="tns:modifyCourseQuotaDetailsXMLResponse" />
+      <input message="tns:modifyCourseQuotaDetailsXML" />
+      <output message="tns:modifyCourseQuotaDetailsXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="unEnrollGivenUserFromGivenCourse">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/unEnrollGivenUserFromGivenCourseRequest" message="tns:unEnrollGivenUserFromGivenCourse" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/unEnrollGivenUserFromGivenCourseResponse" message="tns:unEnrollGivenUserFromGivenCourseResponse" />
+      <input message="tns:unEnrollGivenUserFromGivenCourse" />
+      <output message="tns:unEnrollGivenUserFromGivenCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="unEnrollGivenUserFromGivenCourseXML">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/unEnrollGivenUserFromGivenCourseXMLRequest" message="tns:unEnrollGivenUserFromGivenCourseXML" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/unEnrollGivenUserFromGivenCourseXMLResponse" message="tns:unEnrollGivenUserFromGivenCourseXMLResponse" />
+      <input message="tns:unEnrollGivenUserFromGivenCourseXML" />
+      <output message="tns:unEnrollGivenUserFromGivenCourseXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="copyCourseExact">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/copyCourseExactRequest" message="tns:copyCourseExact" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/copyCourseExactResponse" message="tns:copyCourseExactResponse" />
+      <input message="tns:copyCourseExact" />
+      <output message="tns:copyCourseExactResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="updateCourse">
-      <input wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/updateCourseRequest" message="tns:updateCourse" />
-      <output wsam:Action="http://www.ncl.ac.uk/BBCourseWebService/BBCourseWebService/updateCourseResponse" message="tns:updateCourseResponse" />
+      <input message="tns:updateCourse" />
+      <output message="tns:updateCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
   </portType>
   <binding name="BBCourseWebServicePortBinding" type="tns:BBCourseWebService">
@@ -400,6 +441,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="addCourseXML">
       <soap:operation soapAction="" />
@@ -409,6 +453,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="deleteCourseByCourseBbId">
       <soap:operation soapAction="" />
@@ -418,6 +465,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="deleteCourseByCourseBbIdXML">
       <soap:operation soapAction="" />
@@ -427,6 +477,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="deleteCourseByCourseId">
       <soap:operation soapAction="" />
@@ -436,6 +489,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="deleteCourseByCourseIdXML">
       <soap:operation soapAction="" />
@@ -445,6 +501,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="doesCourseExist">
       <soap:operation soapAction="" />
@@ -454,6 +513,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="doesCourseExistXML">
       <soap:operation soapAction="" />
@@ -463,6 +525,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="enrollGivenUserOnGivenCourse">
       <soap:operation soapAction="" />
@@ -472,6 +537,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="enrollGivenUserOnGivenCourseXML">
       <soap:operation soapAction="" />
@@ -481,6 +549,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsNoDetails">
       <soap:operation soapAction="" />
@@ -490,6 +561,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsNoDetailsWithNamedElements">
       <soap:operation soapAction="" />
@@ -499,6 +573,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsNoDetailsXML">
       <soap:operation soapAction="" />
@@ -508,6 +585,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsWhereCourseIdContainsGivenSearchString">
       <soap:operation soapAction="" />
@@ -517,6 +597,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements">
       <soap:operation soapAction="" />
@@ -526,6 +609,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML">
       <soap:operation soapAction="" />
@@ -535,6 +621,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements">
       <soap:operation soapAction="" />
@@ -544,6 +633,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getAllCourseIDsWhereGivenUserIdIsAnInstructorXML">
       <soap:operation soapAction="" />
@@ -553,6 +645,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseDetails">
       <soap:operation soapAction="" />
@@ -562,6 +657,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseDetailsWithNamedElements">
       <soap:operation soapAction="" />
@@ -571,6 +669,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseDetailsXML">
       <soap:operation soapAction="" />
@@ -580,6 +681,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseMembershipBbIdForGivenUserIdAndCourseId">
       <soap:operation soapAction="" />
@@ -589,6 +693,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements">
       <soap:operation soapAction="" />
@@ -598,6 +705,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseMembershipBbIdForGivenUserIdAndCourseIdXML">
       <soap:operation soapAction="" />
@@ -607,6 +717,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements">
       <soap:operation soapAction="" />
@@ -616,6 +729,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseMembershipDetailsForGivenCourseMembershipBbIdXML">
       <soap:operation soapAction="" />
@@ -625,6 +741,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseQuotaDetails">
       <soap:operation soapAction="" />
@@ -634,6 +753,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseQuotaDetailsWithNamedElements">
       <soap:operation soapAction="" />
@@ -643,6 +765,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getCourseQuotaDetailsXML">
       <soap:operation soapAction="" />
@@ -652,6 +777,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getEnrolledCoursesForGivenUser">
       <soap:operation soapAction="" />
@@ -661,6 +789,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getEnrolledCoursesForGivenUserWithNamedElements">
       <soap:operation soapAction="" />
@@ -670,6 +801,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="getEnrolledCoursesForGivenUserXML">
       <soap:operation soapAction="" />
@@ -679,6 +813,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="modifyCourseQuotaDetails">
       <soap:operation soapAction="" />
@@ -688,6 +825,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="modifyCourseQuotaDetailsXML">
       <soap:operation soapAction="" />
@@ -697,6 +837,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="unEnrollGivenUserFromGivenCourse">
       <soap:operation soapAction="" />
@@ -706,6 +849,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="unEnrollGivenUserFromGivenCourseXML">
       <soap:operation soapAction="" />
@@ -715,6 +861,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="copyCourseExact">
       <soap:operation soapAction="" />
@@ -724,6 +873,9 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
     <operation name="updateCourse">
       <soap:operation soapAction="" />
@@ -733,11 +885,14 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
     </operation>
   </binding>
   <service name="BBCourseWebService">
     <port name="BBCourseWebServicePort" binding="tns:BBCourseWebServicePortBinding">
-      <soap:address location="http://bbtestserver:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService" />
     </port>
   </service>
 </definitions>
