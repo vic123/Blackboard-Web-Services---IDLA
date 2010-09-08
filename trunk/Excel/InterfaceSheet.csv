@@ -214,6 +214,19 @@ public void changeKey(CourseSite objToSave, String newKey)
 
 public void persist(Course target)
 public void deleteById(I",,
+,bbws,"courseLoadRecordById (bb_platform)
+courseLoadRecordByCourseId (bb_platform)
+courseLoadRecordByBatchUid (bb_platform)
+",bbws,"courseInsertRecordById (bb_platform)
+courseCopyRecordById (bb_platform)
+courseCopyRecordByBatchUid (bb_platform)
+courseInsertRecordByBatchUid (cms_admin)",bbws,"courseUpdateRecordById (bb_platform)
+coursePersistRecordById (bb_platform)
+courseUpdateRecordByBatchUid (cms_admin)
+coursePersistRecordByBatchUid (cms_admin)",bbws,"courseDeleteRecordById (bb_platform)
+courseDeleteRecordByBatchUid (cms_admin)"
+,bbws,"courseLoadListByTemplate (cms_admin)
+",bbws,portalRoleMembershipInsertListById (bb_platform),,,,
 
 ,,"    public BookDataRequest(Id courseId)
 GradebookManager:
@@ -221,13 +234,13 @@ GradebookManager:
         if(null != req.getItemId())
             return getBookDataForItem(req);
         if(null != req.getStudentId())
-            return getBoo"
+            return getBoo",,,,,,
 LineItem,,"
     public void persistGradebookItem(GradableItem g)
     public void deleteGradebookItem(Id id)
     public GradableItem getGradebookItem(Id gradeableItemId)
     public GradableItem getGradebookItemByContentId(Id contentId)
-    public List getGradebookIte"
+    public List getGradebookIte",,,,,,
 Score,,"    public GradeWithAttemptScore getGrade(Id gradeableItemId, Id courseUserId)
     public Collection updateGrade(int courseId, long bookVersion, double score, String textInput, int courseUserPk1, int itemId)
-    public Id getAttemptId(GradableItem item, G"
+    public Id getAttemptId(GradableItem item, G",,,,,,
