@@ -5,7 +5,7 @@
       <description value="Provides adjustable CRUD access to Blackboard data through webservices exposing internal Bb APIs. Packed with minimally modified v.1.2 of Andrew Martin/Newcastle University Webservices"/>
       <handle value="BbWebservices"/>
 	  <!-- Major.Minor.Subversion revision-->
-	  <!-- Version number 2.0.82 continues 1.2.0.0 migrated from Andrew's project -->
+	  <!-- Version number 2.1.94 (continues 1.2.0.0 migrated from Andrew's project) -->
 	  <version value="2.0.82"/>
 	  
 	  <requires>
