@@ -1,169 +1,218 @@
-!!Note on Mar 14, 2010 - during review I've faced with logic flaw in multi-API results comparison logic that got propagated through overall processing design and revealed additional conflicts around missFieldTag, null value indication of that field was not assigned by previously passed API and check for error-free fields modification through re-load of saved record. Please see today's remaining comments marked with double-exclamation for more details.
-!!Note on Mar 14, 2010 - I cannot come right away to decision on how it would be best of all to resolve those logical issues and just wrote down thoughts that I had along with review of particular statements of existing version of the document. Probably sticking of missFieldTag to constant null will resolve most of revealed complications, but not everything.
 
-
-
-Project Summary
+Project Summary:
 ================
-Clone of BBwebservices project, to expose more web service operations and demonstrate an alternative architectural design for process flow.
-Homepage: http://projects.oscelot.org/gf/project/wservices_idla/
+Blackboard Web Services - IDLA (later on named as WsIdla)
+is Building Block (BB) for providing access to Blackboard API and data via XML Web Services based on JAX-WS.
+
+Currently implemented APIs are: User, Course, CourseMembership, PortalRole, ObserverAssociation, PortalRoleMembership.
+
+Integrated with rev576 (v.1.2) of "3) Beta/" of AMNL BBwebservices (http://projects.oscelot.org/gf/project/webservices/) project - it allows access to Announcement, Calendar, Content, Course, Discussion, Gradebook, Group and User APIs/data.
 
 
 
-Project Purpose
-===============
 
-The general purpose of the WServices_idla project is to either merge with the original webservices this project was branched from, or to remain a branch of the original webservices project with improvements focusing on application integration and containing the following improvements:
-
-1) Extension of various operations with newer API capabilities available in later (v.8 and v.9) versions of Blackboard. 
-
-2) Complementing of several data items (Users, Courses, Course Enrollments, Institutional Roles, Users assignments to institutional roles, Observer role assignments) to support full list of CRUD (create, read, update, delete) operations.
-
-3) Design and implementation capability for dynamic loading of API-specific classes (assures backward compatibility with older Blackboard versions). 
-
-4) Safe accessing of field values with writing log into data structures returned to client (client-side debugging and testing) 
-
-5) Global exception handling for a limited number of control flow points. 
-
-6) Separation of API-specific data accessing operations from remaining processing logic, i.e. simplification of development for new API/items handling classes. 
-
-7) Capability for automated testing of data variations returned by older/newer or alternative APIs. Conformity checks for a list of records (missing/excessive) and specific field values (equality) returned by different APIs are handled.
+Features:
+=========
+ * Full CRUD support (create/read/update/delete) for implemented APIs.
+ * Support both for single record and packet(list) processing. 
+ * Fully customizable set of accessed fields.
+ * Rechecking of data saving operation through record reloading and compare with input values.
+ * Client defined error response either with by flag in returned data structure or throwing of exception on field and record levels.
+ * Providing of "data access log" as part of returned data structures for easier debugging.
+ * Customizable format of date and time.
+ * Full thread of messages from nested exceptions and root causes included in error responses.
+ * Capability to increase logging verbosity of building block independently from global Bb settings.
+ * Dynamic loading of API-specific classes (allowing backward compatibility with older Blackboard versions).
+ * Capability for automated testing of data variations returned by older/newer or alternative APIs - conformity checks for a list of records (missing/excessive) and specific field values (equality) returned by different APIs are handled.
 
 
 
-Currently implemented interfaces following this specification
-=============================================================
-Please refer to InterfaceSheet of Excel\InterfaceSheet_and_CodeGeneration.xls in SVN repository.
-Unmentioned there are Gradebook and Score interfaces that are frozen in the middle-way - they were reworked first and remains in unchanged state of prototype.
+
+Implemented by WsIdla APIs Summary:
+================================
+CourseMembership - single record and list CRUD processing
+User - single record and list CRUD processing, list loading by linked parameters (ByGroupId, CourseId, etc.)
+
+PortalRole - single record CRUD processing, list loading by linked parameters (ByUserId) and specific flags (Available, Removable, etc.)
+ObserverAssociation - single record and list CRUD processing
+PortalRoleMembership - single record and list CRUD processing
+Course - single record CRUD processing, course copy operation.
+
+For full list of provided web methods please see Doc/WebMethods.txt or column AT of BbWebserviceMethods sheet of Excel/InterfaceSheet_and_CodeGeneration.xls
 
 
 
-Client request may be customized in following ways:
-===================================================
 
- * more than one from available similar Blackboard APIs to be used for sequential processing of request with checking of equality of each API effects
- * verbosity level of "data structure log" (referred below as DataLog) - helper information in log format about processing of each field of data structures returned 
- * severity levels causing exception to be thrown to client both on field and record access levels, lover severities causing just setting of field value to predefined error tag and/or returning false as row level operation result to client
- * limit request to access only particular data structure fields (or pre-defined group of fields)
+Current version:
+================
+Please see BbWebservices.war/WEB-INF/bb-manifest.xml for information on release version and Bb version compatibility.
 
 
 
-Multiple API Data Load Processing Scenario
-==========================================
 
-Web service will try sequentially to retrieve data through requested APIs. WebService exception may be thrown out to client if some API is unavailable due to BB library version or method implementation. Processing of each data field supported by particular API is performed according to scenarios below, where checks on possible inconsistencies are performed and details on ways of accruing of each particular field may be provided too in DataLog.
-
-Initialization:
----------------
-All result structure fields are initialized to null values initially. 
-
-Use Cases:
-----------
-!!Note on Mar 14, 2010 - almost all of cases below need re-thinking and corrections, see today's notes on first case below for more details. Also it looks like current even unmodified processing design have potential conflicts around missFieldTag(if it has non-null value) and INSERT/UPDATE processing when input record is assigned to result and then re-loaded and compared with saved data - missFieldTag will be assumed by load processing as value assigned to the field by previously passed API.
-
-Case: 
-Field is unavailable in particular API or field is not marked for retrieving 
-Action: Any field assignment or check is omitted, if field was not previously initialized, it remains null, if it was set through some previously passed API then remains unchanged. Nothing is appended to "data structure log".
-Rationale: It will require both more coding and resources if each API-related processing will have to consider all possible fields available through other APIs. Each API will pay attention only for fields that are known to be available within its interface.
-!!Note on Mar 14, 2010 - this needs to be revised. Initially it was thought that client may need manually to combine several APIs in order to get filled requested data structure, but it seems both complex for client side and non-rational for server one. Probably field value has to be set to warn tag and warn log message to be supplied if field is unavailable in particular API. This is the way how CourseMembership DATA sets User and Course BatchUids by this moment.
-Such behavior will require complementing of all APIs upon adding of new fields to data structures, but should be more stable in terms of interface with client - if client occasionally relying on field that is not practically available then it has to receive some signal on this fact.
-
-Case: 
-Field is known to be unavailable or having wrong value in particular API under some conditions (i.e. titles and grades of calculated columns, missing BatchUid in some of DATA API interfaces).
-Action: 
-Field assignment and check should be omitted, however warning message has to be written to "data structure log". dataFieldErrorThrowSeverity can be configured for raising an exception upon detection of Warning in DataLog.
-!!Note on Mar 14, 2010 - Probably field value has to be set to warn tag too.
-Rationale: 
-In situation when client requests data from particular API where some small pieces of data are unavailable it has to be notified on such inconsistency.
-
-Case: 
-Field is available, but was not assigned inside Bb, or some regular and predicted error occurs upon its access (i.e. - Changed date of never changed item, unset grade, etc.)
-!!Note on Mar 14, 2010 - I think this was about possible situation when Bb API would throw an exception that in some circumstances needs to be ignored, but practically such situation was not met yet and this case probably has to be removed at all. 
-Action: 
-Field should be set to nullValueTag value if field assumes to be unassigned in particular API, informational message has to be written to "data structure log" on action taken. 
-Rationale: 
-If some error coming from difference in field values obtained through different APIs occurs later then it has to be possible to be "traced" back. So, any field modification action has to be registered. Informational severity level will be turned off by default.
-!!Note on Mar 14, 2010 - also this case looks like continuance of thoughts about "multiple APIs" loading single data structure, see today's note on first case.
-
-Case: 
-Field is available and has value, current field is null or has the same value as newly obtained.
-!!Note on Mar 14, 2010 - if field is null then it needs raising of field level error condition - it had to be set to warn tag if was not available in previous API... probably warn tag has to be overridden by current API value
-Action: 
-Field is set to value converted to string. Debug level message is written to "data structure log" on action taken and actual value assigned to the field.
-Rationale: 
-Same as above.
-
-
-Case: 
-Field is available and has value, but its current value differs from newly obtained one.
-Action: 
-Field is set to errorValueTag. Error message is written to "data structure log" on action taken, newly obtained value that differs from old one is supplied too.
-Rationale: 
-This is actually an aim of the whole story – automated capturing of any inconsistencies in data returned by different Blackboard library and API versions. 
+System Requirements:
+====================
+Blackboard Academic Suite of the version specified in bbversion value of bb-manifest.xml.
 
 
 
-Data modification general processing scenario
-==============================================
 
-Input data structure(s) contains data for persisting. Fields containing values different from missFieldTag (which is null by default) are stored in Bb. 
-Decision on fields that have to be persisted is independent of dataVerbosity value, i.e. behavior is always as if dataVerbosity was set to CUSTOM.
+Download:
+=========
+http://projects.oscelot.org/gf/project/wservices_idla/ - homepage.
 
-In case of INSERT/UPDATE, data is reloaded and compared with saved one. List of Fields that are actually reloaded is controlled by dataVerbosity value. HOWEVER (important) – returned record will contain values in at least ALL posted fields if dataVerbosity is higher than ONLY_ID. While ONLY fields defined by dataVerbosity are actually reloaded and compared. This comes from internal simplicity needs – just assigning input record to result and passing it for data reload, and apparently it may contain some data in EXTENDED field kind while dataVerbosity is set to STANDARD for example. In case of ONLY_ID no data compare is performed, but record is reloaded and only primary key fields are returned.  
-NONE dataVerbosity mode assumes no data reload. The result will look like ONLY_ID if input record contained correct values in Id field(s). 
-CUSTOM data verbosity mode is most appropriate during INSERT/UPDATE operations - in this case only fields that had values (those that were modified) will be reloaded, compared and returned.
+http://projects.oscelot.org/gf/project/wservices_idla/frs/ - latest installable release (BbWebservices.war, TestClients.zip)
 
-!!Note on Mar 14, 2010 - in order to become adequate to new (today's) corrections on multiple API data load processing, more strict control needs to be defined for data verbosity modes, i.e. for example if it was set to STANDARD, but not all "STANDARD" fields had values (some were set to missFieldTag(null)), then data reload will raise field level error condition. Otherwise there will be a need for one more flagging condition in base code, indicating how to qualify current null field value if API pass is above 1.
+http://projects.oscelot.org/gf/project/wservices_idla/scmsvn/?action=browse&path=%2Ftrunk%2F - web access to project source repository
 
-In case of DELETE, dataVerbosity higher than ONLY_ID will just cause reassigning of full input record as it was passed from client. ONLY_ID will behave as a NONE.
-
-During data reload, loaded data is compared with the one from input (Id is handled as a special case during INSERT operation - it is nulled and ignored by data comparing action and its value does not checked for difference), and in case of difference processing is the same as if this data was previously loaded with another API. 
-!!Note on Mar 14, 2010 - here is one more conflict of today's notes on modification of multi-API load processing - it is necessary to ignore somehow BbId value during compare of input data with inserted one.
+http://projects.oscelot.org/gf/project/wservices_idla/scmsvn/?action=AccessInfo - instructions on source checkout with SVN client
 
 
 
-Common parameters of all web methods
-====================================
 
-Client may specify following request processing options (provided in BbWsParams structure), default values are specified in parentheses after BbWsParams field name 
+Installation:
+=============
+WsIdla is installed as any other Building Block through "Administrator Panel / Building Blocks / Installed Tools / Upload Building Blocks" (in v.9). 
 
- * apiToUseList(specific to particular webservice method)  - list of structures containing 2 strings. First one is apiTag code list with values like DATA_GB, ADMIN_DATA, PLATFORM_GB2, WS_GB. Another one is innerClassOverride, which meaning can be explained probably only with sample. DATA contains User methods like userLoadById(), ADMIN_DATA contains methods like userLoadByBatchId(). They are not of the absolutely same kind and cannot have same names, but have identical format of parameters and return same data. And someone may like to run them in test mode for comparative accessing of 2 different APIs. Methods mentioned above are accessed through inner classes of DataAccessPack, and this parameter allows to call loadById() web method, that by default transfers to LoadById class of DATA, and redirect it to LoadByBatchId (by setting apiTag="ADMIN_DATA" and  innerClassOverride="LoadByBatchId") class of ADMIN_DATA. Defaults of this parameter depends on web method and Blackboard version.
-dataLogSeverity - "Data structure log" max verbosity – DEBUG, INFO, WARN, ERROR. Default – WARN. 
+Settings button allows to:
+ * Specify password (password hashing option did not work upon testing - todo!!)
+ * Enable particular web methods available from integrated BBwebservices project (IMPORTANT - upon initial installation access to all methods will be set to disabled, an error will sound as "access denied", deleting and re-installing of building block does not reset access to earlier enabled methods)
+ * Specify Log Severity level (?? rename to verbosity) - this setting overrides standard Blackboard log verbosity if for example it is set to WARN, while WsIdla's one to DEBUG, however opposite will not be true, i.e. setting of Bb one to DEBUG and WsIdla's to WARN will not suppress WsIdla's DEBUG level log entries (not tested!!). 
+Possible values corresponding to LogService.Verbosity are integers that may differ for BB versions, in v.7.3 they are from 0 to 4, in v.9 are from 0 to 5, this is why there is DEBUG2 value in the list, corresponding to Bb verbosity of level 5.
+
+Physically building block files will be placed to /blackboard/content/vi/bb_bb60/plugins/IDLA-BbWebservices/.
+
+Conflicts were noticed of between JAX-WS 2.1 and JAX-WS 2.2 when another building block exists using another JAX-WS version (practically it happened with original AMNL BBwebservices compiled with JAX-WS 2.1 and WsIdla compiled with JAX-WS 2.2 installed on same Bb server).
+
+
+
+
+Quick start:
+============
+The fastest way to start probably would be 
+a) map your Bb server IP to idlatestbb.com URL (for example in  WinRoot\system32\drivers\etc\hosts file on Windows systems)
+
+b) open TestClients/AutoTestClient/AutoTestClient_VS2008.sln, update of Web References of bbIDLA(DotNetProxy) and App_WebReferences of AutoTestClient, compile TestClients/DotNetProxy/bbIDLA and TestClients/AutoTestClient.
+
+c) Input initial test data that AutoTestClient expects to find in Bb database. Theoretically, necessary data is identified in AutoTestClient's BbWsTest.aspx.cs TestArgs initialization and the one currently set there is just user with name "student_001" and course with courseId "TestClass_001_ID", and student_001 has to be enrolled to TestClass_001_ID. (!!) But some more constants may be encoded somewhere in AutoTestClient sources, it was not checked. data_release_9.0.440.0.zip contains Bb databases used for test runs.
+
+d) Try to run/debug AutoTestClient.
+
+See "AutoTestClient" topic for more details.
+Reading through the rest of this file is highly recommended too.
+
+
+
+Web Service End Points:
+=======================
+WsIdla Web Services:
+--------------------
+http://<Bb URL>/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices
+, access to web methods of all APIs is implemented through single end point.
+
+AMNL BBwebservices:
+-------------------
+http://<Bb URL>/webapps/IDLA-BbWebservices-bb_bb60/BB<type-of-specific-webservice>WebService 
+, i.e.
+http://<Bb URL>/webapps/IDLA-BbWebservices-bb_bb60/BBAnnouncementWebService
+http://<Bb URL>/webapps/IDLA-BbWebservices-bb_bb60/BBCalendarWebService
+and so on for Content, Course, Discussion, Gradebook, Group and User.
+
+
+
+
+Compatibility with AMNL BBwebservices v.1.2:
+============================================
+WsIdla use same data structures as AMNL BBwebservices whit minimal modifications, which include (a) all non-String data types are converted to String (see "Deliberation on use of strict datatypes in exchanged data structures" topic for more details) (b) several fields are renamed either in order to match better Bb naming to sound more type-specific (like Available to IsAvailable).
+
+Code of AMNL BBwebservices v.1.2 using data structures of implemented by WsIdla APIs is modified as well to handle String and renamed fields.
+Please see "Deliberation on Use of Strict Datatypes" for argumentation on use of String datatype only in exchanged data structures.
+
+
+
+
+Deliberation on Use of Strict Datatypes:
+========================================
+Rough mapping of BBGradebookWebService, data.gradebook, platform.gradebook2 and ws.gradebook was made for Lineitem and Score items. It demonstrated light inconsistency of datatypes used internally by Blackboard in various APIs – fields of float/double datatype (pointsPossible, weight, averageScore, etc.) are declared as float in data.gradebook, as double in platform.gradebook2 and again as float in ws.gradebook.
+
+Null value is used by default for indication of missing/unnecessary field. "Real" null values are transmitted as configurable string tags, i.e. like "BbWsNull" or any other value (including empty string) assigned to nullValueTag parameter. Primitive types do not support null value and such kind of indication would not be possible.
+
+According to tests made in direction of JAXWS to .NET, nulled strings are not encoded into SOAP messages at all, and thus using of null is reducing necessary traffic.
+
+
+
+
+Notes on Specifics of Various APIs/Web Methods:
+===============================================
+All noticed specifics in APIs behavior are provided as comments in tops of appropriate data structure source files, like BbWebservices/src/java/bbuws/UserDetails.java for User API, BbWebservices/src/java/bbuws/PortalRoleDetails.java for PortalRole API, BbWebservices/src/java/bbcrsws/CourseDetails.java for Course API - search for such files in BbWebservices/src/java/ directory.
+
+Possible (accepted) values for specific fields can be found in  
+SetFieldsExtended() methods AutoTestClient, please see AutoTestClient topic for more details.
+
+
+
+Web Methods Naming, Parameters and Results:
+===========================================
+Names of all published web methods have following structure:
+
+<APIDetails/APIDetailsList>  <API><Action><Record/List><ByClause>(BbWsParams, <APIDetails/APIDetailsList>, [<APIDetails])
+
+possible Action values are Load, Insert, Update, Persist, Delete, Copy
+BbWsParams is common parameterization structure passed to all web methods, explained below as “Common Parameters – BbWsParams” topic
+
+for example:
+UserDetails userLoadRecordById(BbWsParams, UserDetails) - loads single record of UserDetails by Id from passed UserDetails structure.
+
+List<CourseMembershipDetails> courseMembershipPersistListById(BbWsParams, List<CourseMembershipDetails>) - persists (either inserts or updates depending on existence of record) list of passed CourseMembershipDetails structures and returns same list, updated with data reloaded after persisting, data log record and success/fail result for each processed record.
+
+List<UserDetails> userLoadListByCourseId(BbWsParams, UserDetails, CourseDetails) - loads list of UserDetails, as long as UserDetails does not have CourseId field, third parameter of type CourseDetails is included in passed data, only CourseId is used, values of UserDetails are used only for possible custom filtering of fields to be returned.
+
+
+
+Common Parameters - BbWsParams:
+===============================
+Client may specify following request processing options (provided in BbWsParams structure), default values are applied for null values and are specified in parentheses after field name.
+
+/BbWebservices/src/java/bbwscommon/BbWsParams.java and BbWsArguments.java are source files closely related to BbWsParams. 
+
+ * apiToUseList (default is specific to particular webservice method) - 
+please see "Testing of Bb APIs with WsIdla" topic for more information on this parameter and leave it null for regular processing.
 
  * password("") - 
 webservices access password, it can be configured in Webservices building block properties.
 
  * nullValueTag("BbWsNull") - 
-string representing null value of data field. Input data fields containing value of this tag will be converted to null value upon assignment to Bb data structures, result null Bb fields are converted to this value.
+string representing null value of data field. Input data fields containing value of this tag will be converted to null value upon assignment to Bb data structures, null Bb fields are converted to this value in result data.
 
  * errorValueTag("BbWsError") - 
 string representing error condition happened upon accessing of particular field - result field contains specified string in place of real value. Don't applicable for input field value.
 
  * warnValueTag("BbWsWarn") - 
-string representing warning condition happened upon accessing of particular field. Don't applicable for input field value.
+(?? probably will be removed - only error condition will substitute real field value) string representing warning condition happened upon accessing of particular field. Don't applicable for input field value.
 
  * missFieldTag(null) - 
-string flagging that accessing of field containing this tag value should be omitted. Applicable only for input.
-
- * dataFieldErrorThrowSeverity("ERROR") - 
-severity level of field access problem causing an exception to be thrown (thrown here exception is re-handled on record level). 
-Possible values are DEBUG, INFO, WARN, ERROR, FATAL. 
-FATAL can be assumed as a synonim of NONE.
-
- * dataRecordErrorThrowSeverity	("ERROR") - 
-severity level of record-wide access problem causing an exception to be thrown (in other words – web interface may return boolean success/failure of record level operation or throw an exception to client at this point of exception handling).
-Possible values are DEBUG, INFO, WARN, ERROR, FATAL.
-Practically used may be just ERROR and FATAL, i.e. whether to break list processing upon error. Transactional mechanisms are not be supported – data modifications performed before error condition are not be abandoned.
-FATAL can be assumed as a synonym of NONE. Normally, no exceptions should be expected on return if dataRecordErrorThrowSeverity is FATAL.
-
- * dataLogSeverity(DataLogSeverity.WARN) - 
-severity level of "data structure log" (referred below as bbWsDataLog, which is actual data log's field name in all returned data structures) supplemented with each of data structures returned.
-Possible values are DEBUG, INFO, WARN, ERROR, FATAL.
+string flagging that accessing of field containing this tag value should be omitted. All result structure fields are initialized to missFieldTag values initially. Input data on client side should probably be initialized to this value too in order to avoid situations when occasional null may reset important Bb data.
 
  * dataVerbosity(DataVerbosity.STANDARD) - 
 defines set of fields containing data returned. 
-Possible values are NONE, ONLY_ID, MINIMAL, STANDARD, EXTENDED, CUSTOM. NONE can be used only during data modifications meaning that no data should be re-read.
-if dataVerbosity is set to CUSTOM, returned data will contain only those fields set that had values different from specified in missFieldTag.
+Possible values are NONE, ONLY_ID, MINIMAL, STANDARD, EXTENDED, CUSTOM. NONE is applicable only during data modifications. NONE meaning that no data re-load will be performed (only keys from input record are copied into result), ONLY_ID means that record will be also reloaded, but only BbId will be updated in result record and no data compare will be performed.
+if dataVerbosity is set to CUSTOM, returned data will contain only those fields set that had values different from value specified in missFieldTag.
+MINIMAL, STANDARD and EXTENDED are mostly convenient for data load operations, please see setWsFields() implementations in successors of BbWsDataAccessPack for sets of fields predefined for these dataVerbosity values. NONE values are interpreted as ONLY_ID during data loading (only BbId).
+See "Data Modification Processing" subtopic for more details.
+
+ * dataFieldErrorThrowSeverity("ERROR") - 
+severity level of field access problem causing an exception to be thrown (thrown here exception is re-handled on record level). 
+Possible values are DEBUG, INFO, WARN, ERROR, FATAL, practically useful are only WARN, ERROR, FATAL. 
+
+ * dataRecordErrorThrowSeverity	("ERROR") - 
+severity level of record-wide access problem causing an exception to be thrown (in other words – web interface may return success/failure of record level operation or throw an exception to client at this point of exception handling).
+Possible values are same as for dataFieldErrorThrowSeverity.
+Transactional mechanisms are not be supported – data modifications performed before error condition are not rollbacked.
+Normally, no application exceptions should be expected on return if dataRecordErrorThrowSeverity is FATAL.
+
+ * dataLogSeverity("WARN") - 
+(?? rename to dataLogVerbosity) verbosity of "data structure log" (DataLog) supplemented with each of data structures returned.
+Accepted values are DEBUG, INFO, WARN, ERROR, FATAL. 
 
  * datePattern("yyyy-MM-dd") - 
 java.text.SimpleDateFormat ruled date pattern of date/time input and result fields.
@@ -173,158 +222,291 @@ java.text.SimpleDateFormat ruled time pattern of date/time input and result date
 
 
 
-Input and result data structures 
-================================
 
+Exchanged Data Structures:
+==========================
 Same data structures are used for input and result data. Several fields however are applicable only to results. 
-In general, some more than usual in regular coding excessiveness was defined for interface methods. This was targeted for unification of interface and simplifying of coding on client side. The responsibility of making calls effective in terms of realized traffic is over client, because it can provide much unnecessary data and still get required results. In case of future necessity of performance restrictions this may be handled by some checks that will raise exceptions upon detection of excessive input data.
+
+In general, some more than usual in regular coding excessiveness was defined for interface methods. This was targeted for unification of interface and simplifying of coding on both client and server sides. The responsibility of making calls effective in terms of realized traffic is over client, because it can provide much unnecessary data and still get requested response and no errors.
 
 Common fields of all data structures
 ------------------------------------
- * bbWsBoolResult - result only - indication of success or failure processing of particular record (data structure object).
- * bbWsTextResult - result only - textual description (usually obtained as most root exception cause) of failure 
- * bbWsDataLog - result only - list of BbWsDataLogRecord objects providing details on field-level access operations.
- * BbId - primary key of Bb record corresponding to data structure returned.
+ * BbId - primary key of Bb record.
+ * bbWsBoolResult - result only - indication of success or failure processing of particular record, can be "true" or "false".
+ * bbWsTextResult - result only - textual description (in case of error - messages from exception chain) of failure, or just SUCCESS in case of true bbWsBoolResult.
+ * bbWsDataLog - result only - list of BbWsDataLogRecord objects providing details on field-level access operations (see DataLog topic below).
 
-Remaining fields are individual per API and carry both data load keys/field filtration or keys/new data for persisting operations.
+Remaining fields are individual per API and specify either keys/field filtration for data load or keys/new data for modification operations.
+
+
+
+DataLog:
+========
+List of log records is included as bbWsDataLog field in all returned data structures.
 
 BbWsDataLogRecord record 
 ------------------------
-List of log records is included as one more element in all returned data structures 
- * Field Name (as it is named in data structure) 
- * Record BbId
- * Field value (!!Note on Mar 14, 2010 - no consistent logic here, various kinds of field values are assigned in different invocation of data logger)
- * API used 
- * API pass
- * Severity level 
- * Message (!!Note on Mar 14, 2010 - message text tries to substitute limitations of single value field, providing something like triple of Ws original value, Ws converted value and Bb actual value, but does not have consistency too)
- * Current server side date and time
-
-
-Meanings of regular input field values upon different conditions
---------------------------------------------------------------
- * I. In case of data load – 
- ** 1. If dataVerbosity was set to CUSTOM, then  null value (missFieldTag) of particular field means that it should be omitted, returned value of this field will be null too
- ** 2. Non-null value defines 
- *** a. If dataVerbosity was set to CUSTOM, indicates that field has to be read and returned 
- *** b. Parameter of the request, i.e. userId or courseId (as a consequence of (1) above, fields representing parameters will be always returned)
- * II.	In case of Insert or Update
- ** 1. null value indicates that field should not be saved/modified
- ** 2. Non null value indicates new field value and/or identifier of record that has to be modified. Assigning of explicit null value will be indicated with commonNullValue assigned to the field
- * III. In case of delete 
- ** 1. non-null fields contains parameterization of delete operation, i.e. userId or courseId, etc.
+ * fieldName - Field Name (as it is named in data structure) 
+ * recordId - Record BbId, primary key of Bb record.
+ * value - Field value that was finally (tried to be) assigned to Ws or Bb data structure depending on data load or modification operation
+ * bbValue - value that was initially read from Bb
+ * wsValue - value that was initially set in Ws data structure
+ * apiUsed - code of API that was used for data access
+ * apiPass - sequence (order) of data access operation. When it follows very first one, WsIdla compares already obtained values with newly loaded and signals errors in case of their difference.
+ * severityLevel (?? rename to verbosity) - can be DEBUG, INFO, WARN, ERROR, FATAL.
+ * message - free textual message, exception message in case of Bb exception upon field access, may include info on value, bbValue and wsValue because in case of settings permitting exception throwing only this text will be provided back to client as exception message
+ * dateTime - server side date and time of log record generation
 
 
 
-Argumentation of null value used as indicator of non-required fields
-====================================================================
-According to tests made in direction of JAXWS to .NET, nulled strings are not encoded into SOAP messages at all, and thus using of null is reducing necessary traffic.
+
+Project directories and important files:
+========================================
+/BbWebservices - WsIdla project and sources (Netbeans 6.0.1, JAX-WS 2.1)
+/BbWebservices/src - java sources
+/BbWebservices/src/java/bbwscommon/BbWebservices.java - "front end" of WsIdla.
+/BbWebservices/src/java/bbwscommon/BbWsParams.java - common parameters structure for all web methods
+/BbWebservices/src/java/bbwscommon/BbWsArguments.java - class to which BbWsParams are converted for internal WsIdla use.
+/BbWebservices/web - configuration and GUI
+
+/BbWebservices/web/WEB-INF/bb-manifest.xml - Bb building block configuration file
+
+/Doc - documentation
+/Doc/Readme.txt - this file
+/Doc/ReadmeForGradebook(bbgbws).txt - an original readme for pre-alpha experimental implementation of Gradebook API which is not moved to current set of base classes yet. 
+
+/Excel/InterfaceSheet_and_CodeGeneration.xls - Excel file with sheets described next
+/Excel/InterfaceSheet.csv - table with classification of available web methods by API and CRUD action
+/Excel/BbWebserviceMethods.csv - primary used for code generation, but as side effect contains list of all implemented by WsIdla web methods
+/Excel/FieldSetters.csv - used for code generation, contains list of all fields from all implemented by WsIdla APIs
+
+/lib - Bb libraries required for project compilation
+
+/sql - piece of T-SQL script library allowing fast backup/restore of Bb MS SQL Server databases 
+
+/TestClients - sample access code
+/TestClients/AutoTestClient - demonstrates access to each WsIdla web method and most of fields of data structures
+/TestClients/AutoTestClient/App_Code/BbWsTest.aspx.cs - practical AutoTestClient entry point - BbWsTestPage.aspx.cs just inherits from it, and by itself is mapped as Default in Web.Config
+/TestClients/AutoTestClient/TestResults - sample test results, see readme.txt inside this directory for naming convention of files with test results and other possible notes.
+/TestClients/AutoTestClient/AutoTestClient_VS2008.sln - VS2008 solution file, including in itself AutoTestClient and DotNetProxy projects (AutoTestClient by default is working through DotNetProxy interface), see "AutoTestClient" section of this file for how to exclude DotNetProxy from WsIdla call chain).
+/TestClients/DotNetProxy/bbIDLA - project implementing retransmitting of calls to WsIdla and integrated AMNL BBwebservices, its main purpose is for centralized client-side error handling and logging.
+/TestClients/webservices_amnl - tests copied from and based on AMNL BBwebservices, basic samples of some AMNL BBwebservices APIs access.
+
+/webservices_amnl - mirror of AMNL BBwebservices (vendor) sources, integrated AMNL BBwebservices are copied (branched) from here which allows merging of AMNL BBwebservices updates.
+
+/data_release_9.0.440.0.zip - zip file with Bb databases for Bb release 9.0.440.0_2.1.94 with initial test data expected as available by AutoTestClient.
 
 
 
-Deliberation on use of strict datatypes in exchanged data structures
-====================================================================
+BbWebservices:
+==============
 
-Rough mapping of BBGradebookWebService, data.gradebook, platform.gradebook2 and ws.gradebook was made for Lineitem and Score items. It demonstrated light inconsistency of datatypes used internally by Blackboard in various APIs – fields of float/double datatype (pointsPossible, weight, averageScore, etc.) are declared as float in data.gradebook, as double in platform.gradebook2 and again as float in ws.gradebook.
+Compilation:
+------------
+Development environment - Netbeans 6.0.1
+Open BbWebservices project.
+Resolve /lib/BbVersion location (Project Properties / Libraries).
+Build/Build main project (F11) should generate BbWebservices/dist/BbWebservices.war 
 
-This makes me think that using of String container datatype for any field exposed by BBGradebookWebService would be quite eligible. Where strings by themselves are stored in same (and complemented) data structures that were introduced in v.1.2 of BBGradebookWebService.
+Processing Flow:
+----------------
+"Front end" of WsIdla is BbWebservices/src/java/bbwscommon/BbWebservices.java, it creates BbWsArguments from received BbWsParams and input data (<APIDetails/APIDetailsList>). In its major part BbWebservices.java is generated by BbWebserviceMethods sheet of Excel/InterfaceSheet_and_CodeGeneration.xls.
 
-Null value will be used for indication of missing/unnecessary field. Actual null values will be transmitted as configurable string tags, i.e. like “!!NULL!!” or any other value (including empty string) assigned to commonNullValue parameter.
+BbWsApiProcessor takes class name from BbWsArguments and loads-executes actual data access class (BbWsParams.apiToUseList can override identification of class to be loaded, see "Testing of Bb APIs with WsIdla" topic for more details). Password checking is performed here as well.
+
+Dynamically loaded and executed are inner classes of successors of BbWsDataAccessPack. BbWsDataAccessPack successors have to follow specific naming convention with "_APISuffix" code at the end of their names.
+
+BbWsDataAccessPack implements main processing logic. Its inner classes inherited from BbWsDataAccessPack.DataAccessor call semi-abstract (throwing exception in base implementation) methods of outer BbWsDataAccessPack class (loadList(), loadRecord(), ..., setBbFields(), deleteRecord()).
+
+Successors of BbWsDataAccessPack must implement those methods, which have to perform minimal necessary processing specific to particular API.
+
+Intermediate successors of inner DataAccessor implemented in BbWsDataAccessPack are InputListProcessor (processes list of records acessing each of them for example by Id), RecordLoader, RecordInserter, RecordUpdater, RecordPersister, RecordDeleter, RecordListLoader (used when single Bb call returns list of records). Design allows wiring of several DataAccessors successively, InputListProcessor uses it to call different RecordAccessor classes depending on initialization (in successors of BbWsDataAccessPack).
+
+BbWsDataAccessPack.WsFieldSetter and BbWsDataAccessPack.BbFieldSetter implement core processing of single Bb field retrieving and assigning. Inherited from BbWsDataAccessPack classes create/call anonymous inner classes inherited from WsFieldSetter and BbFieldSetter in overriden setWsFields() and setBbFields() methods, these anonymous classes are generated by FieldSetters sheet of Excel/InterfaceSheet_and_CodeGeneration.xls.
+
+Exception handling is performed in WsFieldSetter/BbFieldSetter (field level), BbWsDataAccessPack.execute() (web method call level), RecordAccessor.access(),  InputListProcessor.execute() (?? may be excessive) and RecordListLoader.access() (?? may be excessive) (last three - record level).
+
+Data Modification Processing:
+-----------------------------
+Input data structure(s) contains data for persisting. Fields containing values different from BbWsParams.missFieldTag (which is null by default) are stored in Bb. In opposite words, fields set to missFieldTag are omitted from any processing. When data is updated, target record is preloaded and only then modified, i.e. data is not lost.
+ 
+Decision on fields that have to be persisted is independent from BbWsParams.dataVerbosity value, behavior is always as if dataVerbosity was set to CUSTOM.
+
+After insert or update action record is re-loaded and compared with input data. dataVerbosity value defines fields that are actually compared at this moment.
+
+dataVerbosity modes:
+ * NONE - forces no data reload to occur. Returned record will have only BbWsBoolResult, BbWsTextResult and bbWsDataLog set/modified, and will contain copied from input record ids (BbId and possibly additional alternative key fields depending on API). During list operations if input record did not have BbId set, result's record BbId will be set to random UUID.
+ * ONLY_ID - keys are copied from input record, Bb record is reloaded, then BbId is retrieved from Bb data and only it is updated in result record and no data compare is performed.
+ * MINIMAL - input record is saved, then copied as result one, which is then compared with data reloaded from Bb. In case of MINIMAL only minimal set of most important fields like name, alternative ids, etc. is compared/updated, however result record will contain all remaining data passed on input as well. And, if some "MINIMAL field" was not set on input, it will contain reloaded from Bb value (compare is omited in this situation, field is just updated).
+ * STANDARD - same as minimal, but set of compared fields is wider.
+ * EXTENDED - same as minimal, but set of compared fields is full.
+ * CUSTOM - only those fields are reloaded/compared that were not set to missFieldTag (except of BbId). This mode looks like most applicable for regular insert/update operations that do not aim additional data load as side effect.
+
+During delete ONLY_ID will behave as NONE and any dataVerbosity higher than ONLY_ID will cause just reassigning of full input record to result one.
+
+Testing of Bb APIs with WsIdla: 
+-------------------------------
+(!!)Note - this functionality was not tested much and recently.
+
+It is possible to request WsIdla to access same Bb data sequentially with different methods (all methods in such group should have same parameters and return same results). 
+
+For example results returned by userLoadRecordById(), userLoadRecordByName() and userLoadRecordByBatchUid() can be compared this way, or userLoadListByTemplate() and userLoadListBySearchByUserName() for the sample of list compare.
+
+During this operation WsIdla will check retrieved data for equality with previously loaded one.
+
+Compared are field values and missing/excessive records in case of record list loading operations.
+
+Checks on missing and new fields are not implemented. It is expected to become possible after making use of Bb _Attributes and checking that every field in _Attributes is mapped to WsIdla data structure field and no excessive fields exist on WsIdla side (??).
+
+BbWsParams.apiToUseList designation is to allow such "wiring" of several web methods or just substitution of the class that should be loaded by default by BbWsApiProcessor (see "Processing Flow" subtopic for preamble). Default class is defined from successor of BbWsArguments (currently only _DATA or _ADMIN_DATA suffix) and hard coded class name string passed from BbWebservices. 
+
+apiToUseList is a list of structures containing 2 strings. 
+    public static class ApiToUse {
+        public String apiTag;
+        public String innerClassOverride;
+    }
+
+First one is apiTag code list with values like _DATA or _ADMIN_DATA (initially planned ones were for Gradebook with 3 access ways - DATA_GB, PLATFORM_GB2, WS_GB). It may be assumed as identifier of BbWsDataAccessPack successor name with restriction from internal WsIdla naming convention on that all methods are from similar APIs (i.e. all user... web methods load inner classes from either UserAccessPack_ADMIN_DATA or UserAccessPack_DATA).
+
+Another one is innerClassOverride, which specifies successor of BbWsDataAccessPack.DataAccessor that will be actually loaded by BbWsApiProcessor.
+
+If apiToUseList has only one record - then this record just overrides default class that had to be loaded if apiToUseList was null.
+
+apiPassedCount is a flag indicating whether record is reloaded and has to be compared, it is both field of overall BbWsArguments, as well as record-level flag. On record level it is used for indication of missing records in currently passed API.
+
+Global apiPassedCount is incremented in BbWsApiProcessor, record level one in various successors of DataAccessor class.
+Mechanisms of field values compare is implemented in BbWsDataAccessPack.WsFieldSetter.setWsField() and activated if record level apiPassedCount > 0.
+
+In BbWsDataAccessPack.RecordListLoader.RecordListLoader_BbListIterator/RecordListLoader_WsLHMIterator.access() are implemented checks on missing/excessive records.
+
+RecordListLoader_BbListIterator looks in already obtained records from other APIs if global apiPassedCount > 0 and marks record as "Record was missing in previously passed APIs" if it is missing there. 
+
+RecordListLoader_WsLHMIterator searches for any records without incremented apiPassedCount (compared to global apiPassedCount) and marks found records as "Record is missing in currently passed API".
+
+See more about apiPassedCount in "Data Modification Processing" subtopic.
 
 
 
-Step-by-step implementation of custom API accessing classes
+
+AutoTestClient:
+===============
+Development environment - MS Visual Studio 2008.
+
+AutoTestClient does not include tests for integrated AMNL BBwebservices, it covers only WsIdla web methods.
+
+See "Quick start" and "Web Service End Points" topics for quick AutoTestClient configuration and compilation.
+
+Internally AutoTestClient is implemented as one big partial class BbWsTest (BbWsTest.aspx.cs + all BbWsTest.<API>.aspx.cs files in TestClients/AutoTestClient/App_Code). It was not carefully designed, main intention was to provide as much points for overriding or events injection/manipulation as possible and to split code in some reusable pieces. Currently it performs only "success case" autotesting, automated analysis of expected fail conditions is not implemented yet.
+
+Base processing logic is concentrated in BbWsTest.aspx.cs, where set of base inner classes is introduced.
+
+TestArgs class contains shared data storage for all tests. Its instances are parameterized by type of API data structure - i.e. UserDetails, CourseDetails, etc. But each its instance has access to other instances as well through TestArgsStruct which by itself contains TestArgs instances of all types. Successors of TestArgs (instantiated in TestArgsStruct constructor) complement TestArgs with concrete test running classes, successors of BbWsTest.TestCase.
+
+TestCase (and its base TestAction) implement running of tests, analysis of results and their visualization.
+
+Global control and settings of test runs is performed in: 
+ * BbWsTest.RunTest() - top level calls of per-API sets of tests,
+ * TestArgs.TestArgs() - specific BbWsParams settings,
+ * Run<API>Test() of BbWsTest.<API>.aspx.cs files - commenting/uncommenting of specific test to run.
+
+First place of practical interest should be BbWsTest.<API>.aspx.cs, API specific files of BbWsTest class, and inside them final successors of BbWsTest.TestCase class implementing actual calls of web service methods. Almost all of them are done in same pattern, by overriding of 3 methods - preAction(), executeImp() and postAction() and actively relying on their siblings (i.e. like calling from preAction() executeImp() of another test case). 
+
+SetFieldsExtended() method of TestArgs overriden in its typed successors implements field level testing and contains lists of possible values accepted by specific fields, it is usually run from test class named like <api>UpdateRecordBy<something>_extended.
+
+Initial skeleton of BbWsTest.<API>.aspx.cs files is generated by BbWebserviceMethods sheet of InterfaceSheet_and_CodeGeneration.xls.
+Sample test results are available in /TestClients/AutoTestClient/TestResults directory.
+
+Excluding of DotNetProxy:
+-------------------------
+AutoTestClient can call WsIdla either directly or through DotNetProxy (default).
+
+Web References of DotNetProxy maps WsIdla to bbIDLA.BBAddedService namespace.
+App_WebReferences of AutoTestClient maps WsIdla to bbws namespace.
+
+In order to exclude DotNetProxy, "using bbIDLA.BBAddedService;" directive has to be replaced with "using bbws;" in all files implementing partial BbWsTest class (BbWsTest.aspx.cs, BbWsTest.Course.aspx.cs, BbWsTest.CourseMembership.aspx.cs and so on).
+
+And one more correction has to be made in BbWsTest.aspx.cs - 
+public BbWsWebReference bbWs = new BbWsWebReference(true);
+has to be replaced with 
+public bbws.BbWebservices bbWs = new bbws.BbWebservices();
+
+BbWsWebReference class performs "translation" of method names from lower cased first letter to upper cased one (DotNetProxy methods are named/parameterized in a same way as web service methods, but capitalize first letter according to .Net naming convention).
+
+
+
+
+DotNetProxy:
+============
+DotNetProxy performs forwarding of calls to web service methods and does optional exception handling and logging.
+
+It provides entry points both to WsIdla and integrated AMNL BBwebservices. WsIdla web reference namespace is named as BBAddedService, AMNL BBwebservices web references names follow naming of their end points (specified in "Web Service End Points" topic).
+
+Client-specific exception logging has to be implemented in BlackBoardWebServices.LogError() method.
+
+
+
+
+Known problems and things to do:
+================================
+Ongoing notes in source comments and documentation are tagged with either double-exclamation or double-question sign (!! and ??). Exclamation means that it should be done, question that it is on the stage of analysis/research.
+
+Long running, burn and full code coverage tests were not performed.
+
+Performance profiling and optimization was not performed.
+
+ * Review and rework base classes to support next level of functionality in Bb data accessibility (working name is intelligent Ws interface, design documentation is in development)
+
+ * Simplify coding of field accessors through some semi-generic approach using internal Bb _Attributes for knowledge of right ways of field get/convert/set operations.
+
+ * Extend AutoTestClient in automated analysis of failure test cases.
+
+ * Adopt Gradebook interface to latest design and class hierarchy.
+
+ * Adopt Score interface to latest design and class hierarchy.
+
+ * List possible field values in enum fields modification error messages.
+
+ * Research if configurable permissions for WsIdla methods can be implemented through general building block permissions currently defined at the moment of registration, i.e. to be propagated to internal blackboard security logic. If it is not possible then some matrix of permissions to select/insert/update/delete per API should be handled in custom way.
+
+ * In case of customers' interest add possibility of raw XML output as it is implemented in AMNL BBwebservices in XML suffixed web methods.
+
+ * Move access to bbId and rowStatus to base BbWsDataAccessPack or intermediate base class.
+
+ * Add thread id to log entries.
+
+
+
+
+Version history:
+================
+Project releases versioning was started from 2.0 as continuance of branched from and integrated into WsIdla initial AMNL BBwebservices v.1.2 sources.
+
+For full development log please see commit comments to SVN trunk at http://projects.oscelot.org/gf/project/wservices_idla/scmsvn/?action=browse&path=%2Ftrunk%2F&view=log 
+
+2.1.100 - Doc/Readme.txt (this file) is updated and included in release, source comments/tags added.
+
+2.1.94 - Single-record (except courseLoadListByTemplate() that returns list) access to Course API is included in new functionality. Small fixes in BbWebservices and AutoTestClient.
+
+2.0.82 - first public release, provides CRUD access to User, CourseMembership, PortalRole, ObserverAssociation and PortalRoleMembership APIs
+
+
+
+
+Contact information: 
+====================
+Please use for communication
+http://projects.oscelot.org/gf/project/wservices_idla/forum/ or
+http://projects.oscelot.org/gf/project/wservices_idla/tracker/ project pages.
+
+
+
+
+Development is financed by http://idahodigitallearning.org/
 ===========================================================
-Detailed and explanatory step-by-step is not ready yet, BbWebservices, DataDetails and DataAccessPack[_API] (UserDetails, UserAccessPack, UserAccessPack_DATA and UserAccessPack_ADMIN_DATA for example) classes have to be studied for samples on what is necessry for implementation of new interfaces.
-
-
-Processing flow description
-===========================
-
-!!Note on Mar 14, 2010 - description below is principally outdated, gradebook code did not change and follows it, but latest code is built around BbWebservices(BbWsParams->BbWsArguments)->BbWsApiProcessor->BbWsDataAccessPack processing sequence. Description of gradebook processing below is left unmodified.
-
-Current design is yet rough enough and made around of Gradebook Lineitem data reading. So, some names and points of control flow switching are not quite clean yet. 
-
-Processing logic is concentrated at 3 points: 
-a)	dynamic loading of classes responsible for actual blackboard data retrieval and pushing it into returned to client data structures (BBGradebookWebService.DataGetter.run())
-b)	web interfaces returning lists of values are passing through DataDetails.RecordListLoader.loadImp() and loadRecord() that take care for checking of possible inconsistencies on missing/surplus records returned by various APIs.
-c)	DataDetails.RecordLoader.ValueLoader.load() implements logic for comparing of record fields values obtained through different APIs
-
-BBGradebookWebService entry point -> runGetter () client level exception handling -> DataLoader.load()bb-services-log.txt exception handling -> RecordListLoader.loadImp()->abstract LoadList() and LoadRecord() -> RecordLoader.loadImp() -> ValueLoader.load() –> data record log exception handling -> abstract loadImp().
-
-DataLoader hierarchy of classes (RecordListLoader and RecordLoader are inherited from DataLoader and probably ValueLoader is candidate for this too) is made as internal in DataDetails class intentionally for an ability of direct fields access of DataDetail (designed to be ancestor for all data structures returned for client like LineitemDetails) from performance reasons.
-
-Web service entrance points (BBGradebookWebService. getAllLineItemsForCourseIdWithNamedElements(), its overloaded version getAllLineItemsForCourseIdWithNamedElementsAndParams() and getLineitemDetailsForGivenLineitemBbIdWithNamedElements) create appropriate DataGetter successor which parameterizes DataGetter.run() behavior and can perform additional pre/post checks and/or returned result conversion. Invocation of inherited DataGetter is performed through BBGradebookWebService.runGetter() which centralizes and represents end-point of internal exception handling and re-throwing as WebServiceException to client. Parameters of Client call are stored in successor classes of CommonParams and are passed in this form to particular data access implementor. 
-DataGetter is made internal to BBGradebookWebService just for easier code editing.
-
-DataGetter.run() 
-a)	checks permission for accessing of web service interface from Client and
-b)	cycles through the list of APIs (particular data accessing implementations – successors of DataLoader class) that must be used for obtaining of data and sequentially passes control to loaded classes with providing of objects that should contain resulting data (i.e. kind of in/out parameter)
-
-Loaded by DataGetter classes are successors of DataLoader. They are currently designed to instantiate themselves through custom static method that holds now customizations that did not fit well into overall design yet. Basically its task is to create appropriate DataLoader object and to pass control to DataLoader.load() method.
-
-DataLoader.load() implements second level of exception handling- re-throwing with writing of stack trace into log file because dynamic loading/invocation through reflection seems to cut out much info from initial exception occurred (at least it was logged so by default). DataLoader.loadImp() is next level of processing implemented in successor classes – RecordLoader and RecordListLoader. 
-
-RecordListLoader.loadImp() relies on LoadList() that should be overridden by successor and implement actual load of Blackboard items into the source list. loadImp() then iterates through it invoking loadRecord(). Checks on missing/exhaustive records in the list are separated between loadImp() and loadRecord() - loadRecord() first looks in already obtained records from other APIs if any and marks record as "Record was missing in previously passed APIs" if it is missing there. loadImp() as last processing step searches for any records that were not updated at this API pass and marks found records as "Record is missing in currently passed API". RecordListLoader.loadRecord() relays on createRecordLoader().
-
-RecordLoader functionality is implemented most in final successors. On first place it is loadImp() that implements actual assignments of source record values to target data structures. Source value obtaining and converting to String is implemented inside try/catch block of RecordLoader.ValueLoader.load(). This function performs value comparing and log into “data log” errors if particular value is different in various APIs. Actual value loading has to be implemented in successors of ValueLoader that are defined as dynamic (inline) classes in overridden RecordLoader.loadImp(). See internal LineitemDetails classes RecordListLoader_DATA_GB/PLATFORM_GB2 and RecordLoader_DATA_GB/PLATFORM_GB2 for current sample implementation of API-specific data accessing classes.
 
 
 
-Untested functional areas
-======================================
 
- * course update was not tested at all
-
- * tests on almost all access methods were passed, but only in the mode of dataRecordErrorThrow==FATAL and dataFieldErrorThrow==FATAL and EXTENDED dataVerbosity (see test client for more details). Principally, this combination of options covers most part of code and represents most complex processing, but other processing options combinations were not definite targets of testing at all yet and therefore should have some bugs. This includes differtent from standard field tags, dataField|RecordThrowSeverity combinations and wiring of apiToUseList in all CRUD operations matrix.
-
-
-
-Unresearched interface areas
-=============================
-
- * Unclear necessity for specific Parent Role (System or Portal) for observers.
-
- * Check that setting CourseMembership's "available=false" disables student's enrollment.
-
-
-
-Known bugs
-==========
-
- * Hash password option seems not to work
-
- * Course copy has 2 problems:
- ** a) some course_contents_fk1 violation, may be some consequence of (b), did not look at it attentively at all yet
- ** b) timeout delay when copying proxy links defined for a course if proxy server is unavailable - Ws->Bb->proxy server -> exception in Bb internals on delay, exception in Ws on delay, Bb continues execution.
-
- * custom portal role assignment to UserDetails is not expected to work - probably key not found exception will be thrown, there is a difference in internal Bb forming of key for standard and "removable" portal roles. 
-
- * nulls of User dataSourceBbId, department, check other APIs data on null fields in EXTENDED
-
-
-ToDo: 
-=====
-
- * Move logSeverityOverride to bblock properties from web.xml
-
- * Adopt Gradebook interface to latest design and class hierarchy
-
- * Adopt Score interface to latest design and class hierarchy
-
- * Port Course interface to new design
-
- * Implement SystemRole interface
-
- * Implement UserRole interface
-
- * Permissions for particular methods of Ws have to be tried to be correlated somehow with general building block permissions defined at the moment of registration, i.e. to be propagated to internal blackboard security logic. This would be ideally, but unsure if possible without custom registration client or something of sort...  Otherwise some matrix of API to select/insert/update/delete operations should be handled in custom way. Current per method approach does not seem to be comfortable.
-
- * Decision on naming convention should be taken – whether it comes strictly from Bb internal names or reality. For example, how to name course accessing API methods if they are named internally ById, but actually work ByBatchUid? Requires more detailed testing of Bb v.9 - whether behavior of some incorrectly named API did not change in right way?
-
- * Rework logical design - i.e., today's notes in document marked with !! have to be joined in specification.
-
- * In particular, think on possible conflicts between "all fields are initialized to null by default before first API pass processing" and that missFieldTag is null by default. Feeling like something may go wrong in logic if missFieldTag is customized away from its default value. May be when it get mixed with some data of verbosity modes and data modification scenarious. Yes, assignment of input record to result one in order to be checked by data reload will probably not complete successfully.
-
- * Formalize "value" field of BbWsDataLogRecord to more strict meaning, may be introduce more "value" fields that should cover all of its conversion/compare/assignment permutations.
+License: GNU General Public License (GPL)
+=========================================
 
