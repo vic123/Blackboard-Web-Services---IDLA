@@ -48,6 +48,20 @@ import blackboard.data.course.Course;
  * 
  * Updating of courseId with courseUpdateRecordByBatchUid() causes
  * blackboard.data.ImmutableException: An immutable object can not be modified [Course id cannot be modified.]
+ * 
+ * Course Copy - timeout delay when copying proxy links defined for a course if proxy server is unavailable 
+ * - Ws->Bb->proxy server -> exception in Bb internals on delay, exception in Ws on delay, Bb continues execution.
+ * Probably exception should be analysed on client side - it was timeout exception. 
+ * (!! complement with exception type/message)
+ * Longer delay may be set on client side like args.bbCrsWs.Timeout = 900000; sampled in AutoTestClient.
+ * 
+ * Setting isAvailable = “false” makes Course invisible for students, 
+ * but teacher and, for example, grader (did not test with all course roles) 
+ * sees this class with the note “(unavailable)” to the right.
+ * 
+ * Setting of serviceLevelType field to the value different from “FULL” 
+ * (possible ones should be COMMUNITY, REGISTERED, TEST_DRIVE, SYSTEM) 
+ * hides class from everywhere – it is not visible at all even from System Admin panel. 
  */ 
 public class CourseDetails extends AbstractCourseDetails implements ReturnTypeInterface
 {
