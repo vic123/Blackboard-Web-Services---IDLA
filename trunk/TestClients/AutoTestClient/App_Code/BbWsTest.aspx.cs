@@ -14,8 +14,9 @@ using System.Reflection;
 using System.Collections.Generic;
 
 using bbIDLA;
-using bbIDLA.BBAddedService;
-//!!using bbws;
+//!!
+using bbIDLA.BBAddedService;//--this is for work through DotNetProxy
+//using bbws;//--this is for direct web services access
 
 public partial class BbWsTest : System.Web.UI.Page
 {
@@ -23,9 +24,8 @@ public partial class BbWsTest : System.Web.UI.Page
         try {
 
             testArgs = new TestArgsStruct();
-
-            RunUserTest();
             
+            RunUserTest();
             RunCourseMembershipTest();
             RunPortalRoleTest();
             RunObserverAssociationTest();
@@ -133,8 +133,9 @@ public partial class BbWsTest : System.Web.UI.Page
         protected abstract void LoadRecord_123();
         */
 
-
-        public BbWsWebReference bbWs = new BbWsWebReference(true);
+        //!!
+        public BbWsWebReference bbWs = new BbWsWebReference(true); //--this is for work through DotNetProxy
+        //public bbws.BbWebservices bbWs = new bbws.BbWebservices(); //--this is for direct web services access
         public bbcrsws.BBCourseWebService bbCrsWs = new bbcrsws.BBCourseWebService();
         public bbgrpws.BBGroupWebServiceService bbGrpWs = new bbgrpws.BBGroupWebServiceService();
 
@@ -157,6 +158,8 @@ public partial class BbWsTest : System.Web.UI.Page
             param.dataVerbosity = "EXTENDED";
             //param.dataVerbosity = "CUSTOM";
             //param.dataVerbosity = "STANDARD";
+            //param.dataVerbosity = "NONE";
+            
             
             //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
             //Same type as for dataLogSeverity

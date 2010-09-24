@@ -12,7 +12,6 @@ using System.Xml.Linq;
 
 using bbIDLA;
 using bbIDLA.BBAddedService;
-//!!using bbws;
 
 
 /// <summary>
@@ -262,7 +261,7 @@ public class BbWsWebReference : bbIDLA.BbAdded
         {
             return base.ObserverAssociationInsertRecordByObserverAndUsersBatchUid(@params, inputRecord);
         }
-        public observerAssociationDetails observerAssociationPersistRecordByObserverAndUsersBatchUid_update_rowStatus(bbWsParams @params, observerAssociationDetails inputRecord)
+        public observerAssociationDetails observerAssociationPersistRecordByObserverAndUsersBatchUid(bbWsParams @params, observerAssociationDetails inputRecord) 
         {
             return base.ObserverAssociationPersistRecordByObserverAndUsersBatchUid(@params, inputRecord);
         }

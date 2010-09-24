@@ -11,8 +11,9 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 
+//!!
 using bbIDLA.BBAddedService;
-//!!using bbws;
+//using bbws;
 
 public partial class BbWsTest : System.Web.UI.Page
 {
@@ -347,7 +348,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.businessFax = args.param.missFieldTag;
         }
         override public void executeImp() {
-            args.wsResultRecord = args.bbWs.UserLoadRecordByBatchUid(args.param, args.wsInputRecord);
+            args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
         }
     }
 
@@ -356,7 +357,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.batchUid = "batchUid" + args.currentTestKeySuffix;
         }
         override public void executeImp() {
-            args.wsResultRecord = args.bbWs.UserLoadRecordByBatchUid(args.param, args.wsInputRecord);
+            args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
         }
     }
     class _userLoadListByTemplate : _userTestCase_SuccessList, ITestAction {
@@ -364,7 +365,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.loadBaseRecordAction.preAction();
         }
         override public void executeImp() {
-            args.wsResultList = args.bbWs.UserLoadListByTemplate(args.param, args.wsInputRecord);
+            args.wsResultList = args.bbWs.userLoadListByTemplate(args.param, args.wsInputRecord);
         }
     }
     class _userInsertRecordByBatchUid_duplicate : _userTestCase_SuccessRecord, ITestAction {
@@ -383,7 +384,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.deleteRecordAction.executeImp();
         }
         override public void executeImp() {
-            args.wsResultRecord = args.bbWs.UserInsertRecordByBatchUid(args.param, args.wsInputRecord);
+            args.wsResultRecord = args.bbWs.userInsertRecordByBatchUid(args.param, args.wsInputRecord);
         }
     }
     class _userInsertRecordByBatchUid_minimal : _userTestCase_SuccessRecord, ITestAction {
