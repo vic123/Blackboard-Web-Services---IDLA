@@ -10,9 +10,9 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
-
+//!!
 using bbIDLA.BBAddedService;
-//!!using bbws;
+//using bbws;
 
 public partial class BbWsTest : System.Web.UI.Page
 {
@@ -104,6 +104,7 @@ public partial class BbWsTest : System.Web.UI.Page
         override public void preAction() {
             args.insertRecordAction.PreActionAndExecuteImp();
             args.wsInputRecord.usersBatchUid = "%";
+            args.wsInputRecord.observerBatchUid = "%";
         }
         override public void postAction() {
             args.insertRecordAction.postAction();
@@ -128,7 +129,6 @@ public partial class BbWsTest : System.Web.UI.Page
             args.testArgs.user.ClearInputsAndResults();
             args.testArgs.user.loadBaseRecordAction.PreActionAndExecuteImp();
             args.wsInputRecord.usersBatchUid = args.testArgs.user.wsResultRecord.batchUid;
-
             args.testArgs.user.insertRecordAction.PreActionAndExecuteImp();
             args.testArgs.user.loadInsertedRecordAction.executeImp();
             args.wsInputRecord.observerBatchUid = args.testArgs.user.wsResultRecord.batchUid;
@@ -193,7 +193,7 @@ public partial class BbWsTest : System.Web.UI.Page
         private void setRowStatus(String rowStatus) {
             args.wsInputRecord.rowStatus = rowStatus;
             args.ClearResults();
-            args.wsResultRecord = args.bbWs.observerAssociationPersistRecordByObserverAndUsersBatchUid_update_rowStatus(args.param, args.wsInputRecord);
+            args.wsResultRecord = args.bbWs.observerAssociationPersistRecordByObserverAndUsersBatchUid(args.param, args.wsInputRecord);
             ShowResultListTableAndDataLog();
 
             args.ClearResults();
