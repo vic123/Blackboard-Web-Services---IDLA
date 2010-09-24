@@ -63,6 +63,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
             } catch (Throwable e) {
                 BbWsLog.logForward(LogService.Verbosity.ERROR, e, "execute() caught (Exception e): ", this);
                 //blackboard.persist.PersistenceException e1;
+                //!! use BbWsUtil.constructExceptionMessage()
                 if (e instanceof blackboard.base.NestedException) {
                     if (((blackboard.base.NestedException)e).getNestedException() != null) {
                         e = ((blackboard.base.NestedException)e).getNestedException();
@@ -245,7 +246,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
 
                     nextDataAccessor.access();
 
-                } catch (Exception e) {
+                } catch (Exception e) { //?? looks like duplicates catch in RecordAccessor - needs review
                     if (getArgs().getDataRecordErrorThrowLevel().compareTo(BbWsArguments.DataLogSeverity.ERROR) <= 0 ) {
                         //just rethrow it, it will be logged by DataAccessPack.execute()
                         throw e;
@@ -475,7 +476,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 try {
                     nextDataAccessor.access();
 
-                } catch(Exception e) {
+                } catch(Exception e) {  //?? may be excessive when DataAccessor is RecordAccessor which catches too - needs review 
                     if (getArgs().getDataRecordErrorThrowLevel().compareTo(BbWsArguments.DataLogSeverity.ERROR) <= 0 ) {
                         throw e;
                     }
@@ -692,7 +693,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                 if (bb_value == null) value = getArgs().getNullValueTag();
                 else value = bb_value;
                 if (getArgs().getResultRecord().getApiPassedCount() > 0 
-                        && BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) != 0) {  //if we are comparing data reloaded after saving and dataVerbosity != CUSTOM
+                        && BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) != 0) {  //if we are comparing data reloaded after saving and dataVerbosity != CUSTOM - !! add this as check in code
                     if (!checkByNewValueCompareWithOld(ws_value, value)) {
                         value = getArgs().getErrorValueTag(); //!! quick fix - when error is thrown from here, but not thrown on record level, returned value is not set to BbWsError 
                         setWsFieldImp(value); //!!

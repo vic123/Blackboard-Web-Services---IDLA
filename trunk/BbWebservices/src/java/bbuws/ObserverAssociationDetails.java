@@ -11,6 +11,13 @@ import bbwscommon.BbWsDataDetails;
 /**
  *
  * @author vic
+ * 
+ * 
+ * (a) Observer system role is incompatible with any other secondary system roles (they should not exist according to checks performed by administrative GUI), 
+ * (b) Portal role does not seem to influence permissions of observer
+ * (c) that an observer without assigned "Observer" (Parent in GUI) role cannot see courses of a user he is assosiated to. 
+ * 
+ * RowStatus does not influence visibility/functionality of observer.
  */
 public class ObserverAssociationDetails extends BbWsDataDetails<BbWsArguments> {
     private String bbId;

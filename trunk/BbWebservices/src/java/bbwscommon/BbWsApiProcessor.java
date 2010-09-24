@@ -105,9 +105,10 @@ public class BbWsApiProcessor<ArgumentsType extends BbWsArguments> {
             //rethrowing exception class and message only for common security principles
             //it looks like only java.lang.reflect.InvocationTargetException with null message is generated here
             //it is logged anyway for any case
+            //!! review and rework - obtain text for full exception chain from BbWsUtil.constructExceptionMessage()... probably in BbWsDataAccessPack.execute() 
             BbWsLog.logForward(LogService.Verbosity.ERROR, t, "", this);
             if (t.getCause() != null) t = t.getCause();
-            if (t instanceof BbWsFault) throw (BbWsFault)t;
+            if (t instanceof BbWsFault) throw (BbWsFault)t; //?? - don't sure what for is this
             throw new WebServiceException(//!!??args.errorPrefix +
 //??                    "Exception Message: " + t.getMessage() + "; Exception.toString(): " + t.toString() );
                 t.toString() );

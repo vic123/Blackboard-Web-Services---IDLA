@@ -127,7 +127,7 @@ public class BbWsParams {
 //    private String throwInsertUpdateOnly;
 //    private String checkPersistedDataWithLoad;
 //    private String libraryVersion;
-    private String dataLogSeverity;
+    private String dataLogSeverity; //?? rename to verbosity
     private String dataVerbosity;
     private String datePattern;
     private String timePattern;
