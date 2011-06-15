@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="BBGradebookWebService">
+      <implementation-class>bbgbws.BBGradebookWebService</implementation-class>
+    </service>
+    <service name="BBAnnouncementsWebService">
+      <implementation-class>bbaws.BBAnnouncementsWebService</implementation-class>
+    </service>
+    <service name="BBCalendarWebService">
+      <implementation-class>bbclnws.BBCalendarWebService</implementation-class>
+    </service>
+    <service name="BBContentWebService">
+      <implementation-class>bbcntws.BBContentWebService</implementation-class>
+    </service>
+    <service name="BBCourseWebService">
+      <implementation-class>bbcrsws.BBCourseWebService</implementation-class>
+    </service>
+    <service name="BBDiscussionBoardWebService">
+      <implementation-class>bbdbws.BBDiscussionBoardWebService</implementation-class>
+    </service>
+    <service name="BBGroupWebService">
+      <implementation-class>bbgrpws.BBGroupWebService</implementation-class>
+    </service>
+    <service name="BBUserWebService">
+      <implementation-class>bbuws.BBUserWebService</implementation-class>
+    </service>
+    <service name="BbWebservices">
+      <implementation-class>bbwscommon.BbWebservices</implementation-class>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>false</jsr109>
+</jax-ws>

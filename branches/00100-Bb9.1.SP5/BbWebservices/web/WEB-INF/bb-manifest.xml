@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <plugin>
+      <name value="Blackboard Web Services - IDLA"/>
+      <description value="Provides adjustable CRUD access to Blackboard data through webservices exposing internal Bb APIs. Packed with minimally modified v.1.2 of Andrew Martin/Newcastle University Webservices"/>
+      <handle value="BbWebservices"/>
+	  <!-- Major.Minor.Subversion revision-->
+	  <!-- v.2.0 was first release of the project (version numbering continues 1.2 of Webservices project) -->
+	  <version value="2.1.100"/>
+	  
+	  <requires>
+		<!-- was tested to some point only with 7.3, current test environment is 9.0, backward compatibility is not very clear -->
+ 	    <bbversion value="6.2.3"/>
+	  </requires>
+	  <vendor>
+	    <id value="IDLA"/>
+	    <!--Webservices developed by Andrew Martin/Newcastle University were used as technical prototype -->
+	    <name value="Idaho Digital Learning Academy"/>
+	    <url value="http://idahodigitallearning.org/"/>
+	    <description value=""/>
+	  </vendor>
+	  <http-actions>
+		<config value="properties/properties.jsp"/>
+		<remove value=""/>
+	  </http-actions>
+	  
+	<permissions>
+	    <permission type="socket" name="*" actions="resolve,connect"/>
+	    <!-- 
+	    courseDeleteRecordByBatchUid causes during course achiving 
+	    java.security.AccessControlException: access denied (java.io.FilePermission I:\blackboard\content\vi\bb_bb60\recyclebin\1\TestClass_001_ID_bbws_01 delete)
+	    when java.io.FilePermission delete permission is not set 
+	    and 
+		java.io.IOException: Failure occurred during native move: access denied (java.io.FilePermission <<ALL FILES>> execute)
+		when java.io.FilePermission execute permission is not set 
+		!!These permissions are now switched off and courseDeleteRecordByBatchUid() will still work, but course will not be archived and exception will be logged in \blackboard\logs\bb-services-log.txt 
+		Uncomment next line in order to turn them on (it needs more tuning - restricted to bb_bb60\recyclebin location for example)
+		<permission type="java.io.FilePermission" actions="delete,execute" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
+		-->
+	    <permission type="java.io.FilePermission" actions="read,write" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
+	    <permission type="java.lang.RuntimePermission" name="createClassLoader" actions="createClassLoader"/>
+	    <permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks" actions="suppressAccessChecks"/>
+	    <permission type="java.lang.RuntimePermission" name="getClassLoader" actions="getClassLoader"/>
+        <permission type="java.lang.RuntimePermission" name="setContextClassLoader" actions="setContextClassLoader"/>
+	    <permission type="java.lang.RuntimePermission" name="accessDeclaredMembers" actions="accessDeclaredMembers"/>
+	    <permission type="java.util.PropertyPermission" name="user.language" actions="write"/>
+        <permission type="javax.management.MBeanPermission" name="com.sun.xml.ws.util.RuntimeVersion#-[com.sun.xml.ws.util:type=RuntimeVersion]" actions="registerMBean"/>
+        <permission type="javax.management.MBeanPermission" name="com.sun.xml.ws.transport.http.HttpDump#-[com.sun.xml.ws.transport.http:type=HttpDump]" actions="registerMBean"/>
+        <permission type="javax.management.MBeanServerPermission" name="createMBeanServer" actions=""/>
+        <permission type="javax.management.MBeanTrustPermission" name="register" actions=""/>
+	    <permission type="attribute" name="user.authinfo" actions="get,set"/>
+	    <permission type="attribute" name="user.cardnumber" actions="get,set"/>
+	    <permission type="attribute" name="user.personalinfo" actions="get,set"/>
+	    <permission type="persist" name="attempt" actions="load,persist,delete"/>
+	    <permission type="persist" name="course" actions="create,modify,delete"/>
+	    <permission type="persist" name="coursemembership" actions="create,modify,delete"/>
+	    <permission type="persist" name="Outcome" actions="create,modify,delete"/>
+	    <permission type="persist" name="OutcomeDefinition" actions="create,modify,delete"/>
+	    <permission type="persist" name="OutcomeDefinitionCategory" actions="create,modify,delete"/>
+	    <permission type="persist" name="user" actions="create,modify,delete"/>
+	    <permission type="persist" name="userrole" actions="create,modify,delete"/>
+	    <permission type="persist" name="portalrole" actions="create,modify,delete"/>
+	</permissions>
+  </plugin>
+</manifest>
