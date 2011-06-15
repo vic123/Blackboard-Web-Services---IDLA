@@ -11,9 +11,26 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 //!!
-using bbIDLA.BBAddedService;
-//using bbws;
+//using bbIDLA.BBAddedService;
+using bbws;
 
+ //* Was tested with Bb 9.0: 
+ //*PortalRole specific issues with duplicated names of built-in and custom portal roles.
+ //* Names of built-in roles have suffix taken from the name of table's column (in case of institution_roles table is is role_name)
+ //* Explained on sample scenario:
+ //* 1. System role Alumni (role_id = ALUMNI). Stored in database as role_name = ALUMNI.role_name 
+ //* 2. Creating custom role Alumni.role_name (role_id = Alumni_id4). ERROR - duplicated names
+ //* 3. Creating custom role Alumni (role_id = Alumni_id1). Stored in database as role_name = ALUMNI.role_name
+ //* 4. Creating custom role Alumni (role_id = Alumni_id2). Stored in database as role_name = ALUMNI.role_name
+ //* 5. Creating custom role ALumni (different case of L) (role_id = Alumni_id3). Stored in database as role_name = ALumni
+ //* 6. Creating custom role Alumni (role_id = Alumni_id4). ERROR - duplicated names
+ //* 
+ //* This shows that it is possible to create roles with same names.
+ //* Also, when using Bb method LoadByRoleName, it is always necessary to provide "full" role name 
+ //* - the one that is stored in database, i.e. ALUMNI.role_name, otherwise we get blackboard.persist.KeyNotFoundException. 
+ //* And it ALWAYS returns system role, even if custom duplicates (of Alumni type) exist.
+ //* If ALumini (or any other letter case-different combination), then load by just "Alumini" (case insensetive) works and loads custom role.
+ //* And Bb's returned value of built-in role names does not contain ".role_name" suffix.
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunPortalRoleTest() {
