@@ -861,7 +861,9 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
             String str_id = getArgs().getInputCourseRecord().getBbId();
             Id id = checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE,str_id);
             UserDbLoaderImpl udbli = (UserDbLoaderImpl) UserDbLoader.Default.getInstance();
-            bbObjectList = udbli.loadAvailableObserversByCourseId(id, BbWsUtil.getFullFilteredMap(UserDbMap.MAP));
+            //!!bbObjectList = udbli.loadAvailableObserversByCourseId(id);
+            //udbli.loadAvailableObserversByCourseId(id)
+            //, BbWsUtil.getFullFilteredMap(UserDbMap.MAP)
         }
     }
 

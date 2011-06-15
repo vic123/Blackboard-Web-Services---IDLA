@@ -6,7 +6,7 @@
       <handle value="BbWebservices"/>
 	  <!-- Major.Minor.Subversion revision-->
 	  <!-- v.2.0 was first release of the project (version numbering continues 1.2 of Webservices project) -->
-	  <version value="2.1.100"/>
+	  <version value="2.2.101"/>
 	  
 	  <requires>
 		<!-- was tested to some point only with 7.3, current test environment is 9.0, backward compatibility is not very clear -->
@@ -60,6 +60,8 @@
 	    <permission type="persist" name="user" actions="create,modify,delete"/>
 	    <permission type="persist" name="userrole" actions="create,modify,delete"/>
 	    <permission type="persist" name="portalrole" actions="create,modify,delete"/>
+	    <permission type="persist" name="userlifecycleeventpropertyimpl" actions="create,modify,delete" />
+        <permission type="persist" name="userlifecycleeventimpl" actions="create,modify,delete" />
 	</permissions>
   </plugin>
 </manifest>
