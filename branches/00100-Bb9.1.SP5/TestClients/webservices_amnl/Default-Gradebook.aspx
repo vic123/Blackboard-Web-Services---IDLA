@@ -58,7 +58,7 @@
 
         //Change these variable as you see fit :-)
         //String courseId = "WebService_TEST101";
-        String courseId = "TestClass_003_ID";
+        String courseId = "TestClass_001_ID";
         
         String lineItemId = "";
         String name = "WS Created test via C#";
@@ -133,7 +133,7 @@
         Boolean returnString1 = false;
         returnString = "";
         Boolean returnString1_spec;
-        //ws.addLineitemToGivenCourseId(wsPassword, courseId, name, type, pointsPossible, true, weight, true, available, true, out returnString1, out returnString1_spec);
+        ws.addLineitemToGivenCourseId(wsPassword, courseId, name, type, pointsPossible, true, weight, true, available, true, out returnString1, out returnString1_spec);
         Boolean ret = true;
         Boolean ret_spec = true;
         //??ws.addLineitemToGivenCourseId(wsPassword, courseId, name, type, pointsPossible, true, weight, true, available, true, out ret, out ret_spec);
@@ -228,7 +228,7 @@
             }
         }
 %>
-    <hr />Scores in course "<%= courseId %>" obtained with getAllScoreDetailsForGivenLineItemBbIdWithNamedElements <br />
+    <hr />Scores in course "<%= courseId %>" obtained with getAllScoreDetailsForGivenLineItemBbIdWithNamedElements() <br />
 <%
     bbgbws.scoreDetails score_details1;
     //score_details1.dateAdded = null;
@@ -265,7 +265,7 @@
         
         
         
-    <hr /> ============== Line items in course with NamedElements/Params ============= courseId: "<%= courseId %>"...<br />
+    <hr /> ============== Line items in course with NamedElements/Params (GetAllLineItemsForCourseIDWithNamedElements()) ============= courseId: "<%= courseId %>"...<br />
 <%
 	    //****get all line items for a course****
         bbgbws.commonParams cp = new bbgbws.commonParams();

@@ -12,8 +12,8 @@ using System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
 //!!
-using bbIDLA.BBAddedService;
-//using bbws;
+//using bbIDLA.BBAddedService;
+using bbws;
 
 public partial class BbWsTest : System.Web.UI.Page
 {
@@ -160,19 +160,22 @@ public partial class BbWsTest : System.Web.UI.Page
                         break;
                         //continue;
                     case "portalRoleName":
+                        //Tested creation of role with the same name (but different Role Id) as built in one – it was created and its name got ".role_name" suffix too. Analyzed other DB tables - built-in course_roles and system_roles have ".name" suffix, it looks to come from column name. 
+                        //More comments are in BbWsTest.PortalRole.aspx.cs
+                        //!! Does not work in 9.1 SP5
                         //str_value = "ALUmni";
                         //str_value = "Alumni";
-                        str_value = "ALUmni" + ".role_name";
+                        //str_value = "ALUmni" + ".role_name";
                         //str_value = "FACULTY" + ".role_name";
                         //str_value = "Staff";
-                        //str_value = param.missFieldTag;
+                        str_value = param.missFieldTag;
                         break;
                     case "portalRoleId":
                         //either portalRoleName or portalRoleId has to be set, portalRoleName overrides portalRoleId, 
                         // but if values do not point to same portal role it will generate BbWsError upon field compare
-                        //str_value = "_2_1";
+                        str_value = "_2_1";
                         //str_value = "_27_1";
-                        str_value = param.missFieldTag;
+                        //str_value = param.missFieldTag;
                         break;
                     //case "batchUid": 
                     //case "userName": continue;
@@ -346,6 +349,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.ClearInputsAndResults();
             args.wsInputRecord.batchUid = batch_uid;
             args.wsInputRecord.businessFax = args.param.missFieldTag;
+            args.ClearResults();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
@@ -355,6 +359,7 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userLoadRecordByBatchUid_inserted : _userTestCase_SuccessRecord, ITestAction {
         override public void preAction() {
             args.wsInputRecord.batchUid = "batchUid" + args.currentTestKeySuffix;
+            args.ClearResults();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.userLoadRecordByBatchUid(args.param, args.wsInputRecord);
@@ -363,6 +368,7 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userLoadListByTemplate : _userTestCase_SuccessList, ITestAction {
         override public void preAction() {
             args.loadBaseRecordAction.preAction();
+            args.ClearResults();
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userLoadListByTemplate(args.param, args.wsInputRecord);
@@ -379,6 +385,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.batchUid = batchUid;
             args.wsInputRecord.userName = "userName" + args.currentTestKeySuffix;
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
+            args.ClearResults();
         }
         override public void postAction() {
             args.deleteRecordAction.executeImp();
@@ -390,6 +397,7 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userInsertRecordByBatchUid_minimal : _userTestCase_SuccessRecord, ITestAction {
         override public void preAction() {
             args.SetFieldsMinimal();
+            args.ClearResults();
         }
         override public void postAction() {
             args.wsInputRecord.batchUid = "batchUid" + args.currentTestKeySuffix;
@@ -409,6 +417,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.currentTestKeySuffix = args.testKeySuffixes[1];
             args.UpdateFieldsMinimal();
             args.currentTestKeySuffix = args.testKeySuffixes[0];
+            args.ClearResults();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.userUpdateRecordByBatchUid(args.param, args.wsInputRecord);
@@ -433,11 +442,13 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userPersistRecordByBatchUid_insert : _userPersistRecordByBatchUid {
         override public void preAction() {
             args.insertRecordAction.preAction();
+            args.ClearResults();
         }
     }
     class _userPersistRecordByBatchUid_update : _userPersistRecordByBatchUid {
         override public void preAction() {
             args.userUpdateRecordByBatchUid.preAction();
+            args.ClearResults();
         }
     }
 
@@ -448,6 +459,7 @@ public partial class BbWsTest : System.Web.UI.Page
             String batch_uid = args.wsInputRecord.batchUid;
             args.ClearInputsAndResults();
             args.wsInputRecord.batchUid = batch_uid;
+            args.ClearResults();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.userDeleteRecordByBatchUid(args.param, args.wsInputRecord);
@@ -486,6 +498,7 @@ public partial class BbWsTest : System.Web.UI.Page
                 args.wsInputRecord.batchUid = str_buid;
                 args.MoveInputRecordToList();
             }
+            args.ClearResults();
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userDeleteListByBatchUid(args.param, args.wsInputList.ToArray());
@@ -497,6 +510,7 @@ public partial class BbWsTest : System.Web.UI.Page
             String id = args.wsResultRecord.bbId;
             args.ClearInputsAndResults();
             args.wsInputRecord.bbId = id;
+            args.ClearResults();
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.userLoadRecordById(args.param, args.wsInputRecord);
@@ -531,6 +545,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.UpdateFieldsMinimal();
             args.wsInputRecord.batchUid = "batchUid" + args.currentTestKeySuffix;
             args.wsInputRecord.userName = "userName" + args.currentTestKeySuffix;
+            args.ClearResults();
         }
         override public void postAction() {
             args.deleteRecordAction.executeImp();
@@ -552,6 +567,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.SetFieldsExtended();
             args.wsInputRecord.batchUid = "batchUid" + args.currentTestKeySuffix;
             args.wsInputRecord.userName = "userName" + args.currentTestKeySuffix;
+            args.ClearResults();
         }
     }
     class _userPersistRecordById : _userTestCase_SuccessRecord, ITestAction {
@@ -566,14 +582,17 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userPersistRecordById_insert : _userPersistRecordById, ITestAction {
         override public void preAction() {
             args.insertRecordAction.preAction();
+            args.ClearResults();
         }
         override public void postAction() {
             args.insertRecordAction.postAction();
+            args.ClearResults();
         }
     }
     class _userPersistRecordById_update : _userPersistRecordById, ITestAction {
         override public void preAction() {
             args.userUpdateRecordById.preAction();
+            args.ClearResults();
         }
         override public void postAction() {
             args.userUpdateRecordById.postAction();
@@ -587,6 +606,7 @@ public partial class BbWsTest : System.Web.UI.Page
             String id = args.wsResultRecord.bbId;
             args.ClearInputsAndResults();
             args.wsInputRecord.bbId = id;
+
         }
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.userDeleteRecordById(args.param, args.wsInputRecord);
@@ -692,7 +712,7 @@ public partial class BbWsTest : System.Web.UI.Page
     class _userDeleteListById : _userTestCase_SuccessList, ITestAction {
         override public void preAction() {
             args.insertRecordAction.PreActionAndExecuteImp();
-            args.userLoadRecordByName.executeImp();
+            //args.userLoadRecordByName.executeImp(); //!! in 9.1 this loads previously created and already deleted record with batchUid_bbws_02 and even  username_bbws_02... smells on some problem with caches like the one happened in courseCopy... but how Bb manages to load record by name with different name... may be both deleting AND previously made update of  username_bbws_02 (if it was initially  username_bbws_01) did not changed some search index... calling of userLoadRecordByName here is not necessary, but the problem has to be studied
             args.CreateInputRecord();
             args.wsInputRecord.bbId = args.wsResultRecord.bbId;
             args.MoveInputRecordToList();

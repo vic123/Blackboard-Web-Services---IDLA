@@ -1,0 +1,329 @@
+﻿<%@ Page Language="C#" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>C#.NET Page</title>
+    </head>
+    <body>
+<%
+    //Author: Andrew.Martin@ncl.ac.uk
+
+    try
+    {
+        //bbdbws is my chosen webreference name
+        bbdbws.BBDiscussionBoardWebServiceService ws = new bbdbws.BBDiscussionBoardWebServiceService();
+	    //If you have passwords enabled on the webservice methods, insert it here...
+        String wsPassword = "";
+
+        String courseId = "WebService_TEST101";
+        String confId = "";
+        String groupId = "";
+        String forumId = "";
+        String messageId = "";
+        String subject = "Test subject";
+        String body = "Test body";
+        String title = "Test title";
+        String description = "Test description";
+        String descType = "PLAIN_TEXT";
+
+	    bbdbws.stringArray[] returnStringArray = null;
+	    String returnString = "";
+
+        //****get the course's conference****
+        returnStringArray = ws.getCourseConferenceDetailsForGivenCourseId(wsPassword,courseId,true,true);
+%>
+    Course's conference for course "<%= courseId %>"...<br />
+<%
+        bbdbws.stringArray keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        bbdbws.stringArray values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+
+        values = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        if(!values.item.GetValue(0).Equals("Error"))
+	    {
+            values = (bbdbws.stringArray)returnStringArray.GetValue(1);
+            confId = values.item.GetValue(0).ToString();
+        }
+	    else
+	    {
+	        forumId = "Sorry couldn't find a conference Id to set this variable :-(";
+	    }
+        /******************/
+
+        //****get the group conferences for the course****
+        returnStringArray = ws.getAllGroupConferenceDetailsForGivenCourseId(wsPassword,courseId,true,true);
+%>
+    <hr />Group conference(s) for course "<%= courseId %>"...<br />
+<%
+        keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+    	/******************/
+
+	    //For this to work you must specify a groupId, NOT a conference Id in a group,
+	    //an actual Id for a group, you can do this by running a
+	    //"getGroupDetailsForGivenCourseId(courseId)" request against the GroupWebService
+	    //but this is outside the scope of this example.
+	    if(groupId!=null && !groupId.Equals(""))
+	    {
+	        //****Get the conference details for the conference assigned to the given group****
+	        returnStringArray = ws.getGroupConferenceDetailsForGivenGroupBbId(wsPassword,groupId,true,true);
+%>
+    <hr />Group conference(s) for specific group "<%= groupId %>"...<br />
+<%
+            keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+            values = null;
+
+            for (int i = 1; i < returnStringArray.Length; i++)
+            {
+%>
+--------<br />
+<%
+                values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+                for (int inc = 0; inc < keys.item.Length; inc++)
+                {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+                }
+            }
+        /******************/
+        }
+
+	    //****Get details for a specific conference****
+	    returnStringArray = ws.getConferenceDetailsForGivenConferenceBbId(wsPassword,confId,true,true);
+%>
+    <hr />Conference details for specific confId "<%= confId %>"...<br />
+<%
+        keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+	    /******************/
+
+	    //****Get any type of conference (course or group) in the course****
+	    returnStringArray = ws.getAllTypesOfConferencesForGivenCourseId(wsPassword,courseId,true,true);
+%>
+    <hr />All types of conferences for course "<%= courseId %>"...<br />
+<%
+        keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+    	/******************/
+
+	    //****Add a conference****
+	    //Builds after 0.7.4.0 include extra parameters for the forum, however
+	    //for the moment it will add an example forum with the title "Test Title"
+	    //and a description "Test Description"
+	    returnString = ws.addForumToGivenConferenceBbId(wsPassword,confId,title,description,descType,true,true);
+%>
+    <hr />Adding forum to conference "<%= confId %>".... <%= returnString %><br />
+<%
+	    /******************/
+
+	    //****Get the forum details from the conferenceId****
+	    returnStringArray = ws.getForumDetailsForGivenConferenceBbId(wsPassword,confId,true,true);
+%>
+    <hr />Forums under the conference "<%= confId %>"...<br />
+<%
+        keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+
+        values = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        if(!values.item.GetValue(0).Equals("Error"))
+	    {
+            values = (bbdbws.stringArray)returnStringArray.GetValue(1);
+            forumId = values.item.GetValue(0).ToString();
+        }
+	    else
+	    {
+	        forumId = "Sorry couldn't find a forum Id to set this variable :-(";
+	    }
+	    /******************/
+
+	    //****In this instance we'll be adding a top level message to a forum to start a thread****
+	    returnString = ws.addMessageToGivenForumBbIdOrMessageBbId(wsPassword,forumId,messageId,subject,body);
+%>
+    <hr />Adding message to forum "<%= forumId %>".... <%= returnString %><br />
+<%
+	    /******************/
+
+	    //****Get just the top level messages in a forum****
+	    returnStringArray = ws.getTopLevelMessageForGivenForumBbId(wsPassword,forumId,true,true);
+%>
+    <hr />All top level messages for forum "<%= forumId %>"...<br />
+<%
+        keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+
+        values = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        if(!values.item.GetValue(0).Equals("Error"))
+	    {
+            values = (bbdbws.stringArray)returnStringArray.GetValue(1);
+            messageId = values.item.GetValue(0).ToString();
+        }
+	    else
+	    {
+	        messageId = "Sorry couldn't find a message Id to set this variable :-(";
+	    }
+	    /******************/
+
+	    //****Get "all" messages inside the forum****
+	    returnStringArray = ws.getAllMessagesForGivenThreadInGivenForumBbId(wsPassword,messageId,forumId,true,true);
+%>
+    <hr />All Messages for forum "<%= forumId %>"...<br />
+<%
+        keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+	    /******************/
+
+	    //Lighter weight method of navigating down through the messages in a
+	    //forum, using the top level messageId this returns all immediate child
+	    //messages but no deeper. To traverse the next level simply use one of the
+	    //child message's Id as the new "top level" Id. If nothing is returned
+	    //then no messages exist underneath the given message. (Excuse the webservice's
+	    //error message being confusingly about forums, this is fixed after 0.7.4.0)
+	    returnStringArray = ws.getImmediateChildMessagesForGivenMessageBbId(wsPassword,messageId,true,true);
+%>
+    <hr />All messages under message "<%= messageId %>"...<br />
+<%
+        keys = (bbdbws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbdbws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+	    /*******************/
+
+	    //****Uncomment following at your own risk!***
+
+	    //Various deletion methods
+	    /*returnString = ws.deleteAllForumsInGivenConferenceId(confId);
+	    returnString = ws.deleteAllThreadsInGivenForumId(forumId);
+	    returnString = ws.deleteGivenConferenceAndSubForums(confId);
+	    returnString = ws.deleteGivenForumAndSubThreads(forumId);
+	    returnString = ws.deleteMessageAndAllSubMessages(messageId);*/
+	    /********************/
+    }
+    catch (Exception e)
+    {
+%>
+	    <%= "Error: "+e.ToString() %>
+<%
+    }
+%>
+    </body>
+</html>

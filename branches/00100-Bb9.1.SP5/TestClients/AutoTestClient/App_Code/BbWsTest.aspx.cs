@@ -15,8 +15,8 @@ using System.Collections.Generic;
 
 using bbIDLA;
 //!!
-using bbIDLA.BBAddedService;//--this is for work through DotNetProxy
-//using bbws;//--this is for direct web services access
+//using bbIDLA.BBAddedService;//--this is for work through DotNetProxy
+using bbws;//--this is for direct web services access
 
 public partial class BbWsTest : System.Web.UI.Page
 {
@@ -134,8 +134,8 @@ public partial class BbWsTest : System.Web.UI.Page
         */
 
         //!!
-        public BbWsWebReference bbWs = new BbWsWebReference(true); //--this is for work through DotNetProxy
-        //public bbws.BbWebservices bbWs = new bbws.BbWebservices(); //--this is for direct web services access
+        //public BbWsWebReference bbWs = new BbWsWebReference(true); //--this is for work through DotNetProxy
+        public bbws.BbWebservices bbWs = new bbws.BbWebservices(); //--this is for direct web services access
         public bbcrsws.BBCourseWebService bbCrsWs = new bbcrsws.BBCourseWebService();
         public bbgrpws.BBGroupWebServiceService bbGrpWs = new bbgrpws.BBGroupWebServiceService();
 

@@ -2,20 +2,26 @@
 <definitions xmlns:tns="http://bbgrpws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBGroupWebServiceService" targetNamespace="http://bbgrpws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService?xsd=2" namespace="http://bbgrpws/" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGroupWebService?xsd=2" namespace="http://bbgrpws/" />
     </xsd:schema>
   </types>
+  <message name="deleteGroup">
+    <part name="parameters" element="tns:deleteGroup" />
+  </message>
+  <message name="deleteGroupResponse">
+    <part name="parameters" element="tns:deleteGroupResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
+  </message>
   <message name="addGivenUserToGivenGroup">
     <part name="parameters" element="tns:addGivenUserToGivenGroup" />
   </message>
   <message name="addGivenUserToGivenGroupResponse">
     <part name="parameters" element="tns:addGivenUserToGivenGroupResponse" />
-  </message>
-  <message name="WebServiceException">
-    <part name="fault" element="tns:WebServiceException" />
   </message>
   <message name="addGivenUserToGivenGroupXML">
     <part name="parameters" element="tns:addGivenUserToGivenGroupXML" />
@@ -46,12 +52,6 @@
   </message>
   <message name="deleteGivenUserFromGivenGroupXMLResponse">
     <part name="parameters" element="tns:deleteGivenUserFromGivenGroupXMLResponse" />
-  </message>
-  <message name="deleteGroup">
-    <part name="parameters" element="tns:deleteGroup" />
-  </message>
-  <message name="deleteGroupResponse">
-    <part name="parameters" element="tns:deleteGroupResponse" />
   </message>
   <message name="deleteGroupXML">
     <part name="parameters" element="tns:deleteGroupXML" />
@@ -126,6 +126,11 @@
     <part name="parameters" element="tns:modifyGroupXMLResponse" />
   </message>
   <portType name="BBGroupWebService">
+    <operation name="deleteGroup">
+      <input message="tns:deleteGroup" />
+      <output message="tns:deleteGroupResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
     <operation name="addGivenUserToGivenGroup">
       <input message="tns:addGivenUserToGivenGroup" />
       <output message="tns:addGivenUserToGivenGroupResponse" />
@@ -154,11 +159,6 @@
     <operation name="deleteGivenUserFromGivenGroupXML">
       <input message="tns:deleteGivenUserFromGivenGroupXML" />
       <output message="tns:deleteGivenUserFromGivenGroupXMLResponse" />
-      <fault name="WebServiceException" message="tns:WebServiceException" />
-    </operation>
-    <operation name="deleteGroup">
-      <input message="tns:deleteGroup" />
-      <output message="tns:deleteGroupResponse" />
       <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="deleteGroupXML">
@@ -224,6 +224,18 @@
   </portType>
   <binding name="BBGroupWebServicePortBinding" type="tns:BBGroupWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="deleteGroup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
     <operation name="addGivenUserToGivenGroup">
       <soap:operation soapAction="" />
       <input>
@@ -285,18 +297,6 @@
       </fault>
     </operation>
     <operation name="deleteGivenUserFromGivenGroupXML">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="WebServiceException">
-        <soap:fault use="literal" name="WebServiceException" namespace="" />
-      </fault>
-    </operation>
-    <operation name="deleteGroup">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -455,7 +455,7 @@
   </binding>
   <service name="BBGroupWebServiceService">
     <port name="BBGroupWebServicePort" binding="tns:BBGroupWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGroupWebService" />
     </port>
   </service>
 </definitions>
