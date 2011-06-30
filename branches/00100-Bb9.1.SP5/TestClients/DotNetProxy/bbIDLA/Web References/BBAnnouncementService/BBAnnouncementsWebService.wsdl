@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://www.ncl.ac.uk/BBAnnouncementsWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBAnnouncementsWebService" targetNamespace="http://www.ncl.ac.uk/BBAnnouncementsWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBAnnouncementsWebService" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+    </xsd:schema>
+  </types>
+  <message name="deleteAnnouncement">
+    <part name="parameters" element="tns:deleteAnnouncement" />
+  </message>
+  <message name="deleteAnnouncementResponse">
+    <part name="parameters" element="tns:deleteAnnouncementResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
+  </message>
+  <message name="deleteAnnouncementXML">
+    <part name="parameters" element="tns:deleteAnnouncementXML" />
+  </message>
+  <message name="deleteAnnouncementXMLResponse">
+    <part name="parameters" element="tns:deleteAnnouncementXMLResponse" />
+  </message>
+  <message name="getAllAnnouncementsForGivenCourseId">
+    <part name="parameters" element="tns:getAllAnnouncementsForGivenCourseId" />
+  </message>
+  <message name="getAllAnnouncementsForGivenCourseIdResponse">
+    <part name="parameters" element="tns:getAllAnnouncementsForGivenCourseIdResponse" />
+  </message>
+  <message name="getAllAnnouncementsForGivenCourseIdWithNamedElements">
+    <part name="parameters" element="tns:getAllAnnouncementsForGivenCourseIdWithNamedElements" />
+  </message>
+  <message name="getAllAnnouncementsForGivenCourseIdWithNamedElementsResponse">
+    <part name="parameters" element="tns:getAllAnnouncementsForGivenCourseIdWithNamedElementsResponse" />
+  </message>
+  <message name="getAllAnnouncementsForGivenCourseIdXML">
+    <part name="parameters" element="tns:getAllAnnouncementsForGivenCourseIdXML" />
+  </message>
+  <message name="getAllAnnouncementsForGivenCourseIdXMLResponse">
+    <part name="parameters" element="tns:getAllAnnouncementsForGivenCourseIdXMLResponse" />
+  </message>
+  <message name="getAllAvailableAnnouncementsForGivenUserId">
+    <part name="parameters" element="tns:getAllAvailableAnnouncementsForGivenUserId" />
+  </message>
+  <message name="getAllAvailableAnnouncementsForGivenUserIdResponse">
+    <part name="parameters" element="tns:getAllAvailableAnnouncementsForGivenUserIdResponse" />
+  </message>
+  <message name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElements">
+    <part name="parameters" element="tns:getAllAvailableAnnouncementsForGivenUserIdWithNamedElements" />
+  </message>
+  <message name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElementsResponse">
+    <part name="parameters" element="tns:getAllAvailableAnnouncementsForGivenUserIdWithNamedElementsResponse" />
+  </message>
+  <message name="getAllAvailableAnnouncementsForGivenUserIdXML">
+    <part name="parameters" element="tns:getAllAvailableAnnouncementsForGivenUserIdXML" />
+  </message>
+  <message name="getAllAvailableAnnouncementsForGivenUserIdXMLResponse">
+    <part name="parameters" element="tns:getAllAvailableAnnouncementsForGivenUserIdXMLResponse" />
+  </message>
+  <message name="getAllSystemAnnouncements">
+    <part name="parameters" element="tns:getAllSystemAnnouncements" />
+  </message>
+  <message name="getAllSystemAnnouncementsResponse">
+    <part name="parameters" element="tns:getAllSystemAnnouncementsResponse" />
+  </message>
+  <message name="getAllSystemAnnouncementsWithNamedElements">
+    <part name="parameters" element="tns:getAllSystemAnnouncementsWithNamedElements" />
+  </message>
+  <message name="getAllSystemAnnouncementsWithNamedElementsResponse">
+    <part name="parameters" element="tns:getAllSystemAnnouncementsWithNamedElementsResponse" />
+  </message>
+  <message name="getAllSystemAnnouncementsXML">
+    <part name="parameters" element="tns:getAllSystemAnnouncementsXML" />
+  </message>
+  <message name="getAllSystemAnnouncementsXMLResponse">
+    <part name="parameters" element="tns:getAllSystemAnnouncementsXMLResponse" />
+  </message>
+  <message name="modifyAnnouncement">
+    <part name="parameters" element="tns:modifyAnnouncement" />
+  </message>
+  <message name="modifyAnnouncementResponse">
+    <part name="parameters" element="tns:modifyAnnouncementResponse" />
+  </message>
+  <message name="modifyAnnouncementXML">
+    <part name="parameters" element="tns:modifyAnnouncementXML" />
+  </message>
+  <message name="modifyAnnouncementXMLResponse">
+    <part name="parameters" element="tns:modifyAnnouncementXMLResponse" />
+  </message>
+  <message name="postCourseAnnouncement">
+    <part name="parameters" element="tns:postCourseAnnouncement" />
+  </message>
+  <message name="postCourseAnnouncementResponse">
+    <part name="parameters" element="tns:postCourseAnnouncementResponse" />
+  </message>
+  <message name="postCourseAnnouncementXML">
+    <part name="parameters" element="tns:postCourseAnnouncementXML" />
+  </message>
+  <message name="postCourseAnnouncementXMLResponse">
+    <part name="parameters" element="tns:postCourseAnnouncementXMLResponse" />
+  </message>
+  <message name="postSystemAnnouncement">
+    <part name="parameters" element="tns:postSystemAnnouncement" />
+  </message>
+  <message name="postSystemAnnouncementResponse">
+    <part name="parameters" element="tns:postSystemAnnouncementResponse" />
+  </message>
+  <message name="postSystemAnnouncementXML">
+    <part name="parameters" element="tns:postSystemAnnouncementXML" />
+  </message>
+  <message name="postSystemAnnouncementXMLResponse">
+    <part name="parameters" element="tns:postSystemAnnouncementXMLResponse" />
+  </message>
+  <portType name="BBAnnouncementsWebService">
+    <operation name="deleteAnnouncement">
+      <input message="tns:deleteAnnouncement" />
+      <output message="tns:deleteAnnouncementResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="deleteAnnouncementXML">
+      <input message="tns:deleteAnnouncementXML" />
+      <output message="tns:deleteAnnouncementXMLResponse" />
+    </operation>
+    <operation name="getAllAnnouncementsForGivenCourseId">
+      <input message="tns:getAllAnnouncementsForGivenCourseId" />
+      <output message="tns:getAllAnnouncementsForGivenCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllAnnouncementsForGivenCourseIdWithNamedElements">
+      <input message="tns:getAllAnnouncementsForGivenCourseIdWithNamedElements" />
+      <output message="tns:getAllAnnouncementsForGivenCourseIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllAnnouncementsForGivenCourseIdXML">
+      <input message="tns:getAllAnnouncementsForGivenCourseIdXML" />
+      <output message="tns:getAllAnnouncementsForGivenCourseIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllAvailableAnnouncementsForGivenUserId">
+      <input message="tns:getAllAvailableAnnouncementsForGivenUserId" />
+      <output message="tns:getAllAvailableAnnouncementsForGivenUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElements">
+      <input message="tns:getAllAvailableAnnouncementsForGivenUserIdWithNamedElements" />
+      <output message="tns:getAllAvailableAnnouncementsForGivenUserIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllAvailableAnnouncementsForGivenUserIdXML">
+      <input message="tns:getAllAvailableAnnouncementsForGivenUserIdXML" />
+      <output message="tns:getAllAvailableAnnouncementsForGivenUserIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllSystemAnnouncements">
+      <input message="tns:getAllSystemAnnouncements" />
+      <output message="tns:getAllSystemAnnouncementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllSystemAnnouncementsWithNamedElements">
+      <input message="tns:getAllSystemAnnouncementsWithNamedElements" />
+      <output message="tns:getAllSystemAnnouncementsWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllSystemAnnouncementsXML">
+      <input message="tns:getAllSystemAnnouncementsXML" />
+      <output message="tns:getAllSystemAnnouncementsXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="modifyAnnouncement">
+      <input message="tns:modifyAnnouncement" />
+      <output message="tns:modifyAnnouncementResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="modifyAnnouncementXML">
+      <input message="tns:modifyAnnouncementXML" />
+      <output message="tns:modifyAnnouncementXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="postCourseAnnouncement">
+      <input message="tns:postCourseAnnouncement" />
+      <output message="tns:postCourseAnnouncementResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="postCourseAnnouncementXML">
+      <input message="tns:postCourseAnnouncementXML" />
+      <output message="tns:postCourseAnnouncementXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="postSystemAnnouncement">
+      <input message="tns:postSystemAnnouncement" />
+      <output message="tns:postSystemAnnouncementResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="postSystemAnnouncementXML">
+      <input message="tns:postSystemAnnouncementXML" />
+      <output message="tns:postSystemAnnouncementXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+  </portType>
+  <binding name="BBAnnouncementsWebServicePortBinding" type="tns:BBAnnouncementsWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="deleteAnnouncement">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteAnnouncementXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAllAnnouncementsForGivenCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllAnnouncementsForGivenCourseIdWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllAnnouncementsForGivenCourseIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllAvailableAnnouncementsForGivenUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllAvailableAnnouncementsForGivenUserIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllSystemAnnouncements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllSystemAnnouncementsWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllSystemAnnouncementsXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="modifyAnnouncement">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="modifyAnnouncementXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="postCourseAnnouncement">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="postCourseAnnouncementXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="postSystemAnnouncement">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="postSystemAnnouncementXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="BBAnnouncementsWebService">
+    <port name="BBAnnouncementsWebServicePort" binding="tns:BBAnnouncementsWebServicePortBinding">
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService" />
+    </port>
+  </service>
+</definitions>
