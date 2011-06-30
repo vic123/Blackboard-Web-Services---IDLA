@@ -310,7 +310,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.batchUid = args.wsInputRecord.batchUid + args.currentTestKeySuffix;
             args.wsInputRecord.courseId = args.wsInputRecord.courseId + args.currentTestKeySuffix;
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
-            args.wsInputRecord.bannerImageFile = param.missFieldTag;
+            args.wsInputRecord.bannerImageFile = args.param.missFieldTag;
             args.ClearResults();
         }
         override public void postAction() {
@@ -330,7 +330,7 @@ public partial class BbWsTest : System.Web.UI.Page
             //courseId is not modifiable
             //args.wsInputRecord.courseId = args.wsInputRecord.courseId + "upd";
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
-            args.wsInputRecord.bannerImageFile = param.missFieldTag;
+            args.wsInputRecord.bannerImageFile = args.param.missFieldTag;
             args.ClearResults();
         }
         override public void postAction() {
