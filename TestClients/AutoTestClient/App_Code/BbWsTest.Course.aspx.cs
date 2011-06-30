@@ -19,9 +19,6 @@ public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunCourseTest() {
         //testArgs.ClearAllTestData();
-        //testArgs.course.courseDeleteRecordByBatchUid.execute();
-
-        
         testArgs.course.courseLoadRecordById.execute();
         testArgs.course.courseLoadRecordByCourseId.execute();
         testArgs.course.courseLoadRecordByBatchUid.execute();
@@ -36,6 +33,7 @@ public partial class BbWsTest : System.Web.UI.Page
         testArgs.course.courseUpdateRecordByBatchUid.execute();
         testArgs.course.coursePersistRecordByBatchUid.execute();
         testArgs.course.courseDeleteRecordByBatchUid.execute();
+         
     }
 
     class _courseTestArgs : TestArgs<courseDetails> {
@@ -312,6 +310,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.batchUid = args.wsInputRecord.batchUid + args.currentTestKeySuffix;
             args.wsInputRecord.courseId = args.wsInputRecord.courseId + args.currentTestKeySuffix;
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
+            args.wsInputRecord.bannerImageFile = param.missFieldTag;
             args.ClearResults();
         }
         override public void postAction() {
@@ -331,8 +330,7 @@ public partial class BbWsTest : System.Web.UI.Page
             //courseId is not modifiable
             //args.wsInputRecord.courseId = args.wsInputRecord.courseId + "upd";
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
-            //args.wsInputRecord.bannerImageFile = "bannerImageFile";
-            //I:\blackboard\apps\service-wrapper\bin\bannerImageFile
+            args.wsInputRecord.bannerImageFile = param.missFieldTag;
             args.ClearResults();
         }
         override public void postAction() {
@@ -401,8 +399,21 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.bbId = id;
         }
         override public void postAction() {
-            args.wsInputRecord.bbId = args.wsResultRecord.bbId;
-            args.courseDeleteRecordById.executeImp();
+            //args.wsInputRecord.bbId = args.wsResultRecord.bbId;
+            //??args.courseDeleteRecordById.executeImp();
+            //On Bb 9.1 SP5 some mystic happens when copied course record is deleted with courseDeleteRecordById
+            //1. Upon first run, course is copied
+            //2. After it was deleted with courseDeleteRecordById, second copy attempt fails with 
+            //      blackboard.persist.PersistenceException: Process failure.
+            //          Caused by blackboard.plugin.bbwiki.exception.BbWikiException: Failed to create Wiki
+            //          Caused by: com.xythos.storageServer.api.DuplicateEntryException
+            //  BUT, course actually gets copied and shows up in Bb GUI, 
+            //  AND, values of at least isAvailable, allowGuests and navigationStyle fields in 
+            //      this course are set different than passed, probably default ones (i.e. something is happening on field level too)
+            //3. After record is deleted from GUI, copy starts working again
+
+            args.wsInputRecord.batchUid = args.wsResultRecord.batchUid;
+            args.courseDeleteRecordByBatchUid.executeImp();//!!
         }
     }
 
@@ -499,7 +510,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.ClearInputs();
             args.wsInputRecord.batchUid = args.wsResultRecord.batchUid;
             args.ClearResults();
-            //args.wsInputRecord.batchUid = "TestClass_001_ID_bbws_01upd"; //!!
+            //args.wsInputRecord.batchUid = "TestClass_001_ID_bbws_01"; //!!
         }
         override public void postAction() {
         }

@@ -19,8 +19,8 @@ public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunUserTest() {
         //testArgs.ClearAllTestData();//!!
-        
         testArgs.user.userLoadRecordByBatchUid.execute();
+       
         testArgs.user.userLoadListByTemplate.execute();
           testArgs.user.userInsertRecordByBatchUid_duplicate.execute();
         
@@ -48,6 +48,7 @@ public partial class BbWsTest : System.Web.UI.Page
         testArgs.user.userLoadListBySearchByUserName.execute();
         
         testArgs.user.userLoadListByCourseId.execute();
+
         testArgs.user.userLoadListAvailableObserversByCourseId.execute();
         testArgs.user.userLoadListObservedByObserverId.execute();
         testArgs.user.userLoadListByGroupId.execute();
@@ -787,6 +788,10 @@ public partial class BbWsTest : System.Web.UI.Page
             args.testArgs.courseMembership.loadBaseRecordAction.PreActionAndExecuteImp();
             args.testArgs.course.wsInputRecord = new courseDetails();
             args.testArgs.course.wsInputRecord.bbId = args.testArgs.courseMembership.wsResultRecord.courseBbId;
+            args.testArgs.observerAssociation.insertRecordAction.PreActionAndExecuteImp();
+        }
+        override public void postAction() {
+            args.testArgs.observerAssociation.insertRecordAction.postAction();
         }
         override public void executeImp() {
             args.wsResultList = args.bbWs.userLoadListAvailableObserversByCourseId(args.param, args.wsInputRecord, args.testArgs.course.wsInputRecord);
