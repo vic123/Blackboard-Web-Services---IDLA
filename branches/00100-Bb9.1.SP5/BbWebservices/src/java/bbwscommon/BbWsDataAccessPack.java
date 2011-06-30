@@ -470,7 +470,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
  
     public class RecordListLoader extends DataAccessor  {
 
-        private class RecordListLoader_EHandler extends DataAccessor  {
+        public class RecordListLoader_EHandler extends DataAccessor  {
             public void access() throws Exception {
                 BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered access(); ", this);
                 try {
@@ -501,7 +501,6 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
                     LinkedHashMap<String, WsResultType> lhm = new LinkedHashMap<String, WsResultType>();
                     getArgs().setResultLHM(lhm);
                 }
-                BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered access(); ", this);
                 loadList();
                 if(bbObjectList.size() < 1) {
                     throw new BbWsException("No items found.");
