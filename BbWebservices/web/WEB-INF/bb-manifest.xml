@@ -36,7 +36,10 @@
 		!!These permissions are now switched off and courseDeleteRecordByBatchUid() will still work, but course will not be archived and exception will be logged in \blackboard\logs\bb-services-log.txt 
 		Uncomment next line in order to turn them on (it needs more tuning - restricted to bb_bb60\recyclebin location for example)
 		<permission type="java.io.FilePermission" actions="delete,execute" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
+		sample with path - <permission type="java.io.FilePermission" name="..\..\..\..\blackboard\logs\-" actions="read,write,delete"/>
 		-->
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\BB_bb60\courses\-" />
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\BB_bb60\recyclebin\-" />
 	    <permission type="java.io.FilePermission" actions="read,write" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
 	    <permission type="java.lang.RuntimePermission" name="createClassLoader" actions="createClassLoader"/>
 	    <permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks" actions="suppressAccessChecks"/>

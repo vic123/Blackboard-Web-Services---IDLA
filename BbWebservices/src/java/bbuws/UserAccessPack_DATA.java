@@ -24,6 +24,7 @@ import blackboard.data.user.User.Gender;
 import blackboard.data.user.User.EducationLevel;
 import blackboard.persist.Id;
 import blackboard.data.user.User;
+import blackboard.persist.user.UserEmailView;
 import blackboard.base.BbList;
 
 import blackboard.admin.data.user.Person;
@@ -853,17 +854,57 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
 
     public static class LoadListAvailableObserversByCourseId extends UserAccessPack_DATA<User, UserAccessPack.UserArgumentsWithUserAndCourseInput> {
         public void initialize(UserAccessPack.UserArgumentsWithUserAndCourseInput args) {
-            RecordListLoader  da = new RecordListLoader();
+            AvailableObserversByCourseIdListLoader da = new AvailableObserversByCourseIdListLoader();
             da.initialize(null);
             super.initialize(args, User.class, da);
         }
-        @Override protected void loadList () throws Exception {
-            String str_id = getArgs().getInputCourseRecord().getBbId();
-            Id id = checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE,str_id);
-            UserDbLoaderImpl udbli = (UserDbLoaderImpl) UserDbLoader.Default.getInstance();
-            //!!bbObjectList = udbli.loadAvailableObserversByCourseId(id);
-            //udbli.loadAvailableObserversByCourseId(id)
-            //, BbWsUtil.getFullFilteredMap(UserDbMap.MAP)
+        public class AvailableObserversByCourseIdListLoader extends RecordListLoader  {
+            private class AvailableObserversByCourseIdListLoader_MainBody extends DataAccessor  {
+                public void access() throws Exception {
+                    BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered access(); ", this);
+                    String str_id = getArgs().getInputCourseRecord().getBbId();
+                    Id id = checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE,str_id);
+                    UserDbLoaderImpl udbli = (UserDbLoaderImpl) UserDbLoader.Default.getInstance();
+                    List<UserEmailView> uev_list = udbli.loadAvailableObserversByCourseId(id);
+
+                    if(uev_list.size() < 1) {
+                        throw new BbWsException("No items found.");
+                    }
+
+                    List<UserDetails> u_list = new ArrayList<UserDetails>();
+
+                    for (UserEmailView uev : uev_list) {
+                        UserDetails ud = new UserDetails();
+                        ud.setBbId(uev.getId().toExternalString());
+                        u_list.add(ud);
+                    }
+
+                    UserAccessPack.UserArgumentsWithUserInput u_args
+                        = new UserAccessPack.UserArgumentsWithUserInput();
+                    //u_args.initialize(UserDetails.class, getArgs().getParams(), u_list,
+                    u_args.initialize(UserDetails.class, getArgs(), u_list,
+                            UserAccessPack.class.getName(), "LoadListById");
+                    UserAccessPack_DATA.LoadListById u_load_list_by_id
+                            = new UserAccessPack_DATA.LoadListById();
+                    u_load_list_by_id.initialize(u_args);
+                    try {
+                        u_load_list_by_id.startFirstAccessor();
+                    } finally {
+                        java.util.LinkedHashMap lhm = u_args.getResultLHM();
+                        BbWsArguments args = getArgs();
+                        args.setResultLHM(lhm);
+                    }
+                }
+            }
+
+            @Override public void access() throws Exception {
+                BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered access(); ", this);
+                AvailableObserversByCourseIdListLoader_MainBody bbll = new AvailableObserversByCourseIdListLoader_MainBody();
+                bbll.initialize(null);
+                RecordListLoader_EHandler eh = new RecordListLoader.RecordListLoader_EHandler();
+                eh.initialize(bbll);
+                eh.access();
+            }
         }
     }
 
