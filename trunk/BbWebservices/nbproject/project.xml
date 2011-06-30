@@ -3,14 +3,11 @@
     <type>org.netbeans.modules.web.project</type>
     <configuration>
         <buildExtensions xmlns="http://www.netbeans.org/ns/ant-build-extender/1">
-            <extension file="jaxws-build.xml" id="jaxws">
-                <dependency dependsOn="wsgen-service-compile" target="-post-compile"/>
-            </extension>
+            <extension file="jaxws-build.xml" id="jaxws"/>
         </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/web-project/3">
             <name>BbWebservices</name>
             <minimum-ant-version>1.6</minimum-ant-version>
-            <explicit-platform explicit-source-supported="true"/>
             <web-module-libraries>
                 <library files="17">
                     <file>${libs.jaxws21.classpath}</file>
