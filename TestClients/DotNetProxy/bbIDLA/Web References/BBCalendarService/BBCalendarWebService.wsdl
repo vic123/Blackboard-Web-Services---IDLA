@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://www.ncl.ac.uk/BBCalendarWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBCalendarWebService" targetNamespace="http://www.ncl.ac.uk/BBCalendarWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCalendarWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCalendarWebService" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCalendarWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+    </xsd:schema>
+  </types>
+  <message name="addCalendarEntry">
+    <part name="parameters" element="tns:addCalendarEntry" />
+  </message>
+  <message name="addCalendarEntryResponse">
+    <part name="parameters" element="tns:addCalendarEntryResponse" />
+  </message>
+  <message name="getAllCourseCalendarEntriesForGivenCourseId">
+    <part name="parameters" element="tns:getAllCourseCalendarEntriesForGivenCourseId" />
+  </message>
+  <message name="getAllCourseCalendarEntriesForGivenCourseIdResponse">
+    <part name="parameters" element="tns:getAllCourseCalendarEntriesForGivenCourseIdResponse" />
+  </message>
+  <message name="getCourseCalendarEntriesWithinDatesForGivenCourseId">
+    <part name="parameters" element="tns:getCourseCalendarEntriesWithinDatesForGivenCourseId" />
+  </message>
+  <message name="getCourseCalendarEntriesWithinDatesForGivenCourseIdResponse">
+    <part name="parameters" element="tns:getCourseCalendarEntriesWithinDatesForGivenCourseIdResponse" />
+  </message>
+  <message name="deleteCalendarEntryByCalendarEntryBbId">
+    <part name="parameters" element="tns:deleteCalendarEntryByCalendarEntryBbId" />
+  </message>
+  <message name="deleteCalendarEntryByCalendarEntryBbIdResponse">
+    <part name="parameters" element="tns:deleteCalendarEntryByCalendarEntryBbIdResponse" />
+  </message>
+  <message name="getAllCourseCalendarEntriesForGivenUserId">
+    <part name="parameters" element="tns:getAllCourseCalendarEntriesForGivenUserId" />
+  </message>
+  <message name="getAllCourseCalendarEntriesForGivenUserIdResponse">
+    <part name="parameters" element="tns:getAllCourseCalendarEntriesForGivenUserIdResponse" />
+  </message>
+  <message name="getCourseCalendarEntriesWithinDatesForGivenUserId">
+    <part name="parameters" element="tns:getCourseCalendarEntriesWithinDatesForGivenUserId" />
+  </message>
+  <message name="getCourseCalendarEntriesWithinDatesForGivenUserIdResponse">
+    <part name="parameters" element="tns:getCourseCalendarEntriesWithinDatesForGivenUserIdResponse" />
+  </message>
+  <message name="getPersonalCalendarEntriesWithinDatesForGivenUserId">
+    <part name="parameters" element="tns:getPersonalCalendarEntriesWithinDatesForGivenUserId" />
+  </message>
+  <message name="getPersonalCalendarEntriesWithinDatesForGivenUserIdResponse">
+    <part name="parameters" element="tns:getPersonalCalendarEntriesWithinDatesForGivenUserIdResponse" />
+  </message>
+  <portType name="BBCalendarWebService">
+    <operation name="addCalendarEntry">
+      <input message="tns:addCalendarEntry" />
+      <output message="tns:addCalendarEntryResponse" />
+    </operation>
+    <operation name="getAllCourseCalendarEntriesForGivenCourseId">
+      <input message="tns:getAllCourseCalendarEntriesForGivenCourseId" />
+      <output message="tns:getAllCourseCalendarEntriesForGivenCourseIdResponse" />
+    </operation>
+    <operation name="getCourseCalendarEntriesWithinDatesForGivenCourseId">
+      <input message="tns:getCourseCalendarEntriesWithinDatesForGivenCourseId" />
+      <output message="tns:getCourseCalendarEntriesWithinDatesForGivenCourseIdResponse" />
+    </operation>
+    <operation name="deleteCalendarEntryByCalendarEntryBbId">
+      <input message="tns:deleteCalendarEntryByCalendarEntryBbId" />
+      <output message="tns:deleteCalendarEntryByCalendarEntryBbIdResponse" />
+    </operation>
+    <operation name="getAllCourseCalendarEntriesForGivenUserId">
+      <input message="tns:getAllCourseCalendarEntriesForGivenUserId" />
+      <output message="tns:getAllCourseCalendarEntriesForGivenUserIdResponse" />
+    </operation>
+    <operation name="getCourseCalendarEntriesWithinDatesForGivenUserId">
+      <input message="tns:getCourseCalendarEntriesWithinDatesForGivenUserId" />
+      <output message="tns:getCourseCalendarEntriesWithinDatesForGivenUserIdResponse" />
+    </operation>
+    <operation name="getPersonalCalendarEntriesWithinDatesForGivenUserId">
+      <input message="tns:getPersonalCalendarEntriesWithinDatesForGivenUserId" />
+      <output message="tns:getPersonalCalendarEntriesWithinDatesForGivenUserIdResponse" />
+    </operation>
+  </portType>
+  <binding name="BBCalendarWebServicePortBinding" type="tns:BBCalendarWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="addCalendarEntry">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAllCourseCalendarEntriesForGivenCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCourseCalendarEntriesWithinDatesForGivenCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="deleteCalendarEntryByCalendarEntryBbId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAllCourseCalendarEntriesForGivenUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCourseCalendarEntriesWithinDatesForGivenUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getPersonalCalendarEntriesWithinDatesForGivenUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BBCalendarWebService">
+    <port name="BBCalendarWebServicePort" binding="tns:BBCalendarWebServicePortBinding">
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCalendarWebService" />
+    </port>
+  </service>
+</definitions>
