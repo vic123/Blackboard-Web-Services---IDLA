@@ -18,12 +18,11 @@ public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunObserverAssociationTest() {
         //testArgs.ClearAllTestData();
-        
+
         testArgs.observerAssociation.observerAssociationLoadListByTemplate.execute();
         testArgs.observerAssociation.observerAssociationLoadRecordByObserverAndUsersBatchUid.execute();
         testArgs.observerAssociation.observerAssociationInsertRecordByObserverAndUsersBatchUid.execute();
         testArgs.observerAssociation.observerAssociationPersistRecordByObserverAndUsersBatchUid_update_rowStatus.execute();
-
         testArgs.observerAssociation.observerAssociationDeleteRecordByObserverAndUsersBatchUid.execute();
         testArgs.observerAssociation.observerAssociationLoadListByObserverAndUsersBatchUid.execute();
         testArgs.observerAssociation.observerAssociationInsertListByObserverAndUsersBatchUid.execute();
@@ -169,7 +168,8 @@ public partial class BbWsTest : System.Web.UI.Page
 
             args.response.Write("Try to create new record of same user-role - should fail: </br>");
             observerAssociationDetails ws_i_rec = args.wsInputRecord;
-            args.ClearInputs();
+            //args.ClearInputs();
+            args.ClearInputsAndResults();
             args.observerAssociationInsertRecordByObserverAndUsersBatchUid.PreActionAndExecuteImp();
             ShowResultListTableAndDataLog();
             args.wsInputRecord = ws_i_rec;

@@ -119,8 +119,8 @@ public partial class BbWsTest : System.Web.UI.Page
 
     //class TestArgs<TestActionType> where TestActionType : TestAction<TestArgs<TestActionType>> {
     abstract class TestArgs<WsDataType> where WsDataType : new() {
-        public String baseUserName = "student_001";
-        public String baseCourseId = "TestClass_001_ID";
+        public String baseUserName = "student_001";  //must have more than one Secondary Institution Roles
+        public String baseCourseId = "TestClass_001_ID"; //TestClass_001_ID has to contain group with student_001
         public String currentTestKeySuffix;
         public String[] testKeySuffixes;
 
@@ -163,12 +163,12 @@ public partial class BbWsTest : System.Web.UI.Page
             
             //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
             //Same type as for dataLogSeverity
-            //param.dataRecordErrorThrowSeverity = "FATAL";
-            param.dataRecordErrorThrowSeverity = "ERROR";
+            param.dataRecordErrorThrowSeverity = "FATAL";
+            //param.dataRecordErrorThrowSeverity = "ERROR";
             //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
             //Same type as for dataLogSeverity
-            //param.dataFieldErrorThrowSeverity = "FATAL";
-            param.dataFieldErrorThrowSeverity = "ERROR";
+            param.dataFieldErrorThrowSeverity = "FATAL";
+            //param.dataFieldErrorThrowSeverity = "ERROR";
             param.missFieldTag = null;
             //param.missFieldTag = "BbWsMissField";
             //param.nullValueTag = null;
