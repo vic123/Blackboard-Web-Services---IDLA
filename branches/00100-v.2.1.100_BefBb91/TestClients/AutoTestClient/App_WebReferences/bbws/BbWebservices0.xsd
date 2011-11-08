@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns1="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" targetNamespace="http://www.ncl.ac.uk/BbWsFaultException" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices?xsd=2" namespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" />
+  <xs:element name="BbWsFaultException" nillable="true" type="ns1:bbWsFaultException" />
+</xs:schema>
