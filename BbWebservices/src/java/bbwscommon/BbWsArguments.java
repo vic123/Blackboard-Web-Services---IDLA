@@ -279,9 +279,16 @@ public abstract class BbWsArguments <WsResultType extends BbWsDataDetails, WsInp
     private DataVerbosity dataVerbosity;
     private String datePattern;
     private String timePattern;
+    private BbWsParams params;
 
 
 
+    public void initialize(Class<WsResultType> wsResultClass, BbWsArguments args, List<WsInputType> listInput,
+            String dataAccessPackClassName, String innerDAPDefaultClassName) {
+        this.setCurrentPassApi(args.getCurrentPassApi());
+        this.apiPassedCount = args.getApiPassedCount();
+        initializeInternal(wsResultClass, args.params, null, listInput, dataAccessPackClassName, innerDAPDefaultClassName);
+    }
 
     public void initialize(Class<WsResultType> wsResultClass, BbWsParams params, WsInputType recordInput,
             String dataAccessPackClassName, String innerDAPDefaultClassName) {
@@ -314,6 +321,8 @@ public abstract class BbWsArguments <WsResultType extends BbWsDataDetails, WsInp
         this.inputList = listInput;
 
         initializeDefaults();
+
+        this.params = params; //preserve for ability of later creation of different BbWsArguments successor
 
         if (params != null) {
             if (params.getPassword() != null) this.password = params.getPassword();
@@ -411,6 +420,11 @@ public abstract class BbWsArguments <WsResultType extends BbWsDataDetails, WsInp
         apiPassedCount++;
     }
 
+	//?? By now this public method is not required - params are accessed only privately 
+	//	in initialize() accepting another BbWsArguments instance as parementer
+    public BbWsParams getParams() {
+        return this.params;
+    }
 
 }
 

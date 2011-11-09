@@ -14,10 +14,10 @@ import bbwscommon.*;
 import blackboard.persist.Id;
 import blackboard.data.user.User;
 
-import blackboard.persist.user.impl.ObserverAssociation;
+import blackboard.persist.user.impl.BbObserverAssociation;
 
 
-public class ObserverAssociationAccessPack<BbObserverAssociationType extends ObserverAssociation>
+public class ObserverAssociationAccessPack<BbObserverAssociationType extends BbObserverAssociation>
         extends BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType<ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,
             BbObserverAssociationType, ObserverAssociationDetails> {
 

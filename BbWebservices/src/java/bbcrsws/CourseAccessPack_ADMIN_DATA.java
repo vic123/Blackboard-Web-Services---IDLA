@@ -204,6 +204,27 @@ public class CourseAccessPack_ADMIN_DATA <ArgumentsType extends CourseAccessPack
                     //performing course copy
                     CloneConfig cfg = new CloneConfig();
                     cfg.includeArea(CloneConfig.Area.ALL);
+                    //possible way to suppress
+                    //An error occurred while copying Course Files to target folder: /courses/TestClass_001_ID_bbws_01 - blackboard.platform.filesystem.FileSystemException: File system entry not readable: /courses/TestClass_001_ID
+                    //Not tested/discussed.
+                    /*
+                                  if (this._cfg.shouldCopyAnyCSItems())
+                                  {
+                                    CSFileCopyHandler csFileHandler = CSFileCopyHandlerFactory.getInstance();
+                                    initCourseFilesFolder(this._cfg, csFileHandler, idMap);
+
+                                    if (this._cfg.shouldCopyAllCSItems() == true)
+                                    {
+                                      String homeDir = this._cfg.getSrcHomeDir();
+                                      String csDir = this._cfg.getCsDir();
+                                      csFileHandler.copyCourseFiles(homeDir, csDir, idMap, this._tgtSite, this._srcSite, this._cfg.getExcludedCsFolderIds());
+                                    }
+                                  }
+                     */
+                    //??cfg.setArchiveCSItems(false); //cfg.shouldCopyAllCSItems()
+					//??Real location of course files (found by search of Bb directory) is c:\blackboard\content\vi\BB_bb60\courses\1\TestClass_001_ID,
+					//	it is different from the one stated in exception in \1\ subdirectory.
+
                     CourseSitePersister site_persister = CourseSiteDbPersister.Default.getInstance();
                     BbWsLog.logForward(LogService.Verbosity.DEBUG, "source_batch_uid: "+ source_batch_uid + "; getArgs().getInputTargetCourse().getBatchUid(): "+ getArgs().getInputTargetCourse().getBatchUid(), this);
                     site_persister.clone(source_batch_uid, 
@@ -233,6 +254,8 @@ public class CourseAccessPack_ADMIN_DATA <ArgumentsType extends CourseAccessPack
     public static class CopyRecordByBatchUid extends CopyRecordById {
         @Override protected void loadRecord() throws Exception {
             loadRecordByBatchUid();
+            //?? Bb9.1 SP5 CopyRecordByBatchUid causes Failed to create Wiki - com.xythos.storageServer.api.DuplicateEntryException
+            //  it seem to be caused by deleting of record with courseDeleteRecordById -see comments in _courseCopyRecordById of AutoTestClient
         }
     }
     
@@ -243,6 +266,7 @@ public class CourseAccessPack_ADMIN_DATA <ArgumentsType extends CourseAccessPack
 
 
  
+
 
 
 

@@ -243,7 +243,9 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             }.setBbField("classificationId");
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
+                    if (bbObject.getDurationType() != null) {
                     return bbObject.getDurationType().toFieldName();
+                    } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {
                     return getArgs().getInputRecord().getDurationType();
@@ -265,7 +267,9 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             }.setBbField("endDate");
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
+                    if (bbObject.getEnrollmentType() != null) {
                     return bbObject.getEnrollmentType().toFieldName();
+                    } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {
                     return getArgs().getInputRecord().getEnrollmentType();
@@ -638,7 +642,9 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             }.setWsField("classificationId");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
+                    if (bbObject.getDurationType() != null) {
                 return bbObject.getDurationType().toFieldName();
+                    } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {
                     return getArgs().getResultRecord().getDurationType();
@@ -660,7 +666,9 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             }.setWsField("endDate");		
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
+                    if (bbObject.getEnrollmentType() != null) {
                 return bbObject.getEnrollmentType().toFieldName();
+                    } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {
                     return getArgs().getResultRecord().getEnrollmentType();
