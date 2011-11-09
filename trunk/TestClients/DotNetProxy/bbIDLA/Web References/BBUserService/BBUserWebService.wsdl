@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://www.ncl.ac.uk/BBUserWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBUserWebService" targetNamespace="http://www.ncl.ac.uk/BBUserWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBUserWebService" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+    </xsd:schema>
+  </types>
+  <message name="addDefaultStudent">
+    <part name="parameters" element="tns:addDefaultStudent" />
+  </message>
+  <message name="addDefaultStudentResponse">
+    <part name="parameters" element="tns:addDefaultStudentResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
+  </message>
+  <message name="addDefaultStudentXML">
+    <part name="parameters" element="tns:addDefaultStudentXML" />
+  </message>
+  <message name="addDefaultStudentXMLResponse">
+    <part name="parameters" element="tns:addDefaultStudentXMLResponse" />
+  </message>
+  <message name="addUser">
+    <part name="parameters" element="tns:addUser" />
+  </message>
+  <message name="addUserResponse">
+    <part name="parameters" element="tns:addUserResponse" />
+  </message>
+  <message name="addUserXML">
+    <part name="parameters" element="tns:addUserXML" />
+  </message>
+  <message name="addUserXMLResponse">
+    <part name="parameters" element="tns:addUserXMLResponse" />
+  </message>
+  <message name="deleteUserByUserBbId">
+    <part name="parameters" element="tns:deleteUserByUserBbId" />
+  </message>
+  <message name="deleteUserByUserBbIdResponse">
+    <part name="parameters" element="tns:deleteUserByUserBbIdResponse" />
+  </message>
+  <message name="deleteUserByUserBbIdXML">
+    <part name="parameters" element="tns:deleteUserByUserBbIdXML" />
+  </message>
+  <message name="deleteUserByUserBbIdXMLResponse">
+    <part name="parameters" element="tns:deleteUserByUserBbIdXMLResponse" />
+  </message>
+  <message name="deleteUserByUserId">
+    <part name="parameters" element="tns:deleteUserByUserId" />
+  </message>
+  <message name="deleteUserByUserIdResponse">
+    <part name="parameters" element="tns:deleteUserByUserIdResponse" />
+  </message>
+  <message name="deleteUserByUserIdXML">
+    <part name="parameters" element="tns:deleteUserByUserIdXML" />
+  </message>
+  <message name="deleteUserByUserIdXMLResponse">
+    <part name="parameters" element="tns:deleteUserByUserIdXMLResponse" />
+  </message>
+  <message name="doesUserExist">
+    <part name="parameters" element="tns:doesUserExist" />
+  </message>
+  <message name="doesUserExistResponse">
+    <part name="parameters" element="tns:doesUserExistResponse" />
+  </message>
+  <message name="doesUserExistXML">
+    <part name="parameters" element="tns:doesUserExistXML" />
+  </message>
+  <message name="doesUserExistXMLResponse">
+    <part name="parameters" element="tns:doesUserExistXMLResponse" />
+  </message>
+  <message name="getAllUserIDsNoDetails">
+    <part name="parameters" element="tns:getAllUserIDsNoDetails" />
+  </message>
+  <message name="getAllUserIDsNoDetailsResponse">
+    <part name="parameters" element="tns:getAllUserIDsNoDetailsResponse" />
+  </message>
+  <message name="getAllUserIDsNoDetailsWithNamedElements">
+    <part name="parameters" element="tns:getAllUserIDsNoDetailsWithNamedElements" />
+  </message>
+  <message name="getAllUserIDsNoDetailsWithNamedElementsResponse">
+    <part name="parameters" element="tns:getAllUserIDsNoDetailsWithNamedElementsResponse" />
+  </message>
+  <message name="getAllUserIDsNoDetailsXML">
+    <part name="parameters" element="tns:getAllUserIDsNoDetailsXML" />
+  </message>
+  <message name="getAllUserIDsNoDetailsXMLResponse">
+    <part name="parameters" element="tns:getAllUserIDsNoDetailsXMLResponse" />
+  </message>
+  <message name="getEnrolledStudentsForGivenCourseIDWithNamedElements">
+    <part name="parameters" element="tns:getEnrolledStudentsForGivenCourseIDWithNamedElements" />
+  </message>
+  <message name="getEnrolledStudentsForGivenCourseIDWithNamedElementsResponse">
+    <part name="parameters" element="tns:getEnrolledStudentsForGivenCourseIDWithNamedElementsResponse" />
+  </message>
+  <message name="getEnrolledStudentsForGivenCourseIDXML">
+    <part name="parameters" element="tns:getEnrolledStudentsForGivenCourseIDXML" />
+  </message>
+  <message name="getEnrolledStudentsForGivenCourseIDXMLResponse">
+    <part name="parameters" element="tns:getEnrolledStudentsForGivenCourseIDXMLResponse" />
+  </message>
+  <message name="getEnrolledUserDetailsForGivenCourseWithNamedElements">
+    <part name="parameters" element="tns:getEnrolledUserDetailsForGivenCourseWithNamedElements" />
+  </message>
+  <message name="getEnrolledUserDetailsForGivenCourseWithNamedElementsResponse">
+    <part name="parameters" element="tns:getEnrolledUserDetailsForGivenCourseWithNamedElementsResponse" />
+  </message>
+  <message name="getEnrolledUserDetailsForGivenCourseXML">
+    <part name="parameters" element="tns:getEnrolledUserDetailsForGivenCourseXML" />
+  </message>
+  <message name="getEnrolledUserDetailsForGivenCourseXMLResponse">
+    <part name="parameters" element="tns:getEnrolledUserDetailsForGivenCourseXMLResponse" />
+  </message>
+  <message name="getEnrolledUsersForGivenCourse">
+    <part name="parameters" element="tns:getEnrolledUsersForGivenCourse" />
+  </message>
+  <message name="getEnrolledUsersForGivenCourseResponse">
+    <part name="parameters" element="tns:getEnrolledUsersForGivenCourseResponse" />
+  </message>
+  <message name="getEnrollmentsByBatchUIDandCourseIDPattern">
+    <part name="parameters" element="tns:getEnrollmentsByBatchUIDandCourseIDPattern" />
+  </message>
+  <message name="getEnrollmentsByBatchUIDandCourseIDPatternResponse">
+    <part name="parameters" element="tns:getEnrollmentsByBatchUIDandCourseIDPatternResponse" />
+  </message>
+  <message name="getSecondaryPortalRolesForGivenUserId">
+    <part name="parameters" element="tns:getSecondaryPortalRolesForGivenUserId" />
+  </message>
+  <message name="getSecondaryPortalRolesForGivenUserIdResponse">
+    <part name="parameters" element="tns:getSecondaryPortalRolesForGivenUserIdResponse" />
+  </message>
+  <message name="getSecondaryPortalRolesForGivenUserIdWithNamedElements">
+    <part name="parameters" element="tns:getSecondaryPortalRolesForGivenUserIdWithNamedElements" />
+  </message>
+  <message name="getSecondaryPortalRolesForGivenUserIdWithNamedElementsResponse">
+    <part name="parameters" element="tns:getSecondaryPortalRolesForGivenUserIdWithNamedElementsResponse" />
+  </message>
+  <message name="getSecondaryPortalRolesForGivenUserIdXML">
+    <part name="parameters" element="tns:getSecondaryPortalRolesForGivenUserIdXML" />
+  </message>
+  <message name="getSecondaryPortalRolesForGivenUserIdXMLResponse">
+    <part name="parameters" element="tns:getSecondaryPortalRolesForGivenUserIdXMLResponse" />
+  </message>
+  <message name="getSecondarySystemRolesForGivenUserId">
+    <part name="parameters" element="tns:getSecondarySystemRolesForGivenUserId" />
+  </message>
+  <message name="getSecondarySystemRolesForGivenUserIdResponse">
+    <part name="parameters" element="tns:getSecondarySystemRolesForGivenUserIdResponse" />
+  </message>
+  <message name="getSecondarySystemRolesForGivenUserIdWithNamedElements">
+    <part name="parameters" element="tns:getSecondarySystemRolesForGivenUserIdWithNamedElements" />
+  </message>
+  <message name="getSecondarySystemRolesForGivenUserIdWithNamedElementsResponse">
+    <part name="parameters" element="tns:getSecondarySystemRolesForGivenUserIdWithNamedElementsResponse" />
+  </message>
+  <message name="getSecondarySystemRolesForGivenUserIdXML">
+    <part name="parameters" element="tns:getSecondarySystemRolesForGivenUserIdXML" />
+  </message>
+  <message name="getSecondarySystemRolesForGivenUserIdXMLResponse">
+    <part name="parameters" element="tns:getSecondarySystemRolesForGivenUserIdXMLResponse" />
+  </message>
+  <message name="getUserDetails">
+    <part name="parameters" element="tns:getUserDetails" />
+  </message>
+  <message name="getUserDetailsResponse">
+    <part name="parameters" element="tns:getUserDetailsResponse" />
+  </message>
+  <message name="getUserDetailsWithNamedElements">
+    <part name="parameters" element="tns:getUserDetailsWithNamedElements" />
+  </message>
+  <message name="getUserDetailsWithNamedElementsResponse">
+    <part name="parameters" element="tns:getUserDetailsWithNamedElementsResponse" />
+  </message>
+  <message name="getUserDetailsXML">
+    <part name="parameters" element="tns:getUserDetailsXML" />
+  </message>
+  <message name="getUserDetailsXMLResponse">
+    <part name="parameters" element="tns:getUserDetailsXMLResponse" />
+  </message>
+  <message name="getUserRoleInCourse">
+    <part name="parameters" element="tns:getUserRoleInCourse" />
+  </message>
+  <message name="getUserRoleInCourseResponse">
+    <part name="parameters" element="tns:getUserRoleInCourseResponse" />
+  </message>
+  <message name="getUserRoleInCourseWithNamedElements">
+    <part name="parameters" element="tns:getUserRoleInCourseWithNamedElements" />
+  </message>
+  <message name="getUserRoleInCourseWithNamedElementsResponse">
+    <part name="parameters" element="tns:getUserRoleInCourseWithNamedElementsResponse" />
+  </message>
+  <message name="getUserRoleInCourseXML">
+    <part name="parameters" element="tns:getUserRoleInCourseXML" />
+  </message>
+  <message name="getUserRoleInCourseXMLResponse">
+    <part name="parameters" element="tns:getUserRoleInCourseXMLResponse" />
+  </message>
+  <message name="isUserInCourse">
+    <part name="parameters" element="tns:isUserInCourse" />
+  </message>
+  <message name="isUserInCourseResponse">
+    <part name="parameters" element="tns:isUserInCourseResponse" />
+  </message>
+  <message name="isUserInCourseXML">
+    <part name="parameters" element="tns:isUserInCourseXML" />
+  </message>
+  <message name="isUserInCourseXMLResponse">
+    <part name="parameters" element="tns:isUserInCourseXMLResponse" />
+  </message>
+  <message name="setOrModifySecondaryPortalRolesForGivenUserId">
+    <part name="parameters" element="tns:setOrModifySecondaryPortalRolesForGivenUserId" />
+  </message>
+  <message name="setOrModifySecondaryPortalRolesForGivenUserIdResponse">
+    <part name="parameters" element="tns:setOrModifySecondaryPortalRolesForGivenUserIdResponse" />
+  </message>
+  <message name="setOrModifySecondaryPortalRolesForGivenUserIdXML">
+    <part name="parameters" element="tns:setOrModifySecondaryPortalRolesForGivenUserIdXML" />
+  </message>
+  <message name="setOrModifySecondaryPortalRolesForGivenUserIdXMLResponse">
+    <part name="parameters" element="tns:setOrModifySecondaryPortalRolesForGivenUserIdXMLResponse" />
+  </message>
+  <portType name="BBUserWebService">
+    <operation name="addDefaultStudent">
+      <input message="tns:addDefaultStudent" />
+      <output message="tns:addDefaultStudentResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="addDefaultStudentXML">
+      <input message="tns:addDefaultStudentXML" />
+      <output message="tns:addDefaultStudentXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="addUser">
+      <input message="tns:addUser" />
+      <output message="tns:addUserResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="addUserXML">
+      <input message="tns:addUserXML" />
+      <output message="tns:addUserXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="deleteUserByUserBbId">
+      <input message="tns:deleteUserByUserBbId" />
+      <output message="tns:deleteUserByUserBbIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="deleteUserByUserBbIdXML">
+      <input message="tns:deleteUserByUserBbIdXML" />
+      <output message="tns:deleteUserByUserBbIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="deleteUserByUserId">
+      <input message="tns:deleteUserByUserId" />
+      <output message="tns:deleteUserByUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="deleteUserByUserIdXML">
+      <input message="tns:deleteUserByUserIdXML" />
+      <output message="tns:deleteUserByUserIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="doesUserExist">
+      <input message="tns:doesUserExist" />
+      <output message="tns:doesUserExistResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="doesUserExistXML">
+      <input message="tns:doesUserExistXML" />
+      <output message="tns:doesUserExistXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllUserIDsNoDetails">
+      <input message="tns:getAllUserIDsNoDetails" />
+      <output message="tns:getAllUserIDsNoDetailsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllUserIDsNoDetailsWithNamedElements">
+      <input message="tns:getAllUserIDsNoDetailsWithNamedElements" />
+      <output message="tns:getAllUserIDsNoDetailsWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getAllUserIDsNoDetailsXML">
+      <input message="tns:getAllUserIDsNoDetailsXML" />
+      <output message="tns:getAllUserIDsNoDetailsXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getEnrolledStudentsForGivenCourseIDWithNamedElements">
+      <input message="tns:getEnrolledStudentsForGivenCourseIDWithNamedElements" />
+      <output message="tns:getEnrolledStudentsForGivenCourseIDWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getEnrolledStudentsForGivenCourseIDXML">
+      <input message="tns:getEnrolledStudentsForGivenCourseIDXML" />
+      <output message="tns:getEnrolledStudentsForGivenCourseIDXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getEnrolledUserDetailsForGivenCourseWithNamedElements">
+      <input message="tns:getEnrolledUserDetailsForGivenCourseWithNamedElements" />
+      <output message="tns:getEnrolledUserDetailsForGivenCourseWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getEnrolledUserDetailsForGivenCourseXML">
+      <input message="tns:getEnrolledUserDetailsForGivenCourseXML" />
+      <output message="tns:getEnrolledUserDetailsForGivenCourseXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getEnrolledUsersForGivenCourse">
+      <input message="tns:getEnrolledUsersForGivenCourse" />
+      <output message="tns:getEnrolledUsersForGivenCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getEnrollmentsByBatchUIDandCourseIDPattern">
+      <input message="tns:getEnrollmentsByBatchUIDandCourseIDPattern" />
+      <output message="tns:getEnrollmentsByBatchUIDandCourseIDPatternResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getSecondaryPortalRolesForGivenUserId">
+      <input message="tns:getSecondaryPortalRolesForGivenUserId" />
+      <output message="tns:getSecondaryPortalRolesForGivenUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getSecondaryPortalRolesForGivenUserIdWithNamedElements">
+      <input message="tns:getSecondaryPortalRolesForGivenUserIdWithNamedElements" />
+      <output message="tns:getSecondaryPortalRolesForGivenUserIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getSecondaryPortalRolesForGivenUserIdXML">
+      <input message="tns:getSecondaryPortalRolesForGivenUserIdXML" />
+      <output message="tns:getSecondaryPortalRolesForGivenUserIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getSecondarySystemRolesForGivenUserId">
+      <input message="tns:getSecondarySystemRolesForGivenUserId" />
+      <output message="tns:getSecondarySystemRolesForGivenUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getSecondarySystemRolesForGivenUserIdWithNamedElements">
+      <input message="tns:getSecondarySystemRolesForGivenUserIdWithNamedElements" />
+      <output message="tns:getSecondarySystemRolesForGivenUserIdWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getSecondarySystemRolesForGivenUserIdXML">
+      <input message="tns:getSecondarySystemRolesForGivenUserIdXML" />
+      <output message="tns:getSecondarySystemRolesForGivenUserIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getUserDetails">
+      <input message="tns:getUserDetails" />
+      <output message="tns:getUserDetailsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getUserDetailsWithNamedElements">
+      <input message="tns:getUserDetailsWithNamedElements" />
+      <output message="tns:getUserDetailsWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getUserDetailsXML">
+      <input message="tns:getUserDetailsXML" />
+      <output message="tns:getUserDetailsXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getUserRoleInCourse">
+      <input message="tns:getUserRoleInCourse" />
+      <output message="tns:getUserRoleInCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getUserRoleInCourseWithNamedElements">
+      <input message="tns:getUserRoleInCourseWithNamedElements" />
+      <output message="tns:getUserRoleInCourseWithNamedElementsResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="getUserRoleInCourseXML">
+      <input message="tns:getUserRoleInCourseXML" />
+      <output message="tns:getUserRoleInCourseXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="isUserInCourse">
+      <input message="tns:isUserInCourse" />
+      <output message="tns:isUserInCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="isUserInCourseXML">
+      <input message="tns:isUserInCourseXML" />
+      <output message="tns:isUserInCourseXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="setOrModifySecondaryPortalRolesForGivenUserId">
+      <input message="tns:setOrModifySecondaryPortalRolesForGivenUserId" />
+      <output message="tns:setOrModifySecondaryPortalRolesForGivenUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="setOrModifySecondaryPortalRolesForGivenUserIdXML">
+      <input message="tns:setOrModifySecondaryPortalRolesForGivenUserIdXML" />
+      <output message="tns:setOrModifySecondaryPortalRolesForGivenUserIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+  </portType>
+  <binding name="BBUserWebServicePortBinding" type="tns:BBUserWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="addDefaultStudent">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addDefaultStudentXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addUser">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addUserXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteUserByUserBbId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteUserByUserBbIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteUserByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteUserByUserIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="doesUserExist">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="doesUserExistXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllUserIDsNoDetails">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllUserIDsNoDetailsWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAllUserIDsNoDetailsXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEnrolledStudentsForGivenCourseIDWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEnrolledStudentsForGivenCourseIDXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEnrolledUserDetailsForGivenCourseWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEnrolledUserDetailsForGivenCourseXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEnrolledUsersForGivenCourse">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEnrollmentsByBatchUIDandCourseIDPattern">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getSecondaryPortalRolesForGivenUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getSecondaryPortalRolesForGivenUserIdWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getSecondaryPortalRolesForGivenUserIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getSecondarySystemRolesForGivenUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getSecondarySystemRolesForGivenUserIdWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getSecondarySystemRolesForGivenUserIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserDetails">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserDetailsWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserDetailsXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserRoleInCourse">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserRoleInCourseWithNamedElements">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUserRoleInCourseXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="isUserInCourse">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="isUserInCourseXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="setOrModifySecondaryPortalRolesForGivenUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="setOrModifySecondaryPortalRolesForGivenUserIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="BBUserWebService">
+    <port name="BBUserWebServicePort" binding="tns:BBUserWebServicePortBinding">
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,2727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BbWebservices" targetNamespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BbWebservices?xsd=1" namespace="http://www.ncl.ac.uk/BbWsFaultException" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BbWebservices?xsd=2" namespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" />
+    </xsd:schema>
+  </types>
+  <message name="courseMembershipLoadRecordById">
+    <part name="parameters" element="tns:courseMembershipLoadRecordById" />
+  </message>
+  <message name="courseMembershipLoadRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByIdResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
+  </message>
+  <message name="BbWsFault">
+    <part xmlns:ns1="http://www.ncl.ac.uk/BbWsFaultException" name="fault" element="ns1:BbWsFaultException" />
+  </message>
+  <message name="courseMembershipLoadListById">
+    <part name="parameters" element="tns:courseMembershipLoadListById" />
+  </message>
+  <message name="courseMembershipLoadListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByIdResponse" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserId">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserId" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByUserId">
+    <part name="parameters" element="tns:courseMembershipLoadListByUserId" />
+  </message>
+  <message name="courseMembershipLoadListByUserIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByUserIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByCourseId">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseId" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdWithUserInfo">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdWithUserInfo" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdWithUserInfoResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdWithUserInfoResponse" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdAndRole">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdAndRole" />
+  </message>
+  <message name="courseMembershipLoadListByCourseIdAndRoleResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByCourseIdAndRoleResponse" />
+  </message>
+  <message name="courseMembershipInsertRecordById">
+    <part name="parameters" element="tns:courseMembershipInsertRecordById" />
+  </message>
+  <message name="courseMembershipInsertRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipInsertRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipUpdateRecordById">
+    <part name="parameters" element="tns:courseMembershipUpdateRecordById" />
+  </message>
+  <message name="courseMembershipUpdateRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipUpdateRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipPersistRecordById">
+    <part name="parameters" element="tns:courseMembershipPersistRecordById" />
+  </message>
+  <message name="courseMembershipPersistRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipPersistRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipDeleteRecordById">
+    <part name="parameters" element="tns:courseMembershipDeleteRecordById" />
+  </message>
+  <message name="courseMembershipDeleteRecordByIdResponse">
+    <part name="parameters" element="tns:courseMembershipDeleteRecordByIdResponse" />
+  </message>
+  <message name="courseMembershipInsertListById">
+    <part name="parameters" element="tns:courseMembershipInsertListById" />
+  </message>
+  <message name="courseMembershipInsertListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipInsertListByIdResponse" />
+  </message>
+  <message name="courseMembershipUpdateListById">
+    <part name="parameters" element="tns:courseMembershipUpdateListById" />
+  </message>
+  <message name="courseMembershipUpdateListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipUpdateListByIdResponse" />
+  </message>
+  <message name="courseMembershipPersistListById">
+    <part name="parameters" element="tns:courseMembershipPersistListById" />
+  </message>
+  <message name="courseMembershipPersistListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipPersistListByIdResponse" />
+  </message>
+  <message name="courseMembershipDeleteListById">
+    <part name="parameters" element="tns:courseMembershipDeleteListById" />
+  </message>
+  <message name="courseMembershipDeleteListByIdResponse">
+    <part name="parameters" element="tns:courseMembershipDeleteListByIdResponse" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserBatchId">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserBatchId" />
+  </message>
+  <message name="courseMembershipLoadRecordByCourseAndUserBatchIdResponse">
+    <part name="parameters" element="tns:courseMembershipLoadRecordByCourseAndUserBatchIdResponse" />
+  </message>
+  <message name="courseMembershipLoadListByTemplate">
+    <part name="parameters" element="tns:courseMembershipLoadListByTemplate" />
+  </message>
+  <message name="courseMembershipLoadListByTemplateResponse">
+    <part name="parameters" element="tns:courseMembershipLoadListByTemplateResponse" />
+  </message>
+  <message name="userLoadRecordByBatchUid">
+    <part name="parameters" element="tns:userLoadRecordByBatchUid" />
+  </message>
+  <message name="userLoadRecordByBatchUidResponse">
+    <part name="parameters" element="tns:userLoadRecordByBatchUidResponse" />
+  </message>
+  <message name="userLoadListByTemplate">
+    <part name="parameters" element="tns:userLoadListByTemplate" />
+  </message>
+  <message name="userLoadListByTemplateResponse">
+    <part name="parameters" element="tns:userLoadListByTemplateResponse" />
+  </message>
+  <message name="userInsertRecordByBatchUid">
+    <part name="parameters" element="tns:userInsertRecordByBatchUid" />
+  </message>
+  <message name="userInsertRecordByBatchUidResponse">
+    <part name="parameters" element="tns:userInsertRecordByBatchUidResponse" />
+  </message>
+  <message name="userUpdateRecordByBatchUid">
+    <part name="parameters" element="tns:userUpdateRecordByBatchUid" />
+  </message>
+  <message name="userUpdateRecordByBatchUidResponse">
+    <part name="parameters" element="tns:userUpdateRecordByBatchUidResponse" />
+  </message>
+  <message name="userPersistRecordByBatchUid">
+    <part name="parameters" element="tns:userPersistRecordByBatchUid" />
+  </message>
+  <message name="userPersistRecordByBatchUidResponse">
+    <part name="parameters" element="tns:userPersistRecordByBatchUidResponse" />
+  </message>
+  <message name="userDeleteRecordByBatchUid">
+    <part name="parameters" element="tns:userDeleteRecordByBatchUid" />
+  </message>
+  <message name="userDeleteRecordByBatchUidResponse">
+    <part name="parameters" element="tns:userDeleteRecordByBatchUidResponse" />
+  </message>
+  <message name="userPersistListByBatchUid">
+    <part name="parameters" element="tns:userPersistListByBatchUid" />
+  </message>
+  <message name="userPersistListByBatchUidResponse">
+    <part name="parameters" element="tns:userPersistListByBatchUidResponse" />
+  </message>
+  <message name="userDeleteListByBatchUid">
+    <part name="parameters" element="tns:userDeleteListByBatchUid" />
+  </message>
+  <message name="userDeleteListByBatchUidResponse">
+    <part name="parameters" element="tns:userDeleteListByBatchUidResponse" />
+  </message>
+  <message name="userLoadRecordById">
+    <part name="parameters" element="tns:userLoadRecordById" />
+  </message>
+  <message name="userLoadRecordByIdResponse">
+    <part name="parameters" element="tns:userLoadRecordByIdResponse" />
+  </message>
+  <message name="userLoadRecordByName">
+    <part name="parameters" element="tns:userLoadRecordByName" />
+  </message>
+  <message name="userLoadRecordByNameResponse">
+    <part name="parameters" element="tns:userLoadRecordByNameResponse" />
+  </message>
+  <message name="userInsertRecordById">
+    <part name="parameters" element="tns:userInsertRecordById" />
+  </message>
+  <message name="userInsertRecordByIdResponse">
+    <part name="parameters" element="tns:userInsertRecordByIdResponse" />
+  </message>
+  <message name="userUpdateRecordById">
+    <part name="parameters" element="tns:userUpdateRecordById" />
+  </message>
+  <message name="userUpdateRecordByIdResponse">
+    <part name="parameters" element="tns:userUpdateRecordByIdResponse" />
+  </message>
+  <message name="userPersistRecordById">
+    <part name="parameters" element="tns:userPersistRecordById" />
+  </message>
+  <message name="userPersistRecordByIdResponse">
+    <part name="parameters" element="tns:userPersistRecordByIdResponse" />
+  </message>
+  <message name="userDeleteRecordById">
+    <part name="parameters" element="tns:userDeleteRecordById" />
+  </message>
+  <message name="userDeleteRecordByIdResponse">
+    <part name="parameters" element="tns:userDeleteRecordByIdResponse" />
+  </message>
+  <message name="userLoadListById">
+    <part name="parameters" element="tns:userLoadListById" />
+  </message>
+  <message name="userLoadListByIdResponse">
+    <part name="parameters" element="tns:userLoadListByIdResponse" />
+  </message>
+  <message name="userInsertListById">
+    <part name="parameters" element="tns:userInsertListById" />
+  </message>
+  <message name="userInsertListByIdResponse">
+    <part name="parameters" element="tns:userInsertListByIdResponse" />
+  </message>
+  <message name="userUpdateListById">
+    <part name="parameters" element="tns:userUpdateListById" />
+  </message>
+  <message name="userUpdateListByIdResponse">
+    <part name="parameters" element="tns:userUpdateListByIdResponse" />
+  </message>
+  <message name="userPersistListById">
+    <part name="parameters" element="tns:userPersistListById" />
+  </message>
+  <message name="userPersistListByIdResponse">
+    <part name="parameters" element="tns:userPersistListByIdResponse" />
+  </message>
+  <message name="userDeleteListById">
+    <part name="parameters" element="tns:userDeleteListById" />
+  </message>
+  <message name="userDeleteListByIdResponse">
+    <part name="parameters" element="tns:userDeleteListByIdResponse" />
+  </message>
+  <message name="userLoadListByEmailAddressFamilyNameGivenName">
+    <part name="parameters" element="tns:userLoadListByEmailAddressFamilyNameGivenName" />
+  </message>
+  <message name="userLoadListByEmailAddressFamilyNameGivenNameResponse">
+    <part name="parameters" element="tns:userLoadListByEmailAddressFamilyNameGivenNameResponse" />
+  </message>
+  <message name="userLoadListBySearchByUserName">
+    <part name="parameters" element="tns:userLoadListBySearchByUserName" />
+  </message>
+  <message name="userLoadListBySearchByUserNameResponse">
+    <part name="parameters" element="tns:userLoadListBySearchByUserNameResponse" />
+  </message>
+  <message name="userLoadListObservedByObserverId">
+    <part name="parameters" element="tns:userLoadListObservedByObserverId" />
+  </message>
+  <message name="userLoadListObservedByObserverIdResponse">
+    <part name="parameters" element="tns:userLoadListObservedByObserverIdResponse" />
+  </message>
+  <message name="userLoadListByCourseId">
+    <part name="parameters" element="tns:userLoadListByCourseId" />
+  </message>
+  <message name="userLoadListByCourseIdResponse">
+    <part name="parameters" element="tns:userLoadListByCourseIdResponse" />
+  </message>
+  <message name="userLoadListAvailableObserversByCourseId">
+    <part name="parameters" element="tns:userLoadListAvailableObserversByCourseId" />
+  </message>
+  <message name="userLoadListAvailableObserversByCourseIdResponse">
+    <part name="parameters" element="tns:userLoadListAvailableObserversByCourseIdResponse" />
+  </message>
+  <message name="userLoadListByGroupId">
+    <part name="parameters" element="tns:userLoadListByGroupId" />
+  </message>
+  <message name="userLoadListByGroupIdResponse">
+    <part name="parameters" element="tns:userLoadListByGroupIdResponse" />
+  </message>
+  <message name="userLoadListByPrimaryPortalRoleId">
+    <part name="parameters" element="tns:userLoadListByPrimaryPortalRoleId" />
+  </message>
+  <message name="userLoadListByPrimaryPortalRoleIdResponse">
+    <part name="parameters" element="tns:userLoadListByPrimaryPortalRoleIdResponse" />
+  </message>
+  <message name="portalRoleLoadRecordById">
+    <part name="parameters" element="tns:portalRoleLoadRecordById" />
+  </message>
+  <message name="portalRoleLoadRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleLoadRecordByIdResponse" />
+  </message>
+  <message name="portalRoleLoadRecordByRoleId">
+    <part name="parameters" element="tns:portalRoleLoadRecordByRoleId" />
+  </message>
+  <message name="portalRoleLoadRecordByRoleIdResponse">
+    <part name="parameters" element="tns:portalRoleLoadRecordByRoleIdResponse" />
+  </message>
+  <message name="portalRoleLoadRecordByRoleName">
+    <part name="parameters" element="tns:portalRoleLoadRecordByRoleName" />
+  </message>
+  <message name="portalRoleLoadRecordByRoleNameResponse">
+    <part name="parameters" element="tns:portalRoleLoadRecordByRoleNameResponse" />
+  </message>
+  <message name="portalRoleLoadRecordDefault">
+    <part name="parameters" element="tns:portalRoleLoadRecordDefault" />
+  </message>
+  <message name="portalRoleLoadRecordDefaultResponse">
+    <part name="parameters" element="tns:portalRoleLoadRecordDefaultResponse" />
+  </message>
+  <message name="portalRoleLoadListRemovable">
+    <part name="parameters" element="tns:portalRoleLoadListRemovable" />
+  </message>
+  <message name="portalRoleLoadListRemovableResponse">
+    <part name="parameters" element="tns:portalRoleLoadListRemovableResponse" />
+  </message>
+  <message name="portalRoleLoadListAll">
+    <part name="parameters" element="tns:portalRoleLoadListAll" />
+  </message>
+  <message name="portalRoleLoadListAllResponse">
+    <part name="parameters" element="tns:portalRoleLoadListAllResponse" />
+  </message>
+  <message name="portalRoleLoadListAvailable">
+    <part name="parameters" element="tns:portalRoleLoadListAvailable" />
+  </message>
+  <message name="portalRoleLoadListAvailableResponse">
+    <part name="parameters" element="tns:portalRoleLoadListAvailableResponse" />
+  </message>
+  <message name="portalRoleLoadRecordPrimaryRoleByUserId">
+    <part name="parameters" element="tns:portalRoleLoadRecordPrimaryRoleByUserId" />
+  </message>
+  <message name="portalRoleLoadRecordPrimaryRoleByUserIdResponse">
+    <part name="parameters" element="tns:portalRoleLoadRecordPrimaryRoleByUserIdResponse" />
+  </message>
+  <message name="portalRoleLoadListAllByUserId">
+    <part name="parameters" element="tns:portalRoleLoadListAllByUserId" />
+  </message>
+  <message name="portalRoleLoadListAllByUserIdResponse">
+    <part name="parameters" element="tns:portalRoleLoadListAllByUserIdResponse" />
+  </message>
+  <message name="portalRoleLoadListSecondaryRolesByUserId">
+    <part name="parameters" element="tns:portalRoleLoadListSecondaryRolesByUserId" />
+  </message>
+  <message name="portalRoleLoadListSecondaryRolesByUserIdResponse">
+    <part name="parameters" element="tns:portalRoleLoadListSecondaryRolesByUserIdResponse" />
+  </message>
+  <message name="portalRoleInsertRecordById">
+    <part name="parameters" element="tns:portalRoleInsertRecordById" />
+  </message>
+  <message name="portalRoleInsertRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleInsertRecordByIdResponse" />
+  </message>
+  <message name="portalRoleUpdateRecordById">
+    <part name="parameters" element="tns:portalRoleUpdateRecordById" />
+  </message>
+  <message name="portalRoleUpdateRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleUpdateRecordByIdResponse" />
+  </message>
+  <message name="portalRolePersistRecordById">
+    <part name="parameters" element="tns:portalRolePersistRecordById" />
+  </message>
+  <message name="portalRolePersistRecordByIdResponse">
+    <part name="parameters" element="tns:portalRolePersistRecordByIdResponse" />
+  </message>
+  <message name="portalRoleDeleteRecordById">
+    <part name="parameters" element="tns:portalRoleDeleteRecordById" />
+  </message>
+  <message name="portalRoleDeleteRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleDeleteRecordByIdResponse" />
+  </message>
+  <message name="observerAssociationLoadListByTemplate">
+    <part name="parameters" element="tns:observerAssociationLoadListByTemplate" />
+  </message>
+  <message name="observerAssociationLoadListByTemplateResponse">
+    <part name="parameters" element="tns:observerAssociationLoadListByTemplateResponse" />
+  </message>
+  <message name="observerAssociationLoadRecordByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationLoadRecordByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationLoadRecordByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationLoadRecordByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="observerAssociationInsertRecordByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationInsertRecordByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationInsertRecordByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationInsertRecordByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="observerAssociationPersistRecordByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationPersistRecordByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationPersistRecordByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationPersistRecordByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="observerAssociationDeleteRecordByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationDeleteRecordByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationDeleteRecordByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationDeleteRecordByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="observerAssociationLoadListByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationLoadListByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationLoadListByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationLoadListByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="observerAssociationInsertListByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationInsertListByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationInsertListByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationInsertListByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="observerAssociationPersistListByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationPersistListByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationPersistListByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationPersistListByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="observerAssociationDeleteListByObserverAndUsersBatchUid">
+    <part name="parameters" element="tns:observerAssociationDeleteListByObserverAndUsersBatchUid" />
+  </message>
+  <message name="observerAssociationDeleteListByObserverAndUsersBatchUidResponse">
+    <part name="parameters" element="tns:observerAssociationDeleteListByObserverAndUsersBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordById" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleId" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordById" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipPersistRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipPersistRecordById" />
+  </message>
+  <message name="portalRoleMembershipPersistRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipPersistRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordById">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordById" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListById">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListById" />
+  </message>
+  <message name="portalRoleMembershipLoadListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertListById">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListById" />
+  </message>
+  <message name="portalRoleMembershipInsertListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipPersistListById">
+    <part name="parameters" element="tns:portalRoleMembershipPersistListById" />
+  </message>
+  <message name="portalRoleMembershipPersistListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipPersistListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteListById">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListById" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByIdResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserId">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserId" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserId">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserId" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByPortalRoleId">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByPortalRoleId" />
+  </message>
+  <message name="portalRoleMembershipLoadListByPortalRoleIdResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByPortalRoleIdResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByTemplate">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByTemplate" />
+  </message>
+  <message name="portalRoleMembershipLoadListByTemplateResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByTemplateResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid" />
+  </message>
+  <message name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse">
+    <part name="parameters" element="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse" />
+  </message>
+  <message name="courseLoadRecordById">
+    <part name="parameters" element="tns:courseLoadRecordById" />
+  </message>
+  <message name="courseLoadRecordByIdResponse">
+    <part name="parameters" element="tns:courseLoadRecordByIdResponse" />
+  </message>
+  <message name="courseLoadRecordByCourseId">
+    <part name="parameters" element="tns:courseLoadRecordByCourseId" />
+  </message>
+  <message name="courseLoadRecordByCourseIdResponse">
+    <part name="parameters" element="tns:courseLoadRecordByCourseIdResponse" />
+  </message>
+  <message name="courseLoadRecordByBatchUid">
+    <part name="parameters" element="tns:courseLoadRecordByBatchUid" />
+  </message>
+  <message name="courseLoadRecordByBatchUidResponse">
+    <part name="parameters" element="tns:courseLoadRecordByBatchUidResponse" />
+  </message>
+  <message name="courseLoadListByTemplate">
+    <part name="parameters" element="tns:courseLoadListByTemplate" />
+  </message>
+  <message name="courseLoadListByTemplateResponse">
+    <part name="parameters" element="tns:courseLoadListByTemplateResponse" />
+  </message>
+  <message name="courseInsertRecordById">
+    <part name="parameters" element="tns:courseInsertRecordById" />
+  </message>
+  <message name="courseInsertRecordByIdResponse">
+    <part name="parameters" element="tns:courseInsertRecordByIdResponse" />
+  </message>
+  <message name="courseUpdateRecordById">
+    <part name="parameters" element="tns:courseUpdateRecordById" />
+  </message>
+  <message name="courseUpdateRecordByIdResponse">
+    <part name="parameters" element="tns:courseUpdateRecordByIdResponse" />
+  </message>
+  <message name="coursePersistRecordById">
+    <part name="parameters" element="tns:coursePersistRecordById" />
+  </message>
+  <message name="coursePersistRecordByIdResponse">
+    <part name="parameters" element="tns:coursePersistRecordByIdResponse" />
+  </message>
+  <message name="courseDeleteRecordById">
+    <part name="parameters" element="tns:courseDeleteRecordById" />
+  </message>
+  <message name="courseDeleteRecordByIdResponse">
+    <part name="parameters" element="tns:courseDeleteRecordByIdResponse" />
+  </message>
+  <message name="courseCopyRecordById">
+    <part name="parameters" element="tns:courseCopyRecordById" />
+  </message>
+  <message name="courseCopyRecordByIdResponse">
+    <part name="parameters" element="tns:courseCopyRecordByIdResponse" />
+  </message>
+  <message name="courseCopyRecordByBatchUid">
+    <part name="parameters" element="tns:courseCopyRecordByBatchUid" />
+  </message>
+  <message name="courseCopyRecordByBatchUidResponse">
+    <part name="parameters" element="tns:courseCopyRecordByBatchUidResponse" />
+  </message>
+  <message name="courseInsertRecordByBatchUid">
+    <part name="parameters" element="tns:courseInsertRecordByBatchUid" />
+  </message>
+  <message name="courseInsertRecordByBatchUidResponse">
+    <part name="parameters" element="tns:courseInsertRecordByBatchUidResponse" />
+  </message>
+  <message name="courseUpdateRecordByBatchUid">
+    <part name="parameters" element="tns:courseUpdateRecordByBatchUid" />
+  </message>
+  <message name="courseUpdateRecordByBatchUidResponse">
+    <part name="parameters" element="tns:courseUpdateRecordByBatchUidResponse" />
+  </message>
+  <message name="coursePersistRecordByBatchUid">
+    <part name="parameters" element="tns:coursePersistRecordByBatchUid" />
+  </message>
+  <message name="coursePersistRecordByBatchUidResponse">
+    <part name="parameters" element="tns:coursePersistRecordByBatchUidResponse" />
+  </message>
+  <message name="courseDeleteRecordByBatchUid">
+    <part name="parameters" element="tns:courseDeleteRecordByBatchUid" />
+  </message>
+  <message name="courseDeleteRecordByBatchUidResponse">
+    <part name="parameters" element="tns:courseDeleteRecordByBatchUidResponse" />
+  </message>
+  <portType name="BbWebservices">
+    <operation name="courseMembershipLoadRecordById">
+      <input message="tns:courseMembershipLoadRecordById" />
+      <output message="tns:courseMembershipLoadRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListById">
+      <input message="tns:courseMembershipLoadListById" />
+      <output message="tns:courseMembershipLoadListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserId">
+      <input message="tns:courseMembershipLoadRecordByCourseAndUserId" />
+      <output message="tns:courseMembershipLoadRecordByCourseAndUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByUserId">
+      <input message="tns:courseMembershipLoadListByUserId" />
+      <output message="tns:courseMembershipLoadListByUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByCourseId">
+      <input message="tns:courseMembershipLoadListByCourseId" />
+      <output message="tns:courseMembershipLoadListByCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdWithUserInfo">
+      <input message="tns:courseMembershipLoadListByCourseIdWithUserInfo" />
+      <output message="tns:courseMembershipLoadListByCourseIdWithUserInfoResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdAndRole">
+      <input message="tns:courseMembershipLoadListByCourseIdAndRole" />
+      <output message="tns:courseMembershipLoadListByCourseIdAndRoleResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipInsertRecordById">
+      <input message="tns:courseMembershipInsertRecordById" />
+      <output message="tns:courseMembershipInsertRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipUpdateRecordById">
+      <input message="tns:courseMembershipUpdateRecordById" />
+      <output message="tns:courseMembershipUpdateRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipPersistRecordById">
+      <input message="tns:courseMembershipPersistRecordById" />
+      <output message="tns:courseMembershipPersistRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipDeleteRecordById">
+      <input message="tns:courseMembershipDeleteRecordById" />
+      <output message="tns:courseMembershipDeleteRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipInsertListById">
+      <input message="tns:courseMembershipInsertListById" />
+      <output message="tns:courseMembershipInsertListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipUpdateListById">
+      <input message="tns:courseMembershipUpdateListById" />
+      <output message="tns:courseMembershipUpdateListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipPersistListById">
+      <input message="tns:courseMembershipPersistListById" />
+      <output message="tns:courseMembershipPersistListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipDeleteListById">
+      <input message="tns:courseMembershipDeleteListById" />
+      <output message="tns:courseMembershipDeleteListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserBatchId">
+      <input message="tns:courseMembershipLoadRecordByCourseAndUserBatchId" />
+      <output message="tns:courseMembershipLoadRecordByCourseAndUserBatchIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMembershipLoadListByTemplate">
+      <input message="tns:courseMembershipLoadListByTemplate" />
+      <output message="tns:courseMembershipLoadListByTemplateResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadRecordByBatchUid">
+      <input message="tns:userLoadRecordByBatchUid" />
+      <output message="tns:userLoadRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListByTemplate">
+      <input message="tns:userLoadListByTemplate" />
+      <output message="tns:userLoadListByTemplateResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userInsertRecordByBatchUid">
+      <input message="tns:userInsertRecordByBatchUid" />
+      <output message="tns:userInsertRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userUpdateRecordByBatchUid">
+      <input message="tns:userUpdateRecordByBatchUid" />
+      <output message="tns:userUpdateRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userPersistRecordByBatchUid">
+      <input message="tns:userPersistRecordByBatchUid" />
+      <output message="tns:userPersistRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userDeleteRecordByBatchUid">
+      <input message="tns:userDeleteRecordByBatchUid" />
+      <output message="tns:userDeleteRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userPersistListByBatchUid">
+      <input message="tns:userPersistListByBatchUid" />
+      <output message="tns:userPersistListByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userDeleteListByBatchUid">
+      <input message="tns:userDeleteListByBatchUid" />
+      <output message="tns:userDeleteListByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadRecordById">
+      <input message="tns:userLoadRecordById" />
+      <output message="tns:userLoadRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadRecordByName">
+      <input message="tns:userLoadRecordByName" />
+      <output message="tns:userLoadRecordByNameResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userInsertRecordById">
+      <input message="tns:userInsertRecordById" />
+      <output message="tns:userInsertRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userUpdateRecordById">
+      <input message="tns:userUpdateRecordById" />
+      <output message="tns:userUpdateRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userPersistRecordById">
+      <input message="tns:userPersistRecordById" />
+      <output message="tns:userPersistRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userDeleteRecordById">
+      <input message="tns:userDeleteRecordById" />
+      <output message="tns:userDeleteRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListById">
+      <input message="tns:userLoadListById" />
+      <output message="tns:userLoadListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userInsertListById">
+      <input message="tns:userInsertListById" />
+      <output message="tns:userInsertListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userUpdateListById">
+      <input message="tns:userUpdateListById" />
+      <output message="tns:userUpdateListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userPersistListById">
+      <input message="tns:userPersistListById" />
+      <output message="tns:userPersistListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userDeleteListById">
+      <input message="tns:userDeleteListById" />
+      <output message="tns:userDeleteListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListByEmailAddressFamilyNameGivenName">
+      <input message="tns:userLoadListByEmailAddressFamilyNameGivenName" />
+      <output message="tns:userLoadListByEmailAddressFamilyNameGivenNameResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListBySearchByUserName">
+      <input message="tns:userLoadListBySearchByUserName" />
+      <output message="tns:userLoadListBySearchByUserNameResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListObservedByObserverId">
+      <input message="tns:userLoadListObservedByObserverId" />
+      <output message="tns:userLoadListObservedByObserverIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListByCourseId">
+      <input message="tns:userLoadListByCourseId" />
+      <output message="tns:userLoadListByCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListAvailableObserversByCourseId">
+      <input message="tns:userLoadListAvailableObserversByCourseId" />
+      <output message="tns:userLoadListAvailableObserversByCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListByGroupId">
+      <input message="tns:userLoadListByGroupId" />
+      <output message="tns:userLoadListByGroupIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="userLoadListByPrimaryPortalRoleId">
+      <input message="tns:userLoadListByPrimaryPortalRoleId" />
+      <output message="tns:userLoadListByPrimaryPortalRoleIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadRecordById">
+      <input message="tns:portalRoleLoadRecordById" />
+      <output message="tns:portalRoleLoadRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadRecordByRoleId">
+      <input message="tns:portalRoleLoadRecordByRoleId" />
+      <output message="tns:portalRoleLoadRecordByRoleIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadRecordByRoleName">
+      <input message="tns:portalRoleLoadRecordByRoleName" />
+      <output message="tns:portalRoleLoadRecordByRoleNameResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadRecordDefault">
+      <input message="tns:portalRoleLoadRecordDefault" />
+      <output message="tns:portalRoleLoadRecordDefaultResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadListRemovable">
+      <input message="tns:portalRoleLoadListRemovable" />
+      <output message="tns:portalRoleLoadListRemovableResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadListAll">
+      <input message="tns:portalRoleLoadListAll" />
+      <output message="tns:portalRoleLoadListAllResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadListAvailable">
+      <input message="tns:portalRoleLoadListAvailable" />
+      <output message="tns:portalRoleLoadListAvailableResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadRecordPrimaryRoleByUserId">
+      <input message="tns:portalRoleLoadRecordPrimaryRoleByUserId" />
+      <output message="tns:portalRoleLoadRecordPrimaryRoleByUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadListAllByUserId">
+      <input message="tns:portalRoleLoadListAllByUserId" />
+      <output message="tns:portalRoleLoadListAllByUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleLoadListSecondaryRolesByUserId">
+      <input message="tns:portalRoleLoadListSecondaryRolesByUserId" />
+      <output message="tns:portalRoleLoadListSecondaryRolesByUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleInsertRecordById">
+      <input message="tns:portalRoleInsertRecordById" />
+      <output message="tns:portalRoleInsertRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleUpdateRecordById">
+      <input message="tns:portalRoleUpdateRecordById" />
+      <output message="tns:portalRoleUpdateRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRolePersistRecordById">
+      <input message="tns:portalRolePersistRecordById" />
+      <output message="tns:portalRolePersistRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleDeleteRecordById">
+      <input message="tns:portalRoleDeleteRecordById" />
+      <output message="tns:portalRoleDeleteRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationLoadListByTemplate">
+      <input message="tns:observerAssociationLoadListByTemplate" />
+      <output message="tns:observerAssociationLoadListByTemplateResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationLoadRecordByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationLoadRecordByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationLoadRecordByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationInsertRecordByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationInsertRecordByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationInsertRecordByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationPersistRecordByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationPersistRecordByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationPersistRecordByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationDeleteRecordByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationDeleteRecordByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationDeleteRecordByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationLoadListByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationLoadListByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationLoadListByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationInsertListByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationInsertListByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationInsertListByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationPersistListByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationPersistListByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationPersistListByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="observerAssociationDeleteListByObserverAndUsersBatchUid">
+      <input message="tns:observerAssociationDeleteListByObserverAndUsersBatchUid" />
+      <output message="tns:observerAssociationDeleteListByObserverAndUsersBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordById">
+      <input message="tns:portalRoleMembershipLoadRecordById" />
+      <output message="tns:portalRoleMembershipLoadRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
+      <input message="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleId" />
+      <output message="tns:portalRoleMembershipLoadRecordByUserIdAndPortalRoleIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordById">
+      <input message="tns:portalRoleMembershipInsertRecordById" />
+      <output message="tns:portalRoleMembershipInsertRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipPersistRecordById">
+      <input message="tns:portalRoleMembershipPersistRecordById" />
+      <output message="tns:portalRoleMembershipPersistRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordById">
+      <input message="tns:portalRoleMembershipDeleteRecordById" />
+      <output message="tns:portalRoleMembershipDeleteRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId">
+      <input message="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId" />
+      <output message="tns:portalRoleMembershipDeleteRecordByUserIdAndPortalRoleIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListById">
+      <input message="tns:portalRoleMembershipLoadListById" />
+      <output message="tns:portalRoleMembershipLoadListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertListById">
+      <input message="tns:portalRoleMembershipInsertListById" />
+      <output message="tns:portalRoleMembershipInsertListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipPersistListById">
+      <input message="tns:portalRoleMembershipPersistListById" />
+      <output message="tns:portalRoleMembershipPersistListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteListById">
+      <input message="tns:portalRoleMembershipDeleteListById" />
+      <output message="tns:portalRoleMembershipDeleteListByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserId">
+      <input message="tns:portalRoleMembershipDeleteListByUserId" />
+      <output message="tns:portalRoleMembershipDeleteListByUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserId">
+      <input message="tns:portalRoleMembershipLoadListByUserId" />
+      <output message="tns:portalRoleMembershipLoadListByUserIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByPortalRoleId">
+      <input message="tns:portalRoleMembershipLoadListByPortalRoleId" />
+      <output message="tns:portalRoleMembershipLoadListByPortalRoleIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByTemplate">
+      <input message="tns:portalRoleMembershipLoadListByTemplate" />
+      <output message="tns:portalRoleMembershipLoadListByTemplateResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
+      <input message="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid" />
+      <output message="tns:portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+      <input message="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid" />
+      <output message="tns:portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid">
+      <input message="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid" />
+      <output message="tns:portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUid">
+      <input message="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUid" />
+      <output message="tns:portalRoleMembershipLoadListByUserAndPortalRoleBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUid">
+      <input message="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUid" />
+      <output message="tns:portalRoleMembershipInsertListByUserAndPortalRoleBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+      <input message="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid" />
+      <output message="tns:portalRoleMembershipDeleteListByUserAndPortalRoleBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseLoadRecordById">
+      <input message="tns:courseLoadRecordById" />
+      <output message="tns:courseLoadRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseLoadRecordByCourseId">
+      <input message="tns:courseLoadRecordByCourseId" />
+      <output message="tns:courseLoadRecordByCourseIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseLoadRecordByBatchUid">
+      <input message="tns:courseLoadRecordByBatchUid" />
+      <output message="tns:courseLoadRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseLoadListByTemplate">
+      <input message="tns:courseLoadListByTemplate" />
+      <output message="tns:courseLoadListByTemplateResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseInsertRecordById">
+      <input message="tns:courseInsertRecordById" />
+      <output message="tns:courseInsertRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseUpdateRecordById">
+      <input message="tns:courseUpdateRecordById" />
+      <output message="tns:courseUpdateRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="coursePersistRecordById">
+      <input message="tns:coursePersistRecordById" />
+      <output message="tns:coursePersistRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseDeleteRecordById">
+      <input message="tns:courseDeleteRecordById" />
+      <output message="tns:courseDeleteRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseCopyRecordById">
+      <input message="tns:courseCopyRecordById" />
+      <output message="tns:courseCopyRecordByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseCopyRecordByBatchUid">
+      <input message="tns:courseCopyRecordByBatchUid" />
+      <output message="tns:courseCopyRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseInsertRecordByBatchUid">
+      <input message="tns:courseInsertRecordByBatchUid" />
+      <output message="tns:courseInsertRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseUpdateRecordByBatchUid">
+      <input message="tns:courseUpdateRecordByBatchUid" />
+      <output message="tns:courseUpdateRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="coursePersistRecordByBatchUid">
+      <input message="tns:coursePersistRecordByBatchUid" />
+      <output message="tns:coursePersistRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseDeleteRecordByBatchUid">
+      <input message="tns:courseDeleteRecordByBatchUid" />
+      <output message="tns:courseDeleteRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+  </portType>
+  <binding name="BbWebservicesPortBinding" type="tns:BbWebservices">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="courseMembershipLoadRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdWithUserInfo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByCourseIdAndRole">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipInsertRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipUpdateRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipPersistRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipDeleteRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipInsertListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipUpdateListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipPersistListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipDeleteListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadRecordByCourseAndUserBatchId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMembershipLoadListByTemplate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListByTemplate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userInsertRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userUpdateRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userPersistRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userDeleteRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userPersistListByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userDeleteListByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadRecordByName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userInsertRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userUpdateRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userPersistRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userDeleteRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userInsertListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userUpdateListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userPersistListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userDeleteListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListByEmailAddressFamilyNameGivenName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListBySearchByUserName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListObservedByObserverId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListByCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListAvailableObserversByCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListByGroupId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="userLoadListByPrimaryPortalRoleId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadRecordByRoleId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadRecordByRoleName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadRecordDefault">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadListRemovable">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadListAll">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadListAvailable">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadRecordPrimaryRoleByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadListAllByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleLoadListSecondaryRolesByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleInsertRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleUpdateRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRolePersistRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleDeleteRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationLoadListByTemplate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationLoadRecordByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationInsertRecordByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationPersistRecordByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationDeleteRecordByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationLoadListByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationInsertListByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationPersistListByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="observerAssociationDeleteListByObserverAndUsersBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserIdAndPortalRoleId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipPersistRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserIdAndPortalRoleId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipPersistListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteListById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByPortalRoleId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByTemplate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadRecordByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertRecordByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteRecordByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipLoadListByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipInsertListByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="portalRoleMembershipDeleteListByUserAndPortalRoleBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseLoadRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseLoadRecordByCourseId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseLoadRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseLoadListByTemplate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseInsertRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseUpdateRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="coursePersistRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseDeleteRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseCopyRecordById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseCopyRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseInsertRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseUpdateRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="coursePersistRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseDeleteRecordByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="BbWebservices">
+    <port name="BbWebservicesPort" binding="tns:BbWebservicesPortBinding">
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BbWebservices" />
+    </port>
+  </service>
+</definitions>
