@@ -2,10 +2,10 @@
 <definitions xmlns:tns="http://www.ncl.ac.uk/BBCourseWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBCourseWebService" targetNamespace="http://www.ncl.ac.uk/BBCourseWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCourseWebService" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCourseWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCourseWebService" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
   </types>
   <message name="addCourse">
@@ -892,7 +892,7 @@
   </binding>
   <service name="BBCourseWebService">
     <port name="BBCourseWebServicePort" binding="tns:BBCourseWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCourseWebService" />
     </port>
   </service>
 </definitions>
