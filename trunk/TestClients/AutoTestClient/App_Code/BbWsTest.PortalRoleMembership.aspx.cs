@@ -11,8 +11,8 @@ using System.Web.UI.HtmlControls;
 
 using System.Collections.Generic;
 //!!
-using bbIDLA.BBAddedService;
-//using bbws;
+//using bbIDLA.BBAddedService;
+using bbws;
 
 public partial class BbWsTest : System.Web.UI.Page
 {
