@@ -63,7 +63,7 @@ import blackboard.platform.log.LogService;
  * @author Andrew.Martin@ncl.ac.uk
  */
 @WebService
-public class BBGradebookWebService
+public class BBGradebookWebService_BefBb91
 {
 @Resource
 public static javax.xml.ws.WebServiceContext wsContextStatic;

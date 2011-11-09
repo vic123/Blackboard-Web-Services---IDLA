@@ -17,7 +17,7 @@ import blackboard.data.user.User;
 import blackboard.persist.user.impl.ObserverAssociation;
 
 
-public class ObserverAssociationAccessPack<BbObserverAssociationType extends ObserverAssociation>
+public class ObserverAssociationAccessPack_BefBb91<BbObserverAssociationType extends ObserverAssociation>
         extends BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType<ObserverAssociationAccessPack.ObserverAssociationArguments_ADMIN_DATA,
             BbObserverAssociationType, ObserverAssociationDetails> {
 

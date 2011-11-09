@@ -50,7 +50,7 @@ import java.util.Calendar;
 //public class UserAccessPack_DATA_GB extends BbWsDataAccessPack<UserAccessPack_DATA_GB.UserArguments,User, bbuws.UserDetails> {
 //public class UserAccessPack_DATA_GB<BbUserType extends User, WsInputType extends BbWsDataDetails>
 //public class UserAccessPack_DATA_GB<BbUserType extends User, ArgumentsType extends UserAccessPack.UserArguments>
-public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends UserAccessPack.UserArgumentsWithUserInput>
+public class UserAccessPack_DATA_BefBb91<BbUserType extends User, ArgumentsType extends UserAccessPack.UserArgumentsWithUserInput>
             extends UserAccessPack<BbUserType, ArgumentsType> {
 //    static class UserArguments extends BbWsArguments<UserDetails> {}
     //void loadRecord(blackboard.data.user.User bbo) throws Exception {
