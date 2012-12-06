@@ -1,3 +1,16 @@
+!! http://library.blackboard.com/d/?2e828f85-5bf5-4a94-b1f7-9e367ee9ebab
+
+Global filtering can be turned on and off for the entire server using the
+bbconfig.global.xss.enable property in bb-config.properties. This property is ON
+by default starting with 9.1 SP4. This property is OFF by default in 9.1 SP1 through 9.1 SP3.
+Global filtering can also be turned on or off selectively by URL. When global xss filter is ON for
+the entire system (bbconfig.global.xss.enable=true), filtering can be turned off for
+specific URLs. This option could be used in the case of a Building Block that allows any user, with
+trusted role or not, to submit HTML content. To prevent the global xss filter from changing the
+HTML, the developer can modify the code to get the unfiltered data using the new APIs, or create
+an exception text file.
+
+!! http://idlatestbb99.com/webapps/ws/wsadmin/wsadmin - make webservice available.
 
 Project Summary:
 ================
@@ -9,6 +22,9 @@ Currently implemented APIs are: User, Course, CourseMembership, PortalRole, Obse
 Integrated with rev576 (v.1.2) of "3) Beta/" of AMNL BBwebservices (http://projects.oscelot.org/gf/project/webservices/) project - it allows access to Announcement, Calendar, Content, Course, Discussion, Gradebook, Group and User APIs/data.
 
 
+!! allow methods
+
+!!perform diff on bb-config.properties on fresh install
 
 
 Features:
@@ -94,7 +110,8 @@ a) map your Bb server IP to idlatestbb.com URL (for example in  WinRoot\system32
 
 b) open TestClients/AutoTestClient/AutoTestClient_VS2008.sln, update of Web References of bbIDLA(DotNetProxy) and App_WebReferences of AutoTestClient, compile TestClients/DotNetProxy/bbIDLA and TestClients/AutoTestClient.
 
-c) Input initial test data that AutoTestClient expects to find in Bb database. Theoretically, necessary data is identified in AutoTestClient's BbWsTest.aspx.cs TestArgs initialization and the one currently set there is just user with name "student_001" and course with courseId "TestClass_001_ID", and student_001 has to be enrolled to TestClass_001_ID. (!!) But some more constants may be encoded somewhere in AutoTestClient sources, it was not checked. data_release_9.0.440.0.zip contains Bb databases used for test runs.
+c) Input initial test data that AutoTestClient expects to find in Bb database. Theoretically, necessary data is identified in AutoTestClient's BbWsTest.aspx.cs TestArgs initialization and the one currently set there is just user with name "student_001" and course with courseId "TestClass_001_ID", and student_001 has to be enrolled to TestClass_001_ID. "student_001" must have more than one Secondary Institution Role, "TestClass_001_ID" has to contain at least one group with "student_001" included.
+
 
 d) Try to run/debug AutoTestClient.
 
