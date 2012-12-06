@@ -244,7 +244,7 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     if (bbObject.getDurationType() != null) {
-                    return bbObject.getDurationType().toFieldName();
+                        return bbObject.getDurationType().toFieldName();
                     } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {
@@ -268,7 +268,7 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             new BbFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     if (bbObject.getEnrollmentType() != null) {
-                    return bbObject.getEnrollmentType().toFieldName();
+                        return bbObject.getEnrollmentType().toFieldName();
                     } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {
@@ -643,7 +643,7 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     if (bbObject.getDurationType() != null) {
-                return bbObject.getDurationType().toFieldName();
+                        return bbObject.getDurationType().toFieldName();
                     } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {
@@ -667,7 +667,7 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
             new WsFieldSetter() {
                 @Override public String getBbFieldValue() throws Exception {
                     if (bbObject.getEnrollmentType() != null) {
-                return bbObject.getEnrollmentType().toFieldName();
+                        return bbObject.getEnrollmentType().toFieldName();
                     } else return null;
                 }
                 @Override public String getWsFieldValue() throws Exception {

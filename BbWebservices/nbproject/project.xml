@@ -9,17 +9,17 @@
             <name>BbWebservices</name>
             <minimum-ant-version>1.6</minimum-ant-version>
             <web-module-libraries>
-                <library>
+                <library files="17">
                     <file>${libs.jaxws21.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library>
+                <library files="1">
                     <file>${file.reference.bb-cms-admin.jar}</file>
                 </library>
-                <library>
+                <library files="1">
                     <file>${file.reference.bb-platform.jar}</file>
                 </library>
-                <library>
+                <library files="1">
                     <file>${file.reference.bb-taglibs.jar}</file>
                 </library>
             </web-module-libraries>

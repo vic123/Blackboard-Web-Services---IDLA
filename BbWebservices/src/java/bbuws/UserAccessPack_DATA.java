@@ -862,14 +862,14 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
             private class AvailableObserversByCourseIdListLoader_MainBody extends DataAccessor  {
                 public void access() throws Exception {
                     BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered access(); ", this);
-            String str_id = getArgs().getInputCourseRecord().getBbId();
-            Id id = checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE,str_id);
-            UserDbLoaderImpl udbli = (UserDbLoaderImpl) UserDbLoader.Default.getInstance();
+                    String str_id = getArgs().getInputCourseRecord().getBbId();
+                    Id id = checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE,str_id);
+                    UserDbLoaderImpl udbli = (UserDbLoaderImpl) UserDbLoader.Default.getInstance();
                     List<UserEmailView> uev_list = udbli.loadAvailableObserversByCourseId(id);
 
                     if(uev_list.size() < 1) {
                         throw new BbWsException("No items found.");
-        }
+                    }
 
                     List<UserDetails> u_list = new ArrayList<UserDetails>();
 
@@ -877,7 +877,7 @@ public class UserAccessPack_DATA<BbUserType extends User, ArgumentsType extends 
                         UserDetails ud = new UserDetails();
                         ud.setBbId(uev.getId().toExternalString());
                         u_list.add(ud);
-    }
+                    }
 
                     UserAccessPack.UserArgumentsWithUserInput u_args
                         = new UserAccessPack.UserArgumentsWithUserInput();
