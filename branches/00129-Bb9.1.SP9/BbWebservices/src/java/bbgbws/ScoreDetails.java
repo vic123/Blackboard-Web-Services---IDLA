@@ -131,7 +131,7 @@ public class ScoreDetails implements ReturnTypeInterface
                 //??AttemptDetail.getAttemptDate()
                 //??GradeWithAttemptScore.getAttemptDate()
                 BbWsLog.logForward("ScoreDetails :    this.dateAdded = extractDate((Calendar)gwas_class.getDeclaredMethod(");
-		this.dateAdded = extractDate((Calendar)gwas_class.getDeclaredMethod("getAttemptDate").invoke(_gwas));
+		this.dateAdded = extractDate((Calendar)gwas_class.getDeclaredMethod("getLastAttemptDate").invoke(_gwas));
 		//??this.dateChanged 
 		//??this.dateModified 
                 if (!is_null) {
