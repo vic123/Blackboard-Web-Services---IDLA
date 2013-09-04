@@ -1,0 +1,3279 @@
+DataStructure,BbFieldName,WsFieldName,BbFieldName-CAP,WsFieldName-CAP,BbGetter,WsGetter,BbSetter,WsSetter,getBbFieldValue,setBbFieldValue,SetWsField override,SetBbField override,checkByNewValueCompareWithOld,,setWsFields - Copy/paste through MS Word to get rid of quotes,,,setBbFields - Copy/paste through MS Word to get rid of quotes
+UserDetails,id,bbId,Id,BbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,"                    bbObject.setId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,"
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+UserDetails,batchUid,batchUid,BatchUid,BatchUid,getBatchUid,getBatchUid,setBatchUid,setBatchUid,                return bbObject.getBatchUid();,                bbObject.setBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBatchUid(newValue);
+                }
+            }.setWsField(""batchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setBatchUid(newValue);
+                }
+            }.setBbField(""batchUid"");
+
+"
+UserDetails,userName,userName,UserName,UserName,getUserName,getUserName,setUserName,setUserName,                return bbObject.getUserName();,                bbObject.setUserName(newValue);,,,"                @Override
+                protected boolean checkByNewValueCompareWithOld(String oldValue, String newValue) throws Exception {
+            return oldValue.compareToIgnoreCase(newValue) == 0;
+                }
+",,"            new WsFieldSetter() {
+                @Override
+                protected boolean checkByNewValueCompareWithOld(String oldValue, String newValue) throws Exception {
+            return oldValue.compareToIgnoreCase(newValue) == 0;
+                }
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getUserName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserName();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserName(newValue);
+                }
+            }.setWsField(""userName"");
+
+",,"
+        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getUserName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUserName();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setUserName(newValue);
+                }
+            }.setBbField(""userName"");
+
+"
+UserDetails,password,password,Password,Password,getPassword,getPassword,setPassword,setPassword,                return bbObject.getPassword();,                bbObject.setPassword(newValue);,,,"                @Override
+                protected boolean checkByNewValueCompareWithOld(String oldValue, String newValue) throws Exception {
+            return oldValue.compareToIgnoreCase(newValue) == 0;
+                }
+",,"            new WsFieldSetter() {
+                @Override
+                protected boolean checkByNewValueCompareWithOld(String oldValue, String newValue) throws Exception {
+            return oldValue.compareToIgnoreCase(newValue) == 0;
+                }
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getPassword();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPassword();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPassword(newValue);
+                }
+            }.setWsField(""password"");
+
+",,"
+        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPassword();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPassword();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setPassword(newValue);
+                }
+            }.setBbField(""password"");
+
+"
+,,,,,,,,,,,,,,,,,,
+UserDetails,givenName,givenName,GivenName,GivenName,getGivenName,getGivenName,setGivenName,setGivenName,                return bbObject.getGivenName();,                bbObject.setGivenName(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getGivenName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getGivenName();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setGivenName(newValue);
+                }
+            }.setWsField(""givenName"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getGivenName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getGivenName();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setGivenName(newValue);
+                }
+            }.setBbField(""givenName"");
+
+"
+UserDetails,middleName,middleName,MiddleName,MiddleName,getMiddleName,getMiddleName,setMiddleName,setMiddleName,                return bbObject.getMiddleName();,                bbObject.setMiddleName(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getMiddleName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getMiddleName();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setMiddleName(newValue);
+                }
+            }.setWsField(""middleName"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getMiddleName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getMiddleName();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setMiddleName(newValue);
+                }
+            }.setBbField(""middleName"");
+
+"
+UserDetails,familyName,familyName,FamilyName,FamilyName,getFamilyName,getFamilyName,setFamilyName,setFamilyName,                return bbObject.getFamilyName();,                bbObject.setFamilyName(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getFamilyName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getFamilyName();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setFamilyName(newValue);
+                }
+            }.setWsField(""familyName"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getFamilyName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getFamilyName();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setFamilyName(newValue);
+                }
+            }.setBbField(""familyName"");
+
+"
+UserDetails,lastLoginDate,lastLogin,LastLoginDate,LastLogin,getLastLoginDate,getLastLogin,setLastLoginDate,setLastLogin,                    return extractDate(bbObject.getLastLoginDate());,                    bbObject.setLastLoginDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getLastLoginDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getLastLogin();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setLastLogin(newValue);
+                }
+            }.setWsField(""lastLogin"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return extractDate(bbObject.getLastLoginDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getLastLogin();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setLastLoginDate(parseDate(newValue));
+                }
+            }.setBbField(""lastLogin"");
+
+"
+UserDetails,emailAddress,emailAddress,EmailAddress,EmailAddress,getEmailAddress,getEmailAddress,setEmailAddress,setEmailAddress,                return bbObject.getEmailAddress();,                bbObject.setEmailAddress(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getEmailAddress();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEmailAddress();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEmailAddress(newValue);
+                }
+            }.setWsField(""emailAddress"");
+
+",,"
+        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getEmailAddress();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEmailAddress();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setEmailAddress(newValue);
+                }
+            }.setBbField(""emailAddress"");
+
+"
+UserDetails,studentId,studentId,StudentId,StudentId,getStudentId,getStudentId,setStudentId,setStudentId,                return bbObject.getStudentId();,                bbObject.setStudentId(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getStudentId();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getStudentId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setStudentId(newValue);
+                }
+            }.setWsField(""studentId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getStudentId();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getStudentId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setStudentId(newValue);
+                }
+            }.setBbField(""studentId"");
+
+"
+UserDetails,title,title,Title,Title,getTitle,getTitle,setTitle,setTitle,                return bbObject.getTitle();,                bbObject.setTitle(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getTitle();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getTitle();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setTitle(newValue);
+                }
+            }.setWsField(""title"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getTitle();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getTitle();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setTitle(newValue);
+                }
+            }.setBbField(""title"");
+
+"
+UserDetails,systemRoleIdentifier,systemRoleId,SystemRoleIdentifier,SystemRoleId,getSystemRoleIdentifier,getSystemRoleId,setSystemRoleIdentifier,setSystemRoleId,                return bbObject.getSystemRoleIdentifier();,                bbObject.setSystemRoleIdentifier(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getSystemRoleIdentifier();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getSystemRoleId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setSystemRoleId(newValue);
+                }
+            }.setWsField(""systemRoleId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getSystemRoleIdentifier();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getSystemRoleId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setSystemRoleIdentifier(newValue);
+                }
+            }.setBbField(""systemRoleId"");
+
+"
+UserDetails,systemRole,systemRole,SystemRole,SystemRole,getSystemRole,getSystemRole,setSystemRole,setSystemRole,                return bbObject.getSystemRole().toFieldName();,                bbObject.setSystemRole(User.SystemRole.fromFieldName(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getSystemRole().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getSystemRole();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setSystemRole(newValue);
+                }
+            }.setWsField(""systemRole"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getSystemRole().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getSystemRole();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setSystemRole(User.SystemRole.fromFieldName(newValue));
+                }
+            }.setBbField(""systemRole"");
+
+"
+UserDetails,portalRoleId,portalRoleId,PortalRoleId,PortalRoleId,getPortalRoleId,getPortalRoleId,setPortalRoleId,setPortalRoleId,                    return bbObject.getPortalRoleId().toExternalString();,"                    bbObject.setPortalRoleId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPortalRoleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPortalRoleId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPortalRoleId(newValue);
+                }
+            }.setWsField(""portalRoleId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getPortalRoleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPortalRoleId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setPortalRoleId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""portalRoleId"");
+
+"
+UserDetails,portalRole,portalRoleName,PortalRole,PortalRoleName,getPortalRole,getPortalRoleName,setPortalRole,setPortalRoleName,"                PortalRoleDbLoader prl = PortalRoleDbLoader.Default.getInstance();
+                PortalRole pr = prl.loadPrimaryRoleByUserId(bbObject.getId());
+                    return pr.getRoleName();
+","                    PortalRoleDbLoader prl = PortalRoleDbLoader.Default.getInstance();
+                    newValue = newValue.toUpperCase() + "".role_name"";
+                    PortalRole pr = prl.loadByRoleName(newValue);
+                    bbObject.setPortalRole(pr);",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                PortalRoleDbLoader prl = PortalRoleDbLoader.Default.getInstance();
+                PortalRole pr = prl.loadPrimaryRoleByUserId(bbObject.getId());
+                    return pr.getRoleName();
+
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPortalRoleName();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPortalRoleName(newValue);
+                }
+            }.setWsField(""portalRoleName"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    PortalRoleDbLoader prl = PortalRoleDbLoader.Default.getInstance();
+                PortalRole pr = prl.loadPrimaryRoleByUserId(bbObject.getId());
+                    return pr.getRoleName();
+
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPortalRoleName();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        PortalRoleDbLoader prl = PortalRoleDbLoader.Default.getInstance();
+                    newValue = newValue.toUpperCase() + "".role_name"";
+                    PortalRole pr = prl.loadByRoleName(newValue);
+                    bbObject.setPortalRole(pr);
+                }
+            }.setBbField(""portalRoleName"");
+
+"
+UserDetails,gender,gender,Gender,Gender,getGender,getGender,setGender,setGender,                    return bbObject.getGender().toFieldName();,"                    bbObject.setGender((User.Gender)User.Gender.fromFieldName(newValue, User.Gender.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getGender().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getGender();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setGender(newValue);
+                }
+            }.setWsField(""gender"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getGender().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getGender();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setGender((User.Gender)User.Gender.fromFieldName(newValue, User.Gender.class));
+                }
+            }.setBbField(""gender"");
+
+"
+UserDetails,birthDate,birthDate,BirthDate,BirthDate,getBirthDate,getBirthDate,setBirthDate,setBirthDate,                    return extractDate(bbObject.getBirthDate());,                    bbObject.setBirthDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getBirthDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBirthDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBirthDate(newValue);
+                }
+            }.setWsField(""birthDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return extractDate(bbObject.getBirthDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBirthDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setBirthDate(parseDate(newValue));
+                }
+            }.setBbField(""birthDate"");
+
+"
+UserDetails,educationLevel,educationLevel,EducationLevel,EducationLevel,getEducationLevel,getEducationLevel,setEducationLevel,setEducationLevel,                    return bbObject.getEducationLevel().toFieldName();,"                    bbObject.setEducationLevel((User.EducationLevel)EducationLevel.from.toFieldName(newValue), User.EducationLevel.class);",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getEducationLevel().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEducationLevel();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEducationLevel(newValue);
+                }
+            }.setWsField(""educationLevel"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getEducationLevel().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEducationLevel();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setEducationLevel((User.EducationLevel)EducationLevel.from.toFieldName(newValue), User.EducationLevel.class);
+                }
+            }.setBbField(""educationLevel"");
+
+"
+UserDetails,jobTitle,jobTitle,JobTitle,JobTitle,getJobTitle,getJobTitle,setJobTitle,setJobTitle,                return bbObject.getJobTitle();,                bbObject.setJobTitle(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getJobTitle();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getJobTitle();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setJobTitle(newValue);
+                }
+            }.setWsField(""jobTitle"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getJobTitle();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getJobTitle();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setJobTitle(newValue);
+                }
+            }.setBbField(""jobTitle"");
+
+"
+UserDetails,company,company,Company,Company,getCompany,getCompany,setCompany,setCompany,                return bbObject.getCompany();,                bbObject.setCompany(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCompany();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCompany();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCompany(newValue);
+                }
+            }.setWsField(""company"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCompany();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCompany();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCompany(newValue);
+                }
+            }.setBbField(""company"");
+
+"
+UserDetails,department,company,Department,Company,getDepartment,getCompany,setDepartment,setCompany,                return bbObject.getDepartment();,                bbObject.setDepartment(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getDepartment();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCompany();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCompany(newValue);
+                }
+            }.setWsField(""company"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDepartment();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCompany();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setDepartment(newValue);
+                }
+            }.setBbField(""company"");
+
+"
+UserDetails,street1,street1,Street1,Street1,getStreet1,getStreet1,setStreet1,setStreet1,                return bbObject.getStreet1();,                bbObject.setStreet1(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getStreet1();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getStreet1();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setStreet1(newValue);
+                }
+            }.setWsField(""street1"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getStreet1();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getStreet1();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setStreet1(newValue);
+                }
+            }.setBbField(""street1"");
+
+"
+UserDetails,street2,street2,Street2,Street2,getStreet2,getStreet2,setStreet2,setStreet2,                return bbObject.getStreet2();,                bbObject.setStreet2(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getStreet2();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getStreet2();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setStreet2(newValue);
+                }
+            }.setWsField(""street2"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getStreet2();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getStreet2();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setStreet2(newValue);
+                }
+            }.setBbField(""street2"");
+
+"
+UserDetails,city,city,City,City,getCity,getCity,setCity,setCity,                return bbObject.getCity();,                bbObject.setCity(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCity();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCity();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCity(newValue);
+                }
+            }.setWsField(""city"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCity();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCity();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCity(newValue);
+                }
+            }.setBbField(""city"");
+
+"
+UserDetails,state,county,State,County,getState,getCounty,setState,setCounty,                return bbObject.getState();,                bbObject.setState(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getState();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCounty();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCounty(newValue);
+                }
+            }.setWsField(""county"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getState();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCounty();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setState(newValue);
+                }
+            }.setBbField(""county"");
+
+"
+UserDetails,country,country,Country,Country,getCountry,getCountry,setCountry,setCountry,                return bbObject.getCountry();,                bbObject.setCountry(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCountry();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCountry();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCountry(newValue);
+                }
+            }.setWsField(""country"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCountry();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCountry();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCountry(newValue);
+                }
+            }.setBbField(""country"");
+
+"
+UserDetails,zipCode,postCode,ZipCode,PostCode,getZipCode,getPostCode,setZipCode,setPostCode,                return bbObject.getZipCode();,                bbObject.setZipCode(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getZipCode();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPostCode();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPostCode(newValue);
+                }
+            }.setWsField(""postCode"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getZipCode();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPostCode();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setZipCode(newValue);
+                }
+            }.setBbField(""postCode"");
+
+"
+UserDetails,businessPhone1,businessPhone1,BusinessPhone1,BusinessPhone1,getBusinessPhone1,getBusinessPhone1,setBusinessPhone1,setBusinessPhone1,                return bbObject.getBusinessPhone1();,                bbObject.setBusinessPhone1(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getBusinessPhone1();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBusinessPhone1();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBusinessPhone1(newValue);
+                }
+            }.setWsField(""businessPhone1"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getBusinessPhone1();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBusinessPhone1();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setBusinessPhone1(newValue);
+                }
+            }.setBbField(""businessPhone1"");
+
+"
+UserDetails,businessPhone2,businessPhone2,BusinessPhone2,BusinessPhone2,getBusinessPhone2,getBusinessPhone2,setBusinessPhone2,setBusinessPhone2,                return bbObject.getBusinessPhone2();,                bbObject.setBusinessPhone2(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getBusinessPhone2();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBusinessPhone2();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBusinessPhone2(newValue);
+                }
+            }.setWsField(""businessPhone2"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getBusinessPhone2();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBusinessPhone2();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setBusinessPhone2(newValue);
+                }
+            }.setBbField(""businessPhone2"");
+
+"
+UserDetails,mobilePhone,mobilePhone,MobilePhone,MobilePhone,getMobilePhone,getMobilePhone,setMobilePhone,setMobilePhone,                return bbObject.getMobilePhone();,                bbObject.setMobilePhone(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getMobilePhone();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getMobilePhone();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setMobilePhone(newValue);
+                }
+            }.setWsField(""mobilePhone"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getMobilePhone();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getMobilePhone();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setMobilePhone(newValue);
+                }
+            }.setBbField(""mobilePhone"");
+
+"
+UserDetails,homePhone1,homePhone1,HomePhone1,HomePhone1,getHomePhone1,getHomePhone1,setHomePhone1,setHomePhone1,                return bbObject.getHomePhone1();,                bbObject.setHomePhone1(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getHomePhone1();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getHomePhone1();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setHomePhone1(newValue);
+                }
+            }.setWsField(""homePhone1"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getHomePhone1();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getHomePhone1();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setHomePhone1(newValue);
+                }
+            }.setBbField(""homePhone1"");
+
+"
+UserDetails,homePhone2,homePhone2,HomePhone2,HomePhone2,getHomePhone2,getHomePhone2,setHomePhone2,setHomePhone2,                return bbObject.getHomePhone2();,                bbObject.setHomePhone2(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getHomePhone2();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getHomePhone2();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setHomePhone2(newValue);
+                }
+            }.setWsField(""homePhone2"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getHomePhone2();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getHomePhone2();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setHomePhone2(newValue);
+                }
+            }.setBbField(""homePhone2"");
+
+"
+UserDetails,businessFax,businessFax,BusinessFax,BusinessFax,getBusinessFax,getBusinessFax,setBusinessFax,setBusinessFax,                return bbObject.getBusinessFax();,                bbObject.setBusinessFax(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getBusinessFax();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBusinessFax();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBusinessFax(newValue);
+                }
+            }.setWsField(""businessFax"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getBusinessFax();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBusinessFax();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setBusinessFax(newValue);
+                }
+            }.setBbField(""businessFax"");
+
+"
+UserDetails,homeFax,homeFax,HomeFax,HomeFax,getHomeFax,getHomeFax,setHomeFax,setHomeFax,                return bbObject.getHomeFax();,                bbObject.setHomeFax(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getHomeFax();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getHomeFax();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setHomeFax(newValue);
+                }
+            }.setWsField(""homeFax"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getHomeFax();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getHomeFax();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setHomeFax(newValue);
+                }
+            }.setBbField(""homeFax"");
+
+"
+UserDetails,webPage,webPage,WebPage,WebPage,getWebPage,getWebPage,setWebPage,setWebPage,                return bbObject.getWebPage();,                bbObject.setWebPage(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getWebPage();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getWebPage();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setWebPage(newValue);
+                }
+            }.setWsField(""webPage"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getWebPage();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getWebPage();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setWebPage(newValue);
+                }
+            }.setBbField(""webPage"");
+
+"
+UserDetails,cardNumber,cardNumber,CardNumber,CardNumber,getCardNumber,getCardNumber,setCardNumber,setCardNumber,                return bbObject.getCardNumber();,                bbObject.setCardNumber(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCardNumber();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCardNumber();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCardNumber(newValue);
+                }
+            }.setWsField(""cardNumber"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCardNumber();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCardNumber();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCardNumber(newValue);
+                }
+            }.setBbField(""cardNumber"");
+
+"
+UserDetails,cdRomDriveMac,cdRomDriveMac,CdRomDriveMac,CdRomDriveMac,getCDRomDriveMac,getCdRomDriveMac,setCDRomDriveMac,setCdRomDriveMac,                return bbObject.getCDRomDriveMac();,                bbObject.setCDRomDriveMac(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCDRomDriveMac();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCdRomDriveMac();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCdRomDriveMac(newValue);
+                }
+            }.setWsField(""cdRomDriveMac"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCDRomDriveMac();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCdRomDriveMac();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCDRomDriveMac(newValue);
+                }
+            }.setBbField(""cdRomDriveMac"");
+
+"
+UserDetails,cdRomDrivePC,cdRomDrivePC,CdRomDrivePC,CdRomDrivePC,getCDRomDrivePC,getCdRomDrivePC,setCDRomDrivePC,setCdRomDrivePC,                return bbObject.getCDRomDrivePC();,                bbObject.setCDRomDrivePC(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCDRomDrivePC();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCdRomDrivePC();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCdRomDrivePC(newValue);
+                }
+            }.setWsField(""cdRomDrivePC"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCDRomDrivePC();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCdRomDrivePC();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCDRomDrivePC(newValue);
+                }
+            }.setBbField(""cdRomDrivePC"");
+
+"
+UserDetails,showAddContactInfo,showAddContactInfo,ShowAddContactInfo,ShowAddContactInfo,getShowAddContactInfo,getShowAddContactInfo,setShowAddContactInfo,setShowAddContactInfo,                return Boolean.toString(bbObject.getShowAddContactInfo());,                bbObject.setShowAddContactInfo(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getShowAddContactInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getShowAddContactInfo();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setShowAddContactInfo(newValue);
+                }
+            }.setWsField(""showAddContactInfo"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getShowAddContactInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getShowAddContactInfo();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setShowAddContactInfo(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""showAddContactInfo"");
+
+"
+UserDetails,showAddressInfo,showAddressInfo,ShowAddressInfo,ShowAddressInfo,getShowAddressInfo,getShowAddressInfo,setShowAddressInfo,setShowAddressInfo,                return Boolean.toString(bbObject.getShowAddressInfo());,                bbObject.setShowAddressInfo(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getShowAddressInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getShowAddressInfo();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setShowAddressInfo(newValue);
+                }
+            }.setWsField(""showAddressInfo"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getShowAddressInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getShowAddressInfo();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setShowAddressInfo(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""showAddressInfo"");
+
+"
+UserDetails,showEmailInfo,showEmailInfo,ShowEmailInfo,ShowEmailInfo,getShowEmailInfo,getShowEmailInfo,setShowEmailInfo,setShowEmailInfo,                return Boolean.toString(bbObject.getShowEmailInfo());,                bbObject.setShowEmailInfo(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getShowEmailInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getShowEmailInfo();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setShowEmailInfo(newValue);
+                }
+            }.setWsField(""showEmailInfo"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getShowEmailInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getShowEmailInfo();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setShowEmailInfo(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""showEmailInfo"");
+
+"
+UserDetails,showWorkInfo,showWorkInfo,ShowWorkInfo,ShowWorkInfo,getShowWorkInfo,getShowWorkInfo,setShowWorkInfo,setShowWorkInfo,                return Boolean.toString(bbObject.getShowWorkInfo());,                bbObject.setShowWorkInfo(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getShowWorkInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getShowWorkInfo();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setShowWorkInfo(newValue);
+                }
+            }.setWsField(""showWorkInfo"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getShowWorkInfo());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getShowWorkInfo();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setShowWorkInfo(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""showWorkInfo"");
+
+"
+UserDetails,isAvailable,isAvailable,IsAvailable,IsAvailable,getIsAvailable,getIsAvailable,setIsAvailable,setIsAvailable,                return Boolean.toString(bbObject.getIsAvailable());,                bbObject.setIsAvailable(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getIsAvailable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsAvailable();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsAvailable(newValue);
+                }
+            }.setWsField(""isAvailable"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getIsAvailable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsAvailable();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsAvailable(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isAvailable"");
+
+"
+UserDetails,isInfoPublic,isInfoPublic,IsInfoPublic,IsInfoPublic,getIsInfoPublic,getIsInfoPublic,setIsInfoPublic,setIsInfoPublic,                return Boolean.toString(bbObject.getIsInfoPublic());,                bbObject.setIsInfoPublic(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getIsInfoPublic());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsInfoPublic();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsInfoPublic(newValue);
+                }
+            }.setWsField(""isInfoPublic"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getIsInfoPublic());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsInfoPublic();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsInfoPublic(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isInfoPublic"");
+
+"
+UserDetails,modifiedDate,modifiedDate,ModifiedDate,ModifiedDate,getModifiedDate,getModifiedDate,setModifiedDate,setModifiedDate,                    return extractDate(bbObject.getModifiedDate());,                    bbObject.setModifiedDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getModifiedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getModifiedDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setModifiedDate(newValue);
+                }
+            }.setWsField(""modifiedDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return extractDate(bbObject.getModifiedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getModifiedDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setModifiedDate(parseDate(newValue));
+                }
+            }.setBbField(""modifiedDate"");
+
+"
+UserDetails,locale,locale,Locale,Locale,getLocale,getLocale,setLocale,setLocale,                return bbObject.getLocale();,                bbObject.setLocale(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getLocale();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getLocale();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setLocale(newValue);
+                }
+            }.setWsField(""locale"");
+
+",,        },"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getLocale();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getLocale();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setLocale(newValue);
+                }
+            }.setBbField(""locale"");
+
+"
+CourseMembership,id,bbId,Id,BbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,"                    bbObject.setId(Id.generateId(CourseMembership.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,"
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+CourseMembership,CourseId,courseBbId,CourseId,CourseBbId,getCourseId,getCourseBbId,setCourseId,setCourseBbId,                    return bbObject.getCourseId().toExternalString();,"                    bbObject.setCourseId(Id.generateId(CourseMembership.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCourseId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCourseBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCourseBbId(newValue);
+                }
+            }.setWsField(""courseBbId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getCourseId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCourseBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setCourseId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                }
+            }.setBbField(""courseBbId"");
+
+"
+CourseMembership,userId,userBbId,UserId,UserBbId,getUserId,getUserBbId,setUserId,setUserBbId,                    return bbObject.getUserId().toExternalString();,"                    bbObject.setUserId(Id.generateId(CourseMembership.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getUserId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserBbId(newValue);
+                }
+            }.setWsField(""userBbId"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getUserId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUserBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setUserId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                }
+            }.setBbField(""userBbId"");
+
+"
+CourseMembership,isAvailable,available,IsAvailable,Available,getIsAvailable,getAvailable,setIsAvailable,setAvailable,                return Boolean.toString(bbObject.getIsAvailable());,                bbObject.setIsAvailable(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getIsAvailable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getAvailable();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setAvailable(newValue);
+                }
+            }.setWsField(""available"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getIsAvailable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getAvailable();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsAvailable(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""available"");
+
+"
+CourseMembership,hasCartridgeAccess,cartridgeAccess,HasCartridgeAccess,CartridgeAccess,getHasCartridgeAccess,getCartridgeAccess,setHasCartridgeAccess,setCartridgeAccess,                return Boolean.toString(bbObject.getHasCartridgeAccess());,                bbObject.setHasCartridgeAccess(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getHasCartridgeAccess());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCartridgeAccess();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCartridgeAccess(newValue);
+                }
+            }.setWsField(""cartridgeAccess"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getHasCartridgeAccess());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCartridgeAccess();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setHasCartridgeAccess(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""cartridgeAccess"");
+
+"
+CourseMembership,dataSourceId,dataSourceBbId,DataSourceId,DataSourceBbId,getDataSourceId,getDataSourceBbId,setDataSourceId,setDataSourceBbId,                    return bbObject.getDataSourceId().toExternalString();,"                    bbObject.setDataSourceId(Id.generateId(CourseMembership.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceBbId(newValue);
+                }
+            }.setWsField(""dataSourceBbId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDataSourceBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setDataSourceId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                }
+            }.setBbField(""dataSourceBbId"");
+
+"
+CourseMembership,enrollmentDate,enrollmentDate,EnrollmentDate,EnrollmentDate,getEnrollmentDate,getEnrollmentDate,setEnrollmentDate,setEnrollmentDate,                return extractDate(bbObject.getEnrollmentDate());,                bbObject.setEnrollmentDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getEnrollmentDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEnrollmentDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEnrollmentDate(newValue);
+                }
+            }.setWsField(""enrollmentDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getEnrollmentDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEnrollmentDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setEnrollmentDate(parseDate(newValue));
+                }
+            }.setBbField(""enrollmentDate"");
+
+"
+CourseMembership,lastAccessDate,lastAccessDate,LastAccessDate,LastAccessDate,getLastAccessDate,getLastAccessDate,setLastAccessDate,setLastAccessDate,                return extractDate(bbObject.getLastAccessDate());,                bbObject.setLastAccessDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getLastAccessDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getLastAccessDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setLastAccessDate(newValue);
+                }
+            }.setWsField(""lastAccessDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getLastAccessDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getLastAccessDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setLastAccessDate(parseDate(newValue));
+                }
+            }.setBbField(""lastAccessDate"");
+
+"
+CourseMembership,modifiedDate,modifiedDate,ModifiedDate,ModifiedDate,getModifiedDate,getModifiedDate,setModifiedDate,setModifiedDate,                return extractDate(bbObject.getModifiedDate());,                bbObject.setModifiedDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getModifiedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getModifiedDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setModifiedDate(newValue);
+                }
+            }.setWsField(""modifiedDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getModifiedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getModifiedDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setModifiedDate(parseDate(newValue));
+                }
+            }.setBbField(""modifiedDate"");
+
+"
+CourseMembership,role,role,Role,Role,getRole,getRole,setRole,setRole,                return bbObject.getRole().toFieldName();,                bbObject.setRole(Role.fromFieldName(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getRole().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRole();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRole(newValue);
+                }
+            }.setWsField(""role"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRole().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRole();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setRole(Role.fromFieldName(newValue));
+                }
+            }.setBbField(""role"");
+
+"
+CourseMembership,courseSiteBatchUid,courseBatchUid,CourseSiteBatchUid,CourseBatchUid,getCourseSiteBatchUid,getCourseBatchUid,setCourseSiteBatchUid,setCourseBatchUid,                return bbObject.getCourseSiteBatchUid();,                bbObject.setCourseSiteBatchUid(newValue);,"
+            setWsCourseBatchUidField();
+            ","setBbCourseBatchUidField();
+",,,"
+            setWsCourseBatchUidField();
+            ",,,"setBbCourseBatchUidField();
+"
+CourseMembership,personBatchUid,userBatchUid,PersonBatchUid,UserBatchUid,getPersonBatchUid,getUserBatchUid,setPersonBatchUid,setUserBatchUid,                return bbObject.getPersonBatchUid();,                bbObject.setPersonBatchUid(newValue);,"setWsUserBatchUidField();
+","setBbUserBatchUidField();
+",,,"setWsUserBatchUidField();
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {","setBbUserBatchUidField();
+"
+CourseMembership_NEWER_API,receiveEmail,receiveEmail,ReceiveEmail,ReceiveEmail,getReceiveEmail,getReceiveEmail,setReceiveEmail,setReceiveEmail,                return Boolean.toString(bbObject.getReceiveEmail());,                bbObject.setReceiveEmail(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getReceiveEmail());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getReceiveEmail();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setReceiveEmail(newValue);
+                }
+            }.setWsField(""receiveEmail"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getReceiveEmail());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getReceiveEmail();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setReceiveEmail(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""receiveEmail"");
+
+"
+CourseMembership,introduction,introduction,Introduction,Introduction,getIntroduction,getIntroduction,setIntroduction,setIntroduction,                return bbObject.getIntroduction();,                bbObject.setIntroduction(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getIntroduction();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIntroduction();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIntroduction(newValue);
+                }
+            }.setWsField(""introduction"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getIntroduction();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIntroduction();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIntroduction(newValue);
+                }
+            }.setBbField(""introduction"");
+
+"
+CourseMembership,notes,notes,Notes,Notes,getNotes,getNotes,setNotes,setNotes,                return bbObject.getNotes();,                bbObject.setNotes(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getNotes();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getNotes();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setNotes(newValue);
+                }
+            }.setWsField(""notes"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getNotes();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getNotes();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setNotes(newValue);
+                }
+            }.setBbField(""notes"");
+
+"
+CourseMembership,personalInfo,personalInfo,PersonalInfo,PersonalInfo,getPersonalInfo,getPersonalInfo,setPersonalInfo,setPersonalInfo,                return bbObject.getPersonalInfo();,                bbObject.setPersonalInfo(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getPersonalInfo();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPersonalInfo();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPersonalInfo(newValue);
+                }
+            }.setWsField(""personalInfo"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPersonalInfo();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPersonalInfo();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setPersonalInfo(newValue);
+                }
+            }.setBbField(""personalInfo"");
+
+"
+CourseMembership,childCourseId,childCourseId,ChildCourseId,ChildCourseId,getChildCourseId,getChildCourseId,setChildCourseId,setChildCourseId,                    return bbObject.getChildCourseId().toExternalString();,"                    bbObject.setChildCourseId(Id.generateId(CourseMembership.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getChildCourseId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getChildCourseId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setChildCourseId(newValue);
+                }
+            }.setWsField(""childCourseId"");
+
+",,        },"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getChildCourseId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getChildCourseId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setChildCourseId(Id.generateId(CourseMembership.DATA_TYPE, newValue));
+                }
+            }.setBbField(""childCourseId"");
+
+"
+Enrollment,courseSiteBatchUid,courseBatchUid,CourseSiteBatchUid,CourseBatchUid,getCourseSiteBatchUid,getCourseBatchUid,setCourseSiteBatchUid,setCourseBatchUid,                return bbObject.getCourseSiteBatchUid();,                bbObject.setCourseSiteBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCourseSiteBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCourseBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCourseBatchUid(newValue);
+                }
+            }.setWsField(""courseBatchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCourseSiteBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCourseBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCourseSiteBatchUid(newValue);
+                }
+            }.setBbField(""courseBatchUid"");
+
+"
+PortalRole,id,bbId,Id,BbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,"                    bbObject.setId(Id.generateId(PortalRole.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(PortalRole.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+PortalRole,roleID,roleId,RoleID,RoleId,getRoleID,getRoleId,setRoleID,setRoleId,                    return bbObject.getRoleID();,                    bbObject.setRoleID(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRoleID();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRoleId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRoleId(newValue);
+                }
+            }.setWsField(""roleId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getRoleID();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRoleId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setRoleID(newValue);
+                }
+            }.setBbField(""roleId"");
+
+"
+PortalRole,roleName,roleName,RoleName,RoleName,getRoleName,getRoleName,setRoleName,setRoleName,                return bbObject.getRoleName();,                bbObject.setRoleName(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getRoleName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRoleName();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRoleName(newValue);
+                }
+            }.setWsField(""roleName"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRoleName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRoleName();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setRoleName(newValue);
+                }
+            }.setBbField(""roleName"");
+
+"
+PortalRole,isGuest,isGuest,IsGuest,IsGuest,isGuest,getIsGuest,setIsGuest,setIsGuest,                return Boolean.toString(bbObject.isGuest());,                bbObject.setIsGuest(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.isGuest());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsGuest();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsGuest(newValue);
+                }
+            }.setWsField(""isGuest"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.isGuest());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsGuest();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsGuest(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isGuest"");
+
+"
+PortalRole,isRemovable,isRemovable,IsRemovable,IsRemovable,isRemovable,getIsRemovable,setIsRemovable,setIsRemovable,                return Boolean.toString(bbObject.isRemovable());,                bbObject.setIsRemovable(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.isRemovable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsRemovable();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsRemovable(newValue);
+                }
+            }.setWsField(""isRemovable"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.isRemovable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsRemovable();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsRemovable(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isRemovable"");
+
+"
+PortalRole,isSelfSelectable,isSelfSelectable,IsSelfSelectable,IsSelfSelectable,isSelfSelectable,getIsSelfSelectable,setIsSelfSelectable,setIsSelfSelectable,                return Boolean.toString(bbObject.isSelfSelectable());,                bbObject.setIsSelfSelectable(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.isSelfSelectable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsSelfSelectable();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsSelfSelectable(newValue);
+                }
+            }.setWsField(""isSelfSelectable"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.isSelfSelectable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsSelfSelectable();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsSelfSelectable(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isSelfSelectable"");
+
+"
+PortalRole,dataSourceId,dataSourceId,DataSourceId,DataSourceId,getDataSourceId,getDataSourceId,setDataSourceId,setDataSourceId,                    return bbObject.getDataSourceId().toExternalString();,"                    bbObject.setDataSourceId(Id.generateId(PortalRole.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceId(newValue);
+                }
+            }.setWsField(""dataSourceId"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDataSourceId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setDataSourceId(Id.generateId(PortalRole.DATA_TYPE, newValue));
+                }
+            }.setBbField(""dataSourceId"");
+
+"
+PortalRole,description,description,Description,Description,getDescription,getDescription,setDescription,setDescription,                return bbObject.getDescription();,                bbObject.setDescription(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getDescription();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDescription();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDescription(newValue);
+                }
+            }.setWsField(""description"");
+
+",,        },"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDescription();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDescription();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setDescription(newValue);
+                }
+            }.setBbField(""description"");
+
+"
+ObserverAssociation_Base,id,bbId,Id,BbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,"                    bbObject.setId(Id.generateId(ObserverAssociation.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,"
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(ObserverAssociation.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+ObserverAssociation,id,bbId,Id,BbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,"                    bbObject.setId(Id.generateId(ObserverAssociation.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,"
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(ObserverAssociation.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+ObserverAssociation,observerBatchUid,observerBatchUid,ObserverBatchUid,ObserverBatchUid,getObserverBatchUid,getObserverBatchUid,setObserverBatchUid,setObserverBatchUid,                    return bbObject.getObserverBatchUid();,                    bbObject.setObserverBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getObserverBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getObserverBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setObserverBatchUid(newValue);
+                }
+            }.setWsField(""observerBatchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getObserverBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getObserverBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setObserverBatchUid(newValue);
+                }
+            }.setBbField(""observerBatchUid"");
+
+"
+ObserverAssociation,usersBatchUid,usersBatchUid,UsersBatchUid,UsersBatchUid,getUsersBatchUid,getUsersBatchUid,setUsersBatchUid,setUsersBatchUid,                    return bbObject.getUsersBatchUid();,                    bbObject.setUsersBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getUsersBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUsersBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUsersBatchUid(newValue);
+                }
+            }.setWsField(""usersBatchUid"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getUsersBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUsersBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setUsersBatchUid(newValue);
+                }
+            }.setBbField(""usersBatchUid"");
+
+"
+ObserverAssociation,rowStatus,rowStatus,RowStatus,RowStatus,getRowStatus,getRowStatus,setRowStatus,setRowStatus,                return bbObject.getRowStatus().toFieldName();,"                bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getRowStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRowStatus();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRowStatus(newValue);
+                }
+            }.setWsField(""rowStatus"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRowStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRowStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setRowStatus((IAdminObject.RowStatus)IAdminObject.RowStatus.fromFieldName(newValue, IAdminObject.RowStatus.class));
+                }
+            }.setBbField(""rowStatus"");
+
+"
+ObserverAssociation,observerId,observerBbId,ObserverId,ObserverBbId,getObserverId,getObserverBbId,setObserverId,setObserverBbId,"                    User u = (UserDbLoader.Default.getInstance().loadByBatchUid(bbObject.getObserverBatchUid()));
+                    return u.getId().getExternalString();","                    bbObject.setObserverId(Id.generateId(User.DATA_TYPE, newValue));",,"// setBbField(""observerBbId"");cannot be implemented",,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    User u = (UserDbLoader.Default.getInstance().loadByBatchUid(bbObject.getObserverBatchUid()));
+                    return u.getId().getExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getObserverBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setObserverBbId(newValue);
+                }
+            }.setWsField(""observerBbId"");
+
+",,,"// setBbField(""observerBbId"");cannot be implemented"
+ObserverAssociation,usersId,usersBbId,UsersId,UsersBbId,getUsersId,getUsersBbId,setUsersId,setUsersBbId,"                    User u = (UserDbLoader.Default.getInstance().loadByBatchUid(bbObject.getUsersBatchUid()));
+                    return u.getId().getExternalString();","                    bbObject.setUsersId(Id.generateId(User.DATA_TYPE, newValue));",,"// setBbField(""usersBbId"");cannot be implemented",,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    User u = (UserDbLoader.Default.getInstance().loadByBatchUid(bbObject.getUsersBatchUid()));
+                    return u.getId().getExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUsersBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUsersBbId(newValue);
+                }
+            }.setWsField(""usersBbId"");
+
+",,,"// setBbField(""usersBbId"");cannot be implemented"
+ObserverAssociation_Base,observerId,observerBbId,ObserverId,ObserverBbId,getObserverId,getObserverBbId,setObserverId,setObserverBbId,                    return bbObject.getObserverId().toExternalString();,"                    bbObject.setObserverId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getObserverId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getObserverBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setObserverBbId(newValue);
+                }
+            }.setWsField(""observerBbId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getObserverId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getObserverBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setObserverId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""observerBbId"");
+
+"
+ObserverAssociation_Base,usersId,usersBbId,UsersId,UsersBbId,getUsersId,getUsersBbId,setUsersId,setUsersBbId,                    return bbObject.getUsersId().toExternalString();,"                    bbObject.setUsersId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getUsersId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUsersBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUsersBbId(newValue);
+                }
+            }.setWsField(""usersBbId"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getUsersId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUsersBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setUsersId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""usersBbId"");
+
+"
+ObserverAssociation_Base,dataSourceId,dataSourceId,DataSourceId,DataSourceId,getDataSourceId,getDataSourceId,setDataSourceId,setDataSourceId,                    return bbObject.getDataSourceId().toExternalString();,"                    bbObject.setDataSourceId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceId(newValue);
+                }
+            }.setWsField(""dataSourceId"");
+
+",,"
+        }","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDataSourceId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setDataSourceId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""dataSourceId"");
+
+"
+ObserverAssociation,dataSourceId,dataSourceId,DataSourceId,DataSourceId,getDataSourceId,getDataSourceId,setDataSourceId,setDataSourceId,                    return bbObject.getDataSourceId().toExternalString();,"                    bbObject.setDataSourceId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceId(newValue);
+                }
+            }.setWsField(""dataSourceId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getDataSourceId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDataSourceId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setDataSourceId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""dataSourceId"");
+
+"
+ObserverAssociation,dataSourceBatchUid,dataSourceBatchUid,DataSourceBatchUid,DataSourceBatchUid,getDataSourceBatchUid,getDataSourceBatchUid,setDataSourceBatchUid,setDataSourceBatchUid,                    return bbObject.getDataSourceBatchUid();,                    bbObject.setDataSourceBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceBatchUid(newValue);
+                }
+            }.setWsField(""dataSourceBatchUid"");
+
+",,"
+        }","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getDataSourceBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDataSourceBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setDataSourceBatchUid(newValue);
+                }
+            }.setBbField(""dataSourceBatchUid"");
+
+"
+PortalRoleMembership,id,bbId,Id,BbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,"                    bbObject.setId(Id.generateId(UserRole.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,"
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(UserRole.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+PortalRoleMembership,userId,userId,UserId,UserId,getUserId,getUserId,setUserId,setUserId,                    return bbObject.getUserId().toExternalString();,"                    bbObject.setUserId(Id.generateId(User.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getUserId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserId(newValue);
+                }
+            }.setWsField(""userId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getUserId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUserId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setUserId(Id.generateId(User.DATA_TYPE, newValue));
+                }
+            }.setBbField(""userId"");
+
+"
+PortalRoleMembership,portalRoleId,portalRoleId,PortalRoleId,PortalRoleId,getPortalRoleId,getPortalRoleId,setPortalRoleId,setPortalRoleId,                    return bbObject.getPortalRoleId().toExternalString();,"                    bbObject.setPortalRoleId(Id.generateId(PortalRole.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPortalRoleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPortalRoleId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPortalRoleId(newValue);
+                }
+            }.setWsField(""portalRoleId"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getPortalRoleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPortalRoleId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setPortalRoleId(Id.generateId(PortalRole.DATA_TYPE, newValue));
+                }
+            }.setBbField(""portalRoleId"");
+
+"
+PortalRoleMembership,rowStatus,rowStatus,RowStatus,RowStatus,getRowStatus,getRowStatus,setRowStatus,setRowStatus,"                return RowStatus.getValues()[bbObject.getBbAttributes().getInteger(""RowStatus"")].toFieldName();","                bbObject.getBbAttributes().setBbEnum(""RowStatus"", (RowStatus)RowStatus.fromFieldName(newValue, RowStatus.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return RowStatus.getValues()[bbObject.getBbAttributes().getInteger(""RowStatus"")].toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRowStatus();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRowStatus(newValue);
+                }
+            }.setWsField(""rowStatus"");
+
+",,"
+        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.EXTENDED) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return RowStatus.getValues()[bbObject.getBbAttributes().getInteger(""RowStatus"")].toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRowStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.getBbAttributes().setBbEnum(""RowStatus"", (RowStatus)RowStatus.fromFieldName(newValue, RowStatus.class));
+                }
+            }.setBbField(""rowStatus"");
+
+"
+PortalRoleMembership,userBatchUid,userBatchUid,UserBatchUid,UserBatchUid,getUserBatchUid,getUserBatchUid,setUserBatchUid,setUserBatchUid,"                    User u = (UserDbLoader.Default.getInstance().loadById(bbObject.getUserId()));
+                    return u.getBatchUid();",                    bbObject.setUserBatchUid(newValue);,,"// setBbField(""userBatchUid"");cannot be implemented",,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    User u = (UserDbLoader.Default.getInstance().loadById(bbObject.getUserId()));
+                    return u.getBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserBatchUid(newValue);
+                }
+            }.setWsField(""userBatchUid"");
+
+",,"
+        }","// setBbField(""userBatchUid"");cannot be implemented"
+PortalRoleMembership,personBatchUid,userBatchUid,PersonBatchUid,UserBatchUid,getPersonBatchUid,getUserBatchUid,setPersonBatchUid,setUserBatchUid,                    return bbObject.getPersonBatchUid();,                    bbObject.setPersonBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPersonBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserBatchUid(newValue);
+                }
+            }.setWsField(""userBatchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getPersonBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUserBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setPersonBatchUid(newValue);
+                }
+            }.setBbField(""userBatchUid"");
+
+"
+PortalRoleMembership,portalRoleBatchUid,portalRoleBatchUid,PortalRoleBatchUid,PortalRoleBatchUid,getPortalRoleBatchUid,getPortalRoleBatchUid,setPortalRoleBatchUid,setPortalRoleBatchUid,                    return bbObject.getPortalRoleBatchUid();,                    bbObject.setPortalRoleBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPortalRoleBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPortalRoleBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPortalRoleBatchUid(newValue);
+                }
+            }.setWsField(""portalRoleBatchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getPortalRoleBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPortalRoleBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setPortalRoleBatchUid(newValue);
+                }
+            }.setBbField(""portalRoleBatchUid"");
+
+"
+PortalRoleMembership,rowStatus,rowStatus,RowStatus,RowStatus,getRowStatus,getRowStatus,setRowStatus,setRowStatus,"                return bbObject.getBbAttributes().getBbEnum(""RowStatus"").toFieldName();","                bbObject.getBbAttributes().setBbEnum(""RowStatus"", (RowStatus)RowStatus.fromFieldName(newValue, RowStatus.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getBbAttributes().getBbEnum(""RowStatus"").toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRowStatus();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRowStatus(newValue);
+                }
+            }.setWsField(""rowStatus"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getBbAttributes().getBbEnum(""RowStatus"").toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRowStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.getBbAttributes().setBbEnum(""RowStatus"", (RowStatus)RowStatus.fromFieldName(newValue, RowStatus.class));
+                }
+            }.setBbField(""rowStatus"");
+
+"
+PortalRoleMembership,recStatus,recStatus,RecStatus,RecStatus,getRecStatus,getRecStatus,setRecStatus,setRecStatus,                return bbObject.getRecStatus().toFieldName();,"                bbObject.setRecStatus((IAdminObject.RecStatus)IAdminObject.RecStatus.fromFieldName(newValue, IAdminObject.RecStatus.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getRecStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getRecStatus();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setRecStatus(newValue);
+                }
+            }.setWsField(""recStatus"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getRecStatus().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getRecStatus();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setRecStatus((IAdminObject.RecStatus)IAdminObject.RecStatus.fromFieldName(newValue, IAdminObject.RecStatus.class));
+                }
+            }.setBbField(""recStatus"");
+
+"
+PortalRoleMembership,dataSourceBatchUid,dataSourceBatchUid,DataSourceBatchUid,DataSourceBatchUid,getDataSourceBatchUid,getDataSourceBatchUid,setDataSourceBatchUid,setDataSourceBatchUid,                    return bbObject.getDataSourceBatchUid();,                    bbObject.setDataSourceBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDataSourceBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDataSourceBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDataSourceBatchUid(newValue);
+                }
+            }.setWsField(""dataSourceBatchUid"");
+
+",,"
+        }","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getDataSourceBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDataSourceBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setDataSourceBatchUid(newValue);
+                }
+            }.setBbField(""dataSourceBatchUid"");
+
+"
+Course,id,bbId,Id,BbId,getId,getBbId,setId,setBbId,                    return bbObject.getId().toExternalString();,"                    bbObject.setId(Id.generateId(Course.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBbId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBbId(newValue);
+                }
+            }.setWsField(""bbId"");
+
+",,"
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.MINIMAL) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBbId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setId(Id.generateId(Course.DATA_TYPE, newValue));
+                }
+            }.setBbField(""bbId"");
+
+"
+Course,batchUid,batchUid,BatchUid,BatchUid,getBatchUid,getBatchUid,setBatchUid,setBatchUid,                    return bbObject.getBatchUid();,                    bbObject.setBatchUid(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBatchUid(newValue);
+                }
+            }.setWsField(""batchUid"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setBatchUid(newValue);
+                }
+            }.setBbField(""batchUid"");
+
+"
+Course,courseId,courseId,CourseId,CourseId,getCourseId,getCourseId,setCourseId,setCourseId,                return bbObject.getCourseId();,                bbObject.setCourseId(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getCourseId();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCourseId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCourseId(newValue);
+                }
+            }.setWsField(""courseId"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCourseId();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCourseId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCourseId(newValue);
+                }
+            }.setBbField(""courseId"");
+
+"
+Course,title,title,Title,Title,getTitle,getTitle,setTitle,setTitle,                return bbObject.getTitle();,                bbObject.setTitle(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getTitle();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getTitle();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setTitle(newValue);
+                }
+            }.setWsField(""title"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getTitle();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getTitle();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setTitle(newValue);
+                }
+            }.setBbField(""title"");
+
+"
+Course,description,description,Description,Description,getDescription,getDescription,setDescription,setDescription,                return bbObject.getDescription();,                bbObject.setDescription(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getDescription();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDescription();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDescription(newValue);
+                }
+            }.setWsField(""description"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDescription();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDescription();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setDescription(newValue);
+                }
+            }.setBbField(""description"");
+
+"
+Course,createdDate,creationDate,CreatedDate,CreationDate,getCreatedDate,getCreationDate,setCreatedDate,setCreationDate,                return extractDate(bbObject.getCreatedDate());,                bbObject.setCreatedDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getCreatedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCreationDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCreationDate(newValue);
+                }
+            }.setWsField(""creationDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getCreatedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCreationDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setCreatedDate(parseDate(newValue));
+                }
+            }.setBbField(""creationDate"");
+
+"
+Course,modifiedDate,modifiedDate,ModifiedDate,ModifiedDate,getModifiedDate,getModifiedDate,setModifiedDate,setModifiedDate,                return extractDate(bbObject.getModifiedDate());,                bbObject.setModifiedDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getModifiedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getModifiedDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setModifiedDate(newValue);
+                }
+            }.setWsField(""modifiedDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getModifiedDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getModifiedDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setModifiedDate(parseDate(newValue));
+                }
+            }.setBbField(""modifiedDate"");
+
+"
+Course,isAvailable,isAvailable,IsAvailable,IsAvailable,getIsAvailable,getIsAvailable,setIsAvailable,setIsAvailable,                return Boolean.toString(bbObject.getIsAvailable());,                bbObject.setIsAvailable(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getIsAvailable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsAvailable();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsAvailable(newValue);
+                }
+            }.setWsField(""isAvailable"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getIsAvailable());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsAvailable();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsAvailable(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isAvailable"");
+
+"
+Course,absoluteLimit,absoluteLimit,AbsoluteLimit,AbsoluteLimit,getAbsoluteLimit,getAbsoluteLimit,setAbsoluteLimit,setAbsoluteLimit,                return Long.toString(bbObject.getAbsoluteLimit());,                bbObject.setAbsoluteLimit(Long.parseLong(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Long.toString(bbObject.getAbsoluteLimit());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getAbsoluteLimit();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setAbsoluteLimit(newValue);
+                }
+            }.setWsField(""absoluteLimit"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Long.toString(bbObject.getAbsoluteLimit());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getAbsoluteLimit();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setAbsoluteLimit(Long.parseLong(newValue));
+                }
+            }.setBbField(""absoluteLimit"");
+
+"
+Course,allowGuests,allowGuests,AllowGuests,AllowGuests,getAllowGuests,getAllowGuests,setAllowGuests,setAllowGuests,                return Boolean.toString(bbObject.getAllowGuests());,                bbObject.setAllowGuests(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getAllowGuests());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getAllowGuests();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setAllowGuests(newValue);
+                }
+            }.setWsField(""allowGuests"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getAllowGuests());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getAllowGuests();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setAllowGuests(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""allowGuests"");
+
+"
+Course,allowObservers,allowObservers,AllowObservers,AllowObservers,getAllowObservers,getAllowObservers,setAllowObservers,setAllowObservers,                return Boolean.toString(bbObject.getAllowObservers());,                bbObject.setAllowObservers(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getAllowObservers());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getAllowObservers();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setAllowObservers(newValue);
+                }
+            }.setWsField(""allowObservers"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getAllowObservers());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getAllowObservers();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setAllowObservers(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""allowObservers"");
+
+"
+Course,bannerImageFile,bannerImageFile,BannerImageFile,BannerImageFile,getBannerImageFile,getBannerImageFile,setBannerImageFile,setBannerImageFile,"                if (bbObject.getBannerImageFile() != null)                 return bbObject.getBannerImageFile().getPath();
+                else return null;","                File file = new File(newValue);
+                BbFile bbf = new BbFile(file, file.getName());
+                bbObject.setBannerImageFile(bbf);",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                if (bbObject.getBannerImageFile() != null)                 return bbObject.getBannerImageFile().getPath();
+                else return null;
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getBannerImageFile();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setBannerImageFile(newValue);
+                }
+            }.setWsField(""bannerImageFile"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    if (bbObject.getBannerImageFile() != null)                 return bbObject.getBannerImageFile().getPath();
+                else return null;
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getBannerImageFile();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    File file = new File(newValue);
+                BbFile bbf = new BbFile(file, file.getName());
+                bbObject.setBannerImageFile(bbf);
+                }
+            }.setBbField(""bannerImageFile"");
+
+"
+Course,buttonStyleId,buttonStyleId,ButtonStyleId,ButtonStyleId,getButtonStyleId,getButtonStyleId,setButtonStyleId,setButtonStyleId,                    return bbObject.getButtonStyleId().toExternalString();,"                    bbObject.setButtonStyleId(Id.generateId(Course.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getButtonStyleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getButtonStyleId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setButtonStyleId(newValue);
+                }
+            }.setWsField(""buttonStyleId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getButtonStyleId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getButtonStyleId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setButtonStyleId(Id.generateId(Course.DATA_TYPE, newValue));
+                }
+            }.setBbField(""buttonStyleId"");
+
+"
+Course,cartridgeId,cartridgeId,CartridgeId,CartridgeId,getCartridgeId,getCartridgeId,setCartridgeId,setCartridgeId,                    return bbObject.getCartridgeId().toExternalString();,"                    bbObject.setCartridgeId(Id.generateId(Course.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getCartridgeId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getCartridgeId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setCartridgeId(newValue);
+                }
+            }.setWsField(""cartridgeId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getCartridgeId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getCartridgeId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setCartridgeId(Id.generateId(Course.DATA_TYPE, newValue));
+                }
+            }.setBbField(""cartridgeId"");
+
+"
+Course,classificationId,classificationId,ClassificationId,ClassificationId,getClassificationId,getClassificationId,setClassificationId,setClassificationId,                    return bbObject.getClassificationId().toExternalString();,"                    bbObject.setClassificationId(Id.generateId(Course.DATA_TYPE, newValue));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getClassificationId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getClassificationId();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setClassificationId(newValue);
+                }
+            }.setWsField(""classificationId"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                        return bbObject.getClassificationId().toExternalString();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getClassificationId();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                        bbObject.setClassificationId(Id.generateId(Course.DATA_TYPE, newValue));
+                }
+            }.setBbField(""classificationId"");
+
+"
+Course,durationType,durationType,DurationType,DurationType,getDurationType,getDurationType,setDurationType,setDurationType,                return bbObject.getDurationType().toFieldName();,"                bbObject.setDurationType((Course.Duration)Course.Duration.fromFieldName(newValue, Course.Duration.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getDurationType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getDurationType();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setDurationType(newValue);
+                }
+            }.setWsField(""durationType"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getDurationType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getDurationType();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setDurationType((Course.Duration)Course.Duration.fromFieldName(newValue, Course.Duration.class));
+                }
+            }.setBbField(""durationType"");
+
+"
+Course,endDate,endDate,EndDate,EndDate,getEndDate,getEndDate,setEndDate,setEndDate,                return extractDate(bbObject.getEndDate());,                bbObject.setEndDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getEndDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEndDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEndDate(newValue);
+                }
+            }.setWsField(""endDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getEndDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEndDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setEndDate(parseDate(newValue));
+                }
+            }.setBbField(""endDate"");
+
+"
+Course,enrollmentType,enrollmentType,EnrollmentType,EnrollmentType,getEnrollmentType,getEnrollmentType,setEnrollmentType,setEnrollmentType,                return bbObject.getEnrollmentType().toFieldName();,"                bbObject.setEnrollmentType((Course.Enrollment)Course.Enrollment.fromFieldName(newValue, Course.Enrollment.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getEnrollmentType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEnrollmentType();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEnrollmentType(newValue);
+                }
+            }.setWsField(""enrollmentType"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getEnrollmentType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEnrollmentType();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setEnrollmentType((Course.Enrollment)Course.Enrollment.fromFieldName(newValue, Course.Enrollment.class));
+                }
+            }.setBbField(""enrollmentType"");
+
+"
+Course,enrollmentStartDate,enrollmentStartDate,EnrollmentStartDate,EnrollmentStartDate,getEnrollmentStartDate,getEnrollmentStartDate,setEnrollmentStartDate,setEnrollmentStartDate,                return extractDate(bbObject.getEnrollmentStartDate());,                bbObject.setEnrollmentStartDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getEnrollmentStartDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEnrollmentStartDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEnrollmentStartDate(newValue);
+                }
+            }.setWsField(""enrollmentStartDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getEnrollmentStartDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEnrollmentStartDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setEnrollmentStartDate(parseDate(newValue));
+                }
+            }.setBbField(""enrollmentStartDate"");
+
+"
+Course,enrollmentEndDate,enrollmentEndDate,EnrollmentEndDate,EnrollmentEndDate,getEnrollmentEndDate,getEnrollmentEndDate,setEnrollmentEndDate,setEnrollmentEndDate,                return extractDate(bbObject.getEnrollmentEndDate());,                bbObject.setEnrollmentEndDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getEnrollmentEndDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEnrollmentEndDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEnrollmentEndDate(newValue);
+                }
+            }.setWsField(""enrollmentEndDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getEnrollmentEndDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEnrollmentEndDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setEnrollmentEndDate(parseDate(newValue));
+                }
+            }.setBbField(""enrollmentEndDate"");
+
+"
+Course,enrollmentAccessCode,enrollmentAccessCode,EnrollmentAccessCode,EnrollmentAccessCode,getEnrollmentAccessCode,getEnrollmentAccessCode,setEnrollmentAccessCode,setEnrollmentAccessCode,                return bbObject.getEnrollmentAccessCode();,                bbObject.setEnrollmentAccessCode(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getEnrollmentAccessCode();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getEnrollmentAccessCode();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setEnrollmentAccessCode(newValue);
+                }
+            }.setWsField(""enrollmentAccessCode"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getEnrollmentAccessCode();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getEnrollmentAccessCode();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setEnrollmentAccessCode(newValue);
+                }
+            }.setBbField(""enrollmentAccessCode"");
+
+"
+Course,institutionName,institution,InstitutionName,Institution,getInstitutionName,getInstitution,setInstitutionName,setInstitution,                return bbObject.getInstitutionName();,                bbObject.setInstitutionName(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getInstitutionName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getInstitution();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setInstitution(newValue);
+                }
+            }.setWsField(""institution"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getInstitutionName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getInstitution();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setInstitutionName(newValue);
+                }
+            }.setBbField(""institution"");
+
+"
+Course,isLocaleEnforced,isLocaleEnforced,IsLocaleEnforced,IsLocaleEnforced,getIsLocaleEnforced,getIsLocaleEnforced,setIsLocaleEnforced,setIsLocaleEnforced,                return Boolean.toString(bbObject.getIsLocaleEnforced());,                bbObject.setIsLocaleEnforced(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getIsLocaleEnforced());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsLocaleEnforced();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsLocaleEnforced(newValue);
+                }
+            }.setWsField(""isLocaleEnforced"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getIsLocaleEnforced());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsLocaleEnforced();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsLocaleEnforced(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isLocaleEnforced"");
+
+"
+Course,isLockedOut,isLockedOut,IsLockedOut,IsLockedOut,getIsLockedOut,getIsLockedOut,setIsLockedOut,setIsLockedOut,                return Boolean.toString(bbObject.getIsLockedOut());,                bbObject.setIsLockedOut(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getIsLockedOut());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsLockedOut();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsLockedOut(newValue);
+                }
+            }.setWsField(""isLockedOut"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getIsLockedOut());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsLockedOut();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsLockedOut(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isLockedOut"");
+
+"
+Course,isNavCollapsible,isNavigationCollapsible,IsNavCollapsible,IsNavigationCollapsible,getIsNavCollapsible,getIsNavigationCollapsible,setIsNavCollapsible,setIsNavigationCollapsible,                return Boolean.toString(bbObject.getIsNavCollapsible());,                bbObject.setIsNavCollapsible(Boolean.parseBoolean(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Boolean.toString(bbObject.getIsNavCollapsible());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getIsNavigationCollapsible();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setIsNavigationCollapsible(newValue);
+                }
+            }.setWsField(""isNavigationCollapsible"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Boolean.toString(bbObject.getIsNavCollapsible());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getIsNavigationCollapsible();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setIsNavCollapsible(Boolean.parseBoolean(newValue));
+                }
+            }.setBbField(""isNavigationCollapsible"");
+
+"
+Course,locale,locale,Locale,Locale,getLocale,getLocale,setLocale,setLocale,                return bbObject.getLocale();,                bbObject.setLocale(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getLocale();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getLocale();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setLocale(newValue);
+                }
+            }.setWsField(""locale"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getLocale();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getLocale();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setLocale(newValue);
+                }
+            }.setBbField(""locale"");
+
+"
+Course,navColorBg,navigationBackgroundColor,NavColorBg,NavigationBackgroundColor,getNavColorBg,getNavigationBackgroundColor,setNavColorBg,setNavigationBackgroundColor,                return bbObject.getNavColorBg();,                bbObject.setNavColorBg(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getNavColorBg();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getNavigationBackgroundColor();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setNavigationBackgroundColor(newValue);
+                }
+            }.setWsField(""navigationBackgroundColor"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getNavColorBg();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getNavigationBackgroundColor();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setNavColorBg(newValue);
+                }
+            }.setBbField(""navigationBackgroundColor"");
+
+"
+Course,navColorFg,navigationForegroundColor,NavColorFg,NavigationForegroundColor,getNavColorFg,getNavigationForegroundColor,setNavColorFg,setNavigationForegroundColor,                return bbObject.getNavColorFg();,                bbObject.setNavColorFg(newValue);,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getNavColorFg();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getNavigationForegroundColor();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setNavigationForegroundColor(newValue);
+                }
+            }.setWsField(""navigationForegroundColor"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getNavColorFg();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getNavigationForegroundColor();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setNavColorFg(newValue);
+                }
+            }.setBbField(""navigationForegroundColor"");
+
+"
+Course,navStyle,navigationStyle,NavStyle,NavigationStyle,getNavStyle,getNavigationStyle,setNavStyle,setNavigationStyle,"                return bbObject.getNavStyle().toFieldName();                    if (bbObject.getNavStyle() != null) {
+                        return bbObject.getNavStyle().toFieldName();
+                    } else return Course.NavStyle.DEFAULT.toFieldName();","                bbObject.setNavStyle((Course.NavStyle)Course.NavStyle.fromFieldName(newValue, Course.NavStyle.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getNavStyle().toFieldName();                    if (bbObject.getNavStyle() != null) {
+                        return bbObject.getNavStyle().toFieldName();
+                    } else return Course.NavStyle.DEFAULT.toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getNavigationStyle();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setNavigationStyle(newValue);
+                }
+            }.setWsField(""navigationStyle"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getNavStyle().toFieldName();                    if (bbObject.getNavStyle() != null) {
+                        return bbObject.getNavStyle().toFieldName();
+                    } else return Course.NavStyle.DEFAULT.toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getNavigationStyle();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setNavStyle((Course.NavStyle)Course.NavStyle.fromFieldName(newValue, Course.NavStyle.class));
+                }
+            }.setBbField(""navigationStyle"");
+
+"
+Course,numDaysOfUse,numberOfDaysOfUse,NumDaysOfUse,NumberOfDaysOfUse,getNumDaysOfUse,getNumberOfDaysOfUse,setNumDaysOfUse,setNumberOfDaysOfUse,                return Integer.toString(bbObject.getNumDaysOfUse());,                bbObject.setNumDaysOfUse(Integer.parseInt(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Integer.toString(bbObject.getNumDaysOfUse());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getNumberOfDaysOfUse();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setNumberOfDaysOfUse(newValue);
+                }
+            }.setWsField(""numberOfDaysOfUse"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Integer.toString(bbObject.getNumDaysOfUse());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getNumberOfDaysOfUse();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setNumDaysOfUse(Integer.parseInt(newValue));
+                }
+            }.setBbField(""numberOfDaysOfUse"");
+
+"
+Course,paceType,paceType,PaceType,PaceType,getPaceType,getPaceType,setPaceType,setPaceType,                return bbObject.getPaceType().toFieldName();,"                bbObject.setPaceType((Course.Pace)Course.Pace.fromFieldName(newValue, Course.Pace.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getPaceType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getPaceType();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setPaceType(newValue);
+                }
+            }.setWsField(""paceType"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getPaceType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getPaceType();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setPaceType((Course.Pace)Course.Pace.fromFieldName(newValue, Course.Pace.class));
+                }
+            }.setBbField(""paceType"");
+
+"
+Course,serviceLevelType,serviceLevelType,ServiceLevelType,ServiceLevelType,getServiceLevelType,getServiceLevelType,setServiceLevelType,setServiceLevelType,                return bbObject.getServiceLevelType().toFieldName();,"                bbObject.setServiceLevelType((Course.ServiceLevel)Course.ServiceLevel.fromFieldName(newValue, Course.ServiceLevel.class));",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getServiceLevelType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getServiceLevelType();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setServiceLevelType(newValue);
+                }
+            }.setWsField(""serviceLevelType"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getServiceLevelType().toFieldName();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getServiceLevelType();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setServiceLevelType((Course.ServiceLevel)Course.ServiceLevel.fromFieldName(newValue, Course.ServiceLevel.class));
+                }
+            }.setBbField(""serviceLevelType"");
+
+"
+Course,softLimit,softLimit,SoftLimit,SoftLimit,getSoftLimit,getSoftLimit,setSoftLimit,setSoftLimit,                return Long.toString(bbObject.getSoftLimit());,                bbObject.setSoftLimit(Long.parseLong(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Long.toString(bbObject.getSoftLimit());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getSoftLimit();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setSoftLimit(newValue);
+                }
+            }.setWsField(""softLimit"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Long.toString(bbObject.getSoftLimit());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getSoftLimit();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setSoftLimit(Long.parseLong(newValue));
+                }
+            }.setBbField(""softLimit"");
+
+"
+Course,startDate,startDate,StartDate,StartDate,getStartDate,getStartDate,setStartDate,setStartDate,                return extractDate(bbObject.getStartDate());,                bbObject.setStartDate(parseDate(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return extractDate(bbObject.getStartDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getStartDate();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setStartDate(newValue);
+                }
+            }.setWsField(""startDate"");
+
+",,,"            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return extractDate(bbObject.getStartDate());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getStartDate();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setStartDate(parseDate(newValue));
+                }
+            }.setBbField(""startDate"");
+
+"
+Course,uploadLimit,uploadLimit,UploadLimit,UploadLimit,getUploadLimit,getUploadLimit,setUploadLimit,setUploadLimit,                return Long.toString(bbObject.getUploadLimit());,                bbObject.setUploadLimit(Long.parseLong(newValue));,,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return Long.toString(bbObject.getUploadLimit());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUploadLimit();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUploadLimit(newValue);
+                }
+            }.setWsField(""uploadLimit"");
+
+",,"
+        }","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return Long.toString(bbObject.getUploadLimit());
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUploadLimit();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    bbObject.setUploadLimit(Long.parseLong(newValue));
+                }
+            }.setBbField(""uploadLimit"");
+
+"
+,,,,,,,,,,,,,,,,,,
+
+
+
+
+
+
+
+
+
+
+Bak:,,,,,,,,,,,,,,,,,,
+CourseMembership,user,userBatchUid,,,getUser,getUserBatchUid,setUser,setUserBatchUid,                return bbObject.getUser().getBatchUid();,"                Person person = PersonDbLoader.Default.getInstance().load(newValue);
+                if (getArgs().getResultRecord().getUserBbId() != null
+                    && person.getId().toExternalString() != getArgs().getResultRecord().getUserBbId()) {
+                        throw new BbWsException (""userBatchId - Attemtp to set userBatchId along with inconsistent userId - set userId to null in order to change user by BatchUid."");
+                }
+                bbObject.setUser(person);",,,,,"            new WsFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                return bbObject.getUser().getBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getResultRecord().getUserBatchUid();
+                }
+                @Override public void setWsFieldImp(String newValue) throws Exception {
+                    getArgs().getResultRecord().setUserBatchUid(newValue);
+                }
+            }.setWsField(""userBatchUid"");
+
+",,"        }
+        if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.STANDARD) >= 0) {","            new BbFieldSetter() {
+                @Override public String getBbFieldValue() throws Exception {
+                    return bbObject.getUser().getBatchUid();
+                }
+                @Override public String getWsFieldValue() throws Exception {
+                    return getArgs().getInputRecord().getUserBatchUid();
+                }
+                @Override public void setBbFieldImp(String newValue) throws Exception {
+                    Person person = PersonDbLoader.Default.getInstance().load(newValue);
+                if (getArgs().getResultRecord().getUserBbId() != null
+                    && person.getId().toExternalString() != getArgs().getResultRecord().getUserBbId()) {
+                        throw new BbWsException (""userBatchId - Attemtp to set userBatchId along with inconsistent userId - set userId to null in order to change user by BatchUid."");
+                }
+                bbObject.setUser(person);
+                }
+            }.setBbField(""userBatchUid"");
+
+"
