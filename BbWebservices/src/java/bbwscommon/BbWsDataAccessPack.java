@@ -143,7 +143,9 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
             }
         }
 
-
+        //!! May be fields like OperationNum and OperationName
+        //(i.e. something of kind OperationPass=1, OperationName="insert", OperationPass=1, OperationName="load")
+        //So that DataLog be easier to read
         public void addDataLog(BbWsDataDetails dd, BbWsArguments.DataLogSeverity severity,
                 String fieldName, String value, String bbValue, String wsValue, String message, Exception e) throws Exception {
             if (severity.compareTo(getArgs().getDataLogSeverity()) >= 0 ) {
@@ -341,6 +343,7 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
 
     //Currently expected resultRecord argument can be only wsInputRecord
     //?? function and/or its use needs revising
+    //?? probably move it out to DataAccessPack and call during initialization
     protected void setOrCreateWsResultObjectIfNull (WsResultType resultRecord) throws Exception {
         //giving possibility for operations over resultRecord preparation to be handled in successor
         if (args.getResultRecord() == null) {
@@ -679,6 +682,10 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
             String value = null;
             try {
                 ws_value = getWsFieldValue();
+                //setWsField works a bit different from setBbField when it comes to MissFieldTag
+                //as long as MissFieldTag defaults to null, which is an easiest value to be set by default
+                //in WS input parameters it is considered only for DataVerbosity.CUSTOM
+                //Otherwise client would need more work to do with initializing of input parameters.
                 if (getArgs().getDataVerbosity().compareTo(BbWsArguments.DataVerbosity.CUSTOM) == 0
                         && BbWsUtil.nullSafeStringComparator(ws_value, getArgs().getMissFieldTag()) == 0
                         //!! all possible IDs have to be handled here - those that are set with setResultRecordIds()
