@@ -1,8 +1,662 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://jaxb.dev.java.net/array" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="stringArray" final="#all">
+<xs:schema xmlns:tns="http://www.ncl.ac.uk/BBCourseWebService" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://www.ncl.ac.uk/BBCourseWebService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:element name="WebServiceException" type="tns:WebServiceException" />
+  <xs:element name="addCourse" type="tns:addCourse" />
+  <xs:element name="addCourseResponse" type="tns:addCourseResponse" />
+  <xs:element name="addCourseXML" type="tns:addCourseXML" />
+  <xs:element name="addCourseXMLResponse" type="tns:addCourseXMLResponse" />
+  <xs:element name="copyCourseExact" type="tns:copyCourseExact" />
+  <xs:element name="copyCourseExactResponse" type="tns:copyCourseExactResponse" />
+  <xs:element name="deleteCourseByCourseBbId" type="tns:deleteCourseByCourseBbId" />
+  <xs:element name="deleteCourseByCourseBbIdResponse" type="tns:deleteCourseByCourseBbIdResponse" />
+  <xs:element name="deleteCourseByCourseBbIdXML" type="tns:deleteCourseByCourseBbIdXML" />
+  <xs:element name="deleteCourseByCourseBbIdXMLResponse" type="tns:deleteCourseByCourseBbIdXMLResponse" />
+  <xs:element name="deleteCourseByCourseId" type="tns:deleteCourseByCourseId" />
+  <xs:element name="deleteCourseByCourseIdResponse" type="tns:deleteCourseByCourseIdResponse" />
+  <xs:element name="deleteCourseByCourseIdXML" type="tns:deleteCourseByCourseIdXML" />
+  <xs:element name="deleteCourseByCourseIdXMLResponse" type="tns:deleteCourseByCourseIdXMLResponse" />
+  <xs:element name="doesCourseExist" type="tns:doesCourseExist" />
+  <xs:element name="doesCourseExistResponse" type="tns:doesCourseExistResponse" />
+  <xs:element name="doesCourseExistXML" type="tns:doesCourseExistXML" />
+  <xs:element name="doesCourseExistXMLResponse" type="tns:doesCourseExistXMLResponse" />
+  <xs:element name="enrollGivenUserOnGivenCourse" type="tns:enrollGivenUserOnGivenCourse" />
+  <xs:element name="enrollGivenUserOnGivenCourseResponse" type="tns:enrollGivenUserOnGivenCourseResponse" />
+  <xs:element name="enrollGivenUserOnGivenCourseXML" type="tns:enrollGivenUserOnGivenCourseXML" />
+  <xs:element name="enrollGivenUserOnGivenCourseXMLResponse" type="tns:enrollGivenUserOnGivenCourseXMLResponse" />
+  <xs:element name="getAllCourseIDsNoDetails" type="tns:getAllCourseIDsNoDetails" />
+  <xs:element name="getAllCourseIDsNoDetailsResponse" type="tns:getAllCourseIDsNoDetailsResponse" />
+  <xs:element name="getAllCourseIDsNoDetailsWithNamedElements" type="tns:getAllCourseIDsNoDetailsWithNamedElements" />
+  <xs:element name="getAllCourseIDsNoDetailsWithNamedElementsResponse" type="tns:getAllCourseIDsNoDetailsWithNamedElementsResponse" />
+  <xs:element name="getAllCourseIDsNoDetailsXML" type="tns:getAllCourseIDsNoDetailsXML" />
+  <xs:element name="getAllCourseIDsNoDetailsXMLResponse" type="tns:getAllCourseIDsNoDetailsXMLResponse" />
+  <xs:element name="getAllCourseIDsWhereCourseIdContainsGivenSearchString" type="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchString" />
+  <xs:element name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringResponse" type="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringResponse" />
+  <xs:element name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements" type="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements" />
+  <xs:element name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElementsResponse" type="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElementsResponse" />
+  <xs:element name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML" type="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML" />
+  <xs:element name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringXMLResponse" type="tns:getAllCourseIDsWhereCourseIdContainsGivenSearchStringXMLResponse" />
+  <xs:element name="getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements" type="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements" />
+  <xs:element name="getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElementsResponse" type="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElementsResponse" />
+  <xs:element name="getAllCourseIDsWhereGivenUserIdIsAnInstructorXML" type="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorXML" />
+  <xs:element name="getAllCourseIDsWhereGivenUserIdIsAnInstructorXMLResponse" type="tns:getAllCourseIDsWhereGivenUserIdIsAnInstructorXMLResponse" />
+  <xs:element name="getCourseDetails" type="tns:getCourseDetails" />
+  <xs:element name="getCourseDetailsResponse" type="tns:getCourseDetailsResponse" />
+  <xs:element name="getCourseDetailsWithNamedElements" type="tns:getCourseDetailsWithNamedElements" />
+  <xs:element name="getCourseDetailsWithNamedElementsResponse" type="tns:getCourseDetailsWithNamedElementsResponse" />
+  <xs:element name="getCourseDetailsXML" type="tns:getCourseDetailsXML" />
+  <xs:element name="getCourseDetailsXMLResponse" type="tns:getCourseDetailsXMLResponse" />
+  <xs:element name="getCourseMembershipBbIdForGivenUserIdAndCourseId" type="tns:getCourseMembershipBbIdForGivenUserIdAndCourseId" />
+  <xs:element name="getCourseMembershipBbIdForGivenUserIdAndCourseIdResponse" type="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdResponse" />
+  <xs:element name="getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements" type="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements" />
+  <xs:element name="getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElementsResponse" type="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElementsResponse" />
+  <xs:element name="getCourseMembershipBbIdForGivenUserIdAndCourseIdXML" type="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdXML" />
+  <xs:element name="getCourseMembershipBbIdForGivenUserIdAndCourseIdXMLResponse" type="tns:getCourseMembershipBbIdForGivenUserIdAndCourseIdXMLResponse" />
+  <xs:element name="getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements" type="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements" />
+  <xs:element name="getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElementsResponse" type="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElementsResponse" />
+  <xs:element name="getCourseMembershipDetailsForGivenCourseMembershipBbIdXML" type="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdXML" />
+  <xs:element name="getCourseMembershipDetailsForGivenCourseMembershipBbIdXMLResponse" type="tns:getCourseMembershipDetailsForGivenCourseMembershipBbIdXMLResponse" />
+  <xs:element name="getCourseQuotaDetails" type="tns:getCourseQuotaDetails" />
+  <xs:element name="getCourseQuotaDetailsResponse" type="tns:getCourseQuotaDetailsResponse" />
+  <xs:element name="getCourseQuotaDetailsWithNamedElements" type="tns:getCourseQuotaDetailsWithNamedElements" />
+  <xs:element name="getCourseQuotaDetailsWithNamedElementsResponse" type="tns:getCourseQuotaDetailsWithNamedElementsResponse" />
+  <xs:element name="getCourseQuotaDetailsXML" type="tns:getCourseQuotaDetailsXML" />
+  <xs:element name="getCourseQuotaDetailsXMLResponse" type="tns:getCourseQuotaDetailsXMLResponse" />
+  <xs:element name="getEnrolledCoursesForGivenUser" type="tns:getEnrolledCoursesForGivenUser" />
+  <xs:element name="getEnrolledCoursesForGivenUserResponse" type="tns:getEnrolledCoursesForGivenUserResponse" />
+  <xs:element name="getEnrolledCoursesForGivenUserWithNamedElements" type="tns:getEnrolledCoursesForGivenUserWithNamedElements" />
+  <xs:element name="getEnrolledCoursesForGivenUserWithNamedElementsResponse" type="tns:getEnrolledCoursesForGivenUserWithNamedElementsResponse" />
+  <xs:element name="getEnrolledCoursesForGivenUserXML" type="tns:getEnrolledCoursesForGivenUserXML" />
+  <xs:element name="getEnrolledCoursesForGivenUserXMLResponse" type="tns:getEnrolledCoursesForGivenUserXMLResponse" />
+  <xs:element name="modifyCourseQuotaDetails" type="tns:modifyCourseQuotaDetails" />
+  <xs:element name="modifyCourseQuotaDetailsResponse" type="tns:modifyCourseQuotaDetailsResponse" />
+  <xs:element name="modifyCourseQuotaDetailsXML" type="tns:modifyCourseQuotaDetailsXML" />
+  <xs:element name="modifyCourseQuotaDetailsXMLResponse" type="tns:modifyCourseQuotaDetailsXMLResponse" />
+  <xs:element name="unEnrollGivenUserFromGivenCourse" type="tns:unEnrollGivenUserFromGivenCourse" />
+  <xs:element name="unEnrollGivenUserFromGivenCourseResponse" type="tns:unEnrollGivenUserFromGivenCourseResponse" />
+  <xs:element name="unEnrollGivenUserFromGivenCourseXML" type="tns:unEnrollGivenUserFromGivenCourseXML" />
+  <xs:element name="unEnrollGivenUserFromGivenCourseXMLResponse" type="tns:unEnrollGivenUserFromGivenCourseXMLResponse" />
+  <xs:element name="updateCourse" type="tns:updateCourse" />
+  <xs:element name="updateCourseResponse" type="tns:updateCourseResponse" />
+  <xs:complexType name="getCourseDetailsXML">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="extendedDetails" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseDetailsXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WebServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseQuotaDetailsXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseQuotaDetailsXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="extendedDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEnrolledCoursesForGivenUserWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEnrolledCoursesForGivenUserWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:enrollmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enrollmentDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractCourseDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="userRole" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="abstractCourseDetails" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="courseId" type="xs:string" />
+          <xs:element minOccurs="0" name="creationDate" type="xs:string" />
+          <xs:element minOccurs="0" name="isAvailable" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="bbWsDataDetails" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bbId" type="xs:string" />
+      <xs:element minOccurs="0" name="bbWsBoolResult" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bbWsDataLog" nillable="true" type="tns:bbWsDataLogRecord" />
+      <xs:element minOccurs="0" name="bbWsTextResult" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bbWsDataLogRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apiPass" type="xs:string" />
+      <xs:element minOccurs="0" name="apiUsed" type="xs:string" />
+      <xs:element minOccurs="0" name="bbValue" type="xs:string" />
+      <xs:element minOccurs="0" name="dateTime" type="xs:string" />
+      <xs:element minOccurs="0" name="fieldName" type="xs:string" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="recordId" type="xs:string" />
+      <xs:element minOccurs="0" name="severityLevel" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+      <xs:element minOccurs="0" name="wsValue" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="doesCourseExistXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="doesCourseExistXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseBbIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseBbIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateCourse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+      <xs:element minOccurs="0" name="arg4" type="xs:boolean" />
+      <xs:element minOccurs="0" name="arg5" type="xs:boolean" />
+      <xs:element minOccurs="0" name="arg6" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateCourseResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEnrolledCoursesForGivenUserXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEnrolledCoursesForGivenUserXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enrollGivenUserOnGivenCourse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="role" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enrollGivenUserOnGivenCourseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsNoDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsNoDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyCourseQuotaDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseID" type="xs:string" />
+      <xs:element minOccurs="0" name="overrideDiskQuota" type="xs:boolean" />
+      <xs:element minOccurs="0" name="overrideUploadLimit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="absoluteLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="softLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="uploadLimit" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyCourseQuotaDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseDetailsWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="extendedDetails" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseDetailsWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractCourseDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="absoluteLimit" type="xs:string" />
+          <xs:element minOccurs="0" name="allowGuests" type="xs:string" />
+          <xs:element minOccurs="0" name="allowObservers" type="xs:string" />
+          <xs:element minOccurs="0" name="bannerImageFile" type="xs:string" />
+          <xs:element minOccurs="0" name="batchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="buttonStyleId" type="xs:string" />
+          <xs:element minOccurs="0" name="cartridgeId" type="xs:string" />
+          <xs:element minOccurs="0" name="classificationId" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="durationType" type="xs:string" />
+          <xs:element minOccurs="0" name="endDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentAccessCode" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentEndDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentStartDate" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentType" type="xs:string" />
+          <xs:element minOccurs="0" name="institution" type="xs:string" />
+          <xs:element minOccurs="0" name="isLocaleEnforced" type="xs:string" />
+          <xs:element minOccurs="0" name="isLockedOut" type="xs:string" />
+          <xs:element minOccurs="0" name="isNavigationCollapsible" type="xs:string" />
+          <xs:element minOccurs="0" name="locale" type="xs:string" />
+          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationBackgroundColor" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationForegroundColor" type="xs:string" />
+          <xs:element minOccurs="0" name="navigationStyle" type="xs:string" />
+          <xs:element minOccurs="0" name="numberOfDaysOfUse" type="xs:string" />
+          <xs:element minOccurs="0" name="paceType" type="xs:string" />
+          <xs:element minOccurs="0" name="serviceLevelType" type="xs:string" />
+          <xs:element minOccurs="0" name="softLimit" type="xs:string" />
+          <xs:element minOccurs="0" name="startDate" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="uploadLimit" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getCourseQuotaDetailsWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseQuotaDetailsWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseQuotaDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseQuotaDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="courseAbsoluteLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="courseAbsoluteLimitRemainingSize" type="xs:long" />
+      <xs:element minOccurs="0" name="courseSize" type="xs:long" />
+      <xs:element minOccurs="0" name="courseSoftLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="courseUploadLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="enforceQuota" type="xs:boolean" />
+      <xs:element minOccurs="0" name="enforceUploadLimit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="systemAbsoluteLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="systemSoftLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="systemUploadLimit" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseBbId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseBbIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipBbIdForGivenUserIdAndCourseId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipBbIdForGivenUserIdAndCourseIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="doesCourseExist">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="doesCourseExistResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipBbIdForGivenUserIdAndCourseIdWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="courseMembershipDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="available" type="xs:string" />
+          <xs:element minOccurs="0" name="cartridgeAccess" type="xs:string" />
+          <xs:element minOccurs="0" name="childCourseId" type="xs:string" />
+          <xs:element minOccurs="0" name="courseBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="courseBbId" type="xs:string" />
+          <xs:element minOccurs="0" name="dataSourceBbId" type="xs:string" />
+          <xs:element minOccurs="0" name="enrollmentDate" type="xs:string" />
+          <xs:element minOccurs="0" name="introduction" type="xs:string" />
+          <xs:element minOccurs="0" name="lastAccessDate" type="xs:string" />
+          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="notes" type="xs:string" />
+          <xs:element minOccurs="0" name="personalInfo" type="xs:string" />
+          <xs:element minOccurs="0" name="role" type="xs:string" />
+          <xs:element minOccurs="0" name="userBatchUid" type="xs:string" />
+          <xs:element minOccurs="0" name="userBbId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereCourseIdContainsGivenSearchString">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="searchString" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsNoDetailsWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsNoDetailsWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereGivenUserIdIsAnInstructorXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereGivenUserIdIsAnInstructorXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCourse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="batchUID" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="courseDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="available" type="xs:boolean" />
+      <xs:element minOccurs="0" name="allowGuests" type="xs:boolean" />
+      <xs:element minOccurs="0" name="allowObservers" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCourseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCourseXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="batchUID" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="courseDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="available" type="xs:boolean" />
+      <xs:element minOccurs="0" name="allowGuests" type="xs:boolean" />
+      <xs:element minOccurs="0" name="allowObservers" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addCourseXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereGivenUserIdIsAnInstructorWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyCourseQuotaDetailsXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseID" type="xs:string" />
+      <xs:element minOccurs="0" name="overrideDiskQuota" type="xs:boolean" />
+      <xs:element minOccurs="0" name="overrideUploadLimit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="absoluteLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="softLimit" type="xs:long" />
+      <xs:element minOccurs="0" name="uploadLimit" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyCourseQuotaDetailsXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipDetailsForGivenCourseMembershipBbIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseMembershipBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipDetailsForGivenCourseMembershipBbIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseMembershipBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipDetailsForGivenCourseMembershipBbIdWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courseMembershipDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipBbIdForGivenUserIdAndCourseIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseMembershipBbIdForGivenUserIdAndCourseIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unEnrollGivenUserFromGivenCourseXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unEnrollGivenUserFromGivenCourseXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unEnrollGivenUserFromGivenCourse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unEnrollGivenUserFromGivenCourseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="searchString" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEnrolledCoursesForGivenUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEnrolledCoursesForGivenUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enrollGivenUserOnGivenCourseXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="role" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enrollGivenUserOnGivenCourseXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsNoDetailsXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsNoDetailsXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteCourseByCourseIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseQuotaDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCourseQuotaDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="searchString" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllCourseIDsWhereCourseIdContainsGivenSearchStringWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:courseDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="copyCourseExact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="sourceBatchUid" type="xs:string" />
+      <xs:element minOccurs="0" name="targetBatchUid" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="copyCourseExactResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

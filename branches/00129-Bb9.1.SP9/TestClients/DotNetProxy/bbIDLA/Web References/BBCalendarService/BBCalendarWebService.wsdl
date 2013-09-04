@@ -2,10 +2,10 @@
 <definitions xmlns:tns="http://www.ncl.ac.uk/BBCalendarWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBCalendarWebService" targetNamespace="http://www.ncl.ac.uk/BBCalendarWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCalendarWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCalendarWebService" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBCalendarWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCalendarWebService" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCalendarWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBCalendarWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
   </types>
   <message name="addCalendarEntry">
@@ -148,7 +148,7 @@
   </binding>
   <service name="BBCalendarWebService">
     <port name="BBCalendarWebServicePort" binding="tns:BBCalendarWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCalendarWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBCalendarWebService" />
     </port>
   </service>
 </definitions>

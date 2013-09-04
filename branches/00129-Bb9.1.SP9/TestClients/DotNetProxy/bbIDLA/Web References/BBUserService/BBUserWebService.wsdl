@@ -2,32 +2,32 @@
 <definitions xmlns:tns="http://www.ncl.ac.uk/BBUserWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBUserWebService" targetNamespace="http://www.ncl.ac.uk/BBUserWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBUserWebService" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBUserWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBUserWebService" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBUserWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
   </types>
+  <message name="addUser">
+    <part name="parameters" element="tns:addUser" />
+  </message>
+  <message name="addUserResponse">
+    <part name="parameters" element="tns:addUserResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
+  </message>
   <message name="addDefaultStudent">
     <part name="parameters" element="tns:addDefaultStudent" />
   </message>
   <message name="addDefaultStudentResponse">
     <part name="parameters" element="tns:addDefaultStudentResponse" />
   </message>
-  <message name="WebServiceException">
-    <part name="fault" element="tns:WebServiceException" />
-  </message>
   <message name="addDefaultStudentXML">
     <part name="parameters" element="tns:addDefaultStudentXML" />
   </message>
   <message name="addDefaultStudentXMLResponse">
     <part name="parameters" element="tns:addDefaultStudentXMLResponse" />
-  </message>
-  <message name="addUser">
-    <part name="parameters" element="tns:addUser" />
-  </message>
-  <message name="addUserResponse">
-    <part name="parameters" element="tns:addUserResponse" />
   </message>
   <message name="addUserXML">
     <part name="parameters" element="tns:addUserXML" />
@@ -222,6 +222,11 @@
     <part name="parameters" element="tns:setOrModifySecondaryPortalRolesForGivenUserIdXMLResponse" />
   </message>
   <portType name="BBUserWebService">
+    <operation name="addUser">
+      <input message="tns:addUser" />
+      <output message="tns:addUserResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
     <operation name="addDefaultStudent">
       <input message="tns:addDefaultStudent" />
       <output message="tns:addDefaultStudentResponse" />
@@ -230,11 +235,6 @@
     <operation name="addDefaultStudentXML">
       <input message="tns:addDefaultStudentXML" />
       <output message="tns:addDefaultStudentXMLResponse" />
-      <fault name="WebServiceException" message="tns:WebServiceException" />
-    </operation>
-    <operation name="addUser">
-      <input message="tns:addUser" />
-      <output message="tns:addUserResponse" />
       <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="addUserXML">
@@ -400,6 +400,18 @@
   </portType>
   <binding name="BBUserWebServicePortBinding" type="tns:BBUserWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="addUser">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
     <operation name="addDefaultStudent">
       <soap:operation soapAction="" />
       <input>
@@ -413,18 +425,6 @@
       </fault>
     </operation>
     <operation name="addDefaultStudentXML">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="WebServiceException">
-        <soap:fault use="literal" name="WebServiceException" namespace="" />
-      </fault>
-    </operation>
-    <operation name="addUser">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -823,7 +823,7 @@
   </binding>
   <service name="BBUserWebService">
     <port name="BBUserWebServicePort" binding="tns:BBUserWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBUserWebService" />
     </port>
   </service>
 </definitions>

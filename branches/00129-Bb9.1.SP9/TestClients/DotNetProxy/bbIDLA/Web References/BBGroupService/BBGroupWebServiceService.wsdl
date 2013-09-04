@@ -2,10 +2,10 @@
 <definitions xmlns:tns="http://bbgrpws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBGroupWebServiceService" targetNamespace="http://bbgrpws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGroupWebService?xsd=2" namespace="http://bbgrpws/" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGroupWebService?xsd=2" namespace="http://bbgrpws/" />
     </xsd:schema>
   </types>
   <message name="deleteGroup">
@@ -455,7 +455,7 @@
   </binding>
   <service name="BBGroupWebServiceService">
     <port name="BBGroupWebServicePort" binding="tns:BBGroupWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGroupWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGroupWebService" />
     </port>
   </service>
 </definitions>

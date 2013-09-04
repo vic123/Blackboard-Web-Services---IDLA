@@ -2,10 +2,10 @@
 <definitions xmlns:tns="http://bbdbws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBDiscussionBoardWebServiceService" targetNamespace="http://bbdbws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBDiscussionBoardWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBDiscussionBoardWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBDiscussionBoardWebService?xsd=2" namespace="http://bbdbws/" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBDiscussionBoardWebService?xsd=2" namespace="http://bbdbws/" />
     </xsd:schema>
   </types>
   <message name="getConferenceDetailsForGivenConferenceBbId">
@@ -357,7 +357,7 @@
   </binding>
   <service name="BBDiscussionBoardWebServiceService">
     <port name="BBDiscussionBoardWebServicePort" binding="tns:BBDiscussionBoardWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBDiscussionBoardWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBDiscussionBoardWebService" />
     </port>
   </service>
 </definitions>

@@ -2,20 +2,26 @@
 <definitions xmlns:tns="http://bbgbws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBGradebookWebServiceService" targetNamespace="http://bbgbws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGradebookWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGradebookWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGradebookWebService?xsd=2" namespace="http://bbgbws/" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGradebookWebService?xsd=2" namespace="http://bbgbws/" />
     </xsd:schema>
   </types>
+  <message name="getAllOutcomesForGivenOutcomeDefBbIdXML">
+    <part name="parameters" element="tns:getAllOutcomesForGivenOutcomeDefBbIdXML" />
+  </message>
+  <message name="getAllOutcomesForGivenOutcomeDefBbIdXMLResponse">
+    <part name="parameters" element="tns:getAllOutcomesForGivenOutcomeDefBbIdXMLResponse" />
+  </message>
+  <message name="WebServiceException">
+    <part name="fault" element="tns:WebServiceException" />
+  </message>
   <message name="addLineitemToGivenCourseId">
     <part name="parameters" element="tns:addLineitemToGivenCourseId" />
   </message>
   <message name="addLineitemToGivenCourseIdResponse">
     <part name="parameters" element="tns:addLineitemToGivenCourseIdResponse" />
-  </message>
-  <message name="WebServiceException">
-    <part name="fault" element="tns:WebServiceException" />
   </message>
   <message name="addLineitemToGivenCourseIdXML">
     <part name="parameters" element="tns:addLineitemToGivenCourseIdXML" />
@@ -118,12 +124,6 @@
   </message>
   <message name="getAllOutcomesForGivenOutcomeDefBbIdWithNamedElementsResponse">
     <part name="parameters" element="tns:getAllOutcomesForGivenOutcomeDefBbIdWithNamedElementsResponse" />
-  </message>
-  <message name="getAllOutcomesForGivenOutcomeDefBbIdXML">
-    <part name="parameters" element="tns:getAllOutcomesForGivenOutcomeDefBbIdXML" />
-  </message>
-  <message name="getAllOutcomesForGivenOutcomeDefBbIdXMLResponse">
-    <part name="parameters" element="tns:getAllOutcomesForGivenOutcomeDefBbIdXMLResponse" />
   </message>
   <message name="getAllScoreDetailsForGivenLineItemBbIdWithNamedElements">
     <part name="parameters" element="tns:getAllScoreDetailsForGivenLineItemBbIdWithNamedElements" />
@@ -282,6 +282,11 @@
     <part name="parameters" element="tns:setWeightByItemOrCategoryForGradebookInGivenCourseIdXMLResponse" />
   </message>
   <portType name="BBGradebookWebService">
+    <operation name="getAllOutcomesForGivenOutcomeDefBbIdXML">
+      <input message="tns:getAllOutcomesForGivenOutcomeDefBbIdXML" />
+      <output message="tns:getAllOutcomesForGivenOutcomeDefBbIdXMLResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
     <operation name="addLineitemToGivenCourseId">
       <input message="tns:addLineitemToGivenCourseId" />
       <output message="tns:addLineitemToGivenCourseIdResponse" />
@@ -366,11 +371,6 @@
     <operation name="getAllOutcomesForGivenOutcomeDefBbIdWithNamedElements">
       <input message="tns:getAllOutcomesForGivenOutcomeDefBbIdWithNamedElements" />
       <output message="tns:getAllOutcomesForGivenOutcomeDefBbIdWithNamedElementsResponse" />
-      <fault name="WebServiceException" message="tns:WebServiceException" />
-    </operation>
-    <operation name="getAllOutcomesForGivenOutcomeDefBbIdXML">
-      <input message="tns:getAllOutcomesForGivenOutcomeDefBbIdXML" />
-      <output message="tns:getAllOutcomesForGivenOutcomeDefBbIdXMLResponse" />
       <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="getAllScoreDetailsForGivenLineItemBbIdWithNamedElements">
@@ -506,6 +506,18 @@
   </portType>
   <binding name="BBGradebookWebServicePortBinding" type="tns:BBGradebookWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getAllOutcomesForGivenOutcomeDefBbIdXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
     <operation name="addLineitemToGivenCourseId">
       <soap:operation soapAction="" />
       <input>
@@ -699,18 +711,6 @@
       </fault>
     </operation>
     <operation name="getAllOutcomesForGivenOutcomeDefBbIdWithNamedElements">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="WebServiceException">
-        <soap:fault use="literal" name="WebServiceException" namespace="" />
-      </fault>
-    </operation>
-    <operation name="getAllOutcomesForGivenOutcomeDefBbIdXML">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -1037,7 +1037,7 @@
   </binding>
   <service name="BBGradebookWebServiceService">
     <port name="BBGradebookWebServicePort" binding="tns:BBGradebookWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGradebookWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGradebookWebService" />
     </port>
   </service>
 </definitions>

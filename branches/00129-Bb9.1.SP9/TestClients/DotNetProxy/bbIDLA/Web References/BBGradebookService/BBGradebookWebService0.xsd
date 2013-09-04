@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://bbgbws/" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://bbgbws/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGradebookWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGradebookWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
   <xs:element name="WebServiceException" type="tns:WebServiceException" />
   <xs:element name="addLineitemToGivenCourseId" type="tns:addLineitemToGivenCourseId" />
   <xs:element name="addLineitemToGivenCourseIdResponse" type="tns:addLineitemToGivenCourseIdResponse" />
@@ -203,7 +203,7 @@
   </xs:complexType>
   <xs:complexType name="getAllScoresForGivenLineItemBbIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllOutcomeDefinitionsForGivenCourseWithNamedElements">
@@ -498,7 +498,7 @@
   </xs:complexType>
   <xs:complexType name="getScoreForGivenCourseMembershipBbIdAndLineItemBbIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getScoreForGivenUserIdAndLineItemBbId">
@@ -512,7 +512,7 @@
   </xs:complexType>
   <xs:complexType name="getScoreForGivenUserIdAndLineItemBbIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllOutcomesForGivenOutcomeDefBbIdWithNamedElements">
@@ -579,7 +579,7 @@
   </xs:complexType>
   <xs:complexType name="getGradebookSettingsForGivenCourseIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getOutcomeDefinitionDetailsFromOutcomeDefinitionBbIdXML">
@@ -636,7 +636,7 @@
   </xs:complexType>
   <xs:complexType name="getAllLineItemsForCourseIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllOutcomesForGivenOutcomeDefBbIdXML">
@@ -693,7 +693,7 @@
   </xs:complexType>
   <xs:complexType name="getAllOutcomeDefinitionsForGivenCourseResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getScoreDetailsForGivenUserIdAndLineItemBbIdWithNamedElements">
@@ -742,7 +742,7 @@
   </xs:complexType>
   <xs:complexType name="getAttemptsByGivenOutcomeDefBbIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="deleteOutcomeDefinitionByOutcomeDefBbIdXML">

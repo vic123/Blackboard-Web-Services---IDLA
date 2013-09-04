@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://www.ncl.ac.uk/BBUserWebService" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://www.ncl.ac.uk/BBUserWebService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBUserWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
   <xs:element name="WebServiceException" type="tns:WebServiceException" />
   <xs:element name="addDefaultStudent" type="tns:addDefaultStudent" />
   <xs:element name="addDefaultStudentResponse" type="tns:addDefaultStudentResponse" />
@@ -222,7 +222,7 @@
   </xs:complexType>
   <xs:complexType name="getEnrolledUsersForGivenCourseResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getUserDetailsWithNamedElements">
@@ -268,7 +268,7 @@
       <xs:element minOccurs="0" name="workFax" type="xs:string" />
       <xs:element minOccurs="0" name="mobilePhone" type="xs:string" />
       <xs:element minOccurs="0" name="portalRole" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="secPortalRole" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="secPortalRole" type="xs:string" />
       <xs:element minOccurs="0" name="systemRole" type="xs:string" />
       <xs:element minOccurs="0" name="available" type="xs:boolean" />
     </xs:sequence>
@@ -287,7 +287,7 @@
   </xs:complexType>
   <xs:complexType name="getSecondarySystemRolesForGivenUserIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllUserIDsNoDetailsWithNamedElements">
@@ -307,7 +307,7 @@
   </xs:complexType>
   <xs:complexType name="getAllUserIDsNoDetailsResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="deleteUserByUserBbId">
@@ -342,14 +342,14 @@
   </xs:complexType>
   <xs:complexType name="getUserDetailsResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="setOrModifySecondaryPortalRolesForGivenUserIdXML">
     <xs:sequence>
       <xs:element minOccurs="0" name="pwd" type="xs:string" />
       <xs:element minOccurs="0" name="userId" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="roles" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="roles" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="setOrModifySecondaryPortalRolesForGivenUserIdXMLResponse">
@@ -391,7 +391,7 @@
   </xs:complexType>
   <xs:complexType name="getEnrollmentsByBatchUIDandCourseIDPatternResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="deleteUserByUserId">
@@ -465,7 +465,7 @@
       <xs:element minOccurs="0" name="workFax" type="xs:string" />
       <xs:element minOccurs="0" name="mobilePhone" type="xs:string" />
       <xs:element minOccurs="0" name="portalRole" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="secPortalRole" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="secPortalRole" type="xs:string" />
       <xs:element minOccurs="0" name="systemRole" type="xs:string" />
       <xs:element minOccurs="0" name="available" type="xs:boolean" />
     </xs:sequence>
@@ -484,7 +484,7 @@
   </xs:complexType>
   <xs:complexType name="getSecondaryPortalRolesForGivenUserIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getSecondarySystemRolesForGivenUserIdXML">
@@ -602,7 +602,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="pwd" type="xs:string" />
       <xs:element minOccurs="0" name="userId" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="roles" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="roles" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="setOrModifySecondaryPortalRolesForGivenUserIdResponse">

@@ -2,10 +2,10 @@
 <definitions xmlns:tns="http://www.ncl.ac.uk/BBAnnouncementsWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBAnnouncementsWebService" targetNamespace="http://www.ncl.ac.uk/BBAnnouncementsWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBAnnouncementsWebService" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBAnnouncementsWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBAnnouncementsWebService" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBAnnouncementsWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
   </types>
   <message name="deleteAnnouncement">
@@ -405,7 +405,7 @@
   </binding>
   <service name="BBAnnouncementsWebService">
     <port name="BBAnnouncementsWebServicePort" binding="tns:BBAnnouncementsWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBAnnouncementsWebService" />
     </port>
   </service>
 </definitions>

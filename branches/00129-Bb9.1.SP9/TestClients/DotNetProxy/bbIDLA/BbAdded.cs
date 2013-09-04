@@ -1485,5 +1485,49 @@ namespace bbIDLA
             }
         }
 
+
+        //Course Copy Record WithParamsById
+        public courseDetails CourseCopyRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            try {
+                return bbAdded.courseCopyRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseCopyRecordWithParamsById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Copy Record WithParamsByBatchUid
+        public courseDetails CourseCopyRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            try {
+                return bbAdded.courseCopyRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseCopyRecordWithParamsByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Merge Record WithParamsById
+        public courseDetails CourseMergeRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            try {
+                return bbAdded.courseMergeRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseMergeRecordWithParamsById", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
+
+        //Course Merge Record WithParamsByBatchUid
+        public courseDetails CourseMergeRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            try {
+                return bbAdded.courseMergeRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+            } catch (Exception ex) {
+                BlackBoardWebServices.LogError("bbAdded.CourseMergeRecordWithParamsByBatchUid", ex);
+                if (doRethrow) throw;
+                else return null;
+            }
+        }
     }
 }
