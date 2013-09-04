@@ -6,7 +6,7 @@
       <handle value="BbWebservices"/>
 	  <!-- Major.Minor.Subversion revision-->
 	  <!-- v.2.0 was first release of the project (version numbering continues 1.2 of Webservices project) -->
-	  <version value="2.2.134"/>
+	  <version value="2.2.142"/>
 	  
 	  <requires>
  	    <bbversion value="9.1.9"/>
