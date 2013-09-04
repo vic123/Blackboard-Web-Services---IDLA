@@ -1,3 +1,5 @@
+#define BB_ADDED//!!
+
 using System;
 using System.Data;
 using System.Configuration;
@@ -8,11 +10,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-
 using System.Collections.Generic;
-//!!
-//using bbIDLA.BBAddedService;
-using bbws;
+
+#if (BB_ADDED)
+using bbIDLA.BBAddedService;//--this is for work through DotNetProxy
+#else
+using bbws;//--this is for direct web services access
+#endif
 
  //* Was tested with Bb 9.0: 
  //*PortalRole specific issues with duplicated names of built-in and custom portal roles.

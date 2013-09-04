@@ -2,10 +2,10 @@
 <definitions xmlns:tns="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BbWebservices" targetNamespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BbWebservices?xsd=1" namespace="http://www.ncl.ac.uk/BbWsFaultException" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BbWebservices?xsd=1" namespace="http://www.ncl.ac.uk/BbWsFaultException" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BbWebservices?xsd=2" namespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BbWebservices?xsd=2" namespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices" />
     </xsd:schema>
   </types>
   <message name="courseMembershipLoadRecordById">
@@ -589,6 +589,30 @@
   </message>
   <message name="courseCopyRecordByBatchUidResponse">
     <part name="parameters" element="tns:courseCopyRecordByBatchUidResponse" />
+  </message>
+  <message name="courseCopyRecordWithParamsById">
+    <part name="parameters" element="tns:courseCopyRecordWithParamsById" />
+  </message>
+  <message name="courseCopyRecordWithParamsByIdResponse">
+    <part name="parameters" element="tns:courseCopyRecordWithParamsByIdResponse" />
+  </message>
+  <message name="courseCopyRecordWithParamsByBatchUid">
+    <part name="parameters" element="tns:courseCopyRecordWithParamsByBatchUid" />
+  </message>
+  <message name="courseCopyRecordWithParamsByBatchUidResponse">
+    <part name="parameters" element="tns:courseCopyRecordWithParamsByBatchUidResponse" />
+  </message>
+  <message name="courseMergeRecordWithParamsById">
+    <part name="parameters" element="tns:courseMergeRecordWithParamsById" />
+  </message>
+  <message name="courseMergeRecordWithParamsByIdResponse">
+    <part name="parameters" element="tns:courseMergeRecordWithParamsByIdResponse" />
+  </message>
+  <message name="courseMergeRecordWithParamsByBatchUid">
+    <part name="parameters" element="tns:courseMergeRecordWithParamsByBatchUid" />
+  </message>
+  <message name="courseMergeRecordWithParamsByBatchUidResponse">
+    <part name="parameters" element="tns:courseMergeRecordWithParamsByBatchUidResponse" />
   </message>
   <message name="courseInsertRecordByBatchUid">
     <part name="parameters" element="tns:courseInsertRecordByBatchUid" />
@@ -1188,6 +1212,30 @@
     <operation name="courseCopyRecordByBatchUid">
       <input message="tns:courseCopyRecordByBatchUid" />
       <output message="tns:courseCopyRecordByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseCopyRecordWithParamsById">
+      <input message="tns:courseCopyRecordWithParamsById" />
+      <output message="tns:courseCopyRecordWithParamsByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseCopyRecordWithParamsByBatchUid">
+      <input message="tns:courseCopyRecordWithParamsByBatchUid" />
+      <output message="tns:courseCopyRecordWithParamsByBatchUidResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMergeRecordWithParamsById">
+      <input message="tns:courseMergeRecordWithParamsById" />
+      <output message="tns:courseMergeRecordWithParamsByIdResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+      <fault name="BbWsFault" message="tns:BbWsFault" />
+    </operation>
+    <operation name="courseMergeRecordWithParamsByBatchUid">
+      <input message="tns:courseMergeRecordWithParamsByBatchUid" />
+      <output message="tns:courseMergeRecordWithParamsByBatchUidResponse" />
       <fault name="WebServiceException" message="tns:WebServiceException" />
       <fault name="BbWsFault" message="tns:BbWsFault" />
     </operation>
@@ -2658,6 +2706,66 @@
         <soap:fault use="literal" name="BbWsFault" namespace="" />
       </fault>
     </operation>
+    <operation name="courseCopyRecordWithParamsById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseCopyRecordWithParamsByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMergeRecordWithParamsById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
+    <operation name="courseMergeRecordWithParamsByBatchUid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+      <fault name="BbWsFault">
+        <soap:fault use="literal" name="BbWsFault" namespace="" />
+      </fault>
+    </operation>
     <operation name="courseInsertRecordByBatchUid">
       <soap:operation soapAction="" />
       <input>
@@ -2721,7 +2829,7 @@
   </binding>
   <service name="BbWebservices">
     <port name="BbWebservicesPort" binding="tns:BbWebservicesPortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BbWebservices" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BbWebservices" />
     </port>
   </service>
 </definitions>

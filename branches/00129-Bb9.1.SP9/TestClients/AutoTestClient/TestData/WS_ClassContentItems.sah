@@ -1,0 +1,78 @@
+
+//*** Content
+_click(_link("/.*/", _in(_cell("Courses.label"))));
+_click(_link("TestClass_010_ID: TestClass_010"));
+_click(_span("Content"));
+//Test_010
+_click(_link("Test"));
+_click(_link("Create"));
+_setValue(_textbox("name"), "Test_010");
+_call(setTMEContent("descriptiontext", "Test_010_desc"));
+_call(setTMEContent("instructionstext", "Test_010_instr"));
+_click(_submit("Submit"));
+_click(_link("OK"));
+_setSelected(_select("assessmentId"), "Test_010");
+_click(_submit("Submit"));
+_click(_radio("fIsLinkVisible1"));
+_click(_submit("Submit"));
+
+//Survey_010
+_click(_link("Survey"));
+_click(_link("Create"));
+_setValue(_textbox("name"), "Survey_010");
+_call(setTMEContent("descriptiontext", "Survey_010_desc"));
+_call(setTMEContent("instructionstext", "Survey_010_instr"));
+_click(_submit("Submit"));
+_click(_link("OK"));
+_setSelected(_select("assessmentId"), "Survey_010");
+_click(_submit("Submit"));
+_click(_radio("fIsLinkVisible1"));
+_click(_submit("Submit"));
+
+
+//Assignment_010
+_click(_link("Assignment"));
+_setValue(_textbox("content_name"), "Assignment_010");
+_call(setTMEContent("content_desc_text", "Assignment_010_instr"));
+_setValue(_textbox("possible"), "100");
+_check(_checkbox("isAvailable"));
+_click(_submit("Submit"));
+
+//SPAssessment_010
+_click(_link("/Self and Peer Assessment.*/", _in(_div("evaMenu"))));
+_setValue(_textbox("title"), "SPAssessment_010");
+_call(setTMEContent("description_text", "SPAssessment_010_instr"));
+_click(_radio("isAvailable_true"));
+_click(_submit("Submit"));
+_click(_link("OK"));
+_click(_link("OK"));
+
+
+
+
+<browser>
+function setTMEContent(fieldName, content) {
+//frams's id was detected in Bb9.1 SP11, in SP9 it is not set
+//var wp = top.document.getElementById('contentFrame').contentWindow.tinyMceWrapper;
+  var edt_frame = null;
+  var arr = new Array();
+  arr = top.document.getElementsByName('content');
+  _log("arr.length = " + arr.length, "info");
+  for (var i = 0; i < arr.length; i++) {
+    var obj = document.getElementsByName('content').item(i);
+    var tname = obj.tagName.toString();
+    if (tname.toUpperCase().indexOf("FRAME") != -1) {
+      edt_frame = obj.contentWindow;
+      _log("edt_frame = obj;", "info");
+      break;
+    }
+  }
+  _log("typeof edt_frame = " + typeof edt_frame, "info");
+  //var edt = wp.getEditor(fieldName);
+  //var edt = tinyMceWrapper.editors.get( fieldName );
+  var edt = edt_frame.editors[fieldName];
+  //var tedt = edt._tinyMceEditor;
+  //tedt.setContent(content);
+  edt.setBodyHTML(content);
+}
+</browser>
