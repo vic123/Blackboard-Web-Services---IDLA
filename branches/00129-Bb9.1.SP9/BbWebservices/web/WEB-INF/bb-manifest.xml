@@ -37,8 +37,15 @@
 		<permission type="java.io.FilePermission" actions="delete,execute" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
 		sample with path - <permission type="java.io.FilePermission" name="..\..\..\..\blackboard\logs\-" actions="read,write,delete"/>
 		-->
-		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\BB_bb60\courses\-" />
-		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\BB_bb60\recyclebin\-" />
+		<!--
+		# We need access to following locations, but constructions of kind 
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\-\courses\-" />
+		# or 
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\*\recyclebin\-" />
+		# does not work.
+		-->
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\-" />
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\-" />
 	    <permission type="java.io.FilePermission" actions="read,write" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
 	    <permission type="java.lang.RuntimePermission" name="createClassLoader" actions="createClassLoader"/>
 	    <permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks" actions="suppressAccessChecks"/>
@@ -63,7 +70,11 @@
 	    <permission type="persist" name="userrole" actions="create,modify,delete"/>
 	    <permission type="persist" name="portalrole" actions="create,modify,delete"/>
 	    <permission type="persist" name="userlifecycleeventpropertyimpl" actions="create,modify,delete" />
-        <permission type="persist" name="userlifecycleeventimpl" actions="create,modify,delete" />
+            <permission type="persist" name="userlifecycleeventimpl" actions="create,modify,delete" />
+           <!--
+            <permission type="blackboard.persist.PersistPermission" name="wsclient" actions="create,modify"/>
+            <permission type="blackboard.persist.PersistPermission" name="wssession" actions="create,modify"/>
+            -->
 	</permissions>
   </plugin>
 </manifest>

@@ -11,11 +11,13 @@ package bbcrsws;
  */
 import blackboard.persist.Id;
 import blackboard.data.course.Course;
+import blackboard.admin.persist.course.CloneConfig;
 import blackboard.data.BbFile;
 import blackboard.admin.data.user.Person;
 import blackboard.admin.persist.user.impl.PersonDbLoader;
 
 import java.io.File;
+
 
 import bbwscommon.*;
 
@@ -68,6 +70,27 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
 
         public void setInputSourceCourse(CourseDetails inputSourceCourse) {
             this.inputSourceCourse = inputSourceCourse;
+        }
+    }
+
+    public static class CourseArgumentsWithTargetCourseInputAndCopyParams
+            extends CourseArgumentsWithTargetCourseInput {
+        private CourseCopyParams courseCopyParams;
+
+        public void initialize(Class<CourseDetails> wsResultClass, BbWsParams params, CourseDetails recordInput,
+            String dataAccessPackClassName, String innerDAPDefaultClassName, CourseDetails inputTargetCourseRecord,
+            CourseCopyParams courseCopyParams) {
+                super.initialize(wsResultClass, params, recordInput, dataAccessPackClassName, innerDAPDefaultClassName,
+                        inputTargetCourseRecord);
+                this.courseCopyParams  = courseCopyParams;
+        }
+
+        public CourseCopyParams getCourseCopyParams() {
+            return this.courseCopyParams;
+        }
+
+        public void setCourseCopyParams(CourseCopyParams courseCopyParams) {
+            this.courseCopyParams = courseCopyParams;
         }
     }
     
@@ -202,10 +225,13 @@ public abstract class CourseAccessPack <BbCourseType extends Course,
                     return getArgs().getInputRecord().getBannerImageFile();
                 }
                 @Override public void setBbFieldImp(String newValue) throws Exception {
-                    String upath = newValue.replace('\\', '/');
-                    File file = new File(upath);
-                BbFile bbf = new BbFile(file, file.getName());
-                bbObject.setBannerImageFile(bbf);
+                    if (BbWsUtil.nullSafeStringComparator(newValue, "") == 0) bbObject.setBannerImageFile(BbFile.UNSET_FILE);
+                    else {
+                        String upath = newValue.replace('\\', '/');
+                        File file = new File(upath);
+                        BbFile bbf = new BbFile(file, file.getName());
+                        bbObject.setBannerImageFile(bbf);
+                    }
                 }
             }.setBbField("bannerImageFile");
             new BbFieldSetter() {

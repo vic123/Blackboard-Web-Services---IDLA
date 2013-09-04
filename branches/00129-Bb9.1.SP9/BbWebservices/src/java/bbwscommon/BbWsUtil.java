@@ -15,8 +15,9 @@ import java.util.Calendar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-
-
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Array;
 
 /**
  *
@@ -86,22 +87,18 @@ public class BbWsUtil {
     public static java.util.List convertLinkedHashMap2List(java.util.LinkedHashMap lhm) {
         return Arrays.asList(lhm.values().toArray());
     }
-    public static String constructExceptionMessage(Exception e) {
-        BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered BbWsUtil.constructExceptionMessage() ");
-        String msg = e.toString();
-        if (e.getCause() != null) msg += " CAUSED BY: " + e.getCause().toString();
-        Throwable nested_e = e;
-		//!! add some loop variable protecting of the dead cycle (to allow no more than 10 loops for example) 
-        while (nested_e instanceof blackboard.base.NestedException) {
-        //if (e instanceof blackboard.base.NestedException) {
-            BbWsLog.logForward(LogService.Verbosity.DEBUG, "BbWsUtil.constructExceptionMessage() nested_e: " + String.valueOf(nested_e));
-            nested_e = ((blackboard.base.NestedException)nested_e).getNestedException();
-            if (nested_e != null) {
-                msg += " NESTED EXCEPTION: " + nested_e.toString();
-                if (nested_e.getCause() != null) msg += " CAUSED BY: " + nested_e.getCause().toString();
-            }
+    private static String constructExceptionMessage(Throwable e, String res, int recDepth) {
+        if (recDepth > 15) res = res + " \r\nMORE THAN 15 CAUSES - Possible dead loop in exceptions' \"cause chain\"";
+        else {
+            res = res + e.toString();
+            if (e.getCause() != null) res = constructExceptionMessage(e.getCause(), res + " \r\nCAUSED BY: ", recDepth + 1);
         }
-        return msg;
+        return res;
+    }
+
+    public static String constructExceptionMessage(Exception e) {
+        BbWsLog.logForward(LogService.Verbosity.DEBUG, "Entered BbWsUtil.constructExceptionMessage(Exception e) ");
+        return constructExceptionMessage(e, "", 0);
     }
 
     public static FilteredDbObjectMap getFullFilteredMap(DbObjectMap dbObjectMap)
@@ -134,6 +131,17 @@ public class BbWsUtil {
         }*/
         return field_index;
     }
-    
-    
+
+    public static <T extends BbEnum> List<String> getBbEnumFieldNames(Class<T> enumClass) throws IllegalAccessException {
+    //public static List<String> getBbEnumFieldNames(Class<?> enumClass) throws IllegalAccessException {
+        Field[] fields = enumClass.getFields();
+        ArrayList<String> list = new ArrayList<String>(fields.length);
+        for (Field f : fields) {
+            if ((Modifier.isStatic(f.getModifiers())) && ((f.get(enumClass) instanceof BbEnum))) {
+              String fname = f.getName();
+              list.add(fname);
+            }
+        }
+        return list;
+    }
 }
