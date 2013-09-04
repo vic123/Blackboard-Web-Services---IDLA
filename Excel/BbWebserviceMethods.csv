@@ -3965,9 +3965,9 @@ courseDeleteRecordById.init(this.testArgs.course);",,,"    public courseDetails 
           else return null;
         }
     }",,"CourseDetails courseDeleteRecordById(BbWsParams, CourseDetails)"
-courseCopyRecordById,courseCopyRecordById (bb_platform),CourseCopyRecordById,Course,course,Copy,ById,Record,Record,courseCopyRecordById,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,CopyRecordById,WithTargetCourseInput,CourseAccessPack.CourseArgumentsWithTargetCourseInput,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+courseCopyRecordById,courseCopyRecordById (bb_platform),CourseCopyRecordById,Course,course,Copy,ById,Record,Record,courseCopyRecordById,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,CopyRecordById,WithTargetCourseInputAndCopyParams,CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
         args.initialize(CourseDetails.class, params, inputRecord,
-                    CourseAccessPack.class.getName(), ""CopyRecordById"");",Course,"                (@WebParam(name = ""params"") BbWsParams params,
+                    CourseAccessPack.class.getName(), ""CopyRecordById"", inputTargetCourseRecord, null);",Course,"                (@WebParam(name = ""params"") BbWsParams params,
                     @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
                     @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault","(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord)","(@params, inputRecord, inputTargetCourseRecord);","    @WebMethod
     public CourseDetails courseCopyRecordById
@@ -3976,10 +3976,10 @@ courseCopyRecordById,courseCopyRecordById (bb_platform),CourseCopyRecordById,Cou
                     @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault
     {
         BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered courseCopyRecordById()"", this);
-        CourseAccessPack.CourseArgumentsWithTargetCourseInput args
-                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
         args.initialize(CourseDetails.class, params, inputRecord,
-                    CourseAccessPack.class.getName(), ""CopyRecordById"");
+                    CourseAccessPack.class.getName(), ""CopyRecordById"", inputTargetCourseRecord, null);
         BbWsApiProcessor.start(args);
         return args.getResultRecord();
     }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
@@ -4011,9 +4011,9 @@ courseCopyRecordById.init(this.testArgs.course);",,,"    public courseDetails co
           else return null;
         }
     }",,"CourseDetails courseCopyRecordById(BbWsParams, CourseDetails)"
-courseCopyRecordByBatchUid,courseCopyRecordByBatchUid (bb_platform),CourseCopyRecordByBatchUid,Course,course,Copy,ByBatchUid,Record,Record,courseCopyRecordByBatchUid,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,CopyRecordByBatchUid,WithTargetCourseInput,CourseAccessPack.CourseArgumentsWithTargetCourseInput,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+courseCopyRecordByBatchUid,courseCopyRecordByBatchUid (bb_platform),CourseCopyRecordByBatchUid,Course,course,Copy,ByBatchUid,Record,Record,courseCopyRecordByBatchUid,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,CopyRecordByBatchUid,WithTargetCourseInputAndCopyParams,CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
         args.initialize(CourseDetails.class, params, inputRecord,
-                    CourseAccessPack.class.getName(), ""CopyRecordByBatchUid"");",Course,"                (@WebParam(name = ""params"") BbWsParams params,
+                    CourseAccessPack.class.getName(), ""CopyRecordByBatchUid"", inputTargetCourseRecord, null);",Course,"                (@WebParam(name = ""params"") BbWsParams params,
                     @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
                     @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault","(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord)","(@params, inputRecord, inputTargetCourseRecord);","    @WebMethod
     public CourseDetails courseCopyRecordByBatchUid
@@ -4022,10 +4022,10 @@ courseCopyRecordByBatchUid,courseCopyRecordByBatchUid (bb_platform),CourseCopyRe
                     @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault
     {
         BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered courseCopyRecordByBatchUid()"", this);
-        CourseAccessPack.CourseArgumentsWithTargetCourseInput args
-                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
         args.initialize(CourseDetails.class, params, inputRecord,
-                    CourseAccessPack.class.getName(), ""CopyRecordByBatchUid"");
+                    CourseAccessPack.class.getName(), ""CopyRecordByBatchUid"", inputTargetCourseRecord, null);
         BbWsApiProcessor.start(args);
         return args.getResultRecord();
     }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
@@ -4209,10 +4209,214 @@ courseDeleteRecordByBatchUid.init(this.testArgs.course);",,,"    public courseDe
           else return null;
         }
     }",,"CourseDetails courseDeleteRecordByBatchUid(BbWsParams, CourseDetails)"
-, (bb_platform),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,testArgs...execute();,,,,,,,,,,
-, (bb_platform),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,testArgs...execute();,,,,,,,,,,
-, (bb_platform),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,testArgs...execute();,,,,,,,,,,
-, (bb_platform),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,testArgs...execute();,,,,,,,,,,
+courseCopyRecordWithParamsById,courseCopyRecordWithParamsById (bb_platform),CourseCopyRecordWithParamsById,Course,course,Copy,WithParamsById,Record,Record,courseCopyRecordWithParamsById,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,CopyRecordWithParamsById,WithTargetCourseInputAndCopyParams,CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""CopyRecordWithParamsById"", 
+                    inputTargetCourseRecord, inputParams);",Course,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault","(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)","(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);","    @WebMethod
+    public CourseDetails courseCopyRecordWithParamsById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered courseCopyRecordWithParamsById()"", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""CopyRecordWithParamsById"", 
+                    inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _courseCopyRecordWithParamsById : _courseTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseCopyRecordWithParamsById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,testArgs.course.courseCopyRecordWithParamsById.execute();,public _courseCopyRecordWithParamsById courseCopyRecordWithParamsById;,,,"courseCopyRecordWithParamsById = new _courseCopyRecordWithParamsById();
+courseCopyRecordWithParamsById.init(this.testArgs.course);",,,"    public courseDetails courseCopyRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)    {
+        return base.CourseCopyRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+    }","
+    //Course Copy Record WithParamsById
+    public courseDetails CourseCopyRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)
+    {
+        try
+        {
+           return bbAdded.courseCopyRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+        catch (Exception ex)
+        {
+          BlackBoardWebServices.LogError(""bbAdded.CourseCopyRecordWithParamsById"", ex);
+          if (doRethrow) throw;
+          else return null;
+        }
+    }",,"CourseDetails courseCopyRecordWithParamsById(BbWsParams, CourseDetails)"
+courseCopyRecordWithParamsByBatchUid,courseCopyRecordWithParamsByBatchUid (bb_platform),CourseCopyRecordWithParamsByBatchUid,Course,course,Copy,WithParamsByBatchUid,Record,Record,courseCopyRecordWithParamsByBatchUid,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,CopyRecordWithParamsByBatchUid,WithTargetCourseInputAndCopyParams,CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""CopyRecordWithParamsByBatchUid"", 
+                    inputTargetCourseRecord, inputParams);",Course,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault","(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)","(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);","    @WebMethod
+    public CourseDetails courseCopyRecordWithParamsByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered courseCopyRecordWithParamsByBatchUid()"", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""CopyRecordWithParamsByBatchUid"", 
+                    inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _courseCopyRecordWithParamsByBatchUid : _courseTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseCopyRecordWithParamsByBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,testArgs.course.courseCopyRecordWithParamsByBatchUid.execute();,public _courseCopyRecordWithParamsByBatchUid courseCopyRecordWithParamsByBatchUid;,,,"courseCopyRecordWithParamsByBatchUid = new _courseCopyRecordWithParamsByBatchUid();
+courseCopyRecordWithParamsByBatchUid.init(this.testArgs.course);",,,"    public courseDetails courseCopyRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)    {
+        return base.CourseCopyRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+    }","
+    //Course Copy Record WithParamsByBatchUid
+    public courseDetails CourseCopyRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)
+    {
+        try
+        {
+           return bbAdded.courseCopyRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+        catch (Exception ex)
+        {
+          BlackBoardWebServices.LogError(""bbAdded.CourseCopyRecordWithParamsByBatchUid"", ex);
+          if (doRethrow) throw;
+          else return null;
+        }
+    }",,"CourseDetails courseCopyRecordWithParamsByBatchUid(BbWsParams, CourseDetails)"
+courseMergeRecordWithParamsById,courseMergeRecordWithParamsById (bb_platform),CourseMergeRecordWithParamsById,Course,course,Merge,WithParamsById,Record,Record,courseMergeRecordWithParamsById,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,MergeRecordWithParamsById,WithTargetCourseInputAndCopyParams,CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""MergeRecordWithParamsById"", 
+                    inputTargetCourseRecord, inputParams);",Course,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault","(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)","(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);","    @WebMethod
+    public CourseDetails courseMergeRecordWithParamsById
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered courseMergeRecordWithParamsById()"", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""MergeRecordWithParamsById"", 
+                    inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _courseMergeRecordWithParamsById : _courseTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMergeRecordWithParamsById(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,testArgs.course.courseMergeRecordWithParamsById.execute();,public _courseMergeRecordWithParamsById courseMergeRecordWithParamsById;,,,"courseMergeRecordWithParamsById = new _courseMergeRecordWithParamsById();
+courseMergeRecordWithParamsById.init(this.testArgs.course);",,,"    public courseDetails courseMergeRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)    {
+        return base.CourseMergeRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+    }","
+    //Course Merge Record WithParamsById
+    public courseDetails CourseMergeRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)
+    {
+        try
+        {
+           return bbAdded.courseMergeRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+        catch (Exception ex)
+        {
+          BlackBoardWebServices.LogError(""bbAdded.CourseMergeRecordWithParamsById"", ex);
+          if (doRethrow) throw;
+          else return null;
+        }
+    }",,"CourseDetails courseMergeRecordWithParamsById(BbWsParams, CourseDetails)"
+courseMergeRecordWithParamsByBatchUid,courseMergeRecordWithParamsByBatchUid (bb_platform),CourseMergeRecordWithParamsByBatchUid,Course,course,Merge,WithParamsByBatchUid,Record,Record,courseMergeRecordWithParamsByBatchUid,CourseDetails,courseDetails,inputRecord,CourseDetails,"@WebParam(name = ""inputRecord"") CourseDetails inputRecord",courseDetails inputRecord,MergeRecordWithParamsByBatchUid,WithTargetCourseInputAndCopyParams,CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams,BbWsApiProcessor,        BbWsApiProcessor.start(args);,"                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""MergeRecordWithParamsByBatchUid"", 
+                    inputTargetCourseRecord, inputParams);",Course,"                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault","(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)","(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);","    @WebMethod
+    public CourseDetails courseMergeRecordWithParamsByBatchUid
+                (@WebParam(name = ""params"") BbWsParams params,
+                    @WebParam(name = ""inputRecord"") CourseDetails inputRecord,
+                    @WebParam(name = ""inputTargetCourseRecord"") bbcrsws.CourseDetails inputTargetCourseRecord, 
+                    @WebParam(name = ""inputParams"") CourseCopyParams inputParams
+) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, ""Entered courseMergeRecordWithParamsByBatchUid()"", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), ""MergeRecordWithParamsByBatchUid"", 
+                    inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }",,,,args.wsResultRecord,args.wsInputRecord,"        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+","    class _courseMergeRecordWithParamsByBatchUid : _courseTestCase, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMergeRecordWithParamsByBatchUid(args.param, args.wsInputRecord);
+        }
+        override public void preAction() {
+            args.wsInputRecord.userName = args.testUserName;
+        }
+    }
+",,testArgs.course.courseMergeRecordWithParamsByBatchUid.execute();,public _courseMergeRecordWithParamsByBatchUid courseMergeRecordWithParamsByBatchUid;,,,"courseMergeRecordWithParamsByBatchUid = new _courseMergeRecordWithParamsByBatchUid();
+courseMergeRecordWithParamsByBatchUid.init(this.testArgs.course);",,,"    public courseDetails courseMergeRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)    {
+        return base.CourseMergeRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+    }","
+    //Course Merge Record WithParamsByBatchUid
+    public courseDetails CourseMergeRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams)
+    {
+        try
+        {
+           return bbAdded.courseMergeRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+        catch (Exception ex)
+        {
+          BlackBoardWebServices.LogError(""bbAdded.CourseMergeRecordWithParamsByBatchUid"", ex);
+          if (doRethrow) throw;
+          else return null;
+        }
+    }",,"CourseDetails courseMergeRecordWithParamsByBatchUid(BbWsParams, CourseDetails)"
 , (bb_platform),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,testArgs...execute();,,,,,,,,,,
 , (bb_platform),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,testArgs...execute();,,,,,,,,,,
 , (bb_platform),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,testArgs...execute();,,,,,,,,,,
