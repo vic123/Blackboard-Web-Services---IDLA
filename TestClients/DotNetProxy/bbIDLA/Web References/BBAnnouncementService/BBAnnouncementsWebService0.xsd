@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://www.ncl.ac.uk/BBAnnouncementsWebService" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://www.ncl.ac.uk/BBAnnouncementsWebService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBAnnouncementsWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
   <xs:element name="WebServiceException" type="tns:WebServiceException" />
   <xs:element name="deleteAnnouncement" type="tns:deleteAnnouncement" />
   <xs:element name="deleteAnnouncementResponse" type="tns:deleteAnnouncementResponse" />
@@ -102,7 +102,7 @@
   </xs:complexType>
   <xs:complexType name="getAllSystemAnnouncementsResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElements">
@@ -198,7 +198,7 @@
   </xs:complexType>
   <xs:complexType name="getAllAvailableAnnouncementsForGivenUserIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllSystemAnnouncementsWithNamedElements">
@@ -241,7 +241,7 @@
   </xs:complexType>
   <xs:complexType name="getAllAnnouncementsForGivenCourseIdResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns1:stringArray" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getAllAnnouncementsForGivenCourseIdWithNamedElements">

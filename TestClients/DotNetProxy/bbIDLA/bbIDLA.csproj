@@ -129,10 +129,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBAnnouncementsWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBAnnouncementsWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBAnnouncementService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBAnnouncementsWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBAnnouncementsWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -140,10 +140,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBAnnouncementService_BBAnnouncementsWebService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBCalendarWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCalendarWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBCalendarService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBCalendarWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCalendarWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -151,10 +151,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBCalendarService_BBCalendarWebService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBContentWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBContentWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBContentService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBContentWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBContentWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -162,10 +162,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBContentService_BBContentWebService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBDiscussionBoardWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBDiscussionBoardWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBDiscussionBoardService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBDiscussionBoardWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBDiscussionBoardWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -173,10 +173,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBDiscussionBoardService_BBDiscussionBoardWebServiceService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBGroupWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBGroupService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBGroupWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBGroupWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -184,10 +184,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBGroupService_BBGroupWebServiceService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBCourseService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBCourseWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -195,10 +195,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBCourseWebService_BBCourseWebService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBGradebookWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBGradebookWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBGradebookService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBGradebookWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBGradebookWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -206,10 +206,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBGradebookService_BBGradebookWebServiceService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBUserWebService%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBUserWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBUserService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BBUserWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBUserWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -217,10 +217,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>bbIDLA_BBUserService_BBUserWebService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices%3fwsdl">
+    <WebReferenceUrl Include="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BbWebservices%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\BBAddedService\</RelPath>
-      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-bb_bb60/BbWebservices%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BbWebservices%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
