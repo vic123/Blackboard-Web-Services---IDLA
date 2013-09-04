@@ -1,3 +1,5 @@
+#define BB_ADDED//!!
+
 using System;
 using System.Data;
 using System.Configuration;
@@ -11,12 +13,19 @@ using System.Web.UI.HtmlControls;
 using System.Reflection;
 
 
+
 using System.Collections.Generic;
 
 using bbIDLA;
+
 //!!
-//using bbIDLA.BBAddedService;//--this is for work through DotNetProxy
+
+#if (BB_ADDED)
+using bbIDLA.BBAddedService;//--this is for work through DotNetProxy
+#else
 using bbws;//--this is for direct web services access
+#endif
+
 
 public partial class BbWsTest : System.Web.UI.Page
 {
@@ -24,12 +33,12 @@ public partial class BbWsTest : System.Web.UI.Page
         try {
 
             testArgs = new TestArgsStruct();
-            
+            /*
             RunUserTest();
             RunCourseMembershipTest();
             RunPortalRoleTest();
             RunObserverAssociationTest();
-            RunPortalRoleMembershipTest();
+            RunPortalRoleMembershipTest();*/
             RunCourseTest();
         } catch (Exception e1) {
             Response.Output.Write("<PRE>");
@@ -81,7 +90,8 @@ public partial class BbWsTest : System.Web.UI.Page
             courseMembership.currentTestKeySuffix = courseMembership.testKeySuffixes[0];
 
             course.ClearInputsAndResults();
-            course.currentTestKeySuffix = course.testKeySuffixes[0];
+            //!!course.currentTestKeySuffix = course.testKeySuffixes[0];
+            course.currentTestKeySuffix = course.testKeySuffixes[2];
              
             portalRole.ClearInputsAndResults();
             portalRole.currentTestKeySuffix = portalRole.testKeySuffixes[0];
@@ -120,7 +130,9 @@ public partial class BbWsTest : System.Web.UI.Page
     //class TestArgs<TestActionType> where TestActionType : TestAction<TestArgs<TestActionType>> {
     abstract class TestArgs<WsDataType> where WsDataType : new() {
         public String baseUserName = "student_001";  //must have more than one Secondary Institution Roles
-        public String baseCourseId = "TestClass_001_ID"; //TestClass_001_ID has to contain group with student_001
+        //!!public String baseCourseId = "TestClass_001_ID"; //TestClass_001_ID has to contain group with student_001
+        public String baseCourseId = "TestClass_010_ID"; //TestClass_001_ID has to contain group with student_001
+        //public String baseCourseId = "ALG101";
         public String currentTestKeySuffix;
         public String[] testKeySuffixes;
 
@@ -134,8 +146,11 @@ public partial class BbWsTest : System.Web.UI.Page
         */
 
         //!!
-        //public BbWsWebReference bbWs = new BbWsWebReference(true); //--this is for work through DotNetProxy
+#if (BB_ADDED)
+        public BbWsWebReference bbWs = new BbWsWebReference(true); //--this is for work through DotNetProxy
+#else
         public bbws.BbWebservices bbWs = new bbws.BbWebservices(); //--this is for direct web services access
+#endif
         public bbcrsws.BBCourseWebService bbCrsWs = new bbcrsws.BBCourseWebService();
         public bbgrpws.BBGroupWebServiceService bbGrpWs = new bbgrpws.BBGroupWebServiceService();
 
@@ -152,8 +167,8 @@ public partial class BbWsTest : System.Web.UI.Page
             this.response = context.Response;
             param.password = "password"; //!!
             //public static enum DataLogSeverity{DEBUG, INFO, WARN, ERROR, FATAL}; 
-            //param.dataLogSeverity = "DEBUG";
-            param.dataLogSeverity = "INFO";
+            param.dataLogSeverity = "DEBUG";
+            //param.dataLogSeverity = "INFO";
             //public static enum DataVerbosity{NONE, ONLY_ID, MINIMAL, STANDARD, EXTENDED, CUSTOM}; 
             param.dataVerbosity = "EXTENDED";
             //param.dataVerbosity = "CUSTOM";

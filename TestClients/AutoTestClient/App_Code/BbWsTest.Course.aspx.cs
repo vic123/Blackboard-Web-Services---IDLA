@@ -1,3 +1,5 @@
+#define BB_ADDED//!!
+
 using System;
 using System.Data;
 using System.Configuration;
@@ -8,32 +10,48 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-
 using System.Collections.Generic;
 
-//!!
-//using bbIDLA.BBAddedService;
-using bbws;
+#if (BB_ADDED)
+using bbIDLA.BBAddedService;//--this is for work through DotNetProxy
+#else
+using bbws;//--this is for direct web services access
+#endif
+
 
 public partial class BbWsTest : System.Web.UI.Page
 {
     protected void RunCourseTest() {
         //testArgs.ClearAllTestData();
-        testArgs.course.courseLoadRecordById.execute();
-        testArgs.course.courseLoadRecordByCourseId.execute();
-        testArgs.course.courseLoadRecordByBatchUid.execute();
-        testArgs.course.courseLoadListByTemplate.execute();
-        testArgs.course.courseInsertRecordById.execute();
-        testArgs.course.courseUpdateRecordById.execute();
-        testArgs.course.coursePersistRecordById.execute();
-        testArgs.course.courseDeleteRecordById.execute();
+        /*        
+                testArgs.course.courseLoadRecordById.execute();
+                testArgs.course.courseLoadRecordByCourseId.execute();
+                testArgs.course.courseLoadRecordByBatchUid.execute();
+                testArgs.course.courseLoadListByTemplate.execute();
+                testArgs.course.courseInsertRecordById.execute();
+                testArgs.course.courseUpdateRecordById.execute();
+                testArgs.course.coursePersistRecordById.execute();
+                testArgs.course.courseDeleteRecordById.execute();
+                testArgs.course.courseCopyRecordById.execute();
+                testArgs.course.courseCopyRecordByBatchUid.execute();
+                testArgs.course.courseInsertRecordByBatchUid.execute();
+                testArgs.course.courseUpdateRecordByBatchUid.execute();
+                testArgs.course.coursePersistRecordByBatchUid.execute();
+                testArgs.course.courseDeleteRecordByBatchUid.execute();
+                testArgs.course.courseCopyRecordWithParamsById.execute();
+                testArgs.course.courseCopyRecordWithParamsByBatchUid.execute();
+                testArgs.course.courseMergeRecordWithParamsById.execute();
+                testArgs.course.courseMergeRecordWithParamsByBatchUid.execute();
+          */
+        //testArgs.course.courseInsertRecordById.execute();
+        //testArgs.course.courseInsertRecordByBatchUid.execute();
+
         testArgs.course.courseCopyRecordById.execute();
+        testArgs.course.courseCopyRecordWithParamsById.execute();
         testArgs.course.courseCopyRecordByBatchUid.execute();
-        testArgs.course.courseInsertRecordByBatchUid.execute();
-        testArgs.course.courseUpdateRecordByBatchUid.execute();
-        testArgs.course.coursePersistRecordByBatchUid.execute();
-        testArgs.course.courseDeleteRecordByBatchUid.execute();
-         
+        testArgs.course.courseCopyRecordWithParamsByBatchUid.execute();
+        testArgs.course.courseMergeRecordWithParamsById.execute();
+        testArgs.course.courseMergeRecordWithParamsByBatchUid.execute();
     }
 
     class _courseTestArgs : TestArgs<courseDetails> {
@@ -50,7 +68,10 @@ public partial class BbWsTest : System.Web.UI.Page
             return wsResultRecord.bbId;
         }
 
-        public override void SetFieldsMinimal() { }
+        public override void SetFieldsMinimal() {
+            wsInputRecord.batchUid = "batchUid" + currentTestKeySuffix;
+            wsInputRecord.title = wsInputRecord.title + currentTestKeySuffix;
+        }
         public override void UpdateFieldsMinimal() { }
 
 
@@ -211,6 +232,10 @@ public partial class BbWsTest : System.Web.UI.Page
         public _courseUpdateRecordByBatchUid courseUpdateRecordByBatchUid;
         public _coursePersistRecordByBatchUid coursePersistRecordByBatchUid;
         public _courseDeleteRecordByBatchUid courseDeleteRecordByBatchUid;
+        public _courseCopyRecordWithParamsById courseCopyRecordWithParamsById;
+        public _courseCopyRecordWithParamsByBatchUid courseCopyRecordWithParamsByBatchUid;
+        public _courseMergeRecordWithParamsById courseMergeRecordWithParamsById;
+        public _courseMergeRecordWithParamsByBatchUid courseMergeRecordWithParamsByBatchUid;
 
 
 
@@ -236,7 +261,6 @@ public partial class BbWsTest : System.Web.UI.Page
             courseDeleteRecordById.init(this.testArgs.course);
             courseCopyRecordById = new _courseCopyRecordById();
             courseCopyRecordById.init(this.testArgs.course);
-
             courseCopyRecordByBatchUid = new _courseCopyRecordByBatchUid();
             courseCopyRecordByBatchUid.init(this.testArgs.course);
             courseInsertRecordByBatchUid = new _courseInsertRecordByBatchUid();
@@ -247,6 +271,14 @@ public partial class BbWsTest : System.Web.UI.Page
             coursePersistRecordByBatchUid.init(this.testArgs.course);
             courseDeleteRecordByBatchUid = new _courseDeleteRecordByBatchUid();
             courseDeleteRecordByBatchUid.init(this.testArgs.course);
+            courseCopyRecordWithParamsById = new _courseCopyRecordWithParamsById();
+            courseCopyRecordWithParamsById.init(this.testArgs.course);
+            courseCopyRecordWithParamsByBatchUid = new _courseCopyRecordWithParamsByBatchUid();
+            courseCopyRecordWithParamsByBatchUid.init(this.testArgs.course);
+            courseMergeRecordWithParamsById = new _courseMergeRecordWithParamsById();
+            courseMergeRecordWithParamsById.init(this.testArgs.course);
+            courseMergeRecordWithParamsByBatchUid = new _courseMergeRecordWithParamsByBatchUid();
+            courseMergeRecordWithParamsByBatchUid.init(this.testArgs.course);
 
         }
     }
@@ -309,6 +341,7 @@ public partial class BbWsTest : System.Web.UI.Page
             //args.currentTestKeySuffix = args.testKeySuffixes[1];  //!!
             args.wsInputRecord.batchUid = args.wsInputRecord.batchUid + args.currentTestKeySuffix;
             args.wsInputRecord.courseId = args.wsInputRecord.courseId + args.currentTestKeySuffix;
+            args.SetFieldsExtended();//!!
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
             args.wsInputRecord.bannerImageFile = args.param.missFieldTag;
             args.ClearResults();
@@ -380,12 +413,14 @@ public partial class BbWsTest : System.Web.UI.Page
             id = args.wsResultRecord.bbId;
             batch_uid = args.wsResultRecord.batchUid;
             args.wsInputRecord = args.wsResultRecord;
-            
+
             args.SetFieldsExtended();
+            //args.SetFieldsMinimal();
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
             args.wsInputRecord.bbId = args.param.missFieldTag;
             args.wsInputRecord.batchUid = args.wsInputRecord.batchUid + args.currentTestKeySuffix;
             args.wsInputRecord.courseId = args.wsInputRecord.courseId + args.currentTestKeySuffix;
+            args.wsInputRecord.isAvailable = "false";//!!
             //??Sometimes, could reproduce only with args.wsInputRecord.isAvailable = "false", occurs (Bb rel. 9.0.440.0):
             //blackboard.persist.PersistenceException: blackboard.persist.PersistenceException: Process failure. NESTED EXCEPTION: blackboard.persist.PersistenceException: Process failure.
             //Root Cause: 
@@ -413,11 +448,9 @@ public partial class BbWsTest : System.Web.UI.Page
             //3. After record is deleted from GUI, copy starts working again
 
             args.wsInputRecord.batchUid = args.wsResultRecord.batchUid;
-            args.courseDeleteRecordByBatchUid.executeImp();//!!
+            args.courseDeleteRecordByBatchUid.executeImp();
         }
     }
-
-
     class _courseCopyRecordByBatchUid : _courseCopyRecordById, ITestAction {
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.courseCopyRecordByBatchUid(args.param, args.wsInputRecord, target_course);
@@ -428,6 +461,122 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.bbId = args.param.missFieldTag;
         }
     }
+
+    class _courseCopyRecordWithParamsById : _courseTestCase, ITestAction {
+        protected courseDetails target_course = new courseDetails();
+        protected courseCopyParams copy_params = new courseCopyParams();
+        String id;
+        protected String batch_uid;
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseCopyRecordWithParamsById(args.param, args.wsInputRecord, target_course, copy_params);
+        }
+        override public void preAction() {
+            args.courseLoadRecordByCourseId.PreActionAndExecuteImp();
+            id = args.wsResultRecord.bbId;
+            batch_uid = args.wsResultRecord.batchUid;
+            args.wsInputRecord = args.wsResultRecord;
+
+            args.SetFieldsExtended();
+            //args.SetFieldsMinimal();
+            args.SetStandardUnsetabbleFieldsToMissFieldTag();
+            args.wsInputRecord.bbId = args.param.missFieldTag;
+            args.wsInputRecord.batchUid = args.wsInputRecord.batchUid + args.currentTestKeySuffix;
+            args.wsInputRecord.courseId = args.wsInputRecord.courseId + args.currentTestKeySuffix;
+            args.wsInputRecord.courseId = args.wsInputRecord.courseId + "_exc_MEMBERSHIP_GROUP_GRADEBOOK";
+            //args.wsInputRecord.isAvailable = "false";//!!
+            List<String> area_list = new List<String>();
+            //bbwscommon.BbWsException: BbWsIdla custom error: CourseCloneParams include/exclude area lists may contain following values: 
+            //[ASSESSMENT, CATEGORY_MEMBERSHIP, ANNOUNCEMENT, GLOSSARY, CALENDAR, RUBRIC, TASK, BLOG, JOURNAL, SETTING, STD_ALIGNMENT, CONTENT, COURSE_TOC, CHAT_ARCHIVE, CHAT_SESSION, DROP_BOX, COURSE_STATISTICS, STAFF_INFORMATION, EARLY_WARNING_SYSTEM, DISCUSSION_BOARD, DISCUSSION_BOARD_ARCHIVE, GROUP, GRADEBOOK, GRADES, GRADEBOOK_CLEAR, MEMBERSHIP, MEMBERSHIP_EXACT, COURSE_CARTRIDGE, DISCUSSION_CARTRIDGE, ASSESSMENT_CARTRIDGE, AVAILABILITY_RULE, ALL, DEFAULT] 
+            //CAUSED BY: java.lang.IllegalArgumentException: Element not found in enumeration: COURSE_TOC1 of class: blackboard.admin.persist.course.CloneConfig$A
+            area_list.Add("MEMBERSHIP");
+            area_list.Add("GROUP");
+            area_list.Add("GRADEBOOK");
+            
+            copy_params.excludeAreaList = area_list.ToArray();
+            //??Sometimes, could reproduce only with args.wsInputRecord.isAvailable = "false", occurs (Bb rel. 9.0.440.0):
+            //blackboard.persist.PersistenceException: blackboard.persist.PersistenceException: Process failure. NESTED EXCEPTION: blackboard.persist.PersistenceException: Process failure.
+            //Root Cause: 
+            //com.inet.tds.be: Msg 547, Level 16, State 0, Procedure course_users_exact_cp, Line 37, Sqlstate 23000
+            //[W2KS\SQL2K5]The INSERT statement conflicted with the FOREIGN KEY constraint "course_users_fk2". The conflict occurred in database "bb_bb60", table "dbo.course_main", column 'pk1'.
+
+            args.wsInputRecord.isAvailable = "false"; //!!
+            //args.wsInputRecord.bannerImageFile = "C:\\bannerImageFile_bbws03";
+            target_course = args.wsInputRecord;
+            args.ClearInputs();
+            args.ClearResults();
+            args.wsInputRecord.bbId = id;
+//            args.wsResultRecord = args.bbWs.courseCopyRecordWithParamsById(args.param, args.wsInputRecord, target_course, copy_params);
+        }
+        override public void postAction() {
+            //args.wsInputRecord.bbId = args.wsResultRecord.bbId;
+            //??args.courseDeleteRecordById.executeImp();
+            //On Bb 9.1 SP5 some mystic happens when copied course record is deleted with courseDeleteRecordById
+            //1. Upon first run, course is copied
+            //2. After it was deleted with courseDeleteRecordById, second copy attempt fails with 
+            //      blackboard.persist.PersistenceException: Process failure.
+            //          Caused by blackboard.plugin.bbwiki.exception.BbWikiException: Failed to create Wiki
+            //          Caused by: com.xythos.storageServer.api.DuplicateEntryException
+            //  BUT, course actually gets copied and shows up in Bb GUI, 
+            //  AND, values of at least isAvailable, allowGuests and navigationStyle fields in 
+            //      this course are set different than passed, probably default ones (i.e. something is happening on field level too)
+            //3. After record is deleted from GUI, copy starts working again
+
+            args.wsInputRecord.batchUid = args.wsResultRecord.batchUid;
+            args.courseDeleteRecordByBatchUid.executeImp();
+        }
+    }
+
+    class _courseMergeRecordWithParamsById : _courseCopyRecordWithParamsById, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMergeRecordWithParamsById(args.param, args.wsInputRecord, target_course, copy_params);
+        } 
+        override public void preAction() {
+            base.preAction();
+            target_course.courseId = target_course.courseId + "_merged_inc_MEMBERSHIP_GROUP";
+            base.executeImp();
+            target_course = args.wsResultRecord;
+            //args.wsInputRecord.isAvailable = "false";//!!
+            List<String> area_list = new List<String>();
+            area_list.Add("MEMBERSHIP");
+            area_list.Add("GROUP");
+            copy_params.excludeAreaList = null;
+            copy_params.includeAreaList = area_list.ToArray();
+            target_course.isAvailable = "true";
+            //args.wsInputRecord.bannerImageFile = "C:\\bannerImageFile_bbws03";
+            //args.SetStandardUnsetabbleFieldsToMissFieldTag();
+            args.wsInputRecord.isAvailable = "false"; //!!
+            String bbId = args.wsInputRecord.bbId;
+            args.ClearInputs();
+            args.ClearResults();
+            args.wsInputRecord.bbId = bbId;
+            //            args.wsResultRecord = args.bbWs.courseCopyRecordWithParamsById(args.param, args.wsInputRecord, target_course, copy_params);
+        }
+        override public void postAction() {
+            args.wsInputRecord.batchUid = args.wsResultRecord.batchUid;
+            args.courseDeleteRecordByBatchUid.executeImp();
+        }
+    }    
+    class _courseCopyRecordWithParamsByBatchUid : _courseCopyRecordWithParamsById, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseCopyRecordWithParamsByBatchUid(args.param, args.wsInputRecord, target_course, copy_params);
+        }
+        override public void preAction() {
+            base.preAction();
+            args.wsInputRecord.batchUid = batch_uid;
+            args.wsInputRecord.bbId = args.param.missFieldTag;
+        }
+    }
+    class _courseMergeRecordWithParamsByBatchUid : _courseMergeRecordWithParamsById, ITestAction {
+        override public void executeImp() {
+            args.wsResultRecord = args.bbWs.courseMergeRecordWithParamsByBatchUid(args.param, args.wsInputRecord, target_course, copy_params);
+        }
+        override public void preAction() {
+            base.preAction();
+            args.wsInputRecord.batchUid = batch_uid;
+            args.wsInputRecord.bbId = args.param.missFieldTag;
+        }
+    }
+
     class _courseInsertRecordByBatchUid : _courseTestCase, ITestAction {
         override public void executeImp() {
             args.wsResultRecord = args.bbWs.courseInsertRecordByBatchUid(args.param, args.wsInputRecord);
@@ -441,7 +590,7 @@ public partial class BbWsTest : System.Web.UI.Page
             args.wsInputRecord.courseId = args.wsInputRecord.courseId + args.currentTestKeySuffix;
             //args.wsInputRecord.isAvailable = "true"; //!!
             //args.wsInputRecord.isLockedOut = "false"; //!!
-            //classificationId is not settable via ....ByBatchUid methods
+            //classificationId is not settable via InsertRecordByBatchUid (CourseSiteDbPersister.insert()) method
             args.wsInputRecord.classificationId = args.param.missFieldTag;
             
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
@@ -472,8 +621,10 @@ public partial class BbWsTest : System.Web.UI.Page
             //Updating of courseId with courseUpdateRecordByBatchUid() causes
             //blackboard.data.ImmutableException: An immutable object can not be modified [Course id cannot be modified.]
             //args.wsInputRecord.courseId = args.wsInputRecord.courseId + args.currentTestKeySuffix;
-            //classificationId is not settable via ....ByBatchUid methods
-            args.wsInputRecord.classificationId = args.param.missFieldTag;
+
+            //classificationId is not settable via InsertRecordByBatchUid (CourseSiteDbPersister.insert()) method
+
+            //args.wsInputRecord.classificationId = args.param.missFieldTag;
             args.SetStandardUnsetabbleFieldsToMissFieldTag();
             args.ClearResults();
         }

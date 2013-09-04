@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define BB_ADDED//!!
+
+using System;
 using System.Data;
 using System.Configuration;
 using System.Linq;
@@ -408,5 +410,19 @@ public class BbWsWebReference : bbIDLA.BbAdded
         public courseDetails courseDeleteRecordByBatchUid(bbWsParams @params, courseDetails inputRecord) {
             return base.CourseDeleteRecordByBatchUid(@params, inputRecord);
         }
+        public courseDetails courseCopyRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            return base.CourseCopyRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+        public courseDetails courseCopyRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            return base.CourseCopyRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+        public courseDetails courseMergeRecordWithParamsById(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            return base.CourseMergeRecordWithParamsById(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+        public courseDetails courseMergeRecordWithParamsByBatchUid(bbWsParams @params, courseDetails inputRecord, courseDetails inputTargetCourseRecord, courseCopyParams inputCopyParams) {
+            return base.CourseMergeRecordWithParamsByBatchUid(@params, inputRecord, inputTargetCourseRecord, inputCopyParams);
+        }
+
+
 
 }

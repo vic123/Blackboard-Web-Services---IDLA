@@ -2,10 +2,10 @@
 <definitions xmlns:tns="http://www.ncl.ac.uk/BBCourseWebService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BBCourseWebService" targetNamespace="http://www.ncl.ac.uk/BBCourseWebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCourseWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCourseWebService" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService?xsd=1" namespace="http://www.ncl.ac.uk/BBCourseWebService" />
     </xsd:schema>
     <xsd:schema>
-      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+      <xsd:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
     </xsd:schema>
   </types>
   <message name="addCourse">
@@ -16,6 +16,12 @@
   </message>
   <message name="WebServiceException">
     <part name="fault" element="tns:WebServiceException" />
+  </message>
+  <message name="updateCourse">
+    <part name="parameters" element="tns:updateCourse" />
+  </message>
+  <message name="updateCourseResponse">
+    <part name="parameters" element="tns:updateCourseResponse" />
   </message>
   <message name="addCourseXML">
     <part name="parameters" element="tns:addCourseXML" />
@@ -233,16 +239,15 @@
   <message name="copyCourseExactResponse">
     <part name="parameters" element="tns:copyCourseExactResponse" />
   </message>
-  <message name="updateCourse">
-    <part name="parameters" element="tns:updateCourse" />
-  </message>
-  <message name="updateCourseResponse">
-    <part name="parameters" element="tns:updateCourseResponse" />
-  </message>
   <portType name="BBCourseWebService">
     <operation name="addCourse">
       <input message="tns:addCourse" />
       <output message="tns:addCourseResponse" />
+      <fault name="WebServiceException" message="tns:WebServiceException" />
+    </operation>
+    <operation name="updateCourse">
+      <input message="tns:updateCourse" />
+      <output message="tns:updateCourseResponse" />
       <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
     <operation name="addCourseXML">
@@ -425,15 +430,22 @@
       <output message="tns:copyCourseExactResponse" />
       <fault name="WebServiceException" message="tns:WebServiceException" />
     </operation>
-    <operation name="updateCourse">
-      <input message="tns:updateCourse" />
-      <output message="tns:updateCourseResponse" />
-      <fault name="WebServiceException" message="tns:WebServiceException" />
-    </operation>
   </portType>
   <binding name="BBCourseWebServicePortBinding" type="tns:BBCourseWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="addCourse">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WebServiceException">
+        <soap:fault use="literal" name="WebServiceException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="updateCourse">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -877,22 +889,10 @@
         <soap:fault use="literal" name="WebServiceException" namespace="" />
       </fault>
     </operation>
-    <operation name="updateCourse">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-      <fault name="WebServiceException">
-        <soap:fault use="literal" name="WebServiceException" namespace="" />
-      </fault>
-    </operation>
   </binding>
   <service name="BBCourseWebService">
     <port name="BBCourseWebServicePort" binding="tns:BBCourseWebServicePortBinding">
-      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCourseWebService" />
+      <soap:address location="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService" />
     </port>
   </service>
 </definitions>
