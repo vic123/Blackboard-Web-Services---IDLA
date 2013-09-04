@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="bbIDLA.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="bbIDLA_BBCourseWebService_BBCourseWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCourseWebService</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBUserService_BBUserWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBUserWebService</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBGradebookService_BBGradebookWebServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGradebookWebService</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBAddedService_BbWebservices" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BbWebservices</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBAnnouncementService_BBAnnouncementsWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBCalendarService_BBCalendarWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBCalendarWebService</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBContentService_BBContentWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBContentWebService</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBDiscussionBoardService_BBDiscussionBoardWebServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBDiscussionBoardWebService</Value>
+    </Setting>
+    <Setting Name="bbIDLA_BBGroupService_BBGroupWebServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBGroupWebService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

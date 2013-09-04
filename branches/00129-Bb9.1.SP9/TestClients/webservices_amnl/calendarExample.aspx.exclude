@@ -1,0 +1,196 @@
+﻿<%@ Page Language="C#" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>C#.NET Page</title>
+    </head>
+    <body>
+<%
+    //Author: Andrew.Martin@ncl.ac.uk
+
+    try
+    {
+        //bbcalws is my chosen webreference name
+        bbcalws.BBCalendarWebService ws = new bbcalws.BBCalendarWebService();
+        //If you have passwords enabled on the webservice methods, insert it here...
+        String wsPassword = "";
+
+        //Change these variables as you see fit :-)
+        String courseId = "WebService_TEST101";
+        String userId = "WSTESTUSER";
+        String title = "WS title";
+        String description = "WS description";
+        String type = "personal"; //COURSE/INSTITUTION/PERSONAL
+        int startDay = 1;
+        int startMonth = 1; //1-12
+        int startYear = 2008;
+        int startHour = 0;
+        int startMinute = 0;
+        int startSecond = 0;
+        int endDay = 2;
+        int endMonth = 1; //1-12
+        int endYear = 2008;
+        int endHour = 0;
+        int endMinute = 0;
+        int endSecond = 0;
+        String calendarEntryId = "";
+        //*************************************/        
+
+	    bbcalws.stringArray[] returnStringArray = null;
+	    String returnString = "";
+
+	    //**** Add a personal calendar entry ****
+	    returnString = ws.addCalendarEntry(wsPassword,courseId,userId,description,title,type,startDay,startMonth,startYear,startHour,startMinute,startSecond,endDay,endMonth,endYear,endHour,endMinute,endSecond);
+%>
+    Adding personal calendar entry to "<%= userId %>"'s calendar...<%= returnString %><br />
+<%
+    	/*******************************/
+
+	    //**** Get all personal calendar entries within dates ****
+	    returnStringArray = ws.getPersonalCalendarEntriesWithinDatesForGivenUserId(wsPassword,userId,startDay,startMonth,startYear,endDay,endMonth,endYear,true,true);
+%>
+        <hr />Personal entries for "<%= userId %>" within dates given...<br />
+<%
+        bbcalws.stringArray keys = (bbcalws.stringArray)returnStringArray.GetValue(0);
+        bbcalws.stringArray values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbcalws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+
+        values = (bbcalws.stringArray)returnStringArray.GetValue(0);
+        if (!values.item.GetValue(0).Equals("Error"))
+        {
+            values = (bbcalws.stringArray)returnStringArray.GetValue(1);
+            calendarEntryId = values.item.GetValue(0).ToString();
+        }
+        else
+        {
+            calendarEntryId = "Sorry couldn't find a calendar Entry Id to set this variable :-(";
+        }
+    	/*******************************/
+
+        //**** Delete a calendar entry ****
+        returnString = ws.deleteCalendarEntryByCalendarEntryBbId(wsPassword,calendarEntryId);
+%>
+        <hr />Deleting calendar entry...<%= returnString %><br />
+<%
+        /*******************************/        
+
+	    //**** Get all calendar entries for a specific course ****
+	    returnStringArray = ws.getAllCourseCalendarEntriesForGivenCourseId(wsPassword,courseId,true,true);
+%>
+    <hr />Calendar entries for course "<%= courseId %>"...<br />
+<%
+        keys = (bbcalws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbcalws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+	    /******************/
+
+	    //**** Get all calendar entries for a specific user regardless of date ****
+	    returnStringArray = ws.getAllCourseCalendarEntriesForGivenUserId(wsPassword,userId,true,true);
+%>
+        <hr />All calendar entries for user "<%= userId %>"...<br />
+<%
+        keys = (bbcalws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbcalws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+	    /******************/
+
+	    //**** Get all course calendar entries for a specific course within dates ****
+	    returnStringArray = ws.getCourseCalendarEntriesWithinDatesForGivenCourseId(wsPassword,courseId,startDay,startMonth,startYear,endDay,endMonth,endYear,true,true);
+%>
+        <hr />Course calendar entries for course "<%= courseId %>" within dates given...<br />
+<%
+        keys = (bbcalws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbcalws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+	    /******************/
+    	
+	    //**** Get all course calendar entries for a specific user within dates ****
+	    returnStringArray = ws.getCourseCalendarEntriesWithinDatesForGivenUserId(wsPassword,userId,startDay,startMonth,startYear,endDay,endMonth,endYear,true,true);
+%>
+        <hr />Course calendar entries for user "<%= userId %>" within dates given...<br />
+<%
+        keys = (bbcalws.stringArray)returnStringArray.GetValue(0);
+        values = null;
+
+        for (int i = 1; i < returnStringArray.Length; i++)
+        {
+%>
+--------<br />
+<%
+            values = (bbcalws.stringArray)returnStringArray.GetValue(i);
+
+            for (int inc = 0; inc < keys.item.Length; inc++)
+            {
+%>
+                <%= keys.item.GetValue(inc)%> : <%= values.item.GetValue(inc)%> <br />
+<%
+            }
+        }
+	    /******************/
+    }
+    catch (Exception e)
+    {
+%>
+	    <%= "Error: "+e.ToString() %>
+<%
+    }
+%>
+    </body>
+</html>

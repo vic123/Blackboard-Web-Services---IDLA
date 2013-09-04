@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ncl.ac.uk/BBAnnouncementsWebService" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://www.ncl.ac.uk/BBAnnouncementsWebService" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BB_bb60/BBAnnouncementsWebService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:element name="WebServiceException" type="tns:WebServiceException" />
+  <xs:element name="deleteAnnouncement" type="tns:deleteAnnouncement" />
+  <xs:element name="deleteAnnouncementResponse" type="tns:deleteAnnouncementResponse" />
+  <xs:element name="deleteAnnouncementXML" type="tns:deleteAnnouncementXML" />
+  <xs:element name="deleteAnnouncementXMLResponse" type="tns:deleteAnnouncementXMLResponse" />
+  <xs:element name="getAllAnnouncementsForGivenCourseId" type="tns:getAllAnnouncementsForGivenCourseId" />
+  <xs:element name="getAllAnnouncementsForGivenCourseIdResponse" type="tns:getAllAnnouncementsForGivenCourseIdResponse" />
+  <xs:element name="getAllAnnouncementsForGivenCourseIdWithNamedElements" type="tns:getAllAnnouncementsForGivenCourseIdWithNamedElements" />
+  <xs:element name="getAllAnnouncementsForGivenCourseIdWithNamedElementsResponse" type="tns:getAllAnnouncementsForGivenCourseIdWithNamedElementsResponse" />
+  <xs:element name="getAllAnnouncementsForGivenCourseIdXML" type="tns:getAllAnnouncementsForGivenCourseIdXML" />
+  <xs:element name="getAllAnnouncementsForGivenCourseIdXMLResponse" type="tns:getAllAnnouncementsForGivenCourseIdXMLResponse" />
+  <xs:element name="getAllAvailableAnnouncementsForGivenUserId" type="tns:getAllAvailableAnnouncementsForGivenUserId" />
+  <xs:element name="getAllAvailableAnnouncementsForGivenUserIdResponse" type="tns:getAllAvailableAnnouncementsForGivenUserIdResponse" />
+  <xs:element name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElements" type="tns:getAllAvailableAnnouncementsForGivenUserIdWithNamedElements" />
+  <xs:element name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElementsResponse" type="tns:getAllAvailableAnnouncementsForGivenUserIdWithNamedElementsResponse" />
+  <xs:element name="getAllAvailableAnnouncementsForGivenUserIdXML" type="tns:getAllAvailableAnnouncementsForGivenUserIdXML" />
+  <xs:element name="getAllAvailableAnnouncementsForGivenUserIdXMLResponse" type="tns:getAllAvailableAnnouncementsForGivenUserIdXMLResponse" />
+  <xs:element name="getAllSystemAnnouncements" type="tns:getAllSystemAnnouncements" />
+  <xs:element name="getAllSystemAnnouncementsResponse" type="tns:getAllSystemAnnouncementsResponse" />
+  <xs:element name="getAllSystemAnnouncementsWithNamedElements" type="tns:getAllSystemAnnouncementsWithNamedElements" />
+  <xs:element name="getAllSystemAnnouncementsWithNamedElementsResponse" type="tns:getAllSystemAnnouncementsWithNamedElementsResponse" />
+  <xs:element name="getAllSystemAnnouncementsXML" type="tns:getAllSystemAnnouncementsXML" />
+  <xs:element name="getAllSystemAnnouncementsXMLResponse" type="tns:getAllSystemAnnouncementsXMLResponse" />
+  <xs:element name="modifyAnnouncement" type="tns:modifyAnnouncement" />
+  <xs:element name="modifyAnnouncementResponse" type="tns:modifyAnnouncementResponse" />
+  <xs:element name="modifyAnnouncementXML" type="tns:modifyAnnouncementXML" />
+  <xs:element name="modifyAnnouncementXMLResponse" type="tns:modifyAnnouncementXMLResponse" />
+  <xs:element name="postCourseAnnouncement" type="tns:postCourseAnnouncement" />
+  <xs:element name="postCourseAnnouncementResponse" type="tns:postCourseAnnouncementResponse" />
+  <xs:element name="postCourseAnnouncementXML" type="tns:postCourseAnnouncementXML" />
+  <xs:element name="postCourseAnnouncementXMLResponse" type="tns:postCourseAnnouncementXMLResponse" />
+  <xs:element name="postSystemAnnouncement" type="tns:postSystemAnnouncement" />
+  <xs:element name="postSystemAnnouncementResponse" type="tns:postSystemAnnouncementResponse" />
+  <xs:element name="postSystemAnnouncementXML" type="tns:postSystemAnnouncementXML" />
+  <xs:element name="postSystemAnnouncementXMLResponse" type="tns:postSystemAnnouncementXMLResponse" />
+  <xs:complexType name="getAllAnnouncementsForGivenCourseIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAnnouncementsForGivenCourseIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WebServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyAnnouncement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="announcementBbId" type="xs:string" />
+      <xs:element minOccurs="0" name="textType" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element name="startDay" type="xs:int" />
+      <xs:element name="startMonth" type="xs:int" />
+      <xs:element name="startYear" type="xs:int" />
+      <xs:element name="endDay" type="xs:int" />
+      <xs:element name="endMonth" type="xs:int" />
+      <xs:element name="endYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyAnnouncementResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyAnnouncementXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="announcementBbId" type="xs:string" />
+      <xs:element minOccurs="0" name="textType" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element name="startDay" type="xs:int" />
+      <xs:element name="startMonth" type="xs:int" />
+      <xs:element name="startYear" type="xs:int" />
+      <xs:element name="endDay" type="xs:int" />
+      <xs:element name="endMonth" type="xs:int" />
+      <xs:element name="endYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyAnnouncementXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllSystemAnnouncements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllSystemAnnouncementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAvailableAnnouncementsForGivenUserIdWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:announcementDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="announcementDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="announcementBbId" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element minOccurs="0" name="endDate" type="xs:string" />
+      <xs:element minOccurs="0" name="permanent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="startDate" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postSystemAnnouncement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="textType" type="xs:string" />
+      <xs:element minOccurs="0" name="permanent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element name="startDay" type="xs:int" />
+      <xs:element name="startMonth" type="xs:int" />
+      <xs:element name="startYear" type="xs:int" />
+      <xs:element name="endDay" type="xs:int" />
+      <xs:element name="endMonth" type="xs:int" />
+      <xs:element name="endYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postSystemAnnouncementResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteAnnouncementXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="announcementBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteAnnouncementXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postCourseAnnouncement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="textType" type="xs:string" />
+      <xs:element minOccurs="0" name="courseID" type="xs:string" />
+      <xs:element minOccurs="0" name="permanent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element name="startDay" type="xs:int" />
+      <xs:element name="startMonth" type="xs:int" />
+      <xs:element name="startYear" type="xs:int" />
+      <xs:element name="endDay" type="xs:int" />
+      <xs:element name="endMonth" type="xs:int" />
+      <xs:element name="endYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postCourseAnnouncementResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllSystemAnnouncementsXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllSystemAnnouncementsXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAvailableAnnouncementsForGivenUserId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAvailableAnnouncementsForGivenUserIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllSystemAnnouncementsWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllSystemAnnouncementsWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:announcementDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postCourseAnnouncementXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="textType" type="xs:string" />
+      <xs:element minOccurs="0" name="courseID" type="xs:string" />
+      <xs:element minOccurs="0" name="permanent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element name="startDay" type="xs:int" />
+      <xs:element name="startMonth" type="xs:int" />
+      <xs:element name="startYear" type="xs:int" />
+      <xs:element name="endDay" type="xs:int" />
+      <xs:element name="endMonth" type="xs:int" />
+      <xs:element name="endYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postCourseAnnouncementXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAnnouncementsForGivenCourseId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAnnouncementsForGivenCourseIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAnnouncementsForGivenCourseIdWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAnnouncementsForGivenCourseIdWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:announcementDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAvailableAnnouncementsForGivenUserIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAllAvailableAnnouncementsForGivenUserIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postSystemAnnouncementXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="textType" type="xs:string" />
+      <xs:element minOccurs="0" name="permanent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="body" type="xs:string" />
+      <xs:element name="startDay" type="xs:int" />
+      <xs:element name="startMonth" type="xs:int" />
+      <xs:element name="startYear" type="xs:int" />
+      <xs:element name="endDay" type="xs:int" />
+      <xs:element name="endMonth" type="xs:int" />
+      <xs:element name="endYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postSystemAnnouncementXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteAnnouncement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="announcementBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteAnnouncementResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
