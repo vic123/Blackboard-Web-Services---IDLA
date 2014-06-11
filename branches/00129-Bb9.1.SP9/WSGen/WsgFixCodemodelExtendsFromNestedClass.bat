@@ -1,0 +1,1 @@
+perl src\WsgFixCodemodelExtendsFromNestedClass.pl ./generated/

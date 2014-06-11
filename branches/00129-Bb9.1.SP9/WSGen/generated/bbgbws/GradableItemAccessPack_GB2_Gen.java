@@ -1,9 +1,21 @@
 
 package bbgbws;
 
+import java.util.List;
+import bbwscommon.BbWsArguments;
 import bbwscommon.BbWsException;
+import bbwscommon.BbWsParams;
+import blackboard.data.content.Content;
+import blackboard.data.course.Course;
+import blackboard.data.qti.asi.AsiObject;
+import blackboard.persist.Id;
+import blackboard.platform.gradebook2.GradebookType;
+import blackboard.platform.gradebook2.GradingPeriod;
+import blackboard.platform.gradebook2.GradingSchema;
 
-public class GradableItemAccessPack {
+public class GradableItemAccessPack_GB2_Gen
+    extends bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType<GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2, blackboard.platform.gradebook2.GradableItem, GradableItemDetails>
+{
 
 
     @Override
@@ -32,9 +44,9 @@ public class GradableItemAccessPack {
                 throws Exception
             {
                 try {
-                    (bbObject).setAggregationModel((Enum.valueOf(blackboard.platform.gradebook2.GradableItem$AttemptAggregationModel.class, newValue))));
+                    (bbObject).setAggregationModel(Enum.valueOf(blackboard.platform.gradebook2.GradableItem.AttemptAggregationModel.class, newValue));
                 } catch (IllegalArgumentException iae) {
-                    throw new BbWsException(("GradableItemDetails aggregationModel may contain one of the following values: "+(Arrays.toString(blackboard.platform.gradebook2.GradableItem$AttemptAggregationModel.values()))), iae);
+                    throw new BbWsException("GradableItemDetails aggregationModel may contain one of the following values: ", iae);
                 }
             }
 
@@ -61,7 +73,7 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setAssessmentId((checkAndgenerateId(blackboard.data.qti.asi.AsiObject.DATA_TYPE, newValue)));
+                bbObject.setAssessmentId(checkAndgenerateId(AsiObject.DATA_TYPE, newValue));
             }
 
         }
@@ -87,11 +99,37 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setId((checkAndgenerateId(null.DATA_TYPE, newValue)));
+                bbObject.setId(checkAndgenerateId(blackboard.platform.gradebook2.GradableItem.DATA_TYPE, newValue));
             }
 
         }
         .setBbField("bbId");
+        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+
+
+            @Override
+            public String getBbFieldValue()
+                throws Exception
+            {
+                return (Long.toString(bbObject.getVersion()));
+            }
+
+            @Override
+            public String getWsFieldValue()
+                throws Exception
+            {
+                return (getArgs().getInputRecord().getBookVersion());
+            }
+
+            @Override
+            public void setBbFieldImp(String newValue)
+                throws Exception
+            {
+                (bbObject).setVersion((new blackboard.persist.RowVersion(Long.parseLong(newValue))));
+            }
+
+        }
+        .setBbField("bookVersion");
         new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
 
 
@@ -114,9 +152,9 @@ public class GradableItemAccessPack {
                 throws Exception
             {
                 try {
-                    (bbObject).setCalculatedInd((Enum.valueOf(blackboard.platform.gradebook2.GradableItem$CalculationType.class, newValue))));
+                    (bbObject).setCalculatedInd(Enum.valueOf(blackboard.platform.gradebook2.GradableItem.CalculationType.class, newValue));
                 } catch (IllegalArgumentException iae) {
-                    throw new BbWsException(("GradableItemDetails calculatedInd may contain one of the following values: "+(Arrays.toString(blackboard.platform.gradebook2.GradableItem$CalculationType.values()))), iae);
+                    throw new BbWsException("GradableItemDetails calculatedInd may contain one of the following values: ", iae);
                 }
             }
 
@@ -169,7 +207,7 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setCategoryId((checkAndgenerateId(blackboard.platform.gradebook2.GradebookType.DATA_TYPE, newValue)));
+                bbObject.setCategoryId(checkAndgenerateId(GradebookType.DATA_TYPE, newValue));
             }
 
         }
@@ -195,7 +233,7 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setCourseContentId((checkAndgenerateId(blackboard.data.content.Content.DATA_TYPE, newValue)));
+                bbObject.setCourseContentId(checkAndgenerateId(Content.DATA_TYPE, newValue));
             }
 
         }
@@ -221,7 +259,7 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setCourseId((checkAndgenerateId(blackboard.data.course.Course.DATA_TYPE, newValue)));
+                bbObject.setCourseId(checkAndgenerateId(Course.DATA_TYPE, newValue));
             }
 
         }
@@ -429,7 +467,7 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setGradingPeriodId((checkAndgenerateId(blackboard.platform.gradebook2.GradingPeriod.DATA_TYPE, newValue)));
+                bbObject.setGradingPeriodId(checkAndgenerateId(GradingPeriod.DATA_TYPE, newValue));
             }
 
         }
@@ -455,7 +493,7 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setGradingSchemaId((checkAndgenerateId(blackboard.platform.gradebook2.GradingSchema.DATA_TYPE, newValue)));
+                bbObject.setGradingSchemaId(checkAndgenerateId(GradingSchema.DATA_TYPE, newValue));
             }
 
         }
@@ -871,7 +909,7 @@ public class GradableItemAccessPack {
             public void setBbFieldImp(String newValue)
                 throws Exception
             {
-                (bbObject).setSecondaryGradingSchemaId((checkAndgenerateId(blackboard.platform.gradebook2.GradingSchema.DATA_TYPE, newValue)));
+                bbObject.setSecondaryGradingSchemaId(checkAndgenerateId(GradingSchema.DATA_TYPE, newValue));
             }
 
         }
@@ -934,7 +972,7 @@ public class GradableItemAccessPack {
     protected void setWsFields()
         throws Exception
     {
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -955,12 +993,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getAggregationModel(newValue));
+                (getArgs().getResultRecord()).setAggregationModel(newValue);
             }
 
         }
         .setWsField("aggregationModel");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -981,12 +1019,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getAssessmentId(newValue));
+                (getArgs().getResultRecord()).setAssessmentId(newValue);
             }
 
         }
         .setWsField("assessmentId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1007,12 +1045,38 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getBbId(newValue));
+                (getArgs().getResultRecord()).setBbId(newValue);
             }
 
         }
         .setWsField("bbId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
+
+
+            @Override
+            public String getBbFieldValue()
+                throws Exception
+            {
+                return (Long.toString(bbObject.getVersion()));
+            }
+
+            @Override
+            public String getWsFieldValue()
+                throws Exception
+            {
+                return (getArgs().getInputRecord().getBookVersion());
+            }
+
+            @Override
+            public void setWsFieldImp(String newValue)
+                throws Exception
+            {
+                (getArgs().getResultRecord()).setBookVersion(newValue);
+            }
+
+        }
+        .setWsField("bookVersion");
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1033,12 +1097,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getCalculatedInd(newValue));
+                (getArgs().getResultRecord()).setCalculatedInd(newValue);
             }
 
         }
         .setWsField("calculatedInd");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1059,12 +1123,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getCategory(newValue));
+                (getArgs().getResultRecord()).setCategory(newValue);
             }
 
         }
         .setWsField("category");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1085,12 +1149,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getCategoryId(newValue));
+                (getArgs().getResultRecord()).setCategoryId(newValue);
             }
 
         }
         .setWsField("categoryId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1111,12 +1175,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getCourseContentId(newValue));
+                (getArgs().getResultRecord()).setCourseContentId(newValue);
             }
 
         }
         .setWsField("courseContentId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1137,12 +1201,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getCourseId(newValue));
+                (getArgs().getResultRecord()).setCourseId(newValue);
             }
 
         }
         .setWsField("courseId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1163,12 +1227,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getDateAdded(newValue));
+                (getArgs().getResultRecord()).setDateAdded(newValue);
             }
 
         }
         .setWsField("dateAdded");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1189,12 +1253,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getDateModified(newValue));
+                (getArgs().getResultRecord()).setDateModified(newValue);
             }
 
         }
         .setWsField("dateModified");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1215,12 +1279,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getDescription(newValue));
+                (getArgs().getResultRecord()).setDescription(newValue);
             }
 
         }
         .setWsField("description");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1241,12 +1305,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getDisplayTitle(newValue));
+                (getArgs().getResultRecord()).setDisplayTitle(newValue);
             }
 
         }
         .setWsField("displayTitle");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1267,12 +1331,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getDueDate(newValue));
+                (getArgs().getResultRecord()).setDueDate(newValue);
             }
 
         }
         .setWsField("dueDate");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1293,12 +1357,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getExternalAnalysisUrl(newValue));
+                (getArgs().getResultRecord()).setExternalAnalysisUrl(newValue);
             }
 
         }
         .setWsField("externalAnalysisUrl");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1319,12 +1383,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getExternalAttemptHandlerUrl(newValue));
+                (getArgs().getResultRecord()).setExternalAttemptHandlerUrl(newValue);
             }
 
         }
         .setWsField("externalAttemptHandlerUrl");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1345,12 +1409,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getGradingPeriodId(newValue));
+                (getArgs().getResultRecord()).setGradingPeriodId(newValue);
             }
 
         }
         .setWsField("gradingPeriodId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1371,12 +1435,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getGradingSchemaId(newValue));
+                (getArgs().getResultRecord()).setGradingSchemaId(newValue);
             }
 
         }
         .setWsField("gradingSchemaId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1397,12 +1461,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsDeleted(newValue));
+                (getArgs().getResultRecord()).setIsDeleted(newValue);
             }
 
         }
         .setWsField("deleted");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1423,12 +1487,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsHideAttempt(newValue));
+                (getArgs().getResultRecord()).setIsHideAttempt(newValue);
             }
 
         }
         .setWsField("hideAttempt");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1449,12 +1513,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsLimitedAttendance(newValue));
+                (getArgs().getResultRecord()).setIsLimitedAttendance(newValue);
             }
 
         }
         .setWsField("limitedAttendance");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1475,12 +1539,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsScorable(newValue));
+                (getArgs().getResultRecord()).setIsScorable(newValue);
             }
 
         }
         .setWsField("scorable");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1501,12 +1565,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsShowStatsToStudent(newValue));
+                (getArgs().getResultRecord()).setIsShowStatsToStudent(newValue);
             }
 
         }
         .setWsField("showStatsToStudent");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1527,12 +1591,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsSingleAttempt(newValue));
+                (getArgs().getResultRecord()).setIsSingleAttempt(newValue);
             }
 
         }
         .setWsField("singleAttempt");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1553,12 +1617,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsUserCreatedColumn(newValue));
+                (getArgs().getResultRecord()).setIsUserCreatedColumn(newValue);
             }
 
         }
         .setWsField("userCreatedColumn");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1579,12 +1643,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsVisibleInAllTerms(newValue));
+                (getArgs().getResultRecord()).setIsVisibleInAllTerms(newValue);
             }
 
         }
         .setWsField("visibleInAllTerms");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1605,12 +1669,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsVisibleInBook(newValue));
+                (getArgs().getResultRecord()).setIsVisibleInBook(newValue);
             }
 
         }
         .setWsField("visibleInBook");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1631,12 +1695,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getIsVisibleToStudents(newValue));
+                (getArgs().getResultRecord()).setIsVisibleToStudents(newValue);
             }
 
         }
         .setWsField("visibleToStudents");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1657,12 +1721,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getLinkId(newValue));
+                (getArgs().getResultRecord()).setLinkId(newValue);
             }
 
         }
         .setWsField("linkId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1683,12 +1747,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getMaxAttempts(newValue));
+                (getArgs().getResultRecord()).setMaxAttempts(newValue);
             }
 
         }
         .setWsField("maxAttempts");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1709,12 +1773,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getPoints(newValue));
+                (getArgs().getResultRecord()).setPoints(newValue);
             }
 
         }
         .setWsField("points");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1735,12 +1799,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getPosition(newValue));
+                (getArgs().getResultRecord()).setPosition(newValue);
             }
 
         }
         .setWsField("position");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1761,12 +1825,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getScoreProviderHandle(newValue));
+                (getArgs().getResultRecord()).setScoreProviderHandle(newValue);
             }
 
         }
         .setWsField("scoreProviderHandle");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1787,12 +1851,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getSecondaryGradingSchemaId(newValue));
+                (getArgs().getResultRecord()).setSecondaryGradingSchemaId(newValue);
             }
 
         }
         .setWsField("secondaryGradingSchemaId");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1813,12 +1877,12 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getTitle(newValue));
+                (getArgs().getResultRecord()).setTitle(newValue);
             }
 
         }
         .setWsField("title");
-        new bbwscommon.BbWsDataAccessPack.BbFieldSetter() {
+        new bbwscommon.BbWsDataAccessPack.WsFieldSetter() {
 
 
             @Override
@@ -1839,11 +1903,249 @@ public class GradableItemAccessPack {
             public void setWsFieldImp(String newValue)
                 throws Exception
             {
-                return (getArgs().getResultRecord().getWeight(newValue));
+                (getArgs().getResultRecord()).setWeight(newValue);
             }
 
         }
         .setWsField("weight");
+    }
+
+    protected Id generateInputId()
+        throws Exception
+    {
+        return checkAndgenerateId(blackboard.platform.gradebook2.GradableItem.DATA_TYPE, getArgs().getInputRecord().getBbId());
+    }
+
+    public static class DeleteListById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordDeleter da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordDeleter();
+            da.initialize(null);
+            bbwscommon.BbWsDataAccessPack.InputListProcessor ilp = new bbwscommon.BbWsDataAccessPack.InputListProcessor();
+            ilp.initialize(da);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, ilp);
+        }
+
+    }
+
+    public static class DeleteRecordById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordDeleter da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordDeleter();
+            da.initialize(null);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, da);
+        }
+
+    }
+
+    public static class GradableItemArguments_GB2
+        extends BbWsArguments<GradableItemDetails, GradableItemDetails>
+    {
+
+        public GradableItemParams gradableItemParams;
+
+        public void initialize(Class<GradableItemDetails> wsResultClass, BbWsParams params, GradableItemDetails recordInput, String dataAccessPackClassName, String innerDAPDefaultClassName, GradableItemParams gradableItemParams) {
+            super.initialize(wsResultClass, params, recordInput, dataAccessPackClassName, innerDAPDefaultClassName);
+            this.gradableItemParams = gradableItemParams;
+            if (gradableItemParams == null) {
+                this.gradableItemParams = new GradableItemParams();
+            }
+        }
+
+        public void initialize(Class<GradableItemDetails> wsResultClass, BbWsParams params, List<GradableItemDetails> listInput, String dataAccessPackClassName, String innerDAPDefaultClassName, GradableItemParams gradableItemParams) {
+            super.initialize(wsResultClass, params, listInput, dataAccessPackClassName, innerDAPDefaultClassName);
+            this.gradableItemParams = gradableItemParams;
+            if (gradableItemParams == null) {
+                this.gradableItemParams = new GradableItemParams();
+            }
+        }
+
+    }
+
+    public static class InsertListById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordInserter da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordInserter();
+            da.initialize(null);
+            bbwscommon.BbWsDataAccessPack.InputListProcessor ilp = new bbwscommon.BbWsDataAccessPack.InputListProcessor();
+            ilp.initialize(da);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, ilp);
+        }
+
+    }
+
+    public static class InsertRecordById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordInserter da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordInserter();
+            da.initialize(null);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, da);
+        }
+
+    }
+
+    public static class LoadListByCourseId
+        extends bbgbws.GradableItemAccessPack_GB2.LoadListPack
+    {
+
+
+        @Override
+        protected void loadList()
+            throws Exception
+        {
+            loadListByCourseId();
+        }
+
+    }
+
+    public static class LoadListByGradingPeriodId
+        extends bbgbws.GradableItemAccessPack_GB2.LoadListPack
+    {
+
+
+        @Override
+        protected void loadList()
+            throws Exception
+        {
+            loadListByGradingPeriodId();
+        }
+
+    }
+
+    public static class LoadListByGradingPeriodIdAndBookVersion
+        extends bbgbws.GradableItemAccessPack_GB2.LoadListPack
+    {
+
+
+        @Override
+        protected void loadList()
+            throws Exception
+        {
+            loadListByGradingPeriodIdAndBookVersion();
+        }
+
+    }
+
+    public static class LoadListById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader();
+            da.initialize(null);
+            bbwscommon.BbWsDataAccessPack.InputListProcessor ilp = new bbwscommon.BbWsDataAccessPack.InputListProcessor();
+            ilp.initialize(da);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, ilp);
+        }
+
+    }
+
+    public static class LoadRecordByAssessmentId
+        extends GradableItemAccessPack_GB2_Gen
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader();
+            da.initialize(null);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, da);
+        }
+
+    }
+
+    public static class LoadRecordByCourseContentId
+        extends GradableItemAccessPack_GB2_Gen
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader();
+            da.initialize(null);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, da);
+        }
+
+    }
+
+    public static class LoadRecordById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordLoader();
+            da.initialize(null);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, da);
+        }
+
+    }
+
+    public static class PersistListById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordPersister da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordPersister();
+            da.initialize(null);
+            bbwscommon.BbWsDataAccessPack.InputListProcessor ilp = new bbwscommon.BbWsDataAccessPack.InputListProcessor();
+            ilp.initialize(da);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, ilp);
+        }
+
+    }
+
+    public static class PersistRecordById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordPersister da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordPersister();
+            da.initialize(null);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, da);
+        }
+
+    }
+
+    public static class UpdateListById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordUpdater da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordUpdater();
+            da.initialize(null);
+            bbwscommon.BbWsDataAccessPack.InputListProcessor ilp = new bbwscommon.BbWsDataAccessPack.InputListProcessor();
+            ilp.initialize(da);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, ilp);
+        }
+
+    }
+
+    public static class UpdateRecordById
+        extends bbgbws.GradableItemAccessPack_GB2.AccessByIdPack
+    {
+
+
+        public void initialize(GradableItemAccessPack_GB2_Gen.GradableItemArguments_GB2 args) {
+            bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordUpdater da = new bbwscommon.BbWsDataAccessPack.BbWsDataAccessPackWithSameInputResultType.RecordUpdater();
+            da.initialize(null);
+            super.initialize(args, blackboard.platform.gradebook2.GradableItem.class, da);
+        }
+
     }
 
 }
