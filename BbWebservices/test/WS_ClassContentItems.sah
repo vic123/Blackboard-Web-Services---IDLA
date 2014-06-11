@@ -1,0 +1,60 @@
+
+//*** Content
+_click(_link("/.*/", _in(_cell("Courses.label"))));
+_click(_link("Class_010_ID: Class_010"));
+_click(_span("Content"));
+//Test_010
+_click(_link("Test"));
+_click(_link("Create"));
+_setValue(_textbox("name"), "Test_010");
+_call(setTMEContent("descriptiontext", "Test_010_desc"));
+_call(setTMEContent("instructionstext", "Test_010_instr"));
+_click(_submit("Submit"));
+_click(_link("OK"));
+_setSelected(_select("assessmentId"), "Test_010");
+_click(_submit("Submit"));
+_click(_radio("fIsLinkVisible1"));
+_click(_submit("Submit"));
+
+//Survey_010
+_click(_link("Survey"));
+_click(_link("Create"));
+_setValue(_textbox("name"), "Survey_010");
+_call(setTMEContent("descriptiontext", "Survey_010_desc"));
+_call(setTMEContent("instructionstext", "Survey_010_instr"));
+_click(_submit("Submit"));
+_click(_link("OK"));
+_setSelected(_select("assessmentId"), "Survey_010");
+_click(_submit("Submit"));
+_click(_radio("fIsLinkVisible1"));
+_click(_submit("Submit"));
+
+
+//Assignment_010
+_click(_link("Assignment"));
+_setValue(_textbox("contentName"), "Assignment_010");
+_call(setTMEContent("content_desc_text", "Assignment_010_instr"));
+_setValue(_textbox("possible"), "100");
+_check(_checkbox("isAvailable"));
+_click(_submit("Submit"));
+
+//SPAssessment_010
+_click(_link("/Self and Peer Assessment.*/", _in(_div("evaMenu"))));
+_setValue(_textbox("title"), "SPAssessment_010");
+_call(setTMEContent("description_text", "SPAssessment_010_instr"));
+_click(_radio("isAvailable_true"));
+_click(_submit("Submit"));
+_click(_link("OK"));
+_click(_link("OK"));
+
+
+
+
+<browser>
+function setTMEContent(fieldName, content) {
+var wp = top.document.getElementById('contentFrame').contentWindow.tinyMceWrapper;
+var edt = wp.getEditor(fieldName);
+var tedt = edt._tinyMceEditor;
+tedt.setContent(content);
+}
+</browser>

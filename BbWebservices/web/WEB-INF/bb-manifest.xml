@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <plugin>
-      <name value="Blackboard Web Services - IDLA - Bb9.1.SP5"/>
+      <name value="Blackboard Web Services - IDLA - Bb9.1.SP9"/>
       <description value="Provides adjustable CRUD access to Blackboard data through webservices exposing internal Bb APIs. Packed with minimally modified v.1.2 of Andrew Martin/Newcastle University Webservices"/>
       <handle value="BbWebservices"/>
 	  <!-- Major.Minor.Subversion revision-->
 	  <!-- v.2.0 was first release of the project (version numbering continues 1.2 of Webservices project) -->
-	  <version value="2.2.114"/>
+	  <version value="2.2.142"/>
 	  
 	  <requires>
- 	    <bbversion value="9.1.50119.0"/>
+ 	    <bbversion value="9.1.9"/>
 	  </requires>
 	  <vendor>
 	    <id value="IDLA"/>
@@ -37,8 +37,15 @@
 		<permission type="java.io.FilePermission" actions="delete,execute" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
 		sample with path - <permission type="java.io.FilePermission" name="..\..\..\..\blackboard\logs\-" actions="read,write,delete"/>
 		-->
-		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\BB_bb60\courses\-" />
-		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\BB_bb60\recyclebin\-" />
+		<!--
+		# We need access to following locations, but constructions of kind 
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\-\courses\-" />
+		# or 
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\*\recyclebin\-" />
+		# does not work.
+		-->
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\-" />
+		<permission type="java.io.FilePermission" actions="delete" name="..\..\..\..\blackboard\content\vi\-" />
 	    <permission type="java.io.FilePermission" actions="read,write" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" />
 	    <permission type="java.lang.RuntimePermission" name="createClassLoader" actions="createClassLoader"/>
 	    <permission type="java.lang.reflect.ReflectPermission" name="suppressAccessChecks" actions="suppressAccessChecks"/>
@@ -63,7 +70,11 @@
 	    <permission type="persist" name="userrole" actions="create,modify,delete"/>
 	    <permission type="persist" name="portalrole" actions="create,modify,delete"/>
 	    <permission type="persist" name="userlifecycleeventpropertyimpl" actions="create,modify,delete" />
-        <permission type="persist" name="userlifecycleeventimpl" actions="create,modify,delete" />
+            <permission type="persist" name="userlifecycleeventimpl" actions="create,modify,delete" />
+           <!--
+            <permission type="blackboard.persist.PersistPermission" name="wsclient" actions="create,modify"/>
+            <permission type="blackboard.persist.PersistPermission" name="wssession" actions="create,modify"/>
+            -->
 	</permissions>
   </plugin>
 </manifest>

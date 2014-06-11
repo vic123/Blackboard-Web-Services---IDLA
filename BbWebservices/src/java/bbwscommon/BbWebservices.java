@@ -13,6 +13,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.xml.ws.WebServiceException;
+import javax.annotation.Resource;
 
 import java.util.List;
 
@@ -21,9 +22,17 @@ import bbuws.*;
 
 import blackboard.platform.log.LogService;
 
-@WebService(name="BbWebservices", serviceName="BbWebservices", targetNamespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices")
-public class BbWebservices {
-
+@WebService(
+            //name="BbWebservices"
+            //,
+            serviceName="BbWebservices"
+            , targetNamespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices"
+            , endpointInterface = "bbwscommon.IBbWebservices"
+            )
+public class BbWebservices 
+            extends BbWebservices_Gen
+            implements IBbWebservices_Gen {
+    //?? UserApiProcessor - what was it for? - to remove and test
     static class UserApiProcessor extends BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserInput> {
         static public void start(UserAccessPack.UserArgumentsWithUserInput args) throws BbWsFault{
             UserApiProcessor api_proc = new UserApiProcessor();
@@ -1279,6 +1288,10 @@ public class BbWebservices {
         return args.getResultRecord();
     }
 
+    /**
+     * @deprecated  Replaced by courseCopyRecordExactById
+     */
+    @Deprecated
     @WebMethod
     public CourseDetails courseCopyRecordById
                 (@WebParam(name = "params") BbWsParams params,
@@ -1286,14 +1299,18 @@ public class BbWebservices {
                     @WebParam(name = "inputTargetCourseRecord") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault
     {
         BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordById()", this);
-        CourseAccessPack.CourseArgumentsWithTargetCourseInput args
-                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
         args.initialize(CourseDetails.class, params, inputRecord,
-                    CourseAccessPack.class.getName(), "CopyRecordById", inputTargetCourseRecord);
+                    CourseAccessPack.class.getName(), "CopyRecordById", inputTargetCourseRecord, null);
         BbWsApiProcessor.start(args);
         return args.getResultRecord();
     }
-    
+
+    /**
+     * @deprecated  Replaced by courseCopyRecordExactByBatchUid with inputCopyParams = null
+     */
+    @Deprecated
     @WebMethod
     public CourseDetails courseCopyRecordByBatchUid
                 (@WebParam(name = "params") BbWsParams params,
@@ -1301,13 +1318,86 @@ public class BbWebservices {
                     @WebParam(name = "inputTargetCourseRecord") bbcrsws.CourseDetails inputTargetCourseRecord) throws WebServiceException, BbWsFault
     {
         BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordByBatchUid()", this);
-        CourseAccessPack.CourseArgumentsWithTargetCourseInput args
-                = new CourseAccessPack.CourseArgumentsWithTargetCourseInput();
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
         args.initialize(CourseDetails.class, params, inputRecord,
-                    CourseAccessPack.class.getName(), "CopyRecordByBatchUid", inputTargetCourseRecord);
+                    CourseAccessPack.class.getName(), "CopyRecordByBatchUid", inputTargetCourseRecord, null);
         BbWsApiProcessor.start(args);
         return args.getResultRecord();
     }
+
+    @WebMethod
+    public CourseDetails courseCopyRecordWithParamsById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord,
+                    @WebParam(name = "inputTargetCourseRecord") bbcrsws.CourseDetails inputTargetCourseRecord,
+                    @WebParam(name = "inputParams") CourseCopyParams inputParams 
+                    ) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordWithParamsById()", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "CopyRecordWithParamsById",
+                                inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+
+    @WebMethod
+    public CourseDetails courseCopyRecordWithParamsByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord,
+                    @WebParam(name = "inputTargetCourseRecord") bbcrsws.CourseDetails inputTargetCourseRecord,
+                    @WebParam(name = "inputParams") CourseCopyParams inputParams
+                    ) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordWithParamsByBatchUid()", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "CopyRecordWithParamsByBatchUid",
+                                inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+
+    @WebMethod
+    public CourseDetails courseMergeRecordWithParamsById
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord,
+                    @WebParam(name = "inputTargetCourseRecord") CourseDetails inputTargetCourseRecord,
+                    @WebParam(name = "inputParams") CourseCopyParams inputParams
+                    ) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordWithCopyParamsById()", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "MergeRecordById",
+                                inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+
+    @WebMethod
+    public CourseDetails courseMergeRecordWithParamsByBatchUid
+                (@WebParam(name = "params") BbWsParams params,
+                    @WebParam(name = "inputRecord") CourseDetails inputRecord,
+                    @WebParam(name = "inputTargetCourseRecord") CourseDetails inputTargetCourseRecord,
+                    @WebParam(name = "inputParams") CourseCopyParams inputParams
+                    ) throws WebServiceException, BbWsFault
+    {
+        BbWsLog.logForward(LogService.Verbosity.INFORMATION, "Entered courseCopyRecordWithCopyParamsById()", this);
+        CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams args
+                = new CourseAccessPack.CourseArgumentsWithTargetCourseInputAndCopyParams();
+        args.initialize(CourseDetails.class, params, inputRecord,
+                    CourseAccessPack.class.getName(), "MergeRecordByBatchUid",
+                                inputTargetCourseRecord, inputParams);
+        BbWsApiProcessor.start(args);
+        return args.getResultRecord();
+    }
+
     @WebMethod
     public CourseDetails courseInsertRecordByBatchUid
                 (@WebParam(name = "params") BbWsParams params,

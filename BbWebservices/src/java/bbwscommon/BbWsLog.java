@@ -60,13 +60,14 @@ public class BbWsLog {
             }
         }
         
+    /*    
 	public static void logForward(String message) {
                 logForward(LogService.Verbosity.DEBUG, message);
 	}
 	public static void logForward(java.lang.Throwable error, String message) {
                 logForward(LogService.Verbosity.DEBUG, error, message);
 	}
-        
+    */    
 	//log forwarding functions - intoroduced for easier production of log messages
 	//without necessity of modifying of server log settings
 	//assumes that active server log level is at least WARNING 
