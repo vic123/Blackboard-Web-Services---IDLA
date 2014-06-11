@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c9e6e80c-f83b-46a2-8844-bd864c0a89b2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BBCourseWebService.xsd" MetadataType="Schema" ID="ffdc5181-d2e6-4c85-b384-0fd47c0adbad" SourceId="1" SourceUrl="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService?xsd=2" />
+    <MetadataFile FileName="BBCourseWebService1.xsd" MetadataType="Schema" ID="decdbc16-0dcd-4c81-9cb8-28dadb6a463d" SourceId="1" SourceUrl="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService?xsd=1" />
+    <MetadataFile FileName="BBCourseWebService.wsdl" MetadataType="Wsdl" ID="2e02c759-9ab9-40f9-9f2b-e668e5096c10" SourceId="1" SourceUrl="http://idlatestbb.com/webapps/IDLA-BbWebservices-BBLEARN/BBCourseWebService?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

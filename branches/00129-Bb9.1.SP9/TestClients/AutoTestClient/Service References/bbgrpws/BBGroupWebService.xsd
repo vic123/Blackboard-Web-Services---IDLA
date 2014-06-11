@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://bbgrpws/" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://bbgrpws/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://idlatestbb.com:80/webapps/IDLA-BbWebservices-BBLEARN/BBGroupWebService?xsd=1" namespace="http://jaxb.dev.java.net/array" />
+  <xs:element name="addGivenUserToGivenGroup" type="tns:addGivenUserToGivenGroup" />
+  <xs:element name="addGivenUserToGivenGroupResponse" type="tns:addGivenUserToGivenGroupResponse" />
+  <xs:element name="addGivenUserToGivenGroupXML" type="tns:addGivenUserToGivenGroupXML" />
+  <xs:element name="addGivenUserToGivenGroupXMLResponse" type="tns:addGivenUserToGivenGroupXMLResponse" />
+  <xs:element name="addGroupToGivenCourse" type="tns:addGroupToGivenCourse" />
+  <xs:element name="addGroupToGivenCourseResponse" type="tns:addGroupToGivenCourseResponse" />
+  <xs:element name="addGroupToGivenCourseXML" type="tns:addGroupToGivenCourseXML" />
+  <xs:element name="addGroupToGivenCourseXMLResponse" type="tns:addGroupToGivenCourseXMLResponse" />
+  <xs:element name="deleteGivenUserFromGivenGroup" type="tns:deleteGivenUserFromGivenGroup" />
+  <xs:element name="deleteGivenUserFromGivenGroupResponse" type="tns:deleteGivenUserFromGivenGroupResponse" />
+  <xs:element name="deleteGivenUserFromGivenGroupXML" type="tns:deleteGivenUserFromGivenGroupXML" />
+  <xs:element name="deleteGivenUserFromGivenGroupXMLResponse" type="tns:deleteGivenUserFromGivenGroupXMLResponse" />
+  <xs:element name="deleteGroup" type="tns:deleteGroup" />
+  <xs:element name="deleteGroupResponse" type="tns:deleteGroupResponse" />
+  <xs:element name="deleteGroupXML" type="tns:deleteGroupXML" />
+  <xs:element name="deleteGroupXMLResponse" type="tns:deleteGroupXMLResponse" />
+  <xs:element name="getGroupDetailsForGivenCourseId" type="tns:getGroupDetailsForGivenCourseId" />
+  <xs:element name="getGroupDetailsForGivenCourseIdResponse" type="tns:getGroupDetailsForGivenCourseIdResponse" />
+  <xs:element name="getGroupDetailsForGivenCourseIdWithNamedElements" type="tns:getGroupDetailsForGivenCourseIdWithNamedElements" />
+  <xs:element name="getGroupDetailsForGivenCourseIdWithNamedElementsResponse" type="tns:getGroupDetailsForGivenCourseIdWithNamedElementsResponse" />
+  <xs:element name="getGroupDetailsForGivenCourseIdXML" type="tns:getGroupDetailsForGivenCourseIdXML" />
+  <xs:element name="getGroupDetailsForGivenCourseIdXMLResponse" type="tns:getGroupDetailsForGivenCourseIdXMLResponse" />
+  <xs:element name="getGroupDetailsForGivenGroupBbId" type="tns:getGroupDetailsForGivenGroupBbId" />
+  <xs:element name="getGroupDetailsForGivenGroupBbIdResponse" type="tns:getGroupDetailsForGivenGroupBbIdResponse" />
+  <xs:element name="getGroupDetailsForGivenGroupBbIdWithNamedElements" type="tns:getGroupDetailsForGivenGroupBbIdWithNamedElements" />
+  <xs:element name="getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" type="tns:getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+  <xs:element name="getGroupDetailsForGivenGroupBbIdXML" type="tns:getGroupDetailsForGivenGroupBbIdXML" />
+  <xs:element name="getGroupDetailsForGivenGroupBbIdXMLResponse" type="tns:getGroupDetailsForGivenGroupBbIdXMLResponse" />
+  <xs:element name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElements" type="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElements" />
+  <xs:element name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" type="tns:getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse" />
+  <xs:element name="getGroupMemberDetailsForGivenGroupBbIdXML" type="tns:getGroupMemberDetailsForGivenGroupBbIdXML" />
+  <xs:element name="getGroupMemberDetailsForGivenGroupBbIdXMLResponse" type="tns:getGroupMemberDetailsForGivenGroupBbIdXMLResponse" />
+  <xs:element name="getGroupMembersForGivenGroupBbId" type="tns:getGroupMembersForGivenGroupBbId" />
+  <xs:element name="getGroupMembersForGivenGroupBbIdResponse" type="tns:getGroupMembersForGivenGroupBbIdResponse" />
+  <xs:element name="modifyGroup" type="tns:modifyGroup" />
+  <xs:element name="modifyGroupResponse" type="tns:modifyGroupResponse" />
+  <xs:element name="modifyGroupXML" type="tns:modifyGroupXML" />
+  <xs:element name="modifyGroupXMLResponse" type="tns:modifyGroupXMLResponse" />
+  <xs:complexType name="modifyGroupXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="descType" type="xs:string" />
+      <xs:element minOccurs="0" name="available" type="xs:boolean" />
+      <xs:element minOccurs="0" name="chatRoomAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="discussionBoardAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="emailAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="transferAvailable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyGroupXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenGroupBbIdWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenGroupBbIdWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:groupDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="groupDetails">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:bbWsDataDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="available" type="xs:boolean" />
+          <xs:element minOccurs="0" name="chatRoomsAvailable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="discussionBoardsAvailable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="emailAvailable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="modifiedDate" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="transferAreaAvailable" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="bbWsDataDetails" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bbId" type="xs:string" />
+      <xs:element minOccurs="0" name="bbWsBoolResult" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bbWsDataLog" nillable="true" type="tns:bbWsDataLogRecord" />
+      <xs:element minOccurs="0" name="bbWsTextResult" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bbWsDataLogRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apiPass" type="xs:string" />
+      <xs:element minOccurs="0" name="apiUsed" type="xs:string" />
+      <xs:element minOccurs="0" name="bbValue" type="xs:string" />
+      <xs:element minOccurs="0" name="dateTime" type="xs:string" />
+      <xs:element minOccurs="0" name="fieldName" type="xs:string" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="recordId" type="xs:string" />
+      <xs:element minOccurs="0" name="severityLevel" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+      <xs:element minOccurs="0" name="wsValue" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGivenUserFromGivenGroupXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGivenUserFromGivenGroupXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenGroupBbId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenGroupBbIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenCourseId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="headerDesc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenCourseIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGivenUserToGivenGroupXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGivenUserToGivenGroupXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenGroupBbIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenGroupBbIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGivenUserToGivenGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGivenUserToGivenGroupResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGroupToGivenCourse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="descType" type="xs:string" />
+      <xs:element minOccurs="0" name="available" type="xs:boolean" />
+      <xs:element minOccurs="0" name="chatRoomAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="discussionBoardAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="emailAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="transferAvailable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGroupToGivenCourseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="descType" type="xs:string" />
+      <xs:element minOccurs="0" name="available" type="xs:boolean" />
+      <xs:element minOccurs="0" name="chatRoomAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="discussionBoardAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="emailAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="transferAvailable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modifyGroupResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGroupXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGroupXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGivenUserFromGivenGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGivenUserFromGivenGroupResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenCourseIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenCourseIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteGroupResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMemberDetailsForGivenGroupBbIdXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMemberDetailsForGivenGroupBbIdXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenCourseIdWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupDetailsForGivenCourseIdWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:groupDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGroupToGivenCourseXML">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="courseId" type="xs:string" />
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="descType" type="xs:string" />
+      <xs:element minOccurs="0" name="available" type="xs:boolean" />
+      <xs:element minOccurs="0" name="chatRoomAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="discussionBoardAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="emailAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="transferAvailable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addGroupToGivenCourseXMLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMemberDetailsForGivenGroupBbIdWithNamedElementsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:groupMemberDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="groupMemberDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembersForGivenGroupBbId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pwd" type="xs:string" />
+      <xs:element minOccurs="0" name="groupBbId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGroupMembersForGivenGroupBbIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
