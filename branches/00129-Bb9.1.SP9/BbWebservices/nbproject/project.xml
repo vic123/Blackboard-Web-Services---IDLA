@@ -25,6 +25,9 @@
                 <library>
                     <file>${file.reference.servlet-api.jar}</file>
                 </library>
+                <library>
+                    <file>${file.reference.bb-qti.jar}</file>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

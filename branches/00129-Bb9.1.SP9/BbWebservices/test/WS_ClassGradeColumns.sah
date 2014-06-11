@@ -1,0 +1,82 @@
+//GC Columns
+_click(_link("/.*/", _in(_cell("Courses.label"))));
+_click(_link("Class_010_ID: Class_010"));
+_click(_link("Grade Center"));
+_click(_link("Full Grade Center"));
+
+//GCC_NoCategory_010
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_NoCategory_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_NoCategory_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_NoCategory_010_desc"));
+_setSelected(_select("categoryId"), "No Category");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+//GCC_Assignment_010
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_Assignment_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_Assignment_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_GCC_Assignment_010_desc"));
+_setSelected(_select("categoryId"), "Assignment");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_Survey_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_Survey_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_Survey_010_desc"));
+_setSelected(_select("categoryId"), "Survey");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_Test_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_Test_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_Test_010_desc"));
+_setSelected(_select("categoryId"), "Test");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_Discussion_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_Discussion_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_Discussion_010_desc"));
+_setSelected(_select("categoryId"), "Discussion");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_Blog_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_Blog_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_Blog_010_desc"));
+_setSelected(_select("categoryId"), "Blog");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_Journal_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_Journal_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_Journal_010_desc"));
+_setSelected(_select("categoryId"), "Journal");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+_click(_link("Create Column"));
+_setValue(_textbox("columnName"), "GCC_SelfandPeer_010");
+_setValue(_textbox("gradebookDisplayName"), "GCC_SelfandPeer_010_gcn");
+_call(setTMEContent("descriptiontext", "GCC_SelfandPeer_010_desc"));
+_setSelected(_select("categoryId"), "Self and Peer");
+_setValue(_textbox("pointsDisplay"), "100");
+_click(_submit("Submit"));
+
+
+<browser>
+function setTMEContent(fieldName, content) {
+var wp = top.document.getElementById('contentFrame').contentWindow.tinyMceWrapper;
+var edt = wp.getEditor(fieldName);
+var tedt = edt._tinyMceEditor;
+tedt.setContent(content);
+}
+</browser>

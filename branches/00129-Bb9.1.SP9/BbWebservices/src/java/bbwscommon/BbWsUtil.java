@@ -137,11 +137,26 @@ public class BbWsUtil {
         Field[] fields = enumClass.getFields();
         ArrayList<String> list = new ArrayList<String>(fields.length);
         for (Field f : fields) {
-            if ((Modifier.isStatic(f.getModifiers())) && ((f.get(enumClass) instanceof BbEnum))) {
+            if ((Modifier.isStatic(f.getModifiers()))
+                    && ((f.get(enumClass) instanceof BbEnum))) {
               String fname = f.getName();
               list.add(fname);
             }
         }
         return list;
+    }
+
+    public static <T extends BbEnum> T bbEnumFromFieldName(String fieldName, Class<T> enumClass)
+            throws IllegalAccessException {
+        T e = null;
+        try {
+            e = (T) BbEnum.fromFieldName(fieldName, enumClass);
+            if (e == null) throw new IllegalArgumentException("BbEnum.fromFieldName() returned null");
+        } catch (IllegalArgumentException ie) {
+            throw new BbWsException("Passed value is: " + fieldName +". " 
+                    + enumClass.getName() + " can accept following values: "
+                    + BbWsUtil.getBbEnumFieldNames(enumClass), ie);
+        }
+        return e;
     }
 }
