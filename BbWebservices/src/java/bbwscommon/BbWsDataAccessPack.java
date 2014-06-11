@@ -12,6 +12,8 @@ package bbwscommon;
 import blackboard.platform.log.LogService;
 import blackboard.data.Identifiable;
 import blackboard.persist.Id;
+import blackboard.base.FormattedText;
+import blackboard.base.BbEnum;
 
 
 import java.util.LinkedHashMap;
@@ -190,6 +192,27 @@ public abstract class BbWsDataAccessPack<ArgumentsType extends BbWsArguments<WsR
             calendar.setTime(d);
             return calendar;
         }
+
+        public FormattedText parseFormattedText(String formattedText) throws Exception {
+            final String FT_PREFIX = "FormattedText{type=";
+            if (formattedText == null) return null;
+            if (!formattedText.startsWith(FT_PREFIX))
+                throw new BbWsException("FormattedText should start with \"FormattedText{type=\"");
+            int comma_index = formattedText.indexOf(",");
+            if (comma_index == -1)
+                throw new BbWsException("Comma separating type from the text is not found");
+            String ft_type_str = formattedText.substring(FT_PREFIX.length(), comma_index);
+            //FormattedText.Type ft_type = (FormattedText.Type) BbEnum.fromFieldName(ft_type_str, FormattedText.Type.class);
+            FormattedText.Type ft_type = BbWsUtil.bbEnumFromFieldName(ft_type_str, FormattedText.Type.class);
+            int text_index = formattedText.indexOf("text=", comma_index + 1);
+            if (text_index == -1)
+                throw new BbWsException("\"text=\" is not found");
+            String ft_text_str = formattedText.substring(text_index + "text=".length(),
+                                    formattedText.length() - 1);
+            FormattedText ft = new FormattedText(ft_text_str, ft_type);
+            return ft;
+        }
+
 
         /*
         protected void appendBoolResultDataLogFromInputRecord() {

@@ -22,9 +22,17 @@ import bbuws.*;
 
 import blackboard.platform.log.LogService;
 
-@WebService(name="BbWebservices", serviceName="BbWebservices", targetNamespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices")
-public class BbWebservices {
-
+@WebService(
+            //name="BbWebservices"
+            //,
+            serviceName="BbWebservices"
+            , targetNamespace="http://projects.oscelot.org/gf/project/wservices_idla/BbWebservices"
+            , endpointInterface = "bbwscommon.IBbWebservices"
+            )
+public class BbWebservices 
+            extends BbWebservices_Gen
+            implements IBbWebservices_Gen {
+    //?? UserApiProcessor - what was it for? - to remove and test
     static class UserApiProcessor extends BbWsApiProcessor<UserAccessPack.UserArgumentsWithUserInput> {
         static public void start(UserAccessPack.UserArgumentsWithUserInput args) throws BbWsFault{
             UserApiProcessor api_proc = new UserApiProcessor();

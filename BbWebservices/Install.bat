@@ -1,0 +1,1 @@
+java.exe -jar InstallB2-1.0.0\InstallB2.jar http://idlatestbb.com dist\BbWebservices.war BBLEARN true true
