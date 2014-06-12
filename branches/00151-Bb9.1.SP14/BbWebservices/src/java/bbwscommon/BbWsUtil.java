@@ -7,7 +7,7 @@ package bbwscommon;
 
 import blackboard.persist.impl.mapping.FilteredDbObjectMap;
 import blackboard.persist.impl.mapping.DbObjectMap;
-import blackboard.persist.impl.mapping.DbMapping;
+//import blackboard.persist.impl.mapping.DbMapping;
 import blackboard.base.BbEnum;
 import blackboard.platform.log.LogService;
 
@@ -101,6 +101,7 @@ public class BbWsUtil {
         return constructExceptionMessage(e, "", 0);
     }
 
+    /*
     public static FilteredDbObjectMap getFullFilteredMap(DbObjectMap dbObjectMap)
     {
         List<String> fields_list = new ArrayList();
@@ -108,7 +109,7 @@ public class BbWsUtil {
         String fields[] = fields_list.toArray(new String[fields_list.size()]);
         FilteredDbObjectMap f_map = new FilteredDbObjectMap(dbObjectMap, fields);
         return f_map;
-    }
+    } */
     //public static <BbEnumClass extends BbEnum.class> int convertBbEnumFieldName2Int(String fieldName, BbEnumClass BbEnum.class enumClass) {
     //public static <BbEnumClass extends BbEnum> int convertBbEnumFieldName2Int(String fieldName, BbEnumClass enumClass) {
     public static int convertBbEnum2Int(BbEnum bbEnum) {
