@@ -8,9 +8,10 @@
         <data xmlns="http://www.netbeans.org/ns/web-project/3">
             <name>BbWebservices</name>
             <minimum-ant-version>1.6</minimum-ant-version>
+            <explicit-platform explicit-source-supported="true"/>
             <web-module-libraries>
                 <library>
-                    <file>${libs.jaxws21.classpath}</file>
+                    <file>${libs.JAX-WS_2.2.8.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
@@ -23,10 +24,10 @@
                     <file>${file.reference.bb-taglibs.jar}</file>
                 </library>
                 <library>
-                    <file>${file.reference.servlet-api.jar}</file>
+                    <file>${file.reference.bb-qti.jar}</file>
                 </library>
                 <library>
-                    <file>${file.reference.bb-qti.jar}</file>
+                    <file>${file.reference.servlet-api.jar}</file>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>

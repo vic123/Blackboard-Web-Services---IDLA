@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <plugin>
-      <name value="Blackboard Web Services - IDLA - Bb9.1.SP9"/>
+      <name value="Blackboard Web Services - IDLA - Bb9.1.SP14"/>
       <description value="Provides adjustable CRUD access to Blackboard data through webservices exposing internal Bb APIs. Packed with minimally modified v.1.2 of Andrew Martin/Newcastle University Webservices"/>
       <handle value="BbWebservices"/>
 	  <!-- Major.Minor.Subversion revision-->
 	  <!-- v.2.0 was first release of the project (version numbering continues 1.2 of Webservices project) -->
-	  <version value="2.2.142"/>
+	  <version value="2.2.155"/>
 	  
 	  <requires>
- 	    <bbversion value="9.1.9"/>
+ 	    <bbversion value="9.1.14"/>
 	  </requires>
 	  <vendor>
 	    <id value="IDLA"/>
@@ -19,7 +19,8 @@
 	    <description value=""/>
 	  </vendor>
 	  <http-actions>
-		<config value="properties/properties.jsp"/>
+		<config value="properties/properties.jsp"/> 
+                <!-- <config value="AdminSettings.htm"/> -->
 		<remove value=""/>
 	  </http-actions>
 	  
@@ -76,5 +77,6 @@
             <permission type="blackboard.persist.PersistPermission" name="wssession" actions="create,modify"/>
             -->
 	</permissions>
+        <requires-bean-introspection value="true"/>
   </plugin>
 </manifest>
