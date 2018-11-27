@@ -415,8 +415,11 @@ public class LineitemDetails extends DataDetails implements ReturnTypeInterface
             record.weight = loadValue(record.weight, "weight",
                 new ValueLoader<GradableItem>() {
                     public String loadImp() {
-                        return Double.toString(bbObject.getWeight());
+                    	/* Method is removed in Bb.SaaS 3400.3.0-rel.16+634183e
+                        return Float.toString(bbObject.getWeight());
                         //!!return null;
+                        */
+                        return null;
                     }
             }); // Don't forget the parenthesis and semicolon that end the method call!
             record.incApiPassedCount(); //!! - move to base (moved to )
