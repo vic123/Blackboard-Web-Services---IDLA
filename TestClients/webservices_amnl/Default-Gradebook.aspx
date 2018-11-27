@@ -1,7 +1,31 @@
 ﻿<%@ Page Language="C#" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ Import namespace="System.Net" %>
+<%@ Import namespace="System.Net.Security" %>
+<%@ Import namespace="System.Security.Cryptography.X509Certificates" %>
+
 <script language="C#" runat="server">
+
+/// <summary>
+/// solution for exception
+/// System.Net.WebException: 
+/// The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+/// </summary>
+public static void BypassCertificateError()
+{
+    ServicePointManager.ServerCertificateValidationCallback +=
+
+        delegate(
+            Object sender1,
+            X509Certificate certificate,
+            X509Chain chain,
+            SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
+        };
+}
+
     private void ShowLineItemsArray(bbgbws.lineitemDetails[] li_array)
     {
         if (li_array == null) return;
@@ -47,8 +71,11 @@
 <%            
     //Author: Andrew.Martin@ncl.ac.uk
 
+
     try
     {
+        BypassCertificateError();
+    
         //bbgbws is my chosen webreference name
         bbgbws.BBGradebookWebServiceService ws = new bbgbws.BBGradebookWebServiceService();
         
@@ -237,6 +264,7 @@
     //score_details1.dateAdded = null;
         
         
+
         bbgbws.scoreDetails[] score_details = ws.getAllScoreDetailsForGivenLineItemBbIdWithNamedElements(wsPassword, lineItemId, true, true);
         for (int i = 0; i < score_details.Length; i++)
         {
@@ -313,3 +341,6 @@
  </div>
     </body>
 </html>
+
+
+

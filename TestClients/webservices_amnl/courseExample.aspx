@@ -6,7 +6,34 @@
         <title>JSP Page</title>
     </head>
     <body>
+<%@ Import namespace="System.Net" %>
+<%@ Import namespace="System.Net.Security" %>
+<%@ Import namespace="System.Security.Cryptography.X509Certificates" %>
+
+<script language="C#" runat="server">
+
+/// <summary>
+/// solution for exception
+/// System.Net.WebException: 
+/// The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+/// </summary>
+public static void BypassCertificateError()
+{
+    ServicePointManager.ServerCertificateValidationCallback +=
+
+        delegate(
+            Object sender1,
+            X509Certificate certificate,
+            X509Chain chain,
+            SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
+        };
+}
+</script>    
 <%
+
+
     //Author: Andrew.Martin@ncl.ac.uk
 
     //bbcrsws is my chosen webreference name
@@ -16,6 +43,7 @@
 
     try
     {
+        BypassCertificateError();
         //Our details for a new course, feel free to change...
         String courseId = "WEBSERVICE_Testcourse0001";
         String batchUid = "TESTTESTTEST";
