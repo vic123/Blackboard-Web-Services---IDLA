@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <plugin>
-      <name value="Blackboard Web Services - IDLA - Bb9.1.SP14"/>
+      <name value="Blackboard Web Services - IDLA - Bb.SaaS.3400.3.0"/>
       <description value="Provides adjustable CRUD access to Blackboard data through webservices exposing internal Bb APIs. Packed with minimally modified v.1.2 of Andrew Martin/Newcastle University Webservices"/>
       <handle value="BbWebservices"/>
 	  <!-- Major.Minor.Subversion revision-->
 	  <!-- v.2.0 was first release of the project (version numbering continues 1.2 of Webservices project) -->
-	  <version value="2.2.155"/>
+	  <version value="2.2.156"/>
 	  
 	  <requires>
  	    <bbversion value="9.1.14"/>
